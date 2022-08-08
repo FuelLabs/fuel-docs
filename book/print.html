@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Fuel Book</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Summary</a></li><li class="chapter-item expanded "><a href="1-fuel.html"><strong aria-hidden="true">1.</strong> Fuel</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="fuel-toolchain.html"><strong aria-hidden="true">1.1.</strong> Fuel Toolchain</a></li><li class="chapter-item expanded "><a href="fuelvm-vs-evm.html"><strong aria-hidden="true">1.2.</strong> FuelVM vs EVM</a></li><li class="chapter-item expanded "><a href="fraudprovable.html"><strong aria-hidden="true">1.3.</strong> Fuel is Fraudprovable</a></li></ol></li><li class="chapter-item expanded "><a href="modular-stack.html"><strong aria-hidden="true">2.</strong> Modular architecture</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="fuel-configurations.html"><strong aria-hidden="true">2.1.</strong> Fuel Configurations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="fuel-with-evm.html"><strong aria-hidden="true">2.1.1.</strong> Using Fuel with EVM</a></li><li class="chapter-item expanded "><a href="fuel-as-a-rollup.html"><strong aria-hidden="true">2.1.2.</strong> Fuel as a Rollup</a></li><li class="chapter-item expanded "><a href="fuel-as-l1.html"><strong aria-hidden="true">2.1.3.</strong> Fuel as an L1</a></li><li class="chapter-item expanded "><a href="fuel-as-poa-sidechain.html"><strong aria-hidden="true">2.1.4.</strong> Fuel as a POA sidechain</a></li><li class="chapter-item expanded "><a href="fuel-as-statechannel.html"><strong aria-hidden="true">2.1.5.</strong> Fuel as a State Channel</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="build-on-fuel.html"><strong aria-hidden="true">3.</strong> Build on Fuel</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="devnet.html"><strong aria-hidden="true">3.1.</strong> Fuel Devnet</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="deploy-on-fuel.html"><strong aria-hidden="true">3.1.1.</strong> Deploying on Fuel</a></li></ol></li><li class="chapter-item expanded "><a href="sway-docs.html"><strong aria-hidden="true">3.2.</strong> Sway Docs</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Title of Another Part</li><li class="chapter-item expanded "><a href="relative/path/to/markdown4.html"><strong aria-hidden="true">4.</strong> Another Chapter</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Fuel Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/FuelLabs/fuel-docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="guidelines-for-contributing"><a class="header" href="#guidelines-for-contributing">Guidelines for Contributing</a></h2>
+<p>These are developer docs. Here there will be information for how to make PRs against the docs</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel"><a class="header" href="#fuel">Fuel</a></h1>
+<ul>
+<li>Fuel is a blazingly fast modular, verifiable execution layer, built on top of the FuelVM.</li>
+<li>Fraudprovable</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-toolchain"><a class="header" href="#fuel-toolchain">Fuel Toolchain</a></h1>
+<ul>
+<li>Fuel Labs developed a completely integrated developer toolchain to deliver a seamless developer experience. </li>
+<li>The FuelVM was developed alongside Sway, a domain specific language based on Rust that allows developers to leverage a blockchain VM without needlessly verbose boilerplate. </li>
+<li>The entire toolchain, from indexing and querying, to language, to the VM has all been created by our team and will be maintained in perpetuity, creating an ecosystem that is not fragmented, reliable, and <em>just works.</em></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuelvm-vs-evm"><a class="header" href="#fuelvm-vs-evm">FuelVM vs EVM</a></h1>
+<ul>
+<li>FuelVM uses 64bit words instead of 256bit words</li>
+<li>Register-based instead of stack-based
+<ul>
+<li>In a stack based organization, functions read their operands from and write their results to a stack, a LIFO data structure. Because elements can only be added to and removed from the top of the stack, arguments must be pushed to the stack, then popped from the stack, the computation is made, and the result is pushed to the top of the stack.</li>
+<li>In a register based VM, operands are stored in register locations and to execute a function, operand address must be explicitly stated, and therefore there is no additional overhead of running these pop and push operations.</li>
+</ul>
+</li>
+<li>Native assets beyond Ether
+<ul>
+<li>In fuel, any contract can mint a utxo-based native asset</li>
+</ul>
+</li>
+<li>Fuelvm has predicates.</li>
+<li>FuelVM has scripts</li>
+<li>FuelVM instructions are 32-bit aligned which makes for efficient parsing, fraud provability, and audit-ability</li>
+<li>FuelVM was created alongside Sway</li>
+<li>FuelVM removes constructors for contracts, reducing risk of unwanted side effects</li>
+<li>Shared global memory</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-is-fraudprovable"><a class="header" href="#fuel-is-fraudprovable">Fuel is Fraudprovable</a></h1>
+<p>UTXO fraudproofs where you can prove that a UTXO is double spending or spending a UTXO that doesn’t exist. </p>
+<p>Tx level fraudproof within the virtual machine execution. Fuel revised the instruction set so that you can execute a single instruction on the vm. I.e. the evm has self destruct or create ,single instructions that are expensive and complicated and dealing with these means a lot of complexities and you may not be able to execute one of these instructions or interpret one of these instructions in the evm. The FuelVM is more expressive i.e. you don’t need a create instruction, you can do all your create logic. Doing a copy of large memory chunks in evm is prohibitively expensive, bc you have to loop and copy words of memory. Enables things at the instructional level vs the application level. There are some weird design choices when designing a VM,</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-in-the-modular-stack"><a class="header" href="#fuel-in-the-modular-stack">Fuel in the Modular Stack</a></h1>
+<ul>
+<li>Defining the modular stack</li>
+<li>How modularity enables scalability</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-configurations"><a class="header" href="#fuel-configurations">Fuel Configurations</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="using-fuel-with-evm"><a class="header" href="#using-fuel-with-evm">Using Fuel with EVM</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-as-a-rollup"><a class="header" href="#fuel-as-a-rollup">Fuel as a Rollup</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-as-an-l1"><a class="header" href="#fuel-as-an-l1">Fuel as an L1</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-as-a-poa-sidechain"><a class="header" href="#fuel-as-a-poa-sidechain">Fuel as a POA sidechain</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-as-a-state-channel"><a class="header" href="#fuel-as-a-state-channel">Fuel as a State Channel</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="build-on-fuel"><a class="header" href="#build-on-fuel">Build on Fuel</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-devnet"><a class="header" href="#fuel-devnet">Fuel Devnet</a></h1>
+<ul>
+<li>v1 implementation of Fuel - as an L1 with a single block producer</li>
+<li>building and deploying a smart contract</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="deploying-on-fuel"><a class="header" href="#deploying-on-fuel">Deploying on Fuel</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sway-docs"><a class="header" href="#sway-docs">Sway Docs</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="another-chapter"><a class="header" href="#another-chapter">Another Chapter</a></h1>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,13 @@
+# FuelVM vs EVM
+- FuelVM uses 64bit words instead of 256bit words
+- Register-based instead of stack-based
+    - In a stack based organization, functions read their operands from and write their results to a stack, a LIFO data structure. Because elements can only be added to and removed from the top of the stack, arguments must be pushed to the stack, then popped from the stack, the computation is made, and the result is pushed to the top of the stack.
+    - In a register based VM, operands are stored in register locations and to execute a function, operand address must be explicitly stated, and therefore there is no additional overhead of running these pop and push operations.
+- Native assets beyond Ether
+    - In fuel, any contract can mint a utxo-based native asset
+- Fuelvm has predicates.
+- FuelVM has scripts
+- FuelVM instructions are 32-bit aligned which makes for efficient parsing, fraud provability, and audit-ability
+- FuelVM was created alongside Sway
+- FuelVM removes constructors for contracts, reducing risk of unwanted side effects
+- Shared global memory
