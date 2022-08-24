@@ -1,4 +1,1 @@
 # Parallel Transaction Execution
-
-
-

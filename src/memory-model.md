@@ -1,2 +1,1 @@
 # Memory Model
-
