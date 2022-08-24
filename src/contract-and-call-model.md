@@ -1,1 +1,0 @@
-# Contract and Call Model
