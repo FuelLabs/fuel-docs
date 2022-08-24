@@ -1,4 +1,4 @@
-# Title of Part
+# Fuel Docs
 
 - [Developer Quickstart]()
 
