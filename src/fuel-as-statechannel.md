@@ -1,1 +1,0 @@
-# Fuel as a statechannel
