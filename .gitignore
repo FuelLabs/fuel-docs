@@ -10,4 +10,4 @@ Cargo.lock
 **/*.rs.bk
 
 # Don't add the generated MDBook artifacts
-docs/book/
+book/
