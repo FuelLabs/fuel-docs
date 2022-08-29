@@ -1,6 +1,6 @@
 # Sway Language
 
-Sway is a smart contract programming language that prioritizes safety and speed and brings modern programming language theory to the blockchain. Check out the Sway docs [here](https://fuellabs.github.io/sway/v0.19.2/).
+Sway is a smart contract programming language that prioritizes safety and speed and brings modern programming language theory to the blockchain. Check out the Sway docs [here](https://fuellabs.github.io/sway/latest/).
 
 ## Rust + Solidity = Sway
 
