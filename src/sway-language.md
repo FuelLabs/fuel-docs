@@ -7,4 +7,4 @@ Sway prioritizes compile-time analysis and safety, similar to Rust’s borrow ch
 
 In addition to robust documentation, tooling, clear error messages, and more – Sway brings the notion of static auditing to smart contracts. The compiler will catch things that one would typically hire an auditing firm to catch. This is particularly unique. In addition, Sway is highly performant and has extensible optimization passes and a modular backend for targeting different blockchain architectures.
 
-Check out Sway examples [here](https://github.com/FuelLabs/sway/tree/376010e7b8f84334ffacd0f99e64f185c971d213/examples).
+Check out Sway examples [here](https://github.com/FuelLabs/sway/tree/master/examples).
