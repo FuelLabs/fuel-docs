@@ -11,6 +11,7 @@ Official forc plugins:
 - `forc-lsp`: The Sway Language Server Protocol implementation.
 - `forc-explore`: Runs the Fuel block explorer.
 - `forc-client`: For deploying and running Sway apps via CLI.
+- `forc-wallet`: For initializing a wallet, adding accounts and signing transactions.
 - `fuelup`: The FuelLabs toolchain manager - an easy approach to retrieving all of the above.
 
 For more specific documentation on the toolchain, check out the Sway docs [here](https://fuellabs.github.io/sway/v0.19.2/introduction/sway-toolchain.html).
