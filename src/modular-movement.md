@@ -17,6 +17,8 @@ In a monolithic architecture, users must choose between high security and high c
 
 Alternatively, a user can run a light client, also known as an honest majority light client. Instead of downloading all blocks to verify transactions, light clients only download block headers and check their proof-of-work (PoW), assuming the heaviest chain is valid. Honest majority light-clients that trust that a majority of validators are honest and will reject fraudulent transactions.
 
+
+
 The amount of computational resources and storage needed to run a light client is lower than a full node by several orders of magnitude.
 
 An easy way to remember the difference: An honest majority light client is only secure if most validators are honest. A full node is honest even if all validators are not honest.
@@ -24,6 +26,8 @@ An easy way to remember the difference: An honest majority light client is only 
 By running a full node, you get the maximum security of verifying transactions but also have to spend a lot of computational resources to achieve this. Because a light client doesn’t need to run 24/7 and doesn’t interact directly with the chain, the computational requirement is much lower, but you also get low security.
 
 ### Trust-Minimized Light Clients
+
+![graph showing security versus resource requirements on running full node, honest-majority light client, and trust-minimized light client](https://user-images.githubusercontent.com/15346823/187777361-785ce2a4-9db5-4e52-aeaf-f3c4825c8520.png)
 
 Fuel’s design lets light clients say that blocks are valid through fraud proofs. This eliminates the need for a trusted party while maintaining low resource requirements and achieving high security. For monolithic chains like Ethereum, there is an ideological incentive to keep the computation requirements for full nodes low to allow users to be truly sovereign.
 
