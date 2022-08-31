@@ -1,6 +1,6 @@
 # The Fuel Toolchain
 
-The full stack of tools designed and blessed by FuelLabs for enabling/assisting the Fuel application development experience.
+The full stack of tools designed and blessed by Fuel Labs for enabling/assisting the Fuel application development experience.
 
 Tooling Overview:
 - `fuel-core`: The Fuel VM node client.
@@ -12,7 +12,7 @@ Official forc plugins:
 - `forc-explore`: Runs the Fuel block explorer.
 - `forc-client`: For deploying and running Sway apps via CLI.
 - `forc-wallet`: For initializing a wallet, adding accounts and signing transactions.
-- `fuelup`: The FuelLabs toolchain manager - an easy approach to retrieving all of the above.
+- `fuelup`: The Fuel Labs toolchain manager - an easy approach to retrieving all of the above.
 
 For more specific documentation on the toolchain, check out the Sway docs [here](https://fuellabs.github.io/sway/v0.19.2/introduction/sway-toolchain.html).
 
@@ -28,4 +28,4 @@ To clarify, the goal is not at all to discourage 3rd parties from extending the 
 
 The Sway VS Code plugin is a great example of our vision for a unified developer experience. The plugin interacts with the Sway language server, a forc plugin that communicates directly with the Sway compiler and shares much of its code-base. The plugin also allows for spinning up a Fuel node, displaying its status in real-time and (in the near future) interact with your smart contracts via the type script SDK. A complete solution from entirely within the plugin, from one team with a shared vision.
 
-You can start experimenting with the Fuel toolchain by following [fuelup's Quickstart guide](https://fuellabs.github.io/fuelup/master/installation/index.html#quickstart).
+You can start experimenting with the Fuel toolchain by following the [Fuelup Quickstart Guide](https://fuellabs.github.io/fuelup/master/installation/index.html#quickstart).
