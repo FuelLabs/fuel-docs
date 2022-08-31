@@ -13,7 +13,9 @@ A modular blockchain architecture does not inherently enable scaling. The proper
 
 ### Security vs. Resource Requirements
 
-In a monolithic architecture, users must choose between high security and high computational resource usage and trusted security and low computational resource usage. For example, [Ethereum was designed to allow consumer-grade hardware to be able to run a fullnode](https://ethereum.org/en/run-a-node/), a type of node that offers maximum security by downloading and verifying every single transaction. By running a full node, users don’t have to trust that the chain is valid and can instead verify themselves. However, running a full node requires a lot of disk space and non-negligible CPU allocation and can take days to sync the blockchain from genesis.
+![fuel1](https://user-images.githubusercontent.com/15346823/187789550-382eb91d-1a1d-4cf7-a26c-c82e6e8a12f9.png)
+
+In a monolithic architecture, users must choose between high security and high computational resource usage and trusted security and low computational resource usage. For example, [Ethereum was designed to allow consumer-grade hardware to be able to run a full node](https://ethereum.org/en/run-a-node/), a type of node that offers maximum security by downloading and verifying every single transaction. By running a full node, users don’t have to trust that the chain is valid and can instead verify themselves. However, running a full node requires a lot of disk space and non-negligible CPU allocation and can take days to sync the blockchain from genesis.
 
 Alternatively, a user can run a light client, also known as an honest majority light client. Instead of downloading all blocks to verify transactions, light clients only download block headers and check their proof-of-work (PoW), assuming the heaviest chain is valid. Honest majority light-clients that trust that a majority of validators are honest and will reject fraudulent transactions.
 
