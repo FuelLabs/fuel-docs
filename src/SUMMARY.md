@@ -8,7 +8,7 @@
     - [Fuel toolchain](./fuel-toolchain.md)
   - [The Modular Movement]()
     - [Introduction]()
-    - [Monolithic Blockchains]()
+    - [Monolithic Blockchains](./monolithic.md)
     - [Modular Blockchains]()
     - [Modular Blockchain Stack]()
     - [What is a Modular Execution Layer]()
