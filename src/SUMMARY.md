@@ -5,7 +5,7 @@
 - [Getting Started]()
   - [Why Fuel?]()
   - [What is Fuel?]()
-    - [Fuel toolchain]()
+    - [Fuel toolchain](./fuel-toolchain.md)
   - [The Modular Movement]()
     - [Introduction]()
     - [Monolithic Blockchains]()
