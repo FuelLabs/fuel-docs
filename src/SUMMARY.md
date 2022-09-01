@@ -1,5 +1,7 @@
 # Summary
 
+<!-- markdownlint-disable MD042 -->
+
 - [Developer Quickstart]()
 
 - [Getting Started]()
