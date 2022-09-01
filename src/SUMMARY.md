@@ -5,7 +5,7 @@
 - [Developer Quickstart]()
 - [Getting Started]()
   - [Why Fuel?]()
-  - [What is Fuel?]()
+  - [What is Fuel?](./what-is-fuel.md)
     - [Fuel toolchain](./fuel-toolchain.md)
   - [The Modular Movement]()
     - [Introduction]()
