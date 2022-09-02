@@ -2,8 +2,9 @@
 
 <!-- markdownlint-disable MD042 -->
 
-- [Developer Quickstart]()
+[The Fuel Book](./README.md)
 
+- [Developer Quickstart]()
 - [Getting Started]()
   - [Why Fuel?]()
   - [What is Fuel?](./what-is-fuel.md)
