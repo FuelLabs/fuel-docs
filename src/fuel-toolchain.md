@@ -29,4 +29,4 @@ To clarify, the goal is not at all to discourage 3rd parties from extending the 
 
 The Sway VS Code plugin is a great example of our vision for a unified developer experience. The plugin interacts with the Sway language server, a forc plugin that communicates directly with the Sway compiler and shares much of its code-base. The plugin also allows for spinning up a Fuel node, displaying its status in real-time and (in the near future) interact with your smart contracts via the type script SDK. A complete solution from entirely within the plugin, from one team with a shared vision.
 
-You can start experimenting with the Fuel toolchain by following [fuelup's Quickstart guide](https://fuellabs.github.io/fuelup/master/installation/index.html#quickstart).
+You can start experimenting with the Fuel toolchain by following the [Fuelup Quickstart Guide](https://fuellabs.github.io/fuelup/master/installation/index.html#quickstart).
