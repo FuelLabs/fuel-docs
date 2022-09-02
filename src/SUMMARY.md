@@ -1,5 +1,7 @@
 # Summary
 
+<!-- markdownlint-disable MD042 -->
+
 [The Fuel Book](./README.md)
 
 - [Developer Quickstart]()
