@@ -42,28 +42,20 @@ As a Modular Execution Layer, Fuel can function in any one of these categories. 
 
 The Ethereum community has suggested many implementation improvements to improve EVM performance. Unfortunately, many of these improvement proposals haven’t been implemented because they would break backward compatibility.
 
-Execution layers built on Ethereum give us a new opportunity to build something better. Designs don’t need to be backward compatible and in fact, can do whatever is necessary to deliver global throughput and adoption for Ethereum. The FuelVM is the EVM greatly improved. Check out a non-exhaustive list of EIPs implemented in the FuelVM [here](./what-is-fuel.md).
+Execution layers built on Ethereum give us a new opportunity to build something better. Designs don’t need to be backward compatible and in fact, can do whatever is necessary to deliver global throughput and adoption for Ethereum. The FuelVM is the EVM greatly improved. Check out this non-exhaustive list of EIPs (Ethereum Improvement Proposals) implemented in the FuelVM [here](./what-is-fuel.md).
 
-### The FuelVM and EVM have a lot of overlap. Here’s how they’re different
-
-#### FuelVM uses 64-bit words instead of 256-bit
-
-Modern processors have 64bit registers, and all of the instruction set operates on 64bits. Those are the most efficient instructions, and when you deal with 256 bits, you’re dealing with big numbers, and since modern processors aren't made to handle those numbers natively, it means you have to do more in the software.
-
-#### The FuelVM is register-based instead of stack-based
-
-Register-based VMs typically require fewer instructions to do the same work than stack-based VMs. Because every operation is priced, optimizing to reduce the number of operations needed to do the same amount of work has outsized benefits.
+### The FuelVM and EVM have a lot of overlap. Here's how they're different, view a more complete list at [FuelVM vs. EVM](./vs-evm.md)
 
 #### The FuelVM has a globally shared memory architecture instead of context-local memory
 
-The FuelVM has a globally shared memory architecture. Instead of every contract call having its own separate memory space, call data, and return data, all contract call frames share global memory. This chunk of memory is shared amongst all call frames and is globally readable. This allows you to pass data around between contracts without expensive storage and pass chunks of data without having to serialize, copy from call data to memory, etc.
+The FuelVM has a globally shared memory architecture. Instead of every contract call having its own separate memory space, call data, and return data, all contract call frames share global memory. This chunk of memory is shared amongst all call frames and is globally readable. This allows you to pass data around between contracts without expensive storage and pass chunks of data without having to serialize, copy from call data to memory, etc. Read more about the FuelVM memory model [here](./fuelvm/memory_model.md).
 
 #### The FuelVM is designed for fraud-provability
 
-The EVM is a complicated machine to construct fraud proofs for. It usually requires a second layer such as WASM or MIPS to be interpreted into a fraud provable system.
+The EVM is a complicated machine to construct fraud proofs for. It usually requires a second layer such as WASM or MIPS to be interpreted into a fraud provable system. Check out [User Sovereignty with Fraud Proofs](./why-fuel.md) and [how fraud proofs unlock key functionality](./modular-movement.md).
 
 #### FuelVM has multiple native assets
 
-In Ethereum, the only native asset is Ether. It’s the only one that gets first-class treatment in terms of cost and ability to be pushed and pulled through a call. In Fuel, any contract can mint its UTXO-based native asset using a set of easy asset opcodes. All of which can gain the benefits of native-level call and optimization. Read more about support for multiple native assets [here](https://fuellabs.github.io/sway/v0.16.2/blockchain-development/native_assets.html).
+In Ethereum, the only native asset is Ether. It’s the only one that gets first-class treatment in terms of cost and ability to be pushed and pulled through a call. In Fuel, any contract can mint its UTXO-based native asset using a set of easy asset opcodes. All of which can gain the benefits of native-level call and optimization. Read more about support for multiple native assets in [the Sway docs](https://fuellabs.github.io/sway/v0.16.2/blockchain-development/native_assets.html), and [here](./fuelvm/native_assets.md).
 
 Read the full specification of the FuelVM [here](https://github.com/FuelLabs/fuel-specs/blob/master/specs/vm/main.md).
