@@ -5,7 +5,7 @@ Blockchains as we know them have four functions. In no particular order:
 - Execution: Execute transactions to make updates to the state.
 - Settlement: Dispute resolution.
 - Consensus: Defines the state and validates that all nodes on the blockchain have the same state.
-- Data availability: Ensure data stored in each block is available.
+- Data availability: Ensure block data has been published to the network.
 
 Monolithic blockchains are a type of blockchain architecture that handle all four functions, at the same time, on this single layer.
 
