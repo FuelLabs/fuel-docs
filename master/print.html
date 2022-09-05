@@ -226,25 +226,29 @@ A suite of auditing facilities, from fuzzing and formal verification to code cov
 <p><img src="./images/configs.png" alt="image of fuel running in different configurations across consensus, settlmenent, data availability, and execution" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-configurations-1"><a class="header" href="#fuel-configurations-1">Fuel Configurations</a></h1>
 <h2 id="defining-rollups"><a class="header" href="#defining-rollups">Defining Rollups</a></h2>
-<p>A layer-2 is a term used to describe a set of scaling solutions. A rollup is an off-chain network built on top of the layer-1 that executes transactions off-chain and posts these transactions to the layer-1 chain.</p>
+<p>A layer-2 is a term used to describe a set of scaling solutions. A rollup is an off-chain network built on top of the layer-1 that executes transactions off-chain, bundles these transactions, and posts the bundled transactions as a single transaction on the layer-1 chain.</p>
+<p>Check out <a href="https://ethereum.org/en/layer-2/">this resource to learn more about rollups and layer-2s</a>.</p>
 <h2 id="fuel-as-a-rollup-or-layer-2"><a class="header" href="#fuel-as-a-rollup-or-layer-2">Fuel as a Rollup or Layer-2</a></h2>
 <p>Fuel is designed to run a modular execution layer, a configuration similar to what we call rollups or layer-2s on Ethereum today. Rollups typically use an optimistic or zk-configuration for validity or transaction arbitration. The Fuel technology is agnostic to either of these and can utilize either as a validity or fraud-proving system.</p>
 <p>Layer-2s and rollups are primarily designed for monolithic blockchain stacks, which means they are typically not optimized for large amounts of layer-1 bandwidth potential unlike Fuel, which is uniquely configured to handle this potential.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-configurations-2"><a class="header" href="#fuel-configurations-2">Fuel Configurations</a></h1>
 <h2 id="defining-a-layer-1"><a class="header" href="#defining-a-layer-1">Defining a Layer-1</a></h2>
 <p>A layer-1 is a blockchain network responsible for handling all functions of a chain including settlement, execution, data availability, and consensus. This has been colloquially named a layer-1 because rollups, or layer-2s, sit on top of these chains.</p>
+<p>Check out <a href="https://ethereum.org/en/layer-2/#what-is-layer-2">this resource to learn more about layer-1s.</a></p>
 <h2 id="fuel-as-a-layer-1"><a class="header" href="#fuel-as-a-layer-1">Fuel as a Layer-1</a></h2>
 <p>The Fuel technology includes all the components to run as a complete layer-1 solution. These components include consensus, data availability, settlement, and transaction execution. The common configurations for running in this mode would be proof of authority and a proof of stake via a Tendermint-BFT style.</p>
 <p>While Fuel can run in this configuration, we do not promote or support this outside of testing, as the broader mission of Fuel is to enhance existing blockchains such as Ethereum as a high-performance execution layer.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-configurations-3"><a class="header" href="#fuel-configurations-3">Fuel Configurations</a></h1>
 <h2 id="defining-state-channels"><a class="header" href="#defining-state-channels">Defining State Channels</a></h2>
 <p>A state channel is a smart contract that enforces off-chain transactions between predefined parties. Each transaction updates the state of the chain and is cryptographically provable on-chain.</p>
+<p>Check out <a href="https://ethereum.org/en/developers/docs/scaling/state-channels/">this resource to learn more about state channels.</a></p>
 <h2 id="fuel-as-a-state-channel"><a class="header" href="#fuel-as-a-state-channel">Fuel as a State Channel</a></h2>
 <p>The FuelVM is a priced virtual machine architecture with a deterministic state system, which makes it perfect for multi-party channel designs where all parties must have clarity over the exact state of the system at each communication step or window.</p>
 <p>While we do not ship a channel configuration of the Fuel technology out of the box, the FuelVM is perfectly situated to handle this particular use case.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-configurations-4"><a class="header" href="#fuel-configurations-4">Fuel Configurations</a></h1>
 <h2 id="defining-sidechain"><a class="header" href="#defining-sidechain">Defining Sidechain</a></h2>
 <p>A sidechain is a blockchain with a one-way trust-minimized bridge from the base chain.</p>
+<p>Check out <a href="https://ethereum.org/en/developers/docs/scaling/sidechains/">this resource to learn more about sidechains.</a></p>
 <h2 id="fuel-as-a-sidechain"><a class="header" href="#fuel-as-a-sidechain">Fuel as a Sidechain</a></h2>
 <p>The Fuel technology can also run as a sidechain to an existing layer-1. This means there is a message passing bridge between the layer-1 and Fuel. In this configuration, data availability would be handled by the side chain, while settlement is handled by the layer-1.</p>
 <p>There would also be an option to run it in a semi-provable configuration, whereby fraud proofs can be used to ensure better validity guarantees using the layer-1 as an arbitrator.</p>
