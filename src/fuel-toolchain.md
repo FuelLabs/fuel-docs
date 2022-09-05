@@ -3,11 +3,13 @@
 The full stack of tools designed and built by Fuel Labs for enabling/assisting the Fuel application development experience.
 
 Tooling Overview:
+
 - `fuel-core`: The Fuel VM node client.
 - `forc`: The Fuel Orchestrator. Includes Sway compiler, packaging and plugin support.
 - `Fuel Indexer`: A standalone binary that can be used to index various components of the blockchain. Check out the docs [here](https://fuellabs.github.io/fuel-indexer/master/the-fuel-indexer.html).
 
 Forc plugins by Fuel Labs:
+
 - `forc-fmt`: The Sway code formatter.
 - `forc-lsp`: The Sway Language Server Protocol implementation.
 - `forc-explore`: Runs the Fuel block explorer.
