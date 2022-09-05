@@ -12,7 +12,7 @@ The FuelVM has a globally shared memory architecture. Instead of every contract 
 
 ### The FuelVM is designed for fraud-provability
 
-The EVM is a complicated machine to construct fraud proofs for. It usually requires a second layer such as WASM or MIPS to be interpreted into a fraud provable system. Check out [User Sovereignty with Fraud Proofs](./why-fuel.md) and [how fraud proofs unlock key functionality](http://localhost:3000/modular-movement.html?highlight=fraud%20proo#trust-minimized-light-clients).
+The EVM is a complicated machine to construct fraud proofs for. It usually requires a second layer such as WASM or MIPS to be interpreted into a fraud provable system. Check out [User Sovereignty with Fraud Proofs](./why-fuel.md) and [how fraud proofs unlock key functionality](./modular-movement.md#trust-minimized-light-clients).
 
 ### FuelVM has multiple native assets
 
