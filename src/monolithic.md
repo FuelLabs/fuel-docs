@@ -25,7 +25,7 @@ Using the general construction for fraud proofs, in order to create a fraud proo
 
 ### Resource constraints
 
-The blockchain is bound by the resource capacity of its nodes. Throughput is constrained by the resource requirements of a *single* node. Since the blockchain is replicated, not distributed, across nodes.
+The blockchain is bound by the resource capacity of its nodes. Throughput is constrained by the resource requirements of a _single_ node since the blockchain is replicated, not distributed, across nodes.
 
 ### Scalability
 
