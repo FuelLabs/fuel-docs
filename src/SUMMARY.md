@@ -6,7 +6,7 @@
 
 - [Developer Quickstart](./developer-quickstart.md)
 - [Getting Started]()
-  - [Why Fuel?]()
+  - [Why Fuel?](./why-fuel.md)
   - [What is Fuel?](./what-is-fuel.md)
     - [Fuel toolchain](./fuel-toolchain.md)
   - [The Modular Movement](./modular-movement.md)
@@ -29,7 +29,7 @@
   - [Contract and Call Model](./fuelvm/contract_call_model.md)
   - [Memory Model](./fuelvm/memory_model.md)
   - [Multiple Native Assets](./fuelvm/native_assets.md)
-  - [VS EVM]()
+  - [VS EVM](./vs-evm.md)
   - [VS Move]()
   - [VS Solana]()
 - [The Sway Language](./sway-language.md)

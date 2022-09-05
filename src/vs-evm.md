@@ -1,28 +1,42 @@
-# What is Fuel?
+# FuelVM vs. EVM, Explained
 
-Fuel v1 began as a layer-2 (L2) scalability technology for a monolithic Ethereum. It was the first optimistic rollup on mainnet Ethereum, deployed at the end of 2020.
+FuelVM learns from the EVM, Solana, WASM, Bitcoin, and Cosmos.
 
-Today, Fuel is the fastest modular execution layer. Fuel delivers the highest security and flexible throughput, with a focus on a superior developer experience.
+This page is meant to outline the ways the FuelVM differs compared to the EVM in simple terms.
 
-Here’s how we do it:
+## FuelVM vs. EVM
 
-- Parallel transaction execution
-- Fuel Virtual Machine (FuelVM)
-- [Developer tooling with Sway Language and Forc](./fuel-toolchain.md)
+### The FuelVM has a globally shared memory architecture instead of context-local memory
 
-## Parallel Transaction Execution
+The FuelVM has a globally shared memory architecture. Instead of every contract call having its own separate memory space, call data, and return data, all contract call frames share global memory. This chunk of memory is shared amongst all call frames and is globally readable. This allows you to pass data around between contracts without expensive storage and pass chunks of data without having to serialize, copy from call data to memory, etc. Read more about the FuelVM memory model [here](./fuelvm/memory_model.md).
 
-Fuel delivers unmatched processing capacity through its ability to execute transactions in parallel by using strict state access lists in the form of a UTXO model. This enables Fuel to use far more threads and cores of your CPU that are typically idle in single-threaded blockchains. As a result, Fuel can deliver far more compute, state accesses, and transactional throughput than its single-threaded counterparts.
+### The FuelVM is designed for fraud-provability
 
-With the EVM, it is difficult to know if, and where there are dependencies between transactions, so you are forced to execute transactions sequentially.
+The EVM is a complicated machine to construct fraud proofs for. It usually requires a second layer such as WASM or MIPS to be interpreted into a fraud provable system. Check out [User Sovereignty with Fraud Proofs](./why-fuel.md) and [how fraud proofs unlock key functionality](./modular-movement.md#trust-minimized-light-clients).
 
-The FuelVM uses the UTXO model, enabling parallel transaction execution by identifying transaction dependencies through what is known as state access lists. With the FuelVM, Fuel full nodes identify the accounts that a transaction touches, mapping out dependencies before execution.
+### FuelVM has multiple native assets
 
-## FuelVM
+In Ethereum, the only native asset is Ether. It’s the only one that gets first-class treatment in terms of cost and ability to be pushed and pulled through a call. In Fuel, any contract can mint its UTXO-based native asset using a set of easy asset opcodes. All of which can gain the benefits of native-level call and optimization. Read more about support for multiple native assets in [the Sway docs](https://fuellabs.github.io/sway/v0.23.0/blockchain-development/native_assets.html), and [here](./fuelvm/native_assets.md).
 
-The FuelVM learns from the Ethereum ecosystem, implementing improvements that were suggested to the Ethereum VM (EVM) for many years but couldn’t be implemented due to the need to maintain backward compatibility.
+### FuelVM uses 64-bit words instead of 256-bit
 
-Here are some EIP that have been implemented in the FuelVM:
+Modern processors have 64-bit registers, and all of the instruction set operates on 64 bits. Those are the most efficient instructions, and when you deal with 256 bits, you’re dealing with big numbers, and since modern processors aren't made to handle those numbers natively, it means you have to do more in the software.
+
+### The FuelVM is register-based instead of stack-based
+
+Register-based VMs typically require fewer instructions to do the same work than stack-based VMs. Because every operation is priced, optimizing to reduce the number of operations needed to do the same amount of work has outsized benefits.
+
+### The FuelVM is built with an atomic UTXO paradigm from the start
+
+Fuel uses a system of UTXOs which enable a more efficient system fo transfer and ownership of assets, where the accounts tree doesn't have to be rebuilt every time funds are transferred.
+
+### The FuelVM removes `approve`, `transferFrom`
+
+The FuelVM removes the need for approve/transferFrom UX with scripts. Unlike the EVM, the FuelVM has scripts, which allow many actions to happen from an origin sender without a contract being deployed. Read more [here](https://github.com/FuelLabs/fuel-specs/blob/master/specs/vm/main.md#script-execution).
+
+## EIPs Implemented in Fuel
+
+The FuelVM implements several EIPs that have been suggested and supported by the community but couldn't be implemented due to the need to maintain backward compatibility. Check out a non-exhaustive list, also available [here](./what-is-fuel.md):
 
 |EIP|Description|Implementation|
 |------|------|------|
@@ -37,23 +51,3 @@ Here are some EIP that have been implemented in the FuelVM:
 | [EIP-1051: Overflow Checking for the EVM](https://eips.ethereum.org/EIPS/eip-1051) | This EIP adds overflow checking for EVM arithmetic operations and two new opcodes that check and clear the overflow flags. Since the EVM operates on mod 2^256 integers and provides no built-in overflow detection or prevention, this requires manual checks on every arithmetic operation. | Overflow checking is built into the FuelVM and can be optionally disabled. |
 | [EIP-2803: Rich Transactions](https://eips.ethereum.org/EIPS/eip-2803) | If a transaction has a to of address x, then the data of the transaction will be treated as EVM bytecode, and it will be executed from the context of the CALLER of the transaction (aka: the transaction signer). Many Ethereum DApps require users to approve multiple transactions to produce one effect. This results in a poor user experience and complicates the experience of interacting with DApps. | The FuelVM has scripts that implement this. |
 | [EIP-2926: Chunk-based Code Merkelization](https://eips.ethereum.org/EIPS/eip-2926) | Bytecode is currently the second contributor to block witness size after the proof hashes. Transitioning the trie from hexary to binary reduces the hash section of the witness by 3x, thereby making code the first contributor. By breaking contract code into chunks and committing to those chunks in a Merkle tree, stateless clients would only need the chunks that were touched during a given transaction to execute it. | To get a code hash on Ethereum, you hash together all the byte code. The problem is that if you want to do things with statelessness or fraud proofs, to show that this hash is valid, you have to provide all the byte code, up to 24KB per contract. This EIP suggests we should merkalize it instead of hashing. The FuelVM implements this by having code roots instead of code hashes. |
-
-## Sway Language
-
-Sway is a domain-specific language (DSL) for the Fuel Virtual Machine (FuelVM), a blockchain-optimized VM designed for the Fuel blockchain. Sway is based on Rust and includes syntax to leverage a blockchain VM without a needlessly verbose boilerplate.
-
-Sway was created alongside the FuelVM and designed for the high-compute Fuel environment. Check out the Sway docs here.
-
-## Developer Tooling
-
-Fuel Labs is developing a suite of developer tooling to create a seamless developer experience. By creating everything in-house, Fuel Labs guarantees the maintenance of the toolchain, avoiding the pitfalls of a fragmented developer ecosystem.
-
-Fuel provides a powerful and sleek developer experience with our own domain-specific language, called Sway, and a supportive toolchain, called Forc (the Fuel Orchestrator). Our development environment retains the benefits of smart contract languages like Solidity, while adopting the paradigms introduced in the Rust tooling ecosystem.  Now, developers can have a completely vertically-integrated experience where every component from the virtual machine through to the CLI works in harmony.
-
-**The Fuel Toolchain:**
-Forc: build, run tests, launch a local instance of a block explorer, format.
-
-Check out the Fuel Toolchain [here](./fuel-toolchain.md).
-
-**Coming Soon:**
-A suite of auditing facilities, from fuzzing and formal verification to code coverage and runtime gating.
