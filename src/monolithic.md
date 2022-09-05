@@ -19,13 +19,13 @@ Some constraints and challenges with a monolithic architecture:
 
 In order to verify the validity of transactions in the chain, full nodes must download the entire chain and execute each transaction locally.
 
-### Not designed for fraud proofs
-
-Using the general construction for fraud proofs, in order to create a fraud proof you have to provide the pre-state and compute the post-state, comparing what the block producer's post-state was to their outcome. If a contract calls other contracts, the pre-state could be extremely large, and the cost to produce a fraud proof could be unbound.
-
 ### Resource constraints
 
 The blockchain is bound by the resource capacity of its nodes. Throughput is constrained by the resource requirements of a _single_ node since the blockchain is replicated, not distributed, across nodes.
+
+### Shared resources
+
+In a monolithic architecture, the four functions of the chain operate on the same finite set of compute resources. For example, using a node's capacity for execution means that there's less capacity left over for data availability.
 
 ### Scalability
 
