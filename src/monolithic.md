@@ -29,4 +29,4 @@ The blockchain is bound by the resource capacity of its nodes. Throughput is con
 
 ### Scalability
 
-Scalability is defined as throughput / decentralization. To increase throughput, the number transactions per second, you have to increase bandwidth capacity, which pushes up the cost to run a full node as a user. This is not scalability, as it reduces the number of people with capacity to run a full node to validate the chain.
+Scalability is defined as the ratio of throughput to decentralization. To increase throughput—the number transactions per second—you have to increase bandwidth, compute, and storage capacity, which pushes up the cost to run a full node as a user. This is not scalability, as it reduces the number of people who can run a full node to validate the chain.
