@@ -1,6 +1,6 @@
 # Typescript SDK
 
-The Fuel typescript SDK is used to interact with Fuel contracts from client applications. If you're coming from Ethereum, you can think of the SDK as the equivalent of Ethers.js or WAGMI. 
+The Fuel TS SDK is a toolkit for build dapps on The fuel network. You can use the SDK to execute scripts, interact with contracts, list transactions, balances and more.
 
 To get started using the Typescript SDK:
 
@@ -10,4 +10,4 @@ To get started using the Typescript SDK:
 
 ## Need Help?
 
-Head to the [Fuel discord](https://discord.com/invite/fuelnetwork) for help from the team. 
+Head to the [Fuel discord](https://discord.com/invite/fuelnetwork) for help from the team.

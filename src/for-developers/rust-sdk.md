@@ -1,4 +1,4 @@
-# Rust SDK 
+# Rust SDK
 
 Rust SDK for Fuel. It can be used for a variety of things, including but not limited to:
 
@@ -9,9 +9,10 @@ Rust SDK for Fuel. It can be used for a variety of things, including but not lim
 And more, fuels-rs is still in active development.
 
 Getting started with the Rust SDK:
+
 - [Rust SDK Docs](https://fuellabs.github.io/fuels-rs/v0.22.0/)
 - [Rust SDK repo](https://github.com/FuelLabs/fuels-rs)
 
 ## Need Help?
 
-Head to the [Fuel discord](https://discord.com/invite/fuelnetwork) for help from the team. 
+Head to the [Fuel discord](https://discord.com/invite/fuelnetwork) for help from the team.

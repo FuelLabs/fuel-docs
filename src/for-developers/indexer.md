@@ -10,4 +10,4 @@ Getting Started with The Fuel Indexer:
 
 ## Need Help?
 
-Head to the [Fuel discord](https://discord.com/invite/fuelnetwork) for help from the team. 
+Head to the [Fuel discord](https://discord.com/invite/fuelnetwork) for help from the team.
