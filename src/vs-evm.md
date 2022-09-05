@@ -20,7 +20,7 @@ In Ethereum, the only native asset is Ether. It’s the only one that gets first
 
 ### FuelVM uses 64-bit words instead of 256-bit
 
-Modern processors have 64bit registers, and all of the instruction set operates on 64bits. Those are the most efficient instructions, and when you deal with 256 bits, you’re dealing with big numbers, and since modern processors aren't made to handle those numbers natively, it means you have to do more in the software.
+Modern processors have 64-bit registers, and all of the instruction set operates on 64 bits. Those are the most efficient instructions, and when you deal with 256 bits, you’re dealing with big numbers, and since modern processors aren't made to handle those numbers natively, it means you have to do more in the software.
 
 ### The FuelVM is register-based instead of stack-based
 
