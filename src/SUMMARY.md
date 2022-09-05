@@ -4,7 +4,7 @@
 
 [The Fuel Book](./README.md)
 
-- [Developer Quickstart]()
+- [Developer Quickstart](./developer-quickstart.md)
 - [Getting Started]()
   - [Why Fuel?]()
   - [What is Fuel?](./what-is-fuel.md)
