@@ -20,6 +20,13 @@ There are four types of Sway programs:
 
 Contracts, predicates, and scripts can produce artifacts usable on the blockchain, while a library is simply a project designed for code reuse and is not directly deployable.
 
+|             | deployable on the blockchain:       | can have state:      | callable on the blockchain: | designed for code reuse: |
+|-------------|-------------------------------------|----------------------|-----------------------------|--------------------------|
+| contract  | ✅                                  | ✅                   | ✅                          | ❌                        |
+| predicate | ✅                                  | ❌                    | ❌                           | ❌                        |
+| script    | ❌                                   | ❌                    | ❌                           | ❌                        |
+| library   | ✅ (via a contract or predicate) | ✅ (via a contract) | ❌                           | ✅                       |
+
 See [the chapter on program types](../sway-program-types/index.md) for more information.
 
 ## Your First Sway Project
@@ -33,7 +40,7 @@ A few pieces of info that will be helpful before moving on:
 
 ### Writing the Contract
 
-First, let's [install the Sway toolchain](./installation.md). Then with `forc` installed, create a contract project:
+First, let's [install the Sway toolchain](https://github.com/FuelLabs/fuelup). Then with `forc` installed, create a contract project:
 
 ```sh
 forc new counter_dapp
@@ -52,7 +59,7 @@ $ tree .
     └── harness.rs
 ```
 
-`Forc.toml` is the _manifest file_ (similar to `Cargo.toml` for Cargo or `package.json` for Node), and defines project metadata such as the project name and dependencies.
+`Forc.toml` is the _manifest file_ (similar to `Cargo.toml` for Cargo or `package.json` for Node) and defines project metadata such as the project name and dependencies. You'll notice a `cargo.toml` file because `forc` uses `cargo` under the hood.
 
 We'll be writing our code in the `src/main.sw`.
 
@@ -64,7 +71,7 @@ Every Sway file must start with a declaration of what type of program the file c
 contract;
 ```
 
-Next, we'll define a our storage value. In our case, we have a single counter that we'll call `counter` of type 64-bit unsigned integer and initialize it to 0.
+Next, we'll define a storage value. In our case, we have a single counter that we'll call `counter` of type 64-bit unsigned integer and initialize it to 0.
 
 ```sway
 storage {
@@ -84,7 +91,7 @@ abi Counter {
     fn increment();
 
     #[storage(read)]
-    fn counter() -> u64; 
+    fn count() -> u64; 
 }
 ```
 
@@ -92,7 +99,7 @@ abi Counter {
 
 `#[storage(read, write)]` is an annotation which denotes that this function has permission to read and write a value in storage.
 
-`fn increment()` - We're introducing the functionality to increment and denoting it shouldn't return any value.
+`fn increment();` - We're introducing the functionality to increment and denoting it shouldn't return any value.
 
 `#[storage(read)]` is an annotation which denotes that this function has permission to read values in storage.
 
@@ -105,7 +112,7 @@ Below your ABI definition, you will write the implementation of the functions de
 ```sway
 impl Counter for Contract {
     #[storage(read)]
-    fn counter() -> u64 {
+    fn count() -> u64 {
       return storage.counter;
     }
     #[storage(read, write)]
@@ -123,7 +130,7 @@ impl Counter for Contract {
 Read and return the counter property value from the contract storage.
 
 ```sway
-fn counter() -> u64 {
+fn count() -> u64 {
     return storage.counter;
 }
 ```
@@ -150,12 +157,12 @@ abi Counter {
     fn increment();
 
     #[storage(read)]
-    fn counter() -> u64;
+    fn count() -> u64;
 }
 
 impl Counter for Contract {
     #[storage(read)]
-    fn counter() -> u64 {
+    fn count() -> u64 {
       return storage.counter;
     }
     #[storage(read, write)]
@@ -375,7 +382,7 @@ function App() {
     async function main() {
       // Executes the counter function to query the current contract state
       // the `.get()` is read-only, because of this it don't expand coins.
-      const { value } = await contract.functions.counter().get();
+      const { value } = await contract.functions.count().get();
       setCounter(Number(value));
     }
     main();
@@ -387,7 +394,7 @@ function App() {
     // this requires the wallet to have enough coins to cover the costs and also
     // to sign the Transaction
     await contract.functions.increment().txParams({gasPrice:1}).call();
-    const { value } = await contract.functions.counter().get();
+    const { value } = await contract.functions.count().get();
     setCounter(Number(value));
   }
 
@@ -418,7 +425,7 @@ npm start
 
 #### ✨⛽✨ Congrats you have completed your first DApp on Fuel ✨⛽✨
 
-Tweet us [@fuellabs_](https://twitter.com/fuellabs_) letting us know you just built a dapp on Fuel, you might get invited to a private group of builders or something 👀
+Tweet us [@fuellabs_](https://twitter.com/fuellabs_) letting us know you just built a dapp on Fuel, you might get invited to a private group of builders, be invited to the next Fuel dinner, get alpha on the project, or something 👀.
 
 ### Updating The Contract
 
