@@ -8,6 +8,7 @@ Fuel is the fastest modular execution layer, delivering maximum security and hig
 - Follow [Sway](https://twitter.com/SwayLang), our Rust-based DSL on Twitter for even more alpha.
 - Join the [Fuel discord](https://discord.com/invite/fuelnetwork) where you can ask questions, build with others, and get even more alpha.
 - [Check out this page](https://github.com/FuelLabs/awesome-fuel) to learn about upcoming events, read articles, listen to podcasts, and view presentations on Fuel.
+- [Apply for a grant to build on Fuel](https://1v1l4ftv9zy.typeform.com/fuelgrants?typeform-source=www.fuel.network).
 
 ## Learn
 
