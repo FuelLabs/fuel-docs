@@ -2,7 +2,7 @@
 
 The Fuel TS SDK is a toolkit for build dapps on The fuel network. You can use the SDK to execute scripts, interact with contracts, list transactions, balances and more.
 
-To get started using the Typescript SDK:
+To get started using the TypeScript SDK:
 
 - [SDK Docs](https://fuellabs.github.io/fuels-ts/)
 - [TS Quickstart Guide](https://fuellabs.github.io/fuels-ts/QUICKSTART.html)

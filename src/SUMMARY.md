@@ -38,7 +38,7 @@
 - [For Developers](./for-developers/for-developer.md)
   - [Testnet Node](./for-developers/testnet-node.md)
   - [Sway Language](./for-developers/sway.md)
-  - [Typescript SDK](./for-developers/ts-sdk.md)
+  - [TypeScript SDK](./for-developers/ts-sdk.md)
   - [Rust SDK](./for-developers/rust-sdk.md)
   - [Indexer](./for-developers/indexer.md)
   - [Wallet & Faucet](./for-developers/wallet-faucet.md)

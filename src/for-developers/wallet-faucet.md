@@ -1,16 +1,12 @@
 # Fuel Wallet
 
-You can deploy a contract without signing with a wallet by running the following command:
+You can deploy a contract to a local fuel instance without signing with a wallet by running the following command:
 
 `forc deploy --unsigned`
 
-You can initialize a wallet and an account for your wallet to sign transactions
+To deploy a contract to the testnet, you'll need a Fuel wallet. You can initialize a wallet and an account for your wallet to sign transactions.
 
-To initialize a wallet you can use `forc wallet init`. It will ask you to choose a password to encrypt your wallet. After the initialization is done you will have your mnemonic phrase.
-
-After you have an initialized wallet, you can create an account for it by `running forc wallet new`. It will ask your password to decrypt the wallet before creating an account.
-
-Check out the documentation on [Initializing a Wallet and Adding Accounts](https://fuellabs.github.io/sway/master/forc_client.html).
+[Check out the documentation](https://github.com/FuelLabs/forc-wallet#forc-wallet) for a step-by-step guide to initializing a wallet and creating an account.
 
 ## Fuel Faucet
 
