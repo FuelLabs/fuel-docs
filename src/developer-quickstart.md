@@ -181,10 +181,9 @@ impl Counter for Contract {
 
 ### Build the Contract
 
-`cd` into the `counter_contract` from your terminal. Then, build `counter_contract` by running the following commands in your terminal from inside the `counter_coontract` directory:
+From inside the `fuel-project/counter_contract` directory, run the following command to build your contract:
 
 ```sh
-cd counter_contract
 forc build
 ```
 
