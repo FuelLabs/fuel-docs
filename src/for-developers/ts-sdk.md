@@ -6,7 +6,7 @@ To get started using the TypeScript SDK:
 
 - [SDK Docs](https://fuellabs.github.io/fuels-ts/)
 - [TS Quickstart Guide](https://fuellabs.github.io/fuels-ts/QUICKSTART.html)
-- [RS SDK Repo](https://github.com/FuelLabs/fuels-ts)
+- [TS SDK Repo](https://github.com/FuelLabs/fuels-ts)
 
 ## Need Help?
 
