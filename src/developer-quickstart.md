@@ -38,6 +38,7 @@ See [the chapter on program types](../sway-program-types/index.md) for more info
 We'll build a simple counter contract with two functions: one to increment the counter, and one to return the value of the counter.
 
 A few pieces of info that will be helpful before moving on:
+
 - This guide was created using VSCode as the code editor.
 - Download the Sway language extension in VSCode to get syntax highlighting, keyboard shortcuts, and more.
 - Download the rust-analyzer extension in VSCode to get syntax highlighting, code completion, and more.
@@ -46,7 +47,7 @@ A few pieces of info that will be helpful before moving on:
 
 ### Writing the Contract
 
-First, let's [install the Sway toolchain](https://github.com/FuelLabs/fuelup). 
+First, let's [install the Sway toolchain](https://github.com/FuelLabs/fuelup).
 
 Then with `forc` installed, create a contract project inside of your `fuel-project` folder:
 
@@ -213,7 +214,7 @@ async fn can_get_contract_id() {
 }
 ```
 
-Run the following command in the terminal: 
+Run the following command in the terminal:
 
 ``` console
 forc test
@@ -325,7 +326,7 @@ npm install fuelchain typechain-target-fuels --save-dev
 
 ##### Generating contract types
 
-To make it easier to interact with our contract we use `fuelchain` to interpret the output ABI JSON from our contract. This JSON was created on the moment we executed the `forc build` to compile our Sway Contract into binary. 
+To make it easier to interact with our contract we use `fuelchain` to interpret the output ABI JSON from our contract. This JSON was created on the moment we executed the `forc build` to compile our Sway Contract into binary.
 
 If you see the folder `fuel-project/counter_contract/out` you will be able to see the ABI JSON there. If you want to learn more, read the [ABI Specs here](https://github.com/FuelLabs/fuel-specs/blob/master/specs/protocol/abi.md).
 
@@ -347,7 +348,7 @@ Now you should be able to find a new folder `fuel-project/frontend/src/contracts
 
 For interacting with the fuel network we have to submit signed transactions with enough funds to cover network fees. The Fuel TS SDK don't currently support Wallet integrations, requiring us to have a non-safe wallet inside the WebApp using a privateKey.
 
->Note this should be done only for development propose never expose a WebApp with a privateKey inside. The Fuel Wallet is in active development, follow the progress [here](The Fuel Wallet is under construction keep track here: https://github.com/FuelLabs/fuels-wallet).
+>Note this should be done only for development propose never expose a WebApp with a privateKey inside. The Fuel Wallet is in active development, follow the progress [here](https://github.com/FuelLabs/fuels-wallet).
 
 In the root of the frontend project create a file, createWallet.js
 
