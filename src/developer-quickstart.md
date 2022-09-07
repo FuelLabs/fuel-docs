@@ -269,7 +269,10 @@ Grab the `transaction id` from your other terminal and sign with a specified acc
 
 `forc wallet sign` + `[transaction id here, without brackets]` + `[the account number, without brackets]`
 
-Your command should look like this: `forc wallet sign 16d7a8f9d15cfba1bd000d3f99cd4077dfa1fce2a6de83887afc3f739d6c84df 0`
+Your command should look like this: 
+``` console 
+forc wallet sign 16d7a8f9d15cfba1bd000d3f99cd4077dfa1fce2a6de83887afc3f739d6c84df 0
+```
 
 Enter your password when prompted, and you'll get back a `signature`. Save that signature, and return to your other terminal window, and paste that in where its prompting you to `provide a signature for this transaction`.
 
@@ -302,6 +305,8 @@ npx create-react-app frontend --template typescript
 The command will generate a react app using [`Create React App`](https://create-react-app.dev/).
 
 You should now have your outer folder, `fuel-project`, with two folders inside: `front-end` and `fuel-contract`
+
+![project folder structure](./images/quickstart-folder-structure.png)
 
 #### Install the `fuels` SDK dependencies
 
@@ -360,8 +365,12 @@ console.log("address", wallet.address.toString());
 console.log("private key", wallet.privateKey);
 ```
 
-In a terminal, run the following command: `node createWallet.js`. You should see an output that looks like this:
+In a terminal, run the following command: 
+``` console 
+node createWallet.js
+```
 
+You should see an output that looks like this:
 ```console
 address fuel160ek8t7fzz89wzl595yz0rjrgj3xezjp6pujxzt2chn70jrdylus5apcuq
 private key 0x719fb4da652f2bd4ad25ce04f4c2e491926605b40e5475a80551be68d57e0fcb
