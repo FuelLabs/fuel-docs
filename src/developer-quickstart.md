@@ -20,12 +20,16 @@ There are four types of Sway programs:
 
 Contracts, predicates, and scripts can produce artifacts usable on the blockchain, while a library is simply a project designed for code reuse and is not directly deployable.
 
+The main features of a smart contract that differentiate it from scripts or predicates are that it is callable and stateful.
+
+A script is runnable bytecode on the chain which can call contracts to perform some task. It does not represent ownership of any resources and it cannot be called by a contract.
+
 |             | deployable on the blockchain:       | can have state:      | callable on the blockchain: | designed for code reuse: |
 |-------------|-------------------------------------|----------------------|-----------------------------|--------------------------|
 | contract  | ✅                                  | ✅                   | ✅                          | ❌                        |
 | predicate | ✅                                  | ❌                    | ❌                           | ❌                        |
 | script    | ❌                                   | ❌                    | ❌                           | ❌                        |
-| library   | ✅ (via a contract or predicate) | ✅ (via a contract) | ❌                           | ✅                       |
+| library   | ✅ (via a contract or predicate) | ❌ | ❌                           | ✅                       |
 
 See [the chapter on program types](../sway-program-types/index.md) for more information.
 
@@ -34,36 +38,38 @@ See [the chapter on program types](../sway-program-types/index.md) for more info
 We'll build a simple counter contract with two functions: one to increment the counter, and one to return the value of the counter.
 
 A few pieces of info that will be helpful before moving on:
+- This guide was created using VSCode as the code editor.
+- Download the Sway language extension in VSCode to get syntax highlighting, keyboard shortcuts, and more.
+- Download the rust-analyzer extension in VSCode to get syntax highlighting, code completion, and more.
 
-- The main features of a smart contract that differentiate it from scripts or predicates are that it is callable and stateful.
-- A script is runnable bytecode on the chain which can call contracts to perform some task. It does not represent ownership of any resources and it cannot be called by a contract.
+**Start by creating a new, empty folder. We'll call it `fuel-project`.**
 
 ### Writing the Contract
 
-First, let's [install the Sway toolchain](https://github.com/FuelLabs/fuelup). Then with `forc` installed, create a contract project:
+First, let's [install the Sway toolchain](https://github.com/FuelLabs/fuelup). 
+
+Then with `forc` installed, create a contract project inside of your `fuel-project` folder:
 
 ```sh
-forc new counter_dapp
+cd fuel-project
+forc new counter_contract
 ```
 
 Here is the project that `Forc` has initialized:
 
 ```console
-$ cd counter_dapp
-$ tree .
-├── Cargo.toml
-├── Forc.toml
-├── src
-│   └── main.sw
-└── tests
-    └── harness.rs
+├── fuel-project
+    ├── Cargo.toml
+    ├── Forc.toml
+    ├── src
+    │   └── main.sw
+    └── tests
+        └── harness.rs
 ```
 
 `Forc.toml` is the _manifest file_ (similar to `Cargo.toml` for Cargo or `package.json` for Node) and defines project metadata such as the project name and dependencies. You'll notice a `cargo.toml` file because `forc` uses `cargo` under the hood.
 
-We'll be writing our code in the `src/main.sw`.
-
-Open your project in a code editor and delete the boilerplate code in `src/main.sw`.
+Open your project in a code editor and delete the boilerplate code in `src/main.sw` so that you start with an empty file.
 
 Every Sway file must start with a declaration of what type of program the file contains; here, we've declared that this file is a contract.
 
@@ -174,19 +180,20 @@ impl Counter for Contract {
 
 ### Build the Contract
 
-Build `counter_dapp` by running the following command in your terminal from inside the `counter_dapp` directory:
+`cd` into the `counter_contract` from your terminal. Then, build `counter_contract` by running the following commands in your terminal from inside the `counter_coontract` directory:
 
 ```sh
+cd counter_contract
 forc build
 ```
 
 You should see something like this output:
 
 ```console
-Compiled library "core".
+  Compiled library "core".
   Compiled library "std".
-  Compiled contract "counter_dapp".
-  Bytecode size is 240 bytes.
+  Compiled contract "counter_contract".
+  Bytecode size is 224 bytes.
 ```
 
 ## Testing your Contract
@@ -206,42 +213,45 @@ async fn can_get_contract_id() {
 }
 ```
 
-Run the following command in the terminal: `forc test`.
+Run the following command in the terminal: 
+
+``` console
+forc test
+```
+
+> Note: The `forc test` command is in the process of being reworked to perform in-language unit testing, at which point we will recommend using `cargo` directly for your Sway+Rust integration testing. See [this issue](https://github.com/FuelLabs/sway/issues/1833) for more details.
 
 You'll see something like this as your output:
 
 ```console
- Compiled library "core".
+  Compiled library "core".
   Compiled library "std".
-  Compiled contract "counter_dapp".
-  Bytecode size is 208 bytes.
-  Compiling counter+dapp v0.1.0 (</path/to/counter_dapp>)
-  Finished test [unoptimized + debuginfo] target(s) in 11.71s
-  Running tests/harness.rs (target/debug/deps/integration_tests-6a600a6a87f48edb)
-
-running 1 test
-test can_get_contract_id ... ok
-
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s
+  Compiled contract "counter_contract".
+  Bytecode size is 224 bytes.
+  running 1 test
+  test can_get_contract_id ... ok
+  test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
 ```
 
 ## Deploy the Contract
 
-It's now time to deploy the contract and call it on a Fuel node. We will show how to do this using `forc` from the command line, but you can also do it using the [Rust SDK](https://github.com/FuelLabs/fuels-rs#deploying-a-sway-contract) or the [TypeScript SDK](https://github.com/FuelLabs/fuels-ts/#deploying-contracts).
+It's now time to deploy the contract to the testnet. We will show how to do this using `forc` from the command line, but you can also do it using the [Rust SDK](https://github.com/FuelLabs/fuels-rs#deploying-a-sway-contract) or the [TypeScript SDK](https://github.com/FuelLabs/fuels-ts/#deploying-contracts).
 
-We'll be deploying to the Fuel testnet. In order to deploy a contract, you need to have a wallet to sign the transaction. You can optionally pass the flag `--unsigned` to deploy a contract without a signature.
-
-By default fuel-core runs without UTXO validation, which means you can run unsigned transactions. This allows you to send invalid inputs to emulate different conditions.
+In order to deploy a contract, you need to have a wallet to sign the transaction and coins to pay for gas. First, we'll create a wallet.
 
 ### Install the Wallet CLI
 
-Follow [these steps to set up a wallet to sign transactions](https://github.com/FuelLabs/forc-wallet#forc-wallet).
+Follow [these steps to set up a wallet and create an account](https://github.com/FuelLabs/forc-wallet#forc-wallet).
 
 After typing in a password, be sure to save the mnemonic phrase that is output.
 
 With this, you'll get a fuel address that looks something like this: `fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8`. Save this address as you'll need it to sign transactions when we deploy the contract.
 
-#### Deploy To Testnet
+### Get Testnet Coins
+
+With your account address in hand, head to the [testnet faucet](https://faucet-beta-1.fuel.network/) to get some coins sent to your wallet.
+
+### Deploy To Testnet
 
 Now that you have a wallet, you can deploy with `forc deploy` and passing in the testnet endpoint like this:
 
@@ -265,6 +275,10 @@ Enter your password when prompted, and you'll get back a `signature`. Save that 
 
 Finally, you will get back a `TransactionId` to confirm your contract was deployed. With this ID, you can head to the [block explorer](https://fuellabs.github.io/block-explorer-v2/) and view your contract.
 
+>Note: You should prefix your `TransactionId` with `0x` to view it in the block explorer
+
+![block explorer](./images/block-explorer.png)
+
 ## Create a Frontend to Interact with Contract
 
 Now we are going to
@@ -278,13 +292,16 @@ Now we are going to
 
 To split better our project let's create a new folder `frontend` and initialize our project inside it.
 
-Inside `counter-dapp` run;
+In the terminal, go back up one directory and initialize a react project.
 
 ```sh
+cd ..
 npx create-react-app frontend --template typescript
 ```
 
 The command will generate a react app using [`Create React App`](https://create-react-app.dev/).
+
+You should now have your outer folder, `fuel-project`, with two folders inside: `front-end` and `fuel-contract`
 
 #### Install the `fuels` SDK dependencies
 
@@ -298,21 +315,24 @@ On this step we need to install 3 dependencies for the project:
 
 ##### Install
 
-Inside `counter-dapp/frontend` run;
+Move into the `frontend` folder, then install the dependencies:
 
 ```sh
+cd frontend
 npm install fuels --save
 npm install fuelchain typechain-target-fuels --save-dev
 ```
 
 ##### Generating contract types
 
-To make it easier to interact with our contract we use `fuelchain` to interpret the output ABI JSON from our contract. This JSON was created on the moment we executed the `forc build` to compile our Sway Contract into binary. If you see the folder `counter_dapp/contract/out` you will be able to see the ABI JSON there. If you want to learn more, read the [ABI Specs here](https://github.com/FuelLabs/fuel-specs/blob/master/specs/protocol/abi.md).
+To make it easier to interact with our contract we use `fuelchain` to interpret the output ABI JSON from our contract. This JSON was created on the moment we executed the `forc build` to compile our Sway Contract into binary. 
 
-Inside `counter-dapp/frontend` run;
+If you see the folder `fuel-project/counter_contract/out` you will be able to see the ABI JSON there. If you want to learn more, read the [ABI Specs here](https://github.com/FuelLabs/fuel-specs/blob/master/specs/protocol/abi.md).
+
+Inside `counter-contract/frontend` run;
 
 ```sh
-npx fuelchain --target=fuels --out-dir=./src/contracts ../fuel-counter/out/debug/*-abi.json
+npx fuelchain --target=fuels --out-dir=./src/contracts ../counter_contract/out/debug/*-abi.json
 ```
 
 You should see something like this:
@@ -321,9 +341,13 @@ You should see something like this:
 Successfully generated 4 typings!
 ```
 
-Now you should be able to find a new folder `counter-dapp/frontend/src/contracts`. This folder was auto-generated by our `fuelchain` command, this files abstract the work we would need to do to create a contract instance, and generate a complete TypeScript interface to the Contract, making easy to develop.
+Now you should be able to find a new folder `fuel-project/frontend/src/contracts`. This folder was auto-generated by our `fuelchain` command, this files abstract the work we would need to do to create a contract instance, and generate a complete TypeScript interface to the Contract, making easy to develop.
 
-### Create A Wallet
+### Create A Wallet (Again)
+
+For interacting with the fuel network we have to submit signed transactions with enough funds to cover network fees. The Fuel TS SDK don't currently support Wallet integrations, requiring us to have a non-safe wallet inside the WebApp using a privateKey.
+
+>Note this should be done only for development propose never expose a WebApp with a privateKey inside. The Fuel Wallet is in active development, follow the progress [here](The Fuel Wallet is under construction keep track here: https://github.com/FuelLabs/fuels-wallet).
 
 In the root of the frontend project create a file, createWallet.js
 
@@ -343,7 +367,7 @@ address fuel160ek8t7fzz89wzl595yz0rjrgj3xezjp6pujxzt2chn70jrdylus5apcuq
 private key 0x719fb4da652f2bd4ad25ce04f4c2e491926605b40e5475a80551be68d57e0fcb
 ```
 
-Copy the private key, you will need this later to set it as a string value for a variable `WALLET_SECRET` in your `App.tsx` file. More on that below.
+Save the private key, you will need this later to set it as a string value for a variable `WALLET_SECRET` in your `App.tsx` file. More on that below.
 
 First, take the address of your wallet and use it to get some coins from [the testnet faucet](https://faucet-beta-1.fuel.network/).
 
@@ -356,28 +380,30 @@ Now you're ready to build and ship ⛽
 Inside the `frontend` folder let's add code that interacts with our contract.
 Read the comments to help you understand the App parts.
 
-Change the file `counter-dapp/frontend/src/App.tsx` to:
+Change the file `fuel-project/frontend/src/App.tsx` to:
 
 ```ts
+import React, { useEffect, useState } from "react";
 import React, { useEffect, useState } from "react";
 import { Wallet } from "fuels";
 import "./App.css";
 // Import the contract factory -- you can find the name in index.ts.
 // You can also do command + space and the compiler will suggest the correct name.
-import { CounterDappAbi__factory } from "./contracts";
+import { CounterContractAbi__factory } from "./contracts";
 // The address of the contract deployed the Fuel testnet
-const CONTRACT_ID = "0xaf94c0a707756caae667ee43ca18bace441b25998c668010192444a19674dc4f";
+const CONTRACT_ID = "<YOUR-CONTRACT-ID>";
 //the private key from createWallet.js
-const WALLET_SECRET = "0x719fb4da652f2bd4ad25ce04f4c2e491926605b40e5475a80551be68d57e0fcb";
-//pass in the testnet node
+const WALLET_SECRET = "<YOUR-PRIVATE-KEY>"
+// Create a Wallet from given secretKey in this case
+// The one we configured at the chainConfig.json
 const wallet = new Wallet(WALLET_SECRET, "https://node-beta-1.fuel.network/graphql");
 // Connects out Contract instance to the deployed contract
 // address using the given wallet.
-const contract = CounterDappAbi__factory.connect(CONTRACT_ID, wallet);
+const contract = CounterContractAbi__factory.connect(CONTRACT_ID, wallet);
 
 function App() {
   const [counter, setCounter] = useState(0);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     async function main() {
       // Executes the counter function to query the current contract state
@@ -387,35 +413,41 @@ function App() {
     }
     main();
   }, []);
-
   async function increment() {
-    // Creates a transactions to call the increment function passing the amount
-    // we want to increment, because it creates a TX and updates the contract state
-    // this requires the wallet to have enough coins to cover the costs and also
-    // to sign the Transaction
-    await contract.functions.increment().txParams({gasPrice:1}).call();
-    const { value } = await contract.functions.count().get();
-    setCounter(Number(value));
+    // a loading state
+    setLoading(true);
+    // Creates a transactions to call the increment function
+    // because it creates a TX and updates the contract state this requires the wallet to have enough coins to cover the costs and also to sign the Transaction
+    try {
+      await contract.functions.increment().txParams({gasPrice:1}).call();
+      const { value } = await contract.functions.count().get();
+      setCounter(Number(value));
+    } finally {
+      setLoading(false);
+    }
   }
-
   return (
     <div className="App">
       <header className="App-header">
         <p>Counter: {counter}</p>
-        <button onClick={increment}>Increment</button>
+        <button
+          disabled={loading}
+          onClick={increment}>
+          {loading ? "Incrementing..." : "Increment"}
+        </button>
       </header>
     </div>
   );
 }
-
 export default App;
+
 ```
 
 ### Run your project
 
 Now it's time to have fun run the project on your browser;
 
-Inside `counter-dapp/frontend` run;
+Inside `fuel-project/frontend` run;
 
 ```sh
 npm start
