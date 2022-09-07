@@ -10,7 +10,7 @@ And more, fuels-rs is still in active development.
 
 Getting started with the Rust SDK:
 
-- [Rust SDK Docs](https://fuellabs.github.io/fuels-rs/v0.22.0/)
+- [Rust SDK Docs](https://fuellabs.github.io/fuels-rs/latest/)
 - [Rust SDK repo](https://github.com/FuelLabs/fuels-rs)
 
 ## Need Help?
