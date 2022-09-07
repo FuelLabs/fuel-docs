@@ -2,7 +2,7 @@
 
 Rust SDK for Fuel. It can be used for a variety of things, including but not limited to:
 
-- Compiling, deploying, and testing Sway contracts;
+- Deploying, and testing Sway contracts;
 - Launching a local Fuel network;
 - Crafting and signing transactions with hand-crafted scripts or contract calls;
 - Generating type-safe Rust bindings of contract methods;
