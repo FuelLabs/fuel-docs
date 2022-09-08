@@ -34,13 +34,13 @@ Fuel is the fastest modular execution layer, delivering maximum security and hig
 
 ## Build
 
-- [Developer Quickstart]()
-- [For Developers]()
-  - [Node]()
-  - [Sway Language]()
-  - [Typescript SDK]()
-  - [Rust SDK]()
-  - [Indexer]()
+- [Developer Quickstart](./developer-quickstart.md)
+- [For Developers](./for-developers/for-developer.md)
+  - [Node](./for-developers/testnet-node.md)
+  - [Sway Language](./for-developers/sway.md)
+  - [Typescript SDK](./for-developers/ts-sdk.md)
+  - [Rust SDK](./for-developers/rust-sdk.md)
+  - [Indexer](./for-developers/indexer.md)
 
 ## Coming Soon
 
