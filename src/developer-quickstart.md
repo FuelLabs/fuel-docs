@@ -264,7 +264,8 @@ Now that you have a wallet, you can deploy with `forc deploy` and passing in the
 
 `forc deploy --url https://node-beta-1.fuel.network/graphql --gas-price 1`
 
-> Note: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
+> **Note**
+> We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
 
 The terminal will ask for the address of the wallet you want to sign this transaction with, paste in the address you saved earlier, it looks like this: `fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8`
 
