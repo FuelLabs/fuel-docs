@@ -52,8 +52,8 @@ First, let's [install the Sway toolchain](https://github.com/FuelLabs/fuelup).
 Then with `forc` installed, create a contract project inside of your `fuel-project` folder:
 
 ```sh
-cd fuel-project
-forc new counter_contract
+$ cd fuel-project
+$ forc new counter_contract
 ```
 
 Here is the project that `Forc` has initialized:
@@ -120,7 +120,7 @@ Below your ABI definition, you will write the implementation of the functions de
 impl Counter for Contract {
     #[storage(read)]
     fn count() -> u64 {
-      return storage.counter;
+      storage.counter
     }
     #[storage(read, write)]
     fn increment(){
@@ -184,12 +184,7 @@ impl Counter for Contract {
 From inside the `fuel-project/counter_contract` directory, run the following command to build your contract:
 
 ```sh
-forc build
-```
-
-You should see something like this output:
-
-```console
+$ forc build
   Compiled library "core".
   Compiled library "std".
   Compiled contract "counter_contract".
@@ -216,15 +211,7 @@ async fn can_get_contract_id() {
 Run the following command in the terminal:
 
 ``` console
-forc test
-```
-
-> **Note**
-> The `forc test` command is in the process of being reworked to perform in-language unit testing, at which point we will recommend using `cargo` directly for your Sway+Rust integration testing. See [this issue](https://github.com/FuelLabs/sway/issues/1833) for more details.
-
-You'll see something like this as your output:
-
-```console
+$ forc test
   Compiled library "core".
   Compiled library "std".
   Compiled contract "counter_contract".
@@ -233,6 +220,9 @@ You'll see something like this as your output:
   test can_get_contract_id ... ok
   test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
 ```
+
+> **Note**
+> The `forc test` command is in the process of being reworked to perform in-language unit testing, at which point we will recommend using `cargo` directly for your Sway+Rust integration testing. See [this issue](https://github.com/FuelLabs/sway/issues/1833) for more details.
 
 ## Deploy the Contract
 
@@ -268,12 +258,16 @@ The terminal will output a `transaction id to sign` and prompt you for a signatu
 
 Grab the `transaction id` from your other terminal and sign with a specified account by running the following command:
 
-`forc wallet sign` + `[transaction id here, without brackets]` + `[the account number, without brackets]`
+``` console
+forc wallet sign` + `[transaction id here, without brackets]` + `[the account number, without brackets]`
+```
 
 Your command should look like this:
 
 ``` console
-forc wallet sign 16d7a8f9d15cfba1bd000d3f99cd4077dfa1fce2a6de83887afc3f739d6c84df 0
+$ forc wallet sign 16d7a8f9d15cfba1bd000d3f99cd4077dfa1fce2a6de83887afc3f739d6c84df 0
+Please enter your password to decrypt initialized wallet's phrases:
+Signature: 736dec3e92711da9f52bed7ad4e51e3ec1c9390f4b05caf10743229295ffd5c1c08a4ca477afa85909173af3feeda7c607af5109ef6eb72b6b40b3484db2332c
 ```
 
 Enter your password when prompted, and you'll get back a `signature`. Save that signature, and return to your other terminal window, and paste that in where its prompting you to `provide a signature for this transaction`.
@@ -297,14 +291,13 @@ Now we are going to
 
 To split better our project let's create a new folder `frontend` and initialize our project inside it.
 
-In the terminal, go back up one directory and initialize a react project.
+In the terminal, go back up one directory and initialize a react project using [`Create React App`](https://create-react-app.dev/).
 
 ```sh
-cd ..
-npx create-react-app frontend --template typescript
+$ cd ..
+$ npx create-react-app frontend --template typescript
+Success! Created frontend at Fuel/fuel-project/frontend
 ```
-
-The command will generate a react app using [`Create React App`](https://create-react-app.dev/).
 
 You should now have your outer folder, `fuel-project`, with two folders inside: `front-end` and `fuel-contract`
 
@@ -325,9 +318,11 @@ On this step we need to install 3 dependencies for the project:
 Move into the `frontend` folder, then install the dependencies:
 
 ```sh
-cd frontend
-npm install fuels --save
-npm install fuelchain typechain-target-fuels --save-dev
+$ cd frontend
+$ npm install fuels --save
+added 65 packages, and audited 1493 packages in 4s
+$ npm install fuelchain typechain-target-fuels --save-dev
+added 33 packages, and audited 1526 packages in 2s
 ```
 
 ##### Generating contract types
@@ -339,12 +334,7 @@ If you see the folder `fuel-project/counter_contract/out` you will be able to se
 Inside `counter-contract/frontend` run;
 
 ```sh
-npx fuelchain --target=fuels --out-dir=./src/contracts ../counter_contract/out/debug/*-abi.json
-```
-
-You should see something like this:
-
-```sh
+$ npx fuelchain --target=fuels --out-dir=./src/contracts ../counter_contract/out/debug/*-abi.json
 Successfully generated 4 typings!
 ```
 
@@ -370,15 +360,11 @@ console.log("private key", wallet.privateKey);
 In a terminal, run the following command:
 
 ``` console
-node createWallet.js
-```
-
-You should see an output that looks like this:
-
-```console
+$ node createWallet.js
 address fuel160ek8t7fzz89wzl595yz0rjrgj3xezjp6pujxzt2chn70jrdylus5apcuq
 private key 0x719fb4da652f2bd4ad25ce04f4c2e491926605b40e5475a80551be68d57e0fcb
 ```
+>Note: You should use generated address and private key.
 
 Save the private key, you will need this later to set it as a string value for a variable `WALLET_SECRET` in your `App.tsx` file. More on that below.
 
@@ -463,7 +449,16 @@ Now it's time to have fun run the project on your browser;
 Inside `fuel-project/frontend` run;
 
 ```sh
-npm start
+$ npm start
+Compiled successfully!
+
+You can now view frontend in the browser.
+
+  Local:            http://localhost:3001
+  On Your Network:  http://192.168.4.48:3001
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
 ```
 
 ![screenshot of the UI](./images/quickstart-dapp-screenshot.png)
