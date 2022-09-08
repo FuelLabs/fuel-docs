@@ -380,7 +380,8 @@ address fuel160ek8t7fzz89wzl595yz0rjrgj3xezjp6pujxzt2chn70jrdylus5apcuq
 private key 0x719fb4da652f2bd4ad25ce04f4c2e491926605b40e5475a80551be68d57e0fcb
 ```
 
->Note: You should use generated address and private key.
+> **Note**
+> You should use generated address and private key.
 
 Save the private key, you will need this later to set it as a string value for a variable `WALLET_SECRET` in your `App.tsx` file. More on that below.
 
