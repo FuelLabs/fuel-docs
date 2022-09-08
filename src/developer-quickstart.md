@@ -335,7 +335,7 @@ On this step we need to install 3 dependencies for the project:
 
 Move into the `frontend` folder, then install the dependencies:
 
-```sh
+```console
 $ cd frontend
 $ npm install fuels --save
 added 65 packages, and audited 1493 packages in 4s
@@ -351,7 +351,7 @@ If you see the folder `fuel-project/counter_contract/out` you will be able to se
 
 Inside `counter-contract/frontend` run;
 
-```sh
+```console
 $ npx fuelchain --target=fuels --out-dir=./src/contracts ../counter_contract/out/debug/*-abi.json
 Successfully generated 4 typings!
 ```
