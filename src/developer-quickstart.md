@@ -68,7 +68,7 @@ Here is the project that `Forc` has initialized:
         └── harness.rs
 ```
 
-`Forc.toml` is the _manifest file_ (similar to `Cargo.toml` for Cargo or `package.json` for Node) and defines project metadata such as the project name and dependencies. You'll notice a `cargo.toml` file because `forc` uses `cargo` under the hood.
+`Forc.toml` is the _manifest file_ (similar to `Cargo.toml` for Cargo or `package.json` for Node) and defines project metadata such as the project name and dependencies. You'll notice a `Cargo.toml` file because `forc` uses `cargo` under the hood.
 
 Open your project in a code editor and delete the boilerplate code in `src/main.sw` so that you start with an empty file.
 
