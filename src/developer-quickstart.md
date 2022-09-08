@@ -456,8 +456,6 @@ function App() {
 }
 export default App;
 
-```
-
 ### Run your project
 
 Now it's time to have fun run the project on your browser;
