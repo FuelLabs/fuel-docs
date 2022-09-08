@@ -90,7 +90,7 @@ storage {
 
 An ABI defines an interface, and there is no function body in the ABI. A contract must either define or import an ABI declaration and implement it. It is considered best practice to define your ABI in a separate library and import it into your contract because this allows callers of the contract to import and use the ABI in scripts to call your contract.
 
-For simplicity, we will define the ABI natively in the contract.
+For simplicity, we will define the ABI directly in the contract file.
 
 ```sway
 abi Counter {
