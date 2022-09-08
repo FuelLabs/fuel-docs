@@ -54,6 +54,21 @@ Then with `forc` installed, create a contract project inside of your `fuel-proje
 ```sh
 $ cd fuel-project
 $ forc new counter_contract
+To compile, use `forc build`, and to run tests use `forc test`
+
+----
+
+Read the Docs:
+- Sway Book: https://fuellabs.github.io/sway/latest
+- Rust SDK Book: https://fuellabs.github.io/fuels-rs/latest
+- TypeScript SDK: https://github.com/FuelLabs/fuels-ts
+
+Join the Community:
+- Follow us @SwayLang: https://twitter.com/SwayLang
+- Ask questions in dev-chat on Discord: https://discord.com/invite/xfpK4Pe
+
+Report Bugs:
+- Sway Issues: https://github.com/FuelLabs/sway/issues/new
 ```
 
 Here is the project that `Forc` has initialized:
@@ -364,6 +379,7 @@ $ node createWallet.js
 address fuel160ek8t7fzz89wzl595yz0rjrgj3xezjp6pujxzt2chn70jrdylus5apcuq
 private key 0x719fb4da652f2bd4ad25ce04f4c2e491926605b40e5475a80551be68d57e0fcb
 ```
+
 >Note: You should use generated address and private key.
 
 Save the private key, you will need this later to set it as a string value for a variable `WALLET_SECRET` in your `App.tsx` file. More on that below.
