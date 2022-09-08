@@ -462,7 +462,7 @@ Now it's time to have fun run the project on your browser;
 
 Inside `fuel-project/frontend` run;
 
-```sh
+```console
 $ npm start
 Compiled successfully!
 
