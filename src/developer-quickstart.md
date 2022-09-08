@@ -104,7 +104,7 @@ abi Counter {
 
 ### Going line by line
 
-`#[storage(read, write)]` is an annotation which denotes that this function has permission to read and write a value in storage.
+`#[storage(read, write)]` is an annotation which denotes that this function has permission to read and write values in storage.
 
 `fn increment();` - We're introducing the functionality to increment and denoting it shouldn't return any value.
 
