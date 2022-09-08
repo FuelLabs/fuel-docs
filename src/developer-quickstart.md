@@ -388,7 +388,8 @@ First, take the address of your wallet and use it to get some coins from [the te
 
 Now you're ready to build and ship ⛽
 
-> Note: The team is working to simplify the process of creating a wallet, and eliminate the need to create a wallet twice. Keep an eye out for these updates.
+> **Note**
+> The team is working to simplify the process of creating a wallet, and eliminate the need to create a wallet twice. Keep an eye out for these updates.
 
 ### Modify the App
 
