@@ -311,7 +311,7 @@ To split better our project let's create a new folder `frontend` and initialize 
 
 In the terminal, go back up one directory and initialize a react project using [`Create React App`](https://create-react-app.dev/).
 
-```sh
+```console
 $ cd ..
 $ npx create-react-app frontend --template typescript
 Success! Created frontend at Fuel/fuel-project/frontend
