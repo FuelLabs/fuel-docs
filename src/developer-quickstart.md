@@ -199,7 +199,7 @@ impl Counter for Contract {
 
 From inside the `fuel-project/counter_contract` directory, run the following command to build your contract:
 
-```sh
+```console
 $ forc build
   Compiled library "core".
   Compiled library "std".
