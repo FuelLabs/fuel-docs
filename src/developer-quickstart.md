@@ -363,7 +363,7 @@ Now you should be able to find a new folder `fuel-project/frontend/src/contracts
 For interacting with the fuel network we have to submit signed transactions with enough funds to cover network fees. The Fuel TS SDK don't currently support Wallet integrations, requiring us to have a non-safe wallet inside the WebApp using a privateKey.
 
 > **Note**
->This should be done only for development propose never expose a WebApp with a privateKey inside. The Fuel Wallet is in active development, follow the progress [here](https://github.com/FuelLabs/fuels-wallet).
+>This should be done only for development purpose. Never expose a web app with a private key inside. The Fuel Wallet is in active development, follow the progress [here](https://github.com/FuelLabs/fuels-wallet).
 
 In the root of the frontend project create a file, createWallet.js
 
@@ -385,7 +385,7 @@ private key 0x719fb4da652f2bd4ad25ce04f4c2e491926605b40e5475a80551be68d57e0fcb
 ```
 
 > **Note**
-> You should use generated address and private key.
+> You should use the generated address and private key.
 
 Save the private key, you will need this later to set it as a string value for a variable `WALLET_SECRET` in your `App.tsx` file. More on that below.
 
