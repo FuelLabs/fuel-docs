@@ -291,7 +291,8 @@ Enter your password when prompted, and you'll get back a `signature`. Save that 
 
 Finally, you will get back a `TransactionId` to confirm your contract was deployed. With this ID, you can head to the [block explorer](https://fuellabs.github.io/block-explorer-v2/) and view your contract.
 
->Note: You should prefix your `TransactionId` with `0x` to view it in the block explorer
+> **Note**
+> You should prefix your `TransactionId` with `0x` to view it in the block explorer
 
 ![block explorer](./images/block-explorer.png)
 
