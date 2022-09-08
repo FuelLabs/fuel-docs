@@ -74,13 +74,14 @@ Report Bugs:
 Here is the project that `Forc` has initialized:
 
 ```console
-├── fuel-project
-    ├── Cargo.toml
-    ├── Forc.toml
-    ├── src
-    │   └── main.sw
-    └── tests
-        └── harness.rs
+$ tree fuel-project
+fuel-project
+├── Cargo.toml
+├── Forc.toml
+├── src
+│   └── main.sw
+└── tests
+    └── harness.rs
 ```
 
 `Forc.toml` is the _manifest file_ (similar to `Cargo.toml` for Cargo or `package.json` for Node) and defines project metadata such as the project name and dependencies. You'll notice a `Cargo.toml` file because `forc` uses `cargo` under the hood.
