@@ -47,11 +47,9 @@ Fuel is the fastest modular execution layer, delivering maximum security and hig
 - Modular Blockchains
   - Modular Blockchain Stack
   - What is a Modular Execution Layer
-- Technology
-  - Parallel Transaction Execution
-  - State Access Lists
-  - UTXO’s
-  - Fraud proofs
+- [Technology](./technology/index.md)
+  - [Parallel Transaction Execution](./technology/parallel_tx_execution.md)
+  - [Fraud Proofs](./technology/fraud_proofs.md)
 - [The FuelVM](./fuelvm/index.md)
   - VS Move
   - VS Solana

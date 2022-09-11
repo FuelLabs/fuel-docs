@@ -21,7 +21,6 @@
     - [Fuel as a sidechain](./sidechain.md)
 - [Technology](./technology/index.md)
   - [Parallel Transaction Execution](./technology/parallel_tx_execution.md)
-    - [State Access Lists and UTXOs](./technology/access_lists.md)
   - [Fraud Proofs](./technology/fraud_proofs.md)
 - [The FuelVM](./fuelvm/index.md)
   - [Contract and Call Model](./fuelvm/contract_call_model.md)
