@@ -31,7 +31,7 @@ A script is runnable bytecode on the chain which can call contracts to perform s
 | script    | ❌                                   | ❌                    | ❌                           | ❌                        |
 | library   | ✅ (via a contract or predicate) | ❌ | ❌                           | ✅                       |
 
-See [the chapter on program types](../sway-program-types/index.md) for more information.
+See [the chapter on program types](https://fuellabs.github.io/sway/v0.19.2/sway-program-types/index.html) for more information.
 
 ## Your First Sway Project
 
@@ -154,7 +154,7 @@ Read and return the counter property value from the contract storage.
 
 ```sway
 fn count() -> u64 {
-    return storage.counter;
+    storage.counter
 }
 ```
 
@@ -186,7 +186,7 @@ abi Counter {
 impl Counter for Contract {
     #[storage(read)]
     fn count() -> u64 {
-      return storage.counter;
+      storage.counter
     }
     #[storage(read, write)]
     fn increment(){
