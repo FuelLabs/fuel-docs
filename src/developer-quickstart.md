@@ -217,10 +217,10 @@ At the bottom of the file, define the body of `can_get_contract_instance`. Here 
 ```sway
 #[tokio::test]
 async fn can_get_contract_id() {
-    let (instance, _id) = get_contract_instance().await;
-    // Now you have an instance of your contract you can use to test each function
-    instance.increment().call().await.unwrap();
-    let result = instance.count().call().await.unwrap();
+    // Increment the counter
+    let _result = instance.increment().call().await.unwrap();
+    // Get the current value of the counter
+    let result = instance.counter().call().await.unwrap();
     assert!(result.value > 0); 
 }
 ```
