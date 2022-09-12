@@ -31,7 +31,7 @@ A script is runnable bytecode on the chain which can call contracts to perform s
 | script    | ❌                                   | ❌                    | ❌                           | ❌                        |
 | library   | ✅ (via a contract or predicate) | ❌ | ❌                           | ✅                       |
 
-See [the chapter on program types](../sway-program-types/index.md) for more information.
+See [the chapter on program types](https://fuellabs.github.io/sway/master/sway-program-types/index.html) for more information.
 
 ## Your First Sway Project
 
@@ -154,7 +154,7 @@ Read and return the counter property value from the contract storage.
 
 ```sway
 fn count() -> u64 {
-    return storage.counter;
+    storage.counter
 }
 ```
 
@@ -186,10 +186,11 @@ abi Counter {
 impl Counter for Contract {
     #[storage(read)]
     fn count() -> u64 {
-      return storage.counter;
+        storage.counter
     }
+
     #[storage(read, write)]
-    fn increment(){
+    fn increment() {
         storage.counter = storage.counter + 1;
     }
 }
@@ -217,8 +218,9 @@ At the bottom of the file, define the body of `can_get_contract_instance`. Here 
 #[tokio::test]
 async fn can_get_contract_id() {
     let (instance, _id) = get_contract_instance().await;
-    // Now you have an instance of your contract you can use to test each function
-    instance.increment().call().await.unwrap();
+    // Increment the counter
+    let _result = instance.increment().call().await.unwrap();
+    // Get the current value of the counter
     let result = instance.count().call().await.unwrap();
     assert!(result.value > 0); 
 }
