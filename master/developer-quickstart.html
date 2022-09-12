@@ -163,7 +163,7 @@
 <tr><td>script</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td></tr>
 <tr><td>library</td><td>✅ (via a contract or predicate)</td><td>❌</td><td>❌</td><td>✅</td></tr>
 </tbody></table>
-<p>See <a href="../sway-program-types/index.html">the chapter on program types</a> for more information.</p>
+<p>See <a href="https://fuellabs.github.io/sway/master/sway-program-types/index.html">the chapter on program types</a> for more information.</p>
 <h2 id="your-first-sway-project"><a class="header" href="#your-first-sway-project">Your First Sway Project</a></h2>
 <p>We'll build a simple counter contract with two functions: one to increment the counter, and one to return the value of the counter.</p>
 <p>A few pieces of info that will be helpful before moving on:</p>
@@ -250,7 +250,7 @@ fuel-project
 <h3 id="what-we-just-did"><a class="header" href="#what-we-just-did">What we just did</a></h3>
 <p>Read and return the counter property value from the contract storage.</p>
 <pre><code class="language-sway">fn count() -&gt; u64 {
-    return storage.counter;
+    storage.counter
 }
 </code></pre>
 <p>The function body accesses the value counter in storage, and increments the value by one. Then, we return the newly updated value of counter.</p>
@@ -276,10 +276,11 @@ abi Counter {
 impl Counter for Contract {
     #[storage(read)]
     fn count() -&gt; u64 {
-      return storage.counter;
+        storage.counter
     }
+
     #[storage(read, write)]
-    fn increment(){
+    fn increment() {
         storage.counter = storage.counter + 1;
     }
 }
@@ -298,8 +299,9 @@ impl Counter for Contract {
 <pre><code class="language-sway">#[tokio::test]
 async fn can_get_contract_id() {
     let (instance, _id) = get_contract_instance().await;
-    // Now you have an instance of your contract you can use to test each function
-    instance.increment().call().await.unwrap();
+    // Increment the counter
+    let _result = instance.increment().call().await.unwrap();
+    // Get the current value of the counter
     let result = instance.count().call().await.unwrap();
     assert!(result.value &gt; 0); 
 }
