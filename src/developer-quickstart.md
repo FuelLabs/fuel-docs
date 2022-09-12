@@ -188,6 +188,7 @@ impl Counter for Contract {
     fn count() -> u64 {
         storage.counter
     }
+
     #[storage(read, write)]
     fn increment() {
         storage.counter = storage.counter + 1;
