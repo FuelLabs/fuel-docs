@@ -189,7 +189,7 @@ impl Counter for Contract {
         storage.counter
     }
     #[storage(read, write)]
-    fn increment(){
+    fn increment() {
         storage.counter = storage.counter + 1;
     }
 }
