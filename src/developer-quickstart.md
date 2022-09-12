@@ -217,6 +217,7 @@ At the bottom of the file, define the body of `can_get_contract_instance`. Here 
 ```sway
 #[tokio::test]
 async fn can_get_contract_id() {
+    let (instance, _id) = get_contract_instance().await;
     // Increment the counter
     let _result = instance.increment().call().await.unwrap();
     // Get the current value of the counter
