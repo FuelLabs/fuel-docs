@@ -220,7 +220,7 @@ async fn can_get_contract_id() {
     // Increment the counter
     let _result = instance.increment().call().await.unwrap();
     // Get the current value of the counter
-    let result = instance.counter().call().await.unwrap();
+    let result = instance.count().call().await.unwrap();
     assert!(result.value > 0); 
 }
 ```
