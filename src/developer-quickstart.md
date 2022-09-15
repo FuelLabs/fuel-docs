@@ -33,6 +33,12 @@ A script is runnable bytecode on the chain which can call contracts to perform s
 
 See [the chapter on program types](https://fuellabs.github.io/sway/master/sway-program-types/index.html) for more information.
 
+## Installation
+
+Start by [installing the Rust toolchain](https://fuellabs.github.io/sway/v0.24.3/introduction/installation.html#dependencies).
+
+Then, [install the Fuel toolchain](https://github.com/FuelLabs/fuelup).
+
 ## Your First Sway Project
 
 We'll build a simple counter contract with two functions: one to increment the counter, and one to return the value of the counter.
@@ -46,8 +52,6 @@ A few pieces of info that will be helpful before moving on:
 **Start by creating a new, empty folder. We'll call it `fuel-project`.**
 
 ### Writing the Contract
-
-First, let's [install the Sway toolchain](https://github.com/FuelLabs/fuelup).
 
 Then with `forc` installed, create a contract project inside of your `fuel-project` folder:
 
