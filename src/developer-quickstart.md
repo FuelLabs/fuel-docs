@@ -33,7 +33,7 @@ A script is runnable bytecode on the chain which can call contracts to perform s
 
 See [the chapter on program types](https://fuellabs.github.io/sway/master/sway-program-types/index.html) for more information.
 
-## Installation 
+## Installation
 
 Start by [installing the Rust toolchain](https://fuellabs.github.io/sway/v0.24.3/introduction/installation.html#dependencies).
 
