@@ -1,4 +1,4 @@
 # Technology
 
-- [Parallel Transaction Execution](./technology/parallel_tx_execution.md)
-- [Fraud Proofs](./technology/fraud_proofs.md)
+- [Parallel Transaction Execution](./parallel_tx_execution.md)
+- [Fraud Proofs](./fraud_proofs.md)
