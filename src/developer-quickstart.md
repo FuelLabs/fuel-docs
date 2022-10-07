@@ -58,7 +58,7 @@ Then with `forc` installed, create a contract project inside of your `fuel-proje
 ```sh
 $ cd fuel-project
 $ forc new counter_contract
-To compile, use `forc build`, and to run tests use `forc test`
+To compile, use `forc build`, and to run tests use `cargo test`
 
 ----
 
@@ -142,8 +142,9 @@ impl Counter for Contract {
     fn count() -> u64 {
       storage.counter
     }
+
     #[storage(read, write)]
-    fn increment(){
+    fn increment() {
         storage.counter = storage.counter + 1;
     }
 }
@@ -222,29 +223,30 @@ At the bottom of the file, define the body of `can_get_contract_instance`. Here 
 #[tokio::test]
 async fn can_get_contract_id() {
     let (instance, _id) = get_contract_instance().await;
+
     // Increment the counter
-    let _result = instance.increment().call().await.unwrap();
+    let _result = instance.methods().increment().call().await.unwrap();
+
     // Get the current value of the counter
-    let result = instance.count().call().await.unwrap();
-    assert!(result.value > 0); 
+    let result = instance.methods().count().call().await.unwrap();
+
+    // Check that the current value of the counter is greater than zero
+    assert!(result.value > 0);
 }
 ```
 
 Run the following command in the terminal:
 
 ``` console
-$ forc test
-  Compiled library "core".
-  Compiled library "std".
-  Compiled contract "counter_contract".
-  Bytecode size is 224 bytes.
+$ cargo test
+  ...
   running 1 test
   test can_get_contract_id ... ok
   test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
 ```
 
 > **Note**
-> The `forc test` command is in the process of being reworked to perform in-language unit testing, at which point we will recommend using `cargo` directly for your Sway+Rust integration testing. See [this issue](https://github.com/FuelLabs/sway/issues/1833) for more details.
+> The `cargo test` command is in the process of being reworked to perform in-language unit testing, at which point we will recommend using `cargo` directly for your Sway+Rust integration testing. See [this issue](https://github.com/FuelLabs/sway/issues/1833) for more details.
 
 ## Deploy the Contract
 
