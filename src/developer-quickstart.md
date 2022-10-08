@@ -58,7 +58,7 @@ Then with `forc` installed, create a contract project inside of your `fuel-proje
 ```sh
 $ cd fuel-project
 $ forc new counter_contract
-To compile, use `forc build`, and to run tests use `cargo test`
+To compile, use `forc build`, and to run tests use `forc test`
 
 ----
 
@@ -238,7 +238,7 @@ async fn can_get_contract_id() {
 Run the following command in the terminal:
 
 ``` console
-$ cargo test
+$ forc test
   ...
   running 1 test
   test can_get_contract_id ... ok
@@ -246,7 +246,7 @@ $ cargo test
 ```
 
 > **Note**
-> The `cargo test` command is in the process of being reworked to perform in-language unit testing, at which point we will recommend using `cargo` directly for your Sway+Rust integration testing. See [this issue](https://github.com/FuelLabs/sway/issues/1833) for more details.
+> The `forc test` command is in the process of being reworked to perform in-language unit testing, at which point we will recommend using `cargo` directly for your Sway+Rust integration testing. See [this issue](https://github.com/FuelLabs/sway/issues/1833) for more details.
 
 ## Deploy the Contract
 
