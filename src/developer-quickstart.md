@@ -469,6 +469,7 @@ function App() {
   );
 }
 export default App;
+```
 
 ### Run your project
 
