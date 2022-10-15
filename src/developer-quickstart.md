@@ -559,6 +559,8 @@ To create a production build, use npm run build.
 
 #### ✨⛽✨ Congrats you have completed your first DApp on Fuel ✨⛽✨
 
+[Here is the repo for this project](https://github.com/FuelLabs/developer-quickstart). If you run into any problems, a good first step is to compare your code to this repo and resolve any differences.
+
 Tweet us [@fuellabs_](https://twitter.com/fuellabs_) letting us know you just built a dapp on Fuel, you might get invited to a private group of builders, be invited to the next Fuel dinner, get alpha on the project, or something 👀.
 
 ### Updating The Contract
