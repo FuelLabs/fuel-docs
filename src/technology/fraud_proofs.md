@@ -1,6 +1,6 @@
 # Fraud Proofs
 
-Fraud proofs are a blockchain verification mechanism whereby a claim on a new block is accepted unless a proof the claim is invalid is provided within some configurable time window. This allows trust-minimized light clients to be secure under the assumption only a single honest full node is available in the network to produce fraud proofs. Both the Fuel protocol and the FuelVM are designed to be fraud-provable in restritive environments such as the Ethereum Virtual Machine.
+Fraud proofs are a blockchain verification mechanism whereby a claim on a new block is accepted unless a proof the claim is invalid is provided within some configurable time window. This allows trust-minimized light clients to be secure under the assumption only a single honest full node is available in the network to produce fraud proofs. Both the Fuel protocol and the FuelVM are designed to be fraud-provable in restrictive environments such as the Ethereum Virtual Machine.
 
 [State-transition fraud proofs](https://arxiv.org/abs/1809.09044) are a general-purpose fraud proof mechanism, but come with the downside of requiring a global state tree—an inherently sequential bottleneck. [UTXO fraud proofs](https://ethresear.ch/t/compact-fraud-proofs-for-utxo-chains-without-intermediate-state-serialization/5885) avoid this bottleneck; they simply require each spend of a UTXO to "point" to the creation of the UTXO. Proving the pointer is invalid, or that whatever is being pointed to doesn't match whatever is being spent, are sufficient for exhaustively proving fraud.
 

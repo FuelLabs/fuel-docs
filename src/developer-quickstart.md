@@ -78,11 +78,15 @@ Report Bugs:
 Here is the project that `Forc` has initialized:
 
 ```console
-$ cd counter-contract 
-$ tree .
-├── Forc.toml
-└── src
-    └── main.sw
+$ tree fuel-project
+fuel-project
+└── counter_contract
+    ├── Cargo.toml
+    ├── Forc.toml
+    ├── src
+    │   └── main.sw
+    └── tests
+        └── harness.rs
 ```
 
 `Forc.toml` is the _manifest file_ (similar to `Cargo.toml` for Cargo or `package.json` for Node) and defines project metadata such as the project name and dependencies.
@@ -390,7 +394,7 @@ $ npx create-react-app frontend --template typescript
 Success! Created frontend at Fuel/fuel-project/frontend
 ```
 
-You should now have your outer folder, `fuel-project`, with two folders inside: `front-end` and `fuel-contract`
+You should now have your outer folder, `fuel-project`, with two folders inside: `counter_contract` and `frontend`
 
 ![project folder structure](./images/quickstart-folder-structure.png)
 
