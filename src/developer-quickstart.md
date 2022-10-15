@@ -78,15 +78,11 @@ Report Bugs:
 Here is the project that `Forc` has initialized:
 
 ```console
-$ tree fuel-project
-fuel-project
-└── counter_contract
-    ├── Cargo.toml
-    ├── Forc.toml
-    ├── src
-    │   └── main.sw
-    └── tests
-        └── harness.rs
+$ tree counter-contract
+counter-contract
+├── Forc.toml
+└── src
+    └── main.sw
 ```
 
 `Forc.toml` is the _manifest file_ (similar to `Cargo.toml` for Cargo or `package.json` for Node) and defines project metadata such as the project name and dependencies.
@@ -218,6 +214,7 @@ Let's have a look at the content of the `counter-contract` folder after building
 
 ```console
 $ tree .
+.
 ├── Forc.lock
 ├── Forc.toml
 ├── out
@@ -266,6 +263,7 @@ Let's have a look at the result:
 
 ```console
 $ tree .
+.
 ├── Cargo.toml
 ├── Forc.lock
 ├── Forc.toml
