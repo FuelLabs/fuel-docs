@@ -142,8 +142,9 @@ impl Counter for Contract {
     fn count() -> u64 {
       storage.counter
     }
+
     #[storage(read, write)]
-    fn increment(){
+    fn increment() {
         storage.counter = storage.counter + 1;
     }
 }
@@ -222,11 +223,15 @@ At the bottom of the file, define the body of `can_get_contract_instance`. Here 
 #[tokio::test]
 async fn can_get_contract_id() {
     let (instance, _id) = get_contract_instance().await;
+
     // Increment the counter
-    let _result = instance.increment().call().await.unwrap();
+    let _result = instance.methods().increment().call().await.unwrap();
+
     // Get the current value of the counter
-    let result = instance.count().call().await.unwrap();
-    assert!(result.value > 0); 
+    let result = instance.methods().count().call().await.unwrap();
+
+    // Check that the current value of the counter is greater than zero
+    assert!(result.value > 0);
 }
 ```
 
@@ -234,10 +239,7 @@ Run the following command in the terminal:
 
 ``` console
 $ forc test
-  Compiled library "core".
-  Compiled library "std".
-  Compiled contract "counter_contract".
-  Bytecode size is 224 bytes.
+  ...
   running 1 test
   test can_get_contract_id ... ok
   test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
@@ -467,6 +469,7 @@ function App() {
   );
 }
 export default App;
+```
 
 ### Run your project
 
