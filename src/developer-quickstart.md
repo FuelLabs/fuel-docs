@@ -57,7 +57,7 @@ Then with `forc` installed, create a contract project inside of your `fuel-proje
 
 ```sh
 $ cd fuel-project
-$ forc new counter_contract
+$ forc new counter-contract
 To compile, use `forc build`, and to run tests use `forc test`
 
 ----
@@ -89,7 +89,7 @@ fuel-project
         └── harness.rs
 ```
 
-`Forc.toml` is the _manifest file_ (similar to `Cargo.toml` for Cargo or `package.json` for Node) and defines project metadata such as the project name and dependencies. You'll notice a `Cargo.toml` file because `forc` uses `cargo` under the hood.
+`Forc.toml` is the _manifest file_ (similar to `Cargo.toml` for Cargo or `package.json` for Node) and defines project metadata such as the project name and dependencies.
 
 Open your project in a code editor and delete the boilerplate code in `src/main.sw` so that you start with an empty file.
 
@@ -141,7 +141,7 @@ Below your ABI definition, you will write the implementation of the functions de
 impl Counter for Contract {
     #[storage(read)]
     fn count() -> u64 {
-      storage.counter
+        storage.counter
     }
 
     #[storage(read, write)]
@@ -156,7 +156,7 @@ impl Counter for Contract {
 
 ### What we just did
 
-Read and return the counter property value from the contract storage.
+In `fn count()`, we read and return the variable `counter` from storage.
 
 ```sway
 fn count() -> u64 {
@@ -164,7 +164,7 @@ fn count() -> u64 {
 }
 ```
 
-The function body accesses the value counter in storage, and increments the value by one. Then, we return the newly updated value of counter.
+In `fn increment()`, we read the variable `counter` from storage and increment its value by one. We then store the new value back in `counter`.
 
 ```sway
 fn increment() {
@@ -204,21 +204,91 @@ impl Counter for Contract {
 
 ### Build the Contract
 
-From inside the `fuel-project/counter_contract` directory, run the following command to build your contract:
+From inside the `fuel-project/counter-contract` directory, run the following command to build your contract:
 
 ```console
 $ forc build
   Compiled library "core".
   Compiled library "std".
-  Compiled contract "counter_contract".
-  Bytecode size is 224 bytes.
+  Compiled contract "counter-contract".
+  Bytecode size is 232 bytes.
 ```
+
+Let's have a look at the content of the `counter-contract` folder after building:
+
+```console
+$ tree .
+├── Forc.lock
+├── Forc.toml
+├── out
+│   └── debug
+│       ├── counter-contract-abi.json
+│       ├── counter-contract-contract-id
+│       ├── counter-contract-storage_slots.json
+│       └── counter-contract.bin
+└── src
+    └── main.sw
+```
+
+We now have an `out` directory that contains our build artifacts such as the JSON representation of our ABI and the contract bytecode.
 
 ## Testing your Contract
 
-In the directory `tests`, navigate to `harness.rs.` Here you'll see there is some boilerplate code to help you start interacting with and testing your contract.
+We will start by adding a Rust integration test harness using a Cargo generate template. Let's make sure we have the `cargo generate` command installed!
 
-At the bottom of the file, define the body of `can_get_contract_instance`. Here is what your code should look like to verify that the value of the counter did get incremented:
+```console
+cargo install cargo-generate
+```
+
+> _**Note**: You can learn more about cargo generate by visiting [its repository](https://github.com/cargo-generate/cargo-generate)._
+
+Now, let's generate the default test harness with the following:
+
+```console
+cargo generate --init fuellabs/sway templates/sway-test-rs --name counter-contract
+```
+
+If all goes well, the output should look as follows:
+
+```console
+⚠️   Favorite `fuellabs/sway` not found in config, using it as a git repository: https://github.com/fuellabs/sway
+🤷   Project Name : counter-contract
+🔧   Destination: /home/user/path/to/counter-contract ...
+🔧   Generating template ...
+[1/3]   Done: Cargo.toml
+[2/3]   Done: tests/harness.rs
+[3/3]   Done: tests
+🔧   Moving generated files into: `/home/user/path/to/counter-contract`...
+✨   Done! New project created /home/user/path/to/counter-contract
+```
+
+Let's have a look at the result:
+
+```console
+$ tree .
+├── Cargo.toml
+├── Forc.lock
+├── Forc.toml
+├── out
+│   └── debug
+│       ├── counter-contract-abi.json
+│       ├── counter-contract-contract-id
+│       ├── counter-contract-storage_slots.json
+│       └── counter-contract.bin
+├── src
+│   └── main.sw
+└── tests
+    └── harness.rs
+```
+
+We have two new files!
+
+- The `Cargo.toml` is the manifest for our new test harness and specifies the required dependencies including `fuels` the Fuel Rust SDK.
+- The `tests/harness.rs` contains some boilerplate test code to get us started, though doesn't call any contract methods just yet.
+
+Now that we have our default test harness, let's add some useful tests to it.
+
+At the bottom of `test/harness.rs`, define the body of `can_get_contract_id()`. Here is what your code should look like to verify that the value of the counter did get incremented:
 
 ```sway
 #[tokio::test]
@@ -231,23 +301,21 @@ async fn can_get_contract_id() {
     // Get the current value of the counter
     let result = instance.methods().count().call().await.unwrap();
 
-    // Check that the current value of the counter is greater than zero
-    assert!(result.value > 0);
+    // Check that the current value of the counter is 1.
+    // Recall that the initial value of the counter was 0.
+    assert_eq!(result.value, 1);
 }
 ```
 
-Run the following command in the terminal:
+Run `cargo test` in the terminal. If all goes well, the output should look as follows:
 
 ``` console
-$ forc test
+$ cargo test
   ...
   running 1 test
   test can_get_contract_id ... ok
   test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
 ```
-
-> **Note**
-> The `forc test` command is in the process of being reworked to perform in-language unit testing, at which point we will recommend using `cargo` directly for your Sway+Rust integration testing. See [this issue](https://github.com/FuelLabs/sway/issues/1833) for more details.
 
 ## Deploy the Contract
 
@@ -356,12 +424,12 @@ added 33 packages, and audited 1526 packages in 2s
 
 To make it easier to interact with our contract we use `fuelchain` to interpret the output ABI JSON from our contract. This JSON was created on the moment we executed the `forc build` to compile our Sway Contract into binary.
 
-If you see the folder `fuel-project/counter_contract/out` you will be able to see the ABI JSON there. If you want to learn more, read the [ABI Specs here](https://github.com/FuelLabs/fuel-specs/blob/master/specs/protocol/abi.md).
+If you see the folder `fuel-project/counter-contract/out` you will be able to see the ABI JSON there. If you want to learn more, read the [ABI Specs here](https://github.com/FuelLabs/fuel-specs/blob/master/specs/protocol/abi.md).
 
 Inside `counter-contract/frontend` run;
 
 ```console
-$ npx fuelchain --target=fuels --out-dir=./src/contracts ../counter_contract/out/debug/*-abi.json
+$ npx fuelchain --target=fuels --out-dir=./src/contracts ../counter-contract/out/debug/*-abi.json
 Successfully generated 4 typings!
 ```
 
@@ -470,6 +538,7 @@ function App() {
   );
 }
 export default App;
+```
 
 ### Run your project
 
@@ -493,6 +562,8 @@ To create a production build, use npm run build.
 ![screenshot of the UI](./images/quickstart-dapp-screenshot.png)
 
 #### ✨⛽✨ Congrats you have completed your first DApp on Fuel ✨⛽✨
+
+[Here is the repo for this project](https://github.com/FuelLabs/developer-quickstart). If you run into any problems, a good first step is to compare your code to this repo and resolve any differences.
 
 Tweet us [@fuellabs_](https://twitter.com/fuellabs_) letting us know you just built a dapp on Fuel, you might get invited to a private group of builders, be invited to the next Fuel dinner, get alpha on the project, or something 👀.
 
