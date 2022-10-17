@@ -119,7 +119,7 @@ abi Counter {
     fn increment();
 
     #[storage(read)]
-    fn count() -> u64; 
+    fn count() -> u64;
 }
 ```
 
@@ -482,7 +482,6 @@ Change the file `fuel-project/frontend/src/App.tsx` to:
 
 ```ts
 import React, { useEffect, useState } from "react";
-import React, { useEffect, useState } from "react";
 import { Wallet } from "fuels";
 import "./App.css";
 // Import the contract factory -- you can find the name in index.ts.
@@ -573,7 +572,7 @@ If you make changes to your contract, here are the steps you should take to get 
 
 - In your contract directory, run `forc build`
 - In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy --url https://node-beta-1.fuel.network/graphql --gas-price 1`
-- In your frontend directory, re-run this command: `npx fuelchain --target=fuels --out-dir=./src/contracts ../fuel-counter/out/debug/*-abi.json`
+- In your frontend directory, re-run this command: `npx fuelchain --target=fuels --out-dir=./src/contracts ../counter-contract/out/debug/*-abi.json`
 - In your frontend directory, update the contract ID in your `App.tsx` file
 
 ## Need Help?
