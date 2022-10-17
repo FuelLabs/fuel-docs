@@ -80,7 +80,7 @@ Here is the project that `Forc` has initialized:
 ```console
 $ tree fuel-project
 fuel-project
-└── counter_contract
+└── counter-contract
     ├── Cargo.toml
     ├── Forc.toml
     ├── src
@@ -394,7 +394,7 @@ $ npx create-react-app frontend --template typescript
 Success! Created frontend at Fuel/fuel-project/frontend
 ```
 
-You should now have your outer folder, `fuel-project`, with two folders inside: `counter_contract` and `frontend`
+You should now have your outer folder, `fuel-project`, with two folders inside: `counter-contract` and `frontend`
 
 ![project folder structure](./images/quickstart-folder-structure.png)
 
