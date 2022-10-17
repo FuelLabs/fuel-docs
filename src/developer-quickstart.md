@@ -78,15 +78,11 @@ Report Bugs:
 Here is the project that `Forc` has initialized:
 
 ```console
-$ tree fuel-project
-fuel-project
-└── counter_contract
-    ├── Cargo.toml
-    ├── Forc.toml
-    ├── src
-    │   └── main.sw
-    └── tests
-        └── harness.rs
+$ tree counter-contract
+counter-contract
+├── Forc.toml
+└── src
+    └── main.sw
 ```
 
 `Forc.toml` is the _manifest file_ (similar to `Cargo.toml` for Cargo or `package.json` for Node) and defines project metadata such as the project name and dependencies.
@@ -119,7 +115,7 @@ abi Counter {
     fn increment();
 
     #[storage(read)]
-    fn count() -> u64; 
+    fn count() -> u64;
 }
 ```
 
@@ -218,6 +214,7 @@ Let's have a look at the content of the `counter-contract` folder after building
 
 ```console
 $ tree .
+.
 ├── Forc.lock
 ├── Forc.toml
 ├── out
@@ -266,6 +263,7 @@ Let's have a look at the result:
 
 ```console
 $ tree .
+.
 ├── Cargo.toml
 ├── Forc.lock
 ├── Forc.toml
@@ -394,7 +392,7 @@ $ npx create-react-app frontend --template typescript
 Success! Created frontend at Fuel/fuel-project/frontend
 ```
 
-You should now have your outer folder, `fuel-project`, with two folders inside: `counter_contract` and `frontend`
+You should now have your outer folder, `fuel-project`, with two folders inside: `counter-contract` and `frontend`
 
 ![project folder structure](./images/quickstart-folder-structure.png)
 
@@ -481,7 +479,6 @@ Read the comments to help you understand the App parts.
 Change the file `fuel-project/frontend/src/App.tsx` to:
 
 ```ts
-import React, { useEffect, useState } from "react";
 import React, { useEffect, useState } from "react";
 import { Wallet } from "fuels";
 import "./App.css";
@@ -573,7 +570,7 @@ If you make changes to your contract, here are the steps you should take to get 
 
 - In your contract directory, run `forc build`
 - In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy --url https://node-beta-1.fuel.network/graphql --gas-price 1`
-- In your frontend directory, re-run this command: `npx fuelchain --target=fuels --out-dir=./src/contracts ../fuel-counter/out/debug/*-abi.json`
+- In your frontend directory, re-run this command: `npx fuelchain --target=fuels --out-dir=./src/contracts ../counter-contract/out/debug/*-abi.json`
 - In your frontend directory, update the contract ID in your `App.tsx` file
 
 ## Need Help?
