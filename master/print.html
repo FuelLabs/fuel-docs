@@ -284,15 +284,11 @@ Report Bugs:
 - Sway Issues: https://github.com/FuelLabs/sway/issues/new
 </code></pre>
 <p>Here is the project that <code>Forc</code> has initialized:</p>
-<pre><code class="language-console">$ tree fuel-project
-fuel-project
-└── counter_contract
-    ├── Cargo.toml
-    ├── Forc.toml
-    ├── src
-    │   └── main.sw
-    └── tests
-        └── harness.rs
+<pre><code class="language-console">$ tree counter-contract
+counter-contract
+├── Forc.toml
+└── src
+    └── main.sw
 </code></pre>
 <p><code>Forc.toml</code> is the <em>manifest file</em> (similar to <code>Cargo.toml</code> for Cargo or <code>package.json</code> for Node) and defines project metadata such as the project name and dependencies.</p>
 <p>Open your project in a code editor and delete the boilerplate code in <code>src/main.sw</code> so that you start with an empty file.</p>
@@ -312,7 +308,7 @@ fuel-project
     fn increment();
 
     #[storage(read)]
-    fn count() -&gt; u64; 
+    fn count() -&gt; u64;
 }
 </code></pre>
 <h3 id="going-line-by-line"><a class="header" href="#going-line-by-line">Going line by line</a></h3>
@@ -386,6 +382,7 @@ impl Counter for Contract {
 </code></pre>
 <p>Let's have a look at the content of the <code>counter-contract</code> folder after building:</p>
 <pre><code class="language-console">$ tree .
+.
 ├── Forc.lock
 ├── Forc.toml
 ├── out
@@ -421,6 +418,7 @@ impl Counter for Contract {
 </code></pre>
 <p>Let's have a look at the result:</p>
 <pre><code class="language-console">$ tree .
+.
 ├── Cargo.toml
 ├── Forc.lock
 ├── Forc.toml
@@ -513,7 +511,7 @@ You should prefix your <code>TransactionId</code> with <code>0x</code> to view i
 $ npx create-react-app frontend --template typescript
 Success! Created frontend at Fuel/fuel-project/frontend
 </code></pre>
-<p>You should now have your outer folder, <code>fuel-project</code>, with two folders inside: <code>counter_contract</code> and <code>frontend</code></p>
+<p>You should now have your outer folder, <code>fuel-project</code>, with two folders inside: <code>counter-contract</code> and <code>frontend</code></p>
 <p><img src="./images/quickstart-folder-structure.png" alt="project folder structure" /></p>
 <h4 id="install-the-fuels-sdk-dependencies"><a class="header" href="#install-the-fuels-sdk-dependencies">Install the <code>fuels</code> SDK dependencies</a></h4>
 <p>On this step we need to install 3 dependencies for the project:</p>
@@ -576,7 +574,6 @@ The team is working to simplify the process of creating a wallet, and eliminate 
 Read the comments to help you understand the App parts.</p>
 <p>Change the file <code>fuel-project/frontend/src/App.tsx</code> to:</p>
 <pre><code class="language-ts">import React, { useEffect, useState } from &quot;react&quot;;
-import React, { useEffect, useState } from &quot;react&quot;;
 import { Wallet } from &quot;fuels&quot;;
 import &quot;./App.css&quot;;
 // Import the contract factory -- you can find the name in index.ts.
@@ -656,7 +653,7 @@ To create a production build, use npm run build.
 <ul>
 <li>In your contract directory, run <code>forc build</code></li>
 <li>In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: <code>forc deploy --url https://node-beta-1.fuel.network/graphql --gas-price 1</code></li>
-<li>In your frontend directory, re-run this command: <code>npx fuelchain --target=fuels --out-dir=./src/contracts ../fuel-counter/out/debug/*-abi.json</code></li>
+<li>In your frontend directory, re-run this command: <code>npx fuelchain --target=fuels --out-dir=./src/contracts ../counter-contract/out/debug/*-abi.json</code></li>
 <li>In your frontend directory, update the contract ID in your <code>App.tsx</code> file</li>
 </ul>
 <h2 id="need-help"><a class="header" href="#need-help">Need Help?</a></h2>
