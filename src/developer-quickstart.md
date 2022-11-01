@@ -346,12 +346,12 @@ The terminal will ask for the address of the wallet you want to sign this transa
 
 The terminal will output your contract id. Be sure to save this as you will need it to build a frontend with the Typescript SDK.
 
-The terminal will output a `transaction id to sign` and prompt you for a signature. Open a new terminal tab and view your accounts by running `forc wallet list`. If you followed these steps, you'll notice you only have one account, `0`.
+The terminal will output a `message to sign` and prompt you for a signature. Open a new terminal tab and view your accounts by running `forc wallet list`. If you followed these steps, you'll notice you only have one account, `0`.
 
-Grab the `transaction id` from your other terminal and sign with a specified account by running the following command:
+Grab the `message to sign` from your other terminal and sign with your account by running the following command:
 
 ``` console
-forc wallet sign` + `[transaction id here, without brackets]` + `[the account number, without brackets]`
+forc wallet sign` + `[message to sign, without brackets]` + `[the account number, without brackets]`
 ```
 
 Your command should look like this:
