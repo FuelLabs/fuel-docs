@@ -393,9 +393,9 @@ We set the gas price to 1. Without this flag, the gas price is 0 by default and 
 </blockquote>
 <p>The terminal will ask for the address of the wallet you want to sign this transaction with, paste in the address you saved earlier, it looks like this: <code>fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8</code></p>
 <p>The terminal will output your contract id. Be sure to save this as you will need it to build a frontend with the Typescript SDK.</p>
-<p>The terminal will output a <code>transaction id to sign</code> and prompt you for a signature. Open a new terminal tab and view your accounts by running <code>forc wallet list</code>. If you followed these steps, you'll notice you only have one account, <code>0</code>.</p>
-<p>Grab the <code>transaction id</code> from your other terminal and sign with a specified account by running the following command:</p>
-<pre><code class="language-console">forc wallet sign` + `[transaction id here, without brackets]` + `[the account number, without brackets]`
+<p>The terminal will output a <code>message to sign</code> and prompt you for a signature. Open a new terminal tab and view your accounts by running <code>forc wallet list</code>. If you followed these steps, you'll notice you only have one account, <code>0</code>.</p>
+<p>Grab the <code>message to sign</code> from your other terminal and sign with your account by running the following command:</p>
+<pre><code class="language-console">forc wallet sign` + `[message to sign, without brackets]` + `[the account number, without brackets]`
 </code></pre>
 <p>Your command should look like this:</p>
 <pre><code class="language-console">$ forc wallet sign 16d7a8f9d15cfba1bd000d3f99cd4077dfa1fce2a6de83887afc3f739d6c84df 0
