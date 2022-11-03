@@ -147,7 +147,7 @@ impl Counter for Contract {
 }
 ```
 
-> **Note** > `return storage.counter;` is equivalent to `storage.counter`.
+> **Note**:`return storage.counter;` is equivalent to `storage.counter`.
 
 ### What we just did
 
@@ -238,7 +238,7 @@ We will start by adding a Rust integration test harness using a Cargo generate t
 cargo install cargo-generate
 ```
 
-> _**Note**: You can learn more about cargo generate by visiting [its repository](https://github.com/cargo-generate/cargo-generate)._
+> **Note**: You can learn more about cargo generate by visiting [its repository](https://github.com/cargo-generate/cargo-generate).
 
 Now, let's generate the default test harness with the following:
 
@@ -342,8 +342,7 @@ Now that you have a wallet, you can deploy with `forc deploy` and passing in the
 
 `forc deploy --url https://node-beta-1.fuel.network/graphql --gas-price 1`
 
-> **Note**
-> We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
+> **Note**: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
 
 The terminal will ask for the address of the wallet you want to sign this transaction with, paste in the address you saved earlier, it looks like this: `fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8`
 
@@ -446,8 +445,7 @@ Now you should be able to find a new folder `fuel-project/frontend/src/contracts
 
 For interacting with the fuel network we have to submit signed transactions with enough funds to cover network fees. The Fuel TS SDK don't currently support Wallet integrations, requiring us to have a non-safe wallet inside the WebApp using a privateKey.
 
-> **Note**
-> This should be done only for development purpose. Never expose a web app with a private key inside. The Fuel Wallet is in active development, follow the progress [here](https://github.com/FuelLabs/fuels-wallet).
+> **Note**: This should be done only for development purpose. Never expose a web app with a private key inside. The Fuel Wallet is in active development, follow the progress [here](https://github.com/FuelLabs/fuels-wallet).
 
 In the root of the frontend project create a file named `createWallet.js` and add the following code:
 
@@ -470,8 +468,7 @@ address fuel160ek8t7fzz89wzl595yz0rjrgj3xezjp6pujxzt2chn70jrdylus5apcuq
 private key 0x719fb4da652f2bd4ad25ce04f4c2e491926605b40e5475a80551be68d57e0fcb
 ```
 
-> **Note**
-> You should use the generated address and private key.
+> **Note**: You should use the generated address and private key.
 
 Save the private key, you will need this later to set it as a string value for a variable `WALLET_SECRET` in your `App.tsx` file. More on that below.
 
@@ -479,8 +476,7 @@ First, take the address of your wallet and use it to get some coins from [the te
 
 Now you're ready to build and ship ⛽
 
-> **Note**
-> The team is working to simplify the process of creating a wallet, and eliminate the need to create a wallet twice. Keep an eye out for these updates.
+> **Note**: The team is working to simplify the process of creating a wallet, and eliminate the need to create a wallet twice. Keep an eye out for these updates.
 
 ### Modify the App
 
