@@ -853,6 +853,7 @@ A suite of auditing facilities, from fuzzing and formal verification to code cov
 <li><a href="fuelvm/./memory_model.html">Memory Model</a></li>
 <li><a href="fuelvm/./native_assets.html">Multiple Native Assets</a></li>
 </ul>
+<p>Read the full VM spec <a href="https://fuellabs.github.io/fuel-specs/master/">here</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="contract-and-call-model"><a class="header" href="#contract-and-call-model">Contract and Call Model</a></h1>
 <p>Fuel uses a similar model to Ethereum for contracts and cross-contract calls. Contracts may call other contracts with a <a href="https://github.com/FuelLabs/fuel-specs/blob/master/specs/vm/instruction_set.md#call-call-contract"><code>CALL</code></a> (similar to an Ethereum <a href="https://github.com/ethereum/yellowpaper/blob/8fea825c80e27fa9df5d89fb3365d1067788724e/Paper.tex#L1451">message call</a>). Unlike the EVM, which can only forward its base asset with a call (i.e. ETH), the FuelVM can forward a single <a href="fuelvm/./native_assets.html">native fungible asset</a> with a call.</p>
 <p>Transactions may initiate contract calls. Ethereum transactions may call <a href="https://github.com/ethereum/yellowpaper/blob/8fea825c80e27fa9df5d89fb3365d1067788724e/Paper.tex#L322">a single contract directly</a>. Fuel transactions instead execute a <a href="https://github.com/FuelLabs/fuel-specs/blob/master/specs/vm/main.md#script-execution">script</a> (arbitrary bytecode attached to the transaction), which may call any number of contracts.</p>
