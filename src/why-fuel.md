@@ -58,4 +58,4 @@ The EVM is a complicated machine to construct fraud proofs for. It usually requi
 
 In Ethereum, the only native asset is Ether. It’s the only one that gets first-class treatment in terms of cost and ability to be pushed and pulled through a call. In Fuel, any contract can mint its UTXO-based native asset using a set of easy asset opcodes. All of which can gain the benefits of native-level call and optimization. Read more about support for multiple native assets in [the Sway docs](https://fuellabs.github.io/sway/v0.23.0/blockchain-development/native_assets.html), and [here](./fuelvm/native_assets.md).
 
-Read the full specification of the FuelVM [here](https://github.com/FuelLabs/fuel-specs/blob/master/specs/vm/main.md).
+Read the full specification of the FuelVM [here](https://fuellabs.github.io/fuel-specs/master/vm).
