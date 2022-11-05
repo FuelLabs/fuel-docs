@@ -402,7 +402,7 @@ On this step we need to install 3 dependencies for the project:
 
 1. `fuels`: The umbrella package that includes all the main tools; `Wallet`, `Contracts`, `Providers` and more.
 2. `fuelchain`: Fuelchain is the ABI TypeScript generator.
-3. `typechain-target-fuels`: The Fuelchain Target is the specific interpreter for the [Fuel ABI Spec](https://github.com/FuelLabs/fuel-specs/blob/master/specs/protocol/abi.md).
+3. `typechain-target-fuels`: The Fuelchain Target is the specific interpreter for the [ABI spec](https://fuellabs.github.io/fuel-specs/master/protocol/abi).
 
 > ABI stands for Application Binary Interface. ABI's inform the application the interface to interact with the VM, in other words, they provide info to the APP such as what methods a contract has, what params, types it expects, etc...
 
@@ -422,7 +422,7 @@ added 33 packages, and audited 1526 packages in 2s
 
 To make it easier to interact with our contract we use `fuelchain` to interpret the output ABI JSON from our contract. This JSON was created on the moment we executed the `forc build` to compile our Sway Contract into binary.
 
-If you see the folder `fuel-project/counter-contract/out` you will be able to see the ABI JSON there. If you want to learn more, read the [ABI Specs here](https://github.com/FuelLabs/fuel-specs/blob/master/specs/protocol/abi.md).
+If you see the folder `fuel-project/counter-contract/out` you will be able to see the ABI JSON there. If you want to learn more, read the [ABI spec](https://fuellabs.github.io/fuel-specs/master/protocol/abi).
 
 Inside `counter-contract/frontend` run;
 
