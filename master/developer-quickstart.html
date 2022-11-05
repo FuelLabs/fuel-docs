@@ -244,8 +244,7 @@ counter-contract
 }
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-<code>return storage.counter;</code> is equivalent to <code>storage.counter</code>.</p>
+<p><strong>Note</strong>:<code>return storage.counter;</code> is equivalent to <code>storage.counter</code>.</p>
 </blockquote>
 <h3 id="what-we-just-did"><a class="header" href="#what-we-just-did">What we just did</a></h3>
 <p>In <code>fn count()</code>, we read and return the variable <code>counter</code> from storage.</p>
@@ -259,6 +258,7 @@ counter-contract
 }
 </code></pre>
 <p>Here's what your code should look like so far:</p>
+<p>File: <code>./counter-contract/src/main.sw</code></p>
 <pre><code class="language-sway">contract;
 
 storage {
@@ -313,7 +313,7 @@ impl Counter for Contract {
 <pre><code class="language-console">cargo install cargo-generate
 </code></pre>
 <blockquote>
-<p><em><strong>Note</strong>: You can learn more about cargo generate by visiting <a href="https://github.com/cargo-generate/cargo-generate">its repository</a>.</em></p>
+<p><strong>Note</strong>: You can learn more about cargo generate by visiting <a href="https://github.com/cargo-generate/cargo-generate">its repository</a>.</p>
 </blockquote>
 <p>Now, let's generate the default test harness with the following:</p>
 <pre><code class="language-console">cargo generate --init fuellabs/sway templates/sway-test-rs --name counter-contract
@@ -353,6 +353,7 @@ impl Counter for Contract {
 </ul>
 <p>Now that we have our default test harness, let's add some useful tests to it.</p>
 <p>At the bottom of <code>test/harness.rs</code>, define the body of <code>can_get_contract_id()</code>. Here is what your code should look like to verify that the value of the counter did get incremented:</p>
+<p>File: <code>tests/harness.rs</code></p>
 <pre><code class="language-sway">#[tokio::test]
 async fn can_get_contract_id() {
     let (instance, _id) = get_contract_instance().await;
@@ -388,11 +389,13 @@ async fn can_get_contract_id() {
 <p>Now that you have a wallet, you can deploy with <code>forc deploy</code> and passing in the testnet endpoint like this:</p>
 <p><code>forc deploy --url https://node-beta-1.fuel.network/graphql --gas-price 1</code></p>
 <blockquote>
-<p><strong>Note</strong>
-We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.</p>
+<p><strong>Note</strong>: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.</p>
 </blockquote>
 <p>The terminal will ask for the address of the wallet you want to sign this transaction with, paste in the address you saved earlier, it looks like this: <code>fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8</code></p>
-<p>The terminal will output your contract id. Be sure to save this as you will need it to build a frontend with the Typescript SDK.</p>
+<p>The terminal will output your <code>Contract id</code> like this:</p>
+<pre><code class="language-console">Contract id: 0xe5dc89f7b8c62e40927a6b17f144583bf6571d2468ab1e2554d2731f4c9fc428
+</code></pre>
+<p>Be sure to save this as you will need it to build a frontend with the Typescript SDK later in this tutorial.</p>
 <p>The terminal will output a <code>message to sign</code> and prompt you for a signature. Open a new terminal tab and view your accounts by running <code>forc wallet list</code>. If you followed these steps, you'll notice you only have one account, <code>0</code>.</p>
 <p>Grab the <code>message to sign</code> from your other terminal and sign with your account by running the following command:</p>
 <pre><code class="language-console">forc wallet sign` + `[message to sign, without brackets]` + `[the account number, without brackets]`
@@ -447,7 +450,7 @@ added 33 packages, and audited 1526 packages in 2s
 <h5 id="generating-contract-types"><a class="header" href="#generating-contract-types">Generating contract types</a></h5>
 <p>To make it easier to interact with our contract we use <code>fuelchain</code> to interpret the output ABI JSON from our contract. This JSON was created on the moment we executed the <code>forc build</code> to compile our Sway Contract into binary.</p>
 <p>If you see the folder <code>fuel-project/counter-contract/out</code> you will be able to see the ABI JSON there. If you want to learn more, read the <a href="https://fuellabs.github.io/fuel-specs/master/protocol/abi">ABI spec</a>.</p>
-<p>Inside <code>counter-contract/frontend</code> run;</p>
+<p>Inside the <code>fuel-project/frontend</code> directory run:</p>
 <pre><code class="language-console">$ npx fuelchain --target=fuels --out-dir=./src/contracts ../counter-contract/out/debug/*-abi.json
 Successfully generated 4 typings!
 </code></pre>
@@ -455,10 +458,10 @@ Successfully generated 4 typings!
 <h3 id="create-a-wallet-again"><a class="header" href="#create-a-wallet-again">Create A Wallet (Again)</a></h3>
 <p>For interacting with the fuel network we have to submit signed transactions with enough funds to cover network fees. The Fuel TS SDK don't currently support Wallet integrations, requiring us to have a non-safe wallet inside the WebApp using a privateKey.</p>
 <blockquote>
-<p><strong>Note</strong>
-This should be done only for development purpose. Never expose a web app with a private key inside. The Fuel Wallet is in active development, follow the progress <a href="https://github.com/FuelLabs/fuels-wallet">here</a>.</p>
+<p><strong>Note</strong>: This should be done only for development purpose. Never expose a web app with a private key inside. The Fuel Wallet is in active development, follow the progress <a href="https://github.com/FuelLabs/fuels-wallet">here</a>.</p>
 </blockquote>
-<p>In the root of the frontend project create a file, createWallet.js</p>
+<p>In the root of the frontend project create a file named <code>createWallet.js</code> and add the following code:</p>
+<p>File: <code>./frontend/createWallet.js</code></p>
 <pre><code class="language-js">const { Wallet } = require(&quot;fuels&quot;);
 
 const wallet = Wallet.generate();
@@ -472,20 +475,19 @@ address fuel160ek8t7fzz89wzl595yz0rjrgj3xezjp6pujxzt2chn70jrdylus5apcuq
 private key 0x719fb4da652f2bd4ad25ce04f4c2e491926605b40e5475a80551be68d57e0fcb
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>
-You should use the generated address and private key.</p>
+<p><strong>Note</strong>: You should use the generated address and private key.</p>
 </blockquote>
 <p>Save the private key, you will need this later to set it as a string value for a variable <code>WALLET_SECRET</code> in your <code>App.tsx</code> file. More on that below.</p>
 <p>First, take the address of your wallet and use it to get some coins from <a href="https://faucet-beta-1.fuel.network/">the testnet faucet</a>.</p>
 <p>Now you're ready to build and ship ⛽</p>
 <blockquote>
-<p><strong>Note</strong>
-The team is working to simplify the process of creating a wallet, and eliminate the need to create a wallet twice. Keep an eye out for these updates.</p>
+<p><strong>Note</strong>: The team is working to simplify the process of creating a wallet, and eliminate the need to create a wallet twice. Keep an eye out for these updates.</p>
 </blockquote>
 <h3 id="modify-the-app"><a class="header" href="#modify-the-app">Modify the App</a></h3>
-<p>Inside the <code>frontend</code> folder let's add code that interacts with our contract.
-Read the comments to help you understand the App parts.</p>
-<p>Change the file <code>fuel-project/frontend/src/App.tsx</code> to:</p>
+<p>Inside the <code>frontend/src</code> folder let's add code that interacts with our contract.
+Read the comments to help you understand the App parts.
+Change the file <code>fuel-project/frontend/src/App.tsx</code> to:</p>
+<p>File: <code>./frontend/src/App.tsx</code></p>
 <pre><code class="language-ts">import React, { useEffect, useState } from &quot;react&quot;;
 import { Wallet } from &quot;fuels&quot;;
 import &quot;./App.css&quot;;
@@ -495,10 +497,13 @@ import { CounterContractAbi__factory } from &quot;./contracts&quot;;
 // The address of the contract deployed the Fuel testnet
 const CONTRACT_ID = &quot;&lt;YOUR-CONTRACT-ID&gt;&quot;;
 //the private key from createWallet.js
-const WALLET_SECRET = &quot;&lt;YOUR-PRIVATE-KEY&gt;&quot;
+const WALLET_SECRET = &quot;&lt;YOUR-PRIVATE-KEY&gt;&quot;;
 // Create a Wallet from given secretKey in this case
 // The one we configured at the chainConfig.json
-const wallet = new Wallet(WALLET_SECRET, &quot;https://node-beta-1.fuel.network/graphql&quot;);
+const wallet = new Wallet(
+  WALLET_SECRET,
+  &quot;https://node-beta-1.fuel.network/graphql&quot;
+);
 // Connects out Contract instance to the deployed contract
 // address using the given wallet.
 const contract = CounterContractAbi__factory.connect(CONTRACT_ID, wallet);
@@ -521,7 +526,7 @@ function App() {
     // Creates a transactions to call the increment function
     // because it creates a TX and updates the contract state this requires the wallet to have enough coins to cover the costs and also to sign the Transaction
     try {
-      await contract.functions.increment().txParams({gasPrice:1}).call();
+      await contract.functions.increment().txParams({ gasPrice: 1 }).call();
       const { value } = await contract.functions.count().get();
       setCounter(Number(value));
     } finally {
@@ -532,9 +537,7 @@ function App() {
     &lt;div className=&quot;App&quot;&gt;
       &lt;header className=&quot;App-header&quot;&gt;
         &lt;p&gt;Counter: {counter}&lt;/p&gt;
-        &lt;button
-          disabled={loading}
-          onClick={increment}&gt;
+        &lt;button disabled={loading} onClick={increment}&gt;
           {loading ? &quot;Incrementing...&quot; : &quot;Increment&quot;}
         &lt;/button&gt;
       &lt;/header&gt;
@@ -544,8 +547,8 @@ function App() {
 export default App;
 </code></pre>
 <h3 id="run-your-project"><a class="header" href="#run-your-project">Run your project</a></h3>
-<p>Now it's time to have fun run the project on your browser;</p>
-<p>Inside <code>fuel-project/frontend</code> run;</p>
+<p>Now it's time to have fun, run the project in your browser.</p>
+<p>Inside the <code>fuel-project/frontend</code> directory run:</p>
 <pre><code class="language-console">$ npm start
 Compiled successfully!
 
@@ -567,7 +570,7 @@ To create a production build, use npm run build.
 <li>In your contract directory, run <code>forc build</code></li>
 <li>In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: <code>forc deploy --url https://node-beta-1.fuel.network/graphql --gas-price 1</code></li>
 <li>In your frontend directory, re-run this command: <code>npx fuelchain --target=fuels --out-dir=./src/contracts ../counter-contract/out/debug/*-abi.json</code></li>
-<li>In your frontend directory, update the contract ID in your <code>App.tsx</code> file</li>
+<li>In your <code>fuel-project/frontend</code> directory, update the contract ID in your <code>App.tsx</code> file</li>
 </ul>
 <h2 id="need-help"><a class="header" href="#need-help">Need Help?</a></h2>
 <p>Head over to the <a href="https://discord.com/invite/fuelnetwork">Fuel discord</a> to get help.</p>
