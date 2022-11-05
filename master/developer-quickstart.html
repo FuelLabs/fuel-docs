@@ -431,7 +431,7 @@ Success! Created frontend at Fuel/fuel-project/frontend
 <ol>
 <li><code>fuels</code>: The umbrella package that includes all the main tools; <code>Wallet</code>, <code>Contracts</code>, <code>Providers</code> and more.</li>
 <li><code>fuelchain</code>: Fuelchain is the ABI TypeScript generator.</li>
-<li><code>typechain-target-fuels</code>: The Fuelchain Target is the specific interpreter for the <a href="https://github.com/FuelLabs/fuel-specs/blob/master/specs/protocol/abi.md">Fuel ABI Spec</a>.</li>
+<li><code>typechain-target-fuels</code>: The Fuelchain Target is the specific interpreter for the <a href="https://fuellabs.github.io/fuel-specs/master/protocol/abi">ABI spec</a>.</li>
 </ol>
 <blockquote>
 <p>ABI stands for Application Binary Interface. ABI's inform the application the interface to interact with the VM, in other words, they provide info to the APP such as what methods a contract has, what params, types it expects, etc...</p>
@@ -446,7 +446,7 @@ added 33 packages, and audited 1526 packages in 2s
 </code></pre>
 <h5 id="generating-contract-types"><a class="header" href="#generating-contract-types">Generating contract types</a></h5>
 <p>To make it easier to interact with our contract we use <code>fuelchain</code> to interpret the output ABI JSON from our contract. This JSON was created on the moment we executed the <code>forc build</code> to compile our Sway Contract into binary.</p>
-<p>If you see the folder <code>fuel-project/counter-contract/out</code> you will be able to see the ABI JSON there. If you want to learn more, read the <a href="https://github.com/FuelLabs/fuel-specs/blob/master/specs/protocol/abi.md">ABI Specs here</a>.</p>
+<p>If you see the folder <code>fuel-project/counter-contract/out</code> you will be able to see the ABI JSON there. If you want to learn more, read the <a href="https://fuellabs.github.io/fuel-specs/master/protocol/abi">ABI spec</a>.</p>
 <p>Inside <code>counter-contract/frontend</code> run;</p>
 <pre><code class="language-console">$ npx fuelchain --target=fuels --out-dir=./src/contracts ../counter-contract/out/debug/*-abi.json
 Successfully generated 4 typings!
