@@ -412,9 +412,9 @@ Move into the `frontend` folder, then install the dependencies:
 
 ```console
 $ cd frontend
-$ npm install fuels --save
+$ npm install fuels@0.17.0 --save 
 added 65 packages, and audited 1493 packages in 4s
-$ npm install fuelchain typechain-target-fuels --save-dev
+$ npm install fuelchain@0.17.0 typechain-target-fuels@0.17.0 --save-dev
 added 33 packages, and audited 1526 packages in 2s
 ```
 
