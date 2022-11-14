@@ -6,3 +6,4 @@
 - [Rust SDK](./rust-sdk.md)
 - [Indexer](./indexer.md)
 - [Wallet and Faucet](./wallet-faucet.md)
+- [Fuelup](./fuelup.md)
