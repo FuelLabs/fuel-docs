@@ -39,4 +39,5 @@
   - [Rust SDK](./for-developers/rust-sdk.md)
   - [Indexer](./for-developers/indexer.md)
   - [Wallet & Faucet](./for-developers/wallet-faucet.md)
+  - [Fuelup](./for-developers/fuelup.md)
 - [Glossary]()
