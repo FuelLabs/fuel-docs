@@ -34,7 +34,7 @@ Version 0.30.0 is the recommended version for the Rusk SDK on `beta-2`.
 
 ## Toolchain Configuration
 
-To configure the optimal toolchain for `beta-2`, ensure you have [fuelup](https://fuellabs.github.io/fuelup/v0.12.0/) installed, then run the following commands:
+To configure the optimal toolchain for `beta-2`, ensure you have [fuelup](https://fuellabs.github.io/fuelup/v0.12.0/) installed, then run the following command:
 
 ```console
 $ fuelup self update
