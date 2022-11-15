@@ -3,9 +3,13 @@
 The `beta-2` network is launched with a bridge to Ethereum's Goerli test network. With this network, developers are able to build and test cross-chain dapps, laying the foundations for projects building on Fuel to tap into Ethereum's massive liquidity and existing user base. Read more about `beta-2` [here.](./beta-2.md)
 
 Ethereum contracts (Goerli):
-"FuelMessagePortal": `0x4c7181fff2053D232Fc74Ff165b83FE8Dcb65910`,
-"BinaryMerkleTreeLib": `0x40Ab53ba8BEEe302539f417eCC6C5FBb99F3B7Cd`,
-"FuelSidechainConsensus": `0xF712e555ce59858f680890DA7dc2B51eD048580d`,
+
+"FuelMessagePortal": `0x4c7181fff2053D232Fc74Ff165b83FE8Dcb65910`
+
+"BinaryMerkleTreeLib": `0x40Ab53ba8BEEe302539f417eCC6C5FBb99F3B7Cd`
+
+"FuelSidechainConsensus": `0xF712e555ce59858f680890DA7dc2B51eD048580d`
+
 "L1ERC20Gateway": `0x96c53cd98B7297564716a8f2E1de2C83928Af2fe`
 
 The ERC-20 Gateway contract on Georli Ethereum is at `0x96c53cd98B7297564716a8f2E1de2C83928Af2fe`.
