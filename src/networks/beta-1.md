@@ -8,17 +8,17 @@ The beta-1 network is the first public Fuel testnet, shared by all developers an
 
 🔍 Block explorer - A block explorer (still heavily in development) is available at [https://fuellabs.github.io/block-explorer-v2](https://fuellabs.github.io/block-explorer-v2).
 
-Join the [Fuel Labs Discord](https://discord.com/invite/fuelnetwork) and head to the 🧪︱testnet-beta-1 channel to get support from our team. 
+Join the [Fuel Labs Discord](https://discord.com/invite/fuelnetwork) and head to the 🧪︱testnet-beta-1 channel to get support from our team.
 
 ## SDK Versioning
 
-Version 0.17.0 is the recommended version of the TS SDK on `beta-1`. 
+Version 0.17.0 is the recommended version of the TS SDK on `beta-1`.
 
 Version 0.30.0 is the recommended version for the Rusk SDK on `beta-1`,  
 
 ## Toolchain Configuration
 
-To configure the optimal toolchain for `beta-1`, ensure you have [fuelup](https://fuellabs.github.io/fuelup/v0.12.0/) installed, then run the following command: 
+To configure the optimal toolchain for `beta-1`, ensure you have [fuelup](https://fuellabs.github.io/fuelup/v0.12.0/) installed, then run the following command:
 
 ```console
 $ fuelup toolchain install beta-1
@@ -55,6 +55,7 @@ The Fuel toolchain is installed and up to date
 ```
 
 This installs the following components:
+
 - forc 0.26.0
 - forc-wallet 0.1.2
 - fuel-core 0.10.1

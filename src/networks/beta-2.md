@@ -26,11 +26,11 @@ Join the [Fuel Labs Discord](https://discord.com/invite/fuelnetwork) and head to
 
 Version 0.21.0 is the recommended version of the TS SDK on `beta-2`.  
 
-Version 0.30.0 is the recommended version for the Rusk SDK on `beta-2`, 
+Version 0.30.0 is the recommended version for the Rusk SDK on `beta-2`.
 
 ## Toolchain Configuration
 
-To configure the optimal toolchain for `beta-2`, ensure you have [fuelup](https://fuellabs.github.io/fuelup/v0.12.0/) installed, then run the following commands: 
+To configure the optimal toolchain for `beta-2`, ensure you have [fuelup](https://fuellabs.github.io/fuelup/v0.12.0/) installed, then run the following commands:
 
 ```console
 $ fuelup self update
@@ -69,6 +69,7 @@ Installed fuel-core v0.14.1 for toolchain 'beta-2-aarch64-apple-darwin'
 ```
 
 This installs the following components and versions:
+
 - forc 0.31.1
 - forc-explore 0.28.1
 - forc-wallet 0.1.2
@@ -85,6 +86,6 @@ $ fuelup component add
 
 ## Predicate
 
-Messages intended for contracts use a pre-defined predicate as the message recipient. This predicate allows anyone to relay the message to the target contract and only the target contract. Once the contract receives the message it can see who originated it along with any special message payload and processes it accordingly. Since anyone can relay the message using this predicate it opens up possibilities for automated message processing as a service. 
+Messages intended for contracts use a pre-defined predicate as the message recipient. This predicate allows anyone to relay the message to the target contract and only the target contract. Once the contract receives the message it can see who originated it along with any special message payload and processes it accordingly. Since anyone can relay the message using this predicate it opens up possibilities for automated message processing as a service.
 
 The predicate root is `0xc453f2ed45abb180e0a17aa88e78941eb8169c5f949ee218b45afcb0cfd2c0a8`.
