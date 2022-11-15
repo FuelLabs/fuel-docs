@@ -1,4 +1,6 @@
-# Testnet Node
+# Testnet Networks
+
+Check out the [networks page](../networks/networks.md) for information on our testnets, `beta-1` and `beta-2`.
 
 ## Connect Rust SDK to Fuel Node
 
