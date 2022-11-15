@@ -79,16 +79,6 @@ This installs the following components and versions:
 - forc-wallet 0.1.2
 - fuel-core 0.14.1
 
-If you wanted to create a custom toolchain with the same set of versions that get installed when you install the `beta-2 toolchain` you could do that manually. This is not recommended, as you can get this toolchain out of the box. To create a custom toolchain with the same versioning as the `beta-2` toolchain, run the following commands:
-
-```console
-$ fuelup toolchain new beta-2-custom-toolchain
-$ fuelup component add forc@0.31.1
-$ fuelup component add forc-explorer@0.28.1
-$ fuelup component add forc-wallet@0.1.2
-$ fuelup component add forc-core@0.14.1
-```
-
 ## Predicate
 
 Messages intended for contracts use a pre-defined predicate as the message recipient. This predicate allows anyone to relay the message to the target contract and only the target contract. Once the contract receives the message it can see who originated it along with any special message payload and processes it accordingly. Since anyone can relay the message using this predicate it opens up possibilities for automated message processing as a service.
