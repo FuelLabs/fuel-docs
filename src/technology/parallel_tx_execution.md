@@ -8,6 +8,6 @@ Without a mechanism for determining and handling [dependencies](https://en.wikip
 
 ## State Access Lists and UTXOs
 
-Fuel supports parallel transaction execution through strict (i.e. mandatory) access lists, similar to EIP-648. Each transaction must specify which contracts the transaction _may_ interact with; if a transaction attempts to access a contract not in this list then execution will _revert_. With these access lists, execution can be done in parallel across transactions that touch disjoint sets of contracts. See [here](https://github.com/FuelLabs/fuel-specs/blob/master/specs/protocol/tx_validity.md#access-lists) for additional context.
+Fuel supports parallel transaction execution through strict (i.e. mandatory) access lists, similar to EIP-648. Each transaction must specify which contracts the transaction _may_ interact with; if a transaction attempts to access a contract not in this list then execution will _revert_. With these access lists, execution can be done in parallel across transactions that touch disjoint sets of contracts. See [here](https://fuellabs.github.io/fuel-specs/master/protocol/tx_validity#access-lists) for additional context.
 
 Access lists are implemented with UTXOs. UTXOs give other nice properties, but for the purposes of parallel transaction execution serve simply as [strict access lists](https://forum.celestia.org/t/accounts-strict-access-lists-and-utxos/37).

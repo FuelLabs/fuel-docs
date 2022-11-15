@@ -24,12 +24,12 @@ The main features of a smart contract that differentiate it from scripts or pred
 
 A script is runnable bytecode on the chain which can call contracts to perform some task. It does not represent ownership of any resources and it cannot be called by a contract.
 
-|             | deployable on the blockchain:       | can have state:      | callable on the blockchain: | designed for code reuse: |
-|-------------|-------------------------------------|----------------------|-----------------------------|--------------------------|
-| contract  | ✅                                  | ✅                   | ✅                          | ❌                        |
-| predicate | ✅                                  | ❌                    | ❌                           | ❌                        |
-| script    | ❌                                   | ❌                    | ❌                           | ❌                        |
-| library   | ✅ (via a contract or predicate) | ❌ | ❌                           | ✅                       |
+|           | deployable on the blockchain:    | can have state: | callable on the blockchain: | designed for code reuse: |
+| --------- | -------------------------------- | --------------- | --------------------------- | ------------------------ |
+| contract  | ✅                               | ✅              | ✅                          | ❌                       |
+| predicate | ✅                               | ❌              | ❌                          | ❌                       |
+| script    | ❌                               | ❌              | ❌                          | ❌                       |
+| library   | ✅ (via a contract or predicate) | ❌              | ❌                          | ✅                       |
 
 See [the chapter on program types](https://fuellabs.github.io/sway/master/sway-program-types/index.html) for more information.
 
@@ -147,8 +147,7 @@ impl Counter for Contract {
 }
 ```
 
-> **Note**
-> `return storage.counter;` is equivalent to `storage.counter`.
+> **Note**:`return storage.counter;` is equivalent to `storage.counter`.
 
 ### What we just did
 
@@ -169,6 +168,8 @@ fn increment() {
 ```
 
 Here's what your code should look like so far:
+
+File: `./counter-contract/src/main.sw`
 
 ```sway
 contract;
@@ -237,7 +238,7 @@ We will start by adding a Rust integration test harness using a Cargo generate t
 cargo install cargo-generate
 ```
 
-> _**Note**: You can learn more about cargo generate by visiting [its repository](https://github.com/cargo-generate/cargo-generate)._
+> **Note**: You can learn more about cargo generate by visiting [its repository](https://github.com/cargo-generate/cargo-generate).
 
 Now, let's generate the default test harness with the following:
 
@@ -288,6 +289,8 @@ Now that we have our default test harness, let's add some useful tests to it.
 
 At the bottom of `test/harness.rs`, define the body of `can_get_contract_id()`. Here is what your code should look like to verify that the value of the counter did get incremented:
 
+File: `tests/harness.rs`
+
 ```sway
 #[tokio::test]
 async fn can_get_contract_id() {
@@ -307,7 +310,7 @@ async fn can_get_contract_id() {
 
 Run `cargo test` in the terminal. If all goes well, the output should look as follows:
 
-``` console
+```console
 $ cargo test
   ...
   running 1 test
@@ -339,24 +342,29 @@ Now that you have a wallet, you can deploy with `forc deploy` and passing in the
 
 `forc deploy --url https://node-beta-1.fuel.network/graphql --gas-price 1`
 
-> **Note**
-> We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
+> **Note**: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
 
 The terminal will ask for the address of the wallet you want to sign this transaction with, paste in the address you saved earlier, it looks like this: `fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8`
 
-The terminal will output your contract id. Be sure to save this as you will need it to build a frontend with the Typescript SDK.
+The terminal will output your `Contract id` like this:
+
+```console
+Contract id: 0xe5dc89f7b8c62e40927a6b17f144583bf6571d2468ab1e2554d2731f4c9fc428
+```
+
+Be sure to save this as you will need it to build a frontend with the Typescript SDK later in this tutorial.
 
 The terminal will output a `message to sign` and prompt you for a signature. Open a new terminal tab and view your accounts by running `forc wallet list`. If you followed these steps, you'll notice you only have one account, `0`.
 
 Grab the `message to sign` from your other terminal and sign with your account by running the following command:
 
-``` console
+```console
 forc wallet sign` + `[message to sign, without brackets]` + `[the account number, without brackets]`
 ```
 
 Your command should look like this:
 
-``` console
+```console
 $ forc wallet sign 16d7a8f9d15cfba1bd000d3f99cd4077dfa1fce2a6de83887afc3f739d6c84df 0
 Please enter your password to decrypt initialized wallet's phrases:
 Signature: 736dec3e92711da9f52bed7ad4e51e3ec1c9390f4b05caf10743229295ffd5c1c08a4ca477afa85909173af3feeda7c607af5109ef6eb72b6b40b3484db2332c
@@ -402,7 +410,7 @@ On this step we need to install 3 dependencies for the project:
 
 1. `fuels`: The umbrella package that includes all the main tools; `Wallet`, `Contracts`, `Providers` and more.
 2. `fuelchain`: Fuelchain is the ABI TypeScript generator.
-3. `typechain-target-fuels`: The Fuelchain Target is the specific interpreter for the [Fuel ABI Spec](https://github.com/FuelLabs/fuel-specs/blob/master/specs/protocol/abi.md).
+3. `typechain-target-fuels`: The Fuelchain Target is the specific interpreter for the [ABI spec](https://fuellabs.github.io/fuel-specs/master/protocol/abi).
 
 > ABI stands for Application Binary Interface. ABI's inform the application the interface to interact with the VM, in other words, they provide info to the APP such as what methods a contract has, what params, types it expects, etc...
 
@@ -412,9 +420,9 @@ Move into the `frontend` folder, then install the dependencies:
 
 ```console
 $ cd frontend
-$ npm install fuels --save
+$ npm install fuels@0.17.0 --save 
 added 65 packages, and audited 1493 packages in 4s
-$ npm install fuelchain typechain-target-fuels --save-dev
+$ npm install fuelchain@0.17.0 typechain-target-fuels@0.17.0 --save-dev
 added 33 packages, and audited 1526 packages in 2s
 ```
 
@@ -422,9 +430,9 @@ added 33 packages, and audited 1526 packages in 2s
 
 To make it easier to interact with our contract we use `fuelchain` to interpret the output ABI JSON from our contract. This JSON was created on the moment we executed the `forc build` to compile our Sway Contract into binary.
 
-If you see the folder `fuel-project/counter-contract/out` you will be able to see the ABI JSON there. If you want to learn more, read the [ABI Specs here](https://github.com/FuelLabs/fuel-specs/blob/master/specs/protocol/abi.md).
+If you see the folder `fuel-project/counter-contract/out` you will be able to see the ABI JSON there. If you want to learn more, read the [ABI spec](https://fuellabs.github.io/fuel-specs/master/protocol/abi).
 
-Inside `counter-contract/frontend` run;
+Inside the `fuel-project/frontend` directory run:
 
 ```console
 $ npx fuelchain --target=fuels --out-dir=./src/contracts ../counter-contract/out/debug/*-abi.json
@@ -437,10 +445,11 @@ Now you should be able to find a new folder `fuel-project/frontend/src/contracts
 
 For interacting with the fuel network we have to submit signed transactions with enough funds to cover network fees. The Fuel TS SDK don't currently support Wallet integrations, requiring us to have a non-safe wallet inside the WebApp using a privateKey.
 
-> **Note**
->This should be done only for development purpose. Never expose a web app with a private key inside. The Fuel Wallet is in active development, follow the progress [here](https://github.com/FuelLabs/fuels-wallet).
+> **Note**: This should be done only for development purpose. Never expose a web app with a private key inside. The Fuel Wallet is in active development, follow the progress [here](https://github.com/FuelLabs/fuels-wallet).
 
-In the root of the frontend project create a file, createWallet.js
+In the root of the frontend project create a file named `createWallet.js` and add the following code:
+
+File: `./frontend/createWallet.js`
 
 ```js
 const { Wallet } = require("fuels");
@@ -453,14 +462,13 @@ console.log("private key", wallet.privateKey);
 
 In a terminal, run the following command:
 
-``` console
+```console
 $ node createWallet.js
 address fuel160ek8t7fzz89wzl595yz0rjrgj3xezjp6pujxzt2chn70jrdylus5apcuq
 private key 0x719fb4da652f2bd4ad25ce04f4c2e491926605b40e5475a80551be68d57e0fcb
 ```
 
-> **Note**
-> You should use the generated address and private key.
+> **Note**: You should use the generated address and private key.
 
 Save the private key, you will need this later to set it as a string value for a variable `WALLET_SECRET` in your `App.tsx` file. More on that below.
 
@@ -468,15 +476,15 @@ First, take the address of your wallet and use it to get some coins from [the te
 
 Now you're ready to build and ship ⛽
 
-> **Note**
-> The team is working to simplify the process of creating a wallet, and eliminate the need to create a wallet twice. Keep an eye out for these updates.
+> **Note**: The team is working to simplify the process of creating a wallet, and eliminate the need to create a wallet twice. Keep an eye out for these updates.
 
 ### Modify the App
 
-Inside the `frontend` folder let's add code that interacts with our contract.
+Inside the `frontend/src` folder let's add code that interacts with our contract.
 Read the comments to help you understand the App parts.
-
 Change the file `fuel-project/frontend/src/App.tsx` to:
+
+File: `./frontend/src/App.tsx`
 
 ```ts
 import React, { useEffect, useState } from "react";
@@ -488,10 +496,13 @@ import { CounterContractAbi__factory } from "./contracts";
 // The address of the contract deployed the Fuel testnet
 const CONTRACT_ID = "<YOUR-CONTRACT-ID>";
 //the private key from createWallet.js
-const WALLET_SECRET = "<YOUR-PRIVATE-KEY>"
+const WALLET_SECRET = "<YOUR-PRIVATE-KEY>";
 // Create a Wallet from given secretKey in this case
 // The one we configured at the chainConfig.json
-const wallet = new Wallet(WALLET_SECRET, "https://node-beta-1.fuel.network/graphql");
+const wallet = new Wallet(
+  WALLET_SECRET,
+  "https://node-beta-1.fuel.network/graphql"
+);
 // Connects out Contract instance to the deployed contract
 // address using the given wallet.
 const contract = CounterContractAbi__factory.connect(CONTRACT_ID, wallet);
@@ -514,7 +525,7 @@ function App() {
     // Creates a transactions to call the increment function
     // because it creates a TX and updates the contract state this requires the wallet to have enough coins to cover the costs and also to sign the Transaction
     try {
-      await contract.functions.increment().txParams({gasPrice:1}).call();
+      await contract.functions.increment().txParams({ gasPrice: 1 }).call();
       const { value } = await contract.functions.count().get();
       setCounter(Number(value));
     } finally {
@@ -525,9 +536,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>Counter: {counter}</p>
-        <button
-          disabled={loading}
-          onClick={increment}>
+        <button disabled={loading} onClick={increment}>
           {loading ? "Incrementing..." : "Increment"}
         </button>
       </header>
@@ -539,9 +548,9 @@ export default App;
 
 ### Run your project
 
-Now it's time to have fun run the project on your browser;
+Now it's time to have fun, run the project in your browser.
 
-Inside `fuel-project/frontend` run;
+Inside the `fuel-project/frontend` directory run:
 
 ```console
 $ npm start
@@ -562,7 +571,7 @@ To create a production build, use npm run build.
 
 [Here is the repo for this project](https://github.com/FuelLabs/developer-quickstart). If you run into any problems, a good first step is to compare your code to this repo and resolve any differences.
 
-Tweet us [@fuellabs_](https://twitter.com/fuellabs_) letting us know you just built a dapp on Fuel, you might get invited to a private group of builders, be invited to the next Fuel dinner, get alpha on the project, or something 👀.
+Tweet us [@fuellabs\_](https://twitter.com/fuellabs_) letting us know you just built a dapp on Fuel, you might get invited to a private group of builders, be invited to the next Fuel dinner, get alpha on the project, or something 👀.
 
 ### Updating The Contract
 
@@ -571,7 +580,7 @@ If you make changes to your contract, here are the steps you should take to get 
 - In your contract directory, run `forc build`
 - In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy --url https://node-beta-1.fuel.network/graphql --gas-price 1`
 - In your frontend directory, re-run this command: `npx fuelchain --target=fuels --out-dir=./src/contracts ../counter-contract/out/debug/*-abi.json`
-- In your frontend directory, update the contract ID in your `App.tsx` file
+- In your `fuel-project/frontend` directory, update the contract ID in your `App.tsx` file
 
 ## Need Help?
 
