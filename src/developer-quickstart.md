@@ -410,7 +410,7 @@ On this step we need to install 3 dependencies for the project:
 
 1. `fuels`: The umbrella package that includes all the main tools; `Wallet`, `Contracts`, `Providers` and more.
 2. `fuelchain`: Fuelchain is the ABI TypeScript generator.
-3. `typechain-target-fuels`: The Fuelchain Target is the specific interpreter for the [ABI spec](https://fuellabs.github.io/fuel-specs/master/protocol/abi).
+3. `typechain-target-fuels`: The Fuelchain Target is the specific interpreter for the [ABI spec](https://fuellabs.github.io/fuel-specs/master/protocol/abi/index.html).
 
 > ABI stands for Application Binary Interface. ABI's inform the application the interface to interact with the VM, in other words, they provide info to the APP such as what methods a contract has, what params, types it expects, etc...
 
