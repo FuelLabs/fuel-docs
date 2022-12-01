@@ -6,7 +6,7 @@ An address is a cryptographic hash representing an identity of either a wallet, 
 
 ## AssetId
 
-An AssetId is a unique address for an on-chain asset. It is defined as the root of the bytecode of the contract minting the asset.
+An AssetId is a unique identifier for an on-chain asset. It is defined as the root of the bytecode of the contract minting the asset.
 
 ## Base Asset
 
@@ -126,7 +126,7 @@ An indexer is a program that watches and organizes blockchain data so it can be 
 
 ## Input
 
-An input refers to a transaction input, or which state elements (usually: UTXOs) are consumed by a transaction.
+An input refers to a transaction input, which is a UTXO consumed by a transaction.
 
 ## Layer 1 (L1)
 
@@ -182,7 +182,7 @@ An optimistic rollup is a sidechain that uses fraud proofs to verify transaction
 
 ## Output
 
-An output refers to a transaction output, or which state elements are output by a transaction.
+An output refers to a transaction output, or which UTXOs are output by a transaction.
 
 ## Parallel Transactions
 
@@ -190,7 +190,7 @@ Parallel transactions refers to the ability of the FuelVM to process multiple tr
 
 ## Predicate
 
-A predicate is a pure function that can return true or false, and is sent inside a transaction as bytecode and checked at transaction validity time. If it evaluates to `false` the transaction will not be processed, and no gas will be used. If it evaluates to `true`, any coins belonging to the address equal to the root of the predicate bytecode may be spent by the transaction.
+A predicate is a pure function that can return true or false, and is sent inside a transaction as bytecode and checked at transaction validity time. If it evaluates to `false` the transaction will not be processed, and no gas will be used. If it evaluates to `true`, any coins belonging to the address equal to the Merkle root of the predicate bytecode may be spent by the transaction.
 
 ## Private Key
 
@@ -198,7 +198,7 @@ A cryptographic key that is used to prove ownership by producing a digital signa
 
 ## Public Key
 
-A cryptographic key that is generated from its associated private key and can be shared publicly.
+A cryptographic key that is generated from its associated private key and can be shared publicly. Addresses are derived from public keys.
 
 ## Receipt
 
