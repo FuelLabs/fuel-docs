@@ -24,9 +24,9 @@ A block explorer is an interface for block and transaction data produced by a bl
 
 The block height refers to the total number of blocks produced in a blockchain.
 
-## Block Id
+## Block ID
 
-A block id is a unique identifier for a particular block.
+A block ID is a unique identifier for a particular block.
 
 ## Bridge
 
@@ -42,7 +42,7 @@ Another name for a blockchain.
 
 ## ChainId
 
-A unique id for a blockchain.
+A unique ID for a blockchain.
 
 ## Client
 
@@ -58,7 +58,7 @@ The consensus layer defines the state and validates that all nodes on the blockc
 
 ## Consensus Parameters
 
-Consensus parameters are the rules used by clients to determine and validity of and finalize a block.
+Consensus parameters are the rules used by clients to determine the validity of and finalize a block.
 
 ## Contract Call
 
