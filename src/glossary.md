@@ -2,11 +2,11 @@
 
 ## Address
 
-An address is a cryptographic hash representing an identity of either a wallet, contract address, or a predicate root.
+An address is a cryptographic hash representing an identity of a wallet or a predicate root.
 
 ## AssetId
 
-An AssetId is a unique identifier for an on-chain asset. It is defined as the root of the bytecode of the contract minting the asset.
+An asset ID is a unique identifier for an on-chain asset. It is derived from the root of the bytecode of the contract minting the asset.
 
 ## Base Asset
 
@@ -22,7 +22,7 @@ A block explorer is an interface for block and transaction data produced by a bl
 
 ## Block Height
 
-The block height refers to the total number of blocks produced in a blockchain.
+The block height refers to the total number of valid blocks produced in the history of a blockchain, starting with the genesis block.
 
 ## Block ID
 
@@ -63,6 +63,10 @@ Consensus parameters are the rules used by clients to determine the validity of 
 ## Contract Call
 
 Calling a contract means invoking a function from a smart contract that has been deployed to the blockchain.
+
+## Contract ID
+
+The contract ID is a unique identifier for a contract derived from the root of the contract bytecode.
 
 ## Data Availability
 
@@ -147,6 +151,10 @@ A locked wallet is a wallet that can only interact with read-only smart contract
 ## Mainnet
 
 Mainnet refers to the main network of a blockchain, as opposed to a testnet.
+
+## Merkle Tree
+
+A Merkle tree is a data structure which uses a cryptographic hash function recursively to condense a set of data into a single value, called the root. It allows efficient proofs that a given element is part of the set.
 
 ## Message
 
