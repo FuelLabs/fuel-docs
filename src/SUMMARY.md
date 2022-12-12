@@ -13,7 +13,7 @@
     - [Monolithic Blockchains](./monolithic.md)
     - [Modular Blockchains]()
     - [Modular Blockchain Stack]()
-    - [What is a Modular Execution Layer](./modular-execution.md.)
+    - [What is a Modular Execution Layer](./modular-execution.md)
   - [Fuel Configurations](./fuel-configurations.md)
     - [Fuel as a rollup](./rollup.md)
     - [Fuel as an L1](./l1.md)
