@@ -58,7 +58,7 @@ $ fuelup default beta-2
 default toolchain set to 'beta-2-aarch64-apple-darwin'
 ```
 
-You can check your current toolchain anytime by running `fuelup show.`
+You can check your current toolchain anytime by running `fuelup show`.
 
 > Having problems with this part? Post your question on our forum [https://forum.fuel.network/](https://forum.fuel.network/). To help you as efficiently as possible, include the output of this command in your post: `fuelup show.`
 
