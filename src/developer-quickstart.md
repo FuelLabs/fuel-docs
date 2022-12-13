@@ -422,8 +422,8 @@ Move into the `frontend` folder, then run:
 
 ```console
 $ cd frontend
-$ npm install fuels@0.17.0 --save
-added 65 packages, and audited 1493 packages in 4s
+$ npm install fuels --save
+added 117 packages, and audited 118 packages in 22s
 ```
 
 ##### Generating contract types
