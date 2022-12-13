@@ -261,7 +261,10 @@ Navigate to your contract and then run the installation command:
 
 ```console
 $ cd counter-contract
+changed directory into `counter-countract`
 $ cargo install cargo-generate
+ Updating crates.io index...
+ installed package `cargo-generate v0.17.3`
 ```
 
 > **Note**: You can learn more about cargo generate by visiting [its repository](https://github.com/cargo-generate/cargo-generate).
