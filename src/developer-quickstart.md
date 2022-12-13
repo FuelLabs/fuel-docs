@@ -39,6 +39,10 @@ Start by [installing the Rust toolchain](https://fuellabs.github.io/sway/v0.24.3
 
 Then, [install the Fuel toolchain](https://github.com/FuelLabs/fuelup).
 
+Run `fuelup toolchain install beta-1` to install the `beta-1` toolchain.
+
+Run `fuelup show` to see the name of each toolchain distribution installed. If your default distribution isn't already set to `beta-1`, you can change it by running `fuelup default beta-1`.
+
 ## Your First Sway Project
 
 We'll build a simple counter contract with two functions: one to increment the counter, and one to return the value of the counter.
