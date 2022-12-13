@@ -41,7 +41,7 @@ Then, [install the Fuel toolchain](https://github.com/FuelLabs/fuelup).
 
 Make sure you have the latest version of `fuelup` by running the following command:
 
-```consoel
+```console
 $ fuelup self update
 Fetching binary from https://github.com/FuelLabs/fuelup/releases/download/v0.14.0/fuelup-0.14.0-aarch64-apple-darwin.tar.gz
 Downloading component fuelup without verifying checksum
