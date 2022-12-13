@@ -51,7 +51,7 @@ Moving /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt/fuelup to /Us
 
 Then run `fuelup toolchain install beta-2` to install the `beta-2` toolchain.
 
-Finally, the `beta-2` toolchain as your default distribution with the following command:
+Finally, set the `beta-2` toolchain as your default distribution with the following command:
 
 ```console
 $ fuelup default beta-2
