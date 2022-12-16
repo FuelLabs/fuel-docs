@@ -448,7 +448,7 @@ added 117 packages, and audited 118 packages in 22s
 
 ##### Generating contract types
 
-To make it easier to interact with our contract we use `fuels typegen` command to interpret the output ABI JSON from our contract, and generate Typescript definitions based on it. This JSON was created on the moment we executed the `forc build` to compile our Sway Contract into binary.
+To make it easier to interact with our contract we use `fuels typegen` command to interpret the output ABI JSON from our contract, and generate Typescript definitions based on it. This JSON was created when we executed the `forc build` command to compile our Sway Contract into binary.
 
 If you see the folder `fuel-project/counter-contract/out` you will be able to see the ABI JSON there. If you want to learn more, read the [ABI spec](https://fuellabs.github.io/fuel-specs/master/protocol/abi).
 
