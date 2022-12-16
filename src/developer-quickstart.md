@@ -39,9 +39,28 @@ Start by [installing the Rust toolchain](https://fuellabs.github.io/sway/v0.24.3
 
 Then, [install the Fuel toolchain](https://github.com/FuelLabs/fuelup).
 
-Run `fuelup toolchain install beta-1` to install the `beta-1` toolchain.
+Make sure you have the latest version of `fuelup` by running the following command:
 
-Run `fuelup show` to see the name of each toolchain distribution installed. If your default distribution isn't already set to `beta-1`, you can change it by running `fuelup default beta-1`.
+```console
+$ fuelup self update
+Fetching binary from https://github.com/FuelLabs/fuelup/releases/download/v0.14.0/fuelup-0.14.0-aarch64-apple-darwin.tar.gz
+Downloading component fuelup without verifying checksum
+Unpacking and moving fuelup to /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt
+Moving /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt/fuelup to /Users/.fuelup/bin/fuelup
+```
+
+Then run `fuelup toolchain install beta-2` to install the `beta-2` toolchain.
+
+Finally, set the `beta-2` toolchain as your default distribution with the following command:
+
+```console
+$ fuelup default beta-2
+default toolchain set to 'beta-2-aarch64-apple-darwin'
+```
+
+You can check your current toolchain anytime by running `fuelup show`.
+
+> Having problems with this part? Post your question on our forum [https://forum.fuel.network/](https://forum.fuel.network/). To help you as efficiently as possible, include the output of this command in your post: `fuelup show.`
 
 ## Your First Sway Project
 
@@ -236,10 +255,16 @@ We now have an `out` directory that contains our build artifacts such as the JSO
 
 ## Testing your Contract
 
-We will start by adding a Rust integration test harness using a Cargo generate template. Let's make sure we have the `cargo generate` command installed!
+We will start by adding a Rust integration test harness using a Cargo generate template. If this is your first time going through this quickstart, you'll need to install the `cargo generate` command. In the future, you can skip this step as it will already be installed.
+
+Navigate to your contract and then run the installation command:
 
 ```console
-cargo install cargo-generate
+$ cd counter-contract
+changed directory into `counter-countract`
+$ cargo install cargo-generate
+ Updating crates.io index...
+ installed package `cargo-generate v0.17.3`
 ```
 
 > **Note**: You can learn more about cargo generate by visiting [its repository](https://github.com/cargo-generate/cargo-generate).
@@ -247,12 +272,7 @@ cargo install cargo-generate
 Now, let's generate the default test harness with the following:
 
 ```console
-cargo generate --init fuellabs/sway templates/sway-test-rs --name counter-contract
-```
-
-If all goes well, the output should look as follows:
-
-```console
+$ cargo generate --init fuellabs/sway templates/sway-test-rs --name counter-contract
 ⚠️   Favorite `fuellabs/sway` not found in config, using it as a git repository: https://github.com/fuellabs/sway
 🤷   Project Name : counter-contract
 🔧   Destination: /home/user/path/to/counter-contract ...
@@ -338,13 +358,13 @@ With this, you'll get a fuel address that looks something like this: `fuel1efz7l
 
 ### Get Testnet Coins
 
-With your account address in hand, head to the [testnet faucet](https://faucet-beta-1.fuel.network/) to get some coins sent to your wallet.
+With your account address in hand, head to the [testnet faucet](https://faucet-beta-2.fuel.network/) to get some coins sent to your wallet.
 
 ### Deploy To Testnet
 
 Now that you have a wallet, you can deploy with `forc deploy` and passing in the testnet endpoint like this:
 
-`forc deploy --url https://node-beta-1.fuel.network/graphql --gas-price 1`
+`forc deploy --url node-beta-2.fuel.network/graphql --gas-price 1`
 
 > **Note**: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
 
@@ -478,7 +498,7 @@ private key 0x719fb4da652f2bd4ad25ce04f4c2e491926605b40e5475a80551be68d57e0fcb
 
 Save the private key, you will need this later to set it as a string value for a variable `WALLET_SECRET` in your `App.tsx` file. More on that below.
 
-First, take the address of your wallet and use it to get some coins from [the testnet faucet](https://faucet-beta-1.fuel.network/).
+First, take the address of your wallet and use it to get some coins from [the testnet faucet](https://faucet-beta-2.fuel.network/).
 
 Now you're ready to build and ship ⛽
 
@@ -500,14 +520,16 @@ import "./App.css";
 // You can also do command + space and the compiler will suggest the correct name.
 import { CounterContractAbi__factory } from "./contracts";
 // The address of the contract deployed the Fuel testnet
-const CONTRACT_ID = "<YOUR-CONTRACT-ID>";
+const CONTRACT_ID =
+  "0x3edb96c23766b8504caaff042994efa18460e7ba27f60191394a6bcf5be8d7d8";
 //the private key from createWallet.js
-const WALLET_SECRET = "<YOUR-PRIVATE-KEY>";
+const WALLET_SECRET =
+  "0xc4a69e0cc4ce1e0b45d25899b3cedced332d193c8a5c706187ffd50aa7591ce6";
 // Create a Wallet from given secretKey in this case
 // The one we configured at the chainConfig.json
-const wallet = new Wallet(
+const wallet = Wallet.fromPrivateKey(
   WALLET_SECRET,
-  "https://node-beta-1.fuel.network/graphql"
+  "https://node-beta-2.fuel.network/graphql"
 );
 // Connects out Contract instance to the deployed contract
 // address using the given wallet.
@@ -575,7 +597,7 @@ To create a production build, use npm run build.
 
 #### ✨⛽✨ Congrats you have completed your first DApp on Fuel ✨⛽✨
 
-[Here is the repo for this project](https://github.com/FuelLabs/developer-quickstart). If you run into any problems, a good first step is to compare your code to this repo and resolve any differences.
+[Here is the repo for this project](https://github.com/FuelLabs/beta2-quickstart). If you run into any problems, a good first step is to compare your code to this repo and resolve any differences.
 
 Tweet us [@fuellabs\_](https://twitter.com/fuellabs_) letting us know you just built a dapp on Fuel, you might get invited to a private group of builders, be invited to the next Fuel dinner, get alpha on the project, or something 👀.
 
@@ -584,10 +606,11 @@ Tweet us [@fuellabs\_](https://twitter.com/fuellabs_) letting us know you just b
 If you make changes to your contract, here are the steps you should take to get your frontend and contract back in sync:
 
 - In your contract directory, run `forc build`
-- In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy --url https://node-beta-1.fuel.network/graphql --gas-price 1`
+- In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy --url node-beta-2.fuel.network/graphql --gas-price 1`
 - In your frontend directory, re-run this command: `npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts`
+
 - In your `fuel-project/frontend` directory, update the contract ID in your `App.tsx` file
 
 ## Need Help?
 
-Head over to the [Fuel discord](https://discord.com/invite/fuelnetwork) to get help.
+Get help from the team by posting your question in the [Fuel Forum](https://forum.fuel.network/).
