@@ -430,7 +430,7 @@ You should now have your outer folder, `fuel-project`, with two folders inside: 
 
 #### Install the `fuels` SDK dependency
 
-Fuel umbrella package includes all the main tools; `Wallet`, `Contracts`, `Providers` and more.
+The `fuels` umbrella package includes all the main tools you need for your frontend; `Wallet`, `Contracts`, `Providers`, and more.
 
 Also, it contains the routines for ABI TypeScript generation.
 
