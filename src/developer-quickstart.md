@@ -2,7 +2,7 @@
 
 This guide will walk developers through writing a smart contract in Sway, a simple test, deploying to Fuel, and building a frontend.
 
-Before we begin, it may be helpful to understand terminology that will used throughout the docs and how they relate to each other:
+Before we begin, it may be helpful to understand the terminology that will be used throughout the docs and how they relate to each other:
 
 - **Fuel**: the Fuel blockchain.
 - **FuelVM**: the virtual machine powering Fuel.
