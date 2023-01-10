@@ -114,8 +114,6 @@ Open your project in a code editor and delete the boilerplate code in `src/main.
 
 Every Sway file must start with a declaration of what type of program the file contains; here, we've declared that this file is a contract.
 
-
-
 ```sway
 {{#include ../beta2-quickstart-master/counter-contract/src/main.sw:contract}}
 ```
