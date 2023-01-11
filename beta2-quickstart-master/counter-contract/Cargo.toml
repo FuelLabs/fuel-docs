@@ -7,7 +7,7 @@ authors = ["camiinthisthang"]
 license = "Apache-2.0"
 
 [dev-dependencies]
-fuels = { version = "0.32" }
+fuels = { version = "0.31" }
 tokio = { version = "1.12", features = ["rt", "macros"] }
 
 [[test]]
