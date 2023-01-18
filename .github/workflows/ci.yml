@@ -32,3 +32,8 @@ jobs:
         with:
           command: test 
           args: --manifest-path ./beta2-quickstart-master/counter-contract/Cargo.toml
+      - name: Check Cargo fmt & clippy
+        run: |
+          cd beta2-quickstart-master/counter-contract
+          cargo fmt --all --check
+          cargo clippy --all-targets --all-features
