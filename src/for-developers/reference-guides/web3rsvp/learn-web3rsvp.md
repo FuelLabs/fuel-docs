@@ -12,6 +12,7 @@ In this guide, you will learn how to implement the following functionality in yo
 - Getting Started
 - Writing your contract
 - Deploying your contract
+- Testing your contract
 - Building a frontend for your dapp
 - Running your Fuel dapp
 - Additional Resources
