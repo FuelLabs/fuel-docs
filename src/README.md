@@ -39,6 +39,7 @@ Fuel is the fastest modular execution layer, delivering maximum security and hig
 ## Build
 
 - [Developer Quickstart](./developer-quickstart.md)
+- [Developer Guides](./developer-guides.md)
 - [For Developers](./for-developers/for-developer.md)
   - [Node](./for-developers/testnet-node.md)
   - [Sway Language](./for-developers/sway.md)
