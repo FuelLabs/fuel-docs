@@ -1,6 +1,6 @@
 # Faucet and Block Explorer
 
-## Beta-1 Facuet
+## Beta-1 Faucet
 
 Assets for the Testnet node can be obtained from the faucet at
 [https://faucet-beta-1.fuel.network/](https://faucet-beta-1.fuel.network/).
