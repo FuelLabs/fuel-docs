@@ -2,7 +2,7 @@
 
 [sway-applications](https://github.com/FuelLabs/sway-applications) contains fullstack-applications and smart contracts built with Sway. These examples serve as building blocks for developers and demonstrate common use-cases, patterns, and functionality that can be implemented using Sway.
 
-## Example Applications:
+## Example Applications
 
 * [Airdrop](https://github.com/FuelLabs/sway-applications/blob/master/airdrop) is a token distribution program where users are able to claim tokens given a valid merkle proof.
 * [Automated Market Maker (AMM)](https://github.com/FuelLabs/sway-applications/blob/master/AMM) is a decentralized exchange protocol that manages liquidity pools supplied by its users and determines prices algorithmically while exchanging assets.
