@@ -9,7 +9,7 @@ In this guide, you will learn how to implement the following functionality in yo
 ## Table of Contents
 
 - Intro to Sway
-- Installation
+- Getting Started
 - Writing your contract
 - Deploying your contract
 - Building a frontend for your dapp
