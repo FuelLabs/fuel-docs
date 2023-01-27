@@ -32,7 +32,7 @@ Fuel uses a system of UTXOs which enable a more efficient system fo transfer and
 
 ### The FuelVM removes `approve`, `transferFrom`
 
-The FuelVM removes the need for approve/transferFrom UX with scripts. Unlike the EVM, the FuelVM has scripts, which allow many actions to happen from an origin sender without a contract being deployed. Read more [here](https://github.com/FuelLabs/fuel-specs/blob/master/specs/vm/main.md#script-execution).
+The FuelVM removes the need for approve/transferFrom UX with scripts. Unlike the EVM, the FuelVM has scripts, which allow many actions to happen from an origin sender without a contract being deployed. Read more in the Fuel Specification [here](https://fuellabs.github.io/fuel-specs/master/protocol/tx_validity.html#script-execution).
 
 ## EIPs Implemented in Fuel
 
