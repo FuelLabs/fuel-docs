@@ -10,4 +10,4 @@ To get started using the TypeScript SDK:
 
 ## Need Help?
 
-Head to the [Fuel discord](https://discord.com/invite/fuelnetwork) for help from the team.
+Head to the [Fuel discord](https://discord.com/invite/fuelnetwork) or the [Fuel Forum](https://forum.fuel.network/) for help from the team.

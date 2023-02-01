@@ -2,7 +2,7 @@
 
 This guide will walk developers through writing a smart contract in Sway, a simple test, deploying to Fuel, and building a frontend.
 
-Before we begin, it may be helpful to understand terminology that will used throughout the docs and how they relate to each other:
+Before we begin, it may be helpful to understand the terminology that will be used throughout the docs and how they relate to each other:
 
 - **Fuel**: the Fuel blockchain.
 - **FuelVM**: the virtual machine powering Fuel.
@@ -115,15 +115,13 @@ Open your project in a code editor and delete the boilerplate code in `src/main.
 Every Sway file must start with a declaration of what type of program the file contains; here, we've declared that this file is a contract.
 
 ```sway
-contract;
+{{#include ../beta2-quickstart-master/counter-contract/src/main.sw:contract}}
 ```
 
 Next, we'll define a storage value. In our case, we have a single counter that we'll call `counter` of type 64-bit unsigned integer and initialize it to 0.
 
 ```sway
-storage {
-    counter: u64 = 0,
-}
+{{#include ../beta2-quickstart-master/counter-contract/src/main.sw:storage}}
 ```
 
 ### ABI
@@ -133,13 +131,7 @@ An ABI defines an interface, and there is no function body in the ABI. A contrac
 For simplicity, we will define the ABI directly in the contract file.
 
 ```sway
-abi Counter {
-    #[storage(read, write)]
-    fn increment();
-
-    #[storage(read)]
-    fn count() -> u64;
-}
+{{#include ../beta2-quickstart-master/counter-contract/src/main.sw:abi}}
 ```
 
 ### Going line by line
@@ -157,17 +149,7 @@ abi Counter {
 Below your ABI definition, you will write the implementation of the functions defined in your ABI.
 
 ```sway
-impl Counter for Contract {
-    #[storage(read)]
-    fn count() -> u64 {
-        storage.counter
-    }
-
-    #[storage(read, write)]
-    fn increment() {
-        storage.counter = storage.counter + 1;
-    }
-}
+{{#include ../beta2-quickstart-master/counter-contract/src/main.sw:counter-contract}}
 ```
 
 > **Note**:`return storage.counter;` is equivalent to `storage.counter`.
@@ -177,17 +159,13 @@ impl Counter for Contract {
 In `fn count()`, we read and return the variable `counter` from storage.
 
 ```sway
-fn count() -> u64 {
-    storage.counter
-}
+{{#include ../beta2-quickstart-master/counter-contract/src/main.sw:count}}
 ```
 
 In `fn increment()`, we read the variable `counter` from storage and increment its value by one. We then store the new value back in `counter`.
 
 ```sway
-fn increment() {
-    storage.counter = storage.counter + 1;
-}
+{{#include ../beta2-quickstart-master/counter-contract/src/main.sw:increment}}
 ```
 
 Here's what your code should look like so far:
@@ -195,31 +173,7 @@ Here's what your code should look like so far:
 File: `./counter-contract/src/main.sw`
 
 ```sway
-contract;
-
-storage {
-    counter: u64 = 0,
-}
-
-abi Counter {
-    #[storage(read, write)]
-    fn increment();
-
-    #[storage(read)]
-    fn count() -> u64;
-}
-
-impl Counter for Contract {
-    #[storage(read)]
-    fn count() -> u64 {
-        storage.counter
-    }
-
-    #[storage(read, write)]
-    fn increment() {
-        storage.counter = storage.counter + 1;
-    }
-}
+{{#include ../beta2-quickstart-master/counter-contract/src/main.sw:all}}
 ```
 
 ### Build the Contract
@@ -316,20 +270,7 @@ At the bottom of `test/harness.rs`, define the body of `can_get_contract_id()`. 
 File: `tests/harness.rs`
 
 ```sway
-#[tokio::test]
-async fn can_get_contract_id() {
-    let (instance, _id) = get_contract_instance().await;
-
-    // Increment the counter
-    let _result = instance.methods().increment().call().await.unwrap();
-
-    // Get the current value of the counter
-    let result = instance.methods().count().call().await.unwrap();
-
-    // Check that the current value of the counter is 1.
-    // Recall that the initial value of the counter was 0.
-    assert_eq!(result.value, 1);
-}
+{{#include ../beta2-quickstart-master/counter-contract/tests/harness.rs:contract-test}}
 ```
 
 Run `cargo test` in the terminal. If all goes well, the output should look as follows:
@@ -478,12 +419,7 @@ In the root of the frontend project create a file named `createWallet.js` and ad
 File: `./frontend/createWallet.js`
 
 ```js
-const { Wallet } = require("fuels");
-
-const wallet = Wallet.generate();
-
-console.log("address", wallet.address.toString());
-console.log("private key", wallet.privateKey);
+{{#include ../beta2-quickstart-master/frontend/createWallet.js}}
 ```
 
 In a terminal, run the following command:
@@ -513,65 +449,7 @@ Change the file `fuel-project/frontend/src/App.tsx` to:
 File: `./frontend/src/App.tsx`
 
 ```ts
-import React, { useEffect, useState } from "react";
-import { Wallet } from "fuels";
-import "./App.css";
-// Import the contract factory -- you can find the name in index.ts.
-// You can also do command + space and the compiler will suggest the correct name.
-import { CounterContractAbi__factory } from "./contracts";
-// The address of the contract deployed the Fuel testnet
-const CONTRACT_ID =
-  "0x3edb96c23766b8504caaff042994efa18460e7ba27f60191394a6bcf5be8d7d8";
-//the private key from createWallet.js
-const WALLET_SECRET =
-  "0xc4a69e0cc4ce1e0b45d25899b3cedced332d193c8a5c706187ffd50aa7591ce6";
-// Create a Wallet from given secretKey in this case
-// The one we configured at the chainConfig.json
-const wallet = Wallet.fromPrivateKey(
-  WALLET_SECRET,
-  "https://node-beta-2.fuel.network/graphql"
-);
-// Connects out Contract instance to the deployed contract
-// address using the given wallet.
-const contract = CounterContractAbi__factory.connect(CONTRACT_ID, wallet);
-
-function App() {
-  const [counter, setCounter] = useState(0);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    async function main() {
-      // Executes the counter function to query the current contract state
-      // the `.get()` is read-only, because of this it don't expand coins.
-      const { value } = await contract.functions.count().get();
-      setCounter(Number(value));
-    }
-    main();
-  }, []);
-  async function increment() {
-    // a loading state
-    setLoading(true);
-    // Creates a transactions to call the increment function
-    // because it creates a TX and updates the contract state this requires the wallet to have enough coins to cover the costs and also to sign the Transaction
-    try {
-      await contract.functions.increment().txParams({ gasPrice: 1 }).call();
-      const { value } = await contract.functions.count().get();
-      setCounter(Number(value));
-    } finally {
-      setLoading(false);
-    }
-  }
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>Counter: {counter}</p>
-        <button disabled={loading} onClick={increment}>
-          {loading ? "Incrementing..." : "Increment"}
-        </button>
-      </header>
-    </div>
-  );
-}
-export default App;
+{{#include ../beta2-quickstart-master/frontend/src/App.tsx}}
 ```
 
 ### Run your project

@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  release:
+    types: [published]
+
+jobs:
+  build-quickstart-contract-example:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+      - uses: Swatinem/rust-cache@v1
+      - name: Install Fuelup
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://fuellabs.github.io/fuelup/fuelup-init.sh | sh
+      - name: Modify Path
+        run: echo "$HOME/.fuelup/bin:${GITHUB_PATH}" >> $GITHUB_PATH
+      - name: Set Default Beta-2 Toolchain
+        run: fuelup toolchain install beta-2 && fuelup default beta-2
+      - name: Build Contract
+        run: forc build --path ./beta2-quickstart-master/counter-contract
+      - name: Run contract tests
+        uses: actions-rs/cargo@v1
+        with:
+          command: test 
+          args: --manifest-path ./beta2-quickstart-master/counter-contract/Cargo.toml
+      - name: Check Cargo fmt & clippy
+        run: |
+          cd beta2-quickstart-master/counter-contract
+          cargo fmt --all --check
+          cargo clippy --all-targets --all-features
