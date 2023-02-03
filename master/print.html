@@ -244,11 +244,11 @@
 <p>Contracts, predicates, and scripts can produce artifacts usable on the blockchain, while a library is simply a project designed for code reuse and is not directly deployable.</p>
 <p>The main features of a smart contract that differentiate it from scripts or predicates are that it is callable and stateful.</p>
 <p>A script is runnable bytecode on the chain which can call contracts to perform some task. It does not represent ownership of any resources and it cannot be called by a contract.</p>
-<table><thead><tr><th></th><th>deployable on the blockchain:</th><th>can have state:</th><th>callable on the blockchain:</th><th>designed for code reuse:</th></tr></thead><tbody>
-<tr><td>contract</td><td>✅</td><td>✅</td><td>✅</td><td>❌</td></tr>
-<tr><td>predicate</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td></tr>
-<tr><td>script</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td></tr>
-<tr><td>library</td><td>✅ (via a contract or predicate)</td><td>❌</td><td>❌</td><td>✅</td></tr>
+<table><thead><tr><th style="text-align: center"></th><th style="text-align: center">deployable on the blockchain:</th><th style="text-align: center">can have state:</th><th style="text-align: center">callable on the blockchain:</th><th style="text-align: center">designed for code reuse:</th></tr></thead><tbody>
+<tr><td style="text-align: center">contract</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">❌</td></tr>
+<tr><td style="text-align: center">predicate</td><td style="text-align: center">✅</td><td style="text-align: center">❌</td><td style="text-align: center">❌</td><td style="text-align: center">❌</td></tr>
+<tr><td style="text-align: center">script</td><td style="text-align: center">❌</td><td style="text-align: center">❌</td><td style="text-align: center">❌</td><td style="text-align: center">❌</td></tr>
+<tr><td style="text-align: center">library</td><td style="text-align: center">✅ <br/> (via a contract or predicate)</td><td style="text-align: center">❌</td><td style="text-align: center">❌</td><td style="text-align: center">✅</td></tr>
 </tbody></table>
 <p>See <a href="https://fuellabs.github.io/sway/master/sway-program-types/index.html">the chapter on program types</a> for more information.</p>
 <h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
@@ -535,32 +535,32 @@ Success! Created frontend at Fuel/fuel-project/frontend
 </code></pre>
 <p>You should now have your outer folder, <code>fuel-project</code>, with two folders inside: <code>counter-contract</code> and <code>frontend</code></p>
 <p><img src="./images/quickstart-folder-structure.png" alt="project folder structure" /></p>
-<h4 id="install-the-fuels-sdk-dependencies"><a class="header" href="#install-the-fuels-sdk-dependencies">Install the <code>fuels</code> SDK dependencies</a></h4>
-<p>On this step we need to install 3 dependencies for the project:</p>
-<ol>
-<li><code>fuels</code>: The umbrella package that includes all the main tools; <code>Wallet</code>, <code>Contracts</code>, <code>Providers</code> and more.</li>
-<li><code>fuelchain</code>: Fuelchain is the ABI TypeScript generator.</li>
-<li><code>typechain-target-fuels</code>: The Fuelchain Target is the specific interpreter for the <a href="https://fuellabs.github.io/fuel-specs/master/protocol/abi/index.html">ABI spec</a>.</li>
-</ol>
+<h4 id="install-the-fuels-sdk-dependency"><a class="header" href="#install-the-fuels-sdk-dependency">Install the <code>fuels</code> SDK dependency</a></h4>
+<p>The <code>fuels</code> umbrella package includes all the main tools you need for your frontend; <code>Wallet</code>, <code>Contracts</code>, <code>Providers</code>, and more.</p>
+<p>Also, it contains the routines for ABI TypeScript generation.</p>
 <blockquote>
 <p>ABI stands for Application Binary Interface. ABI's inform the application the interface to interact with the VM, in other words, they provide info to the APP such as what methods a contract has, what params, types it expects, etc...</p>
 </blockquote>
-<h5 id="install"><a class="header" href="#install">Install</a></h5>
-<p>Move into the <code>frontend</code> folder, then install the dependencies:</p>
+<h5 id="installing"><a class="header" href="#installing">Installing</a></h5>
+<p>Move into the <code>frontend</code> folder, then run:</p>
 <pre><code class="language-console">$ cd frontend
-$ npm install fuels@0.24.2 --save
-added 65 packages, and audited 1493 packages in 4s
-$ npm install fuelchain@0.24.2 typechain-target-fuels@0.24.2 --save-dev
-added 33 packages, and audited 1526 packages in 2s
+$ npm install fuels@0.29.1 --save
+added 114 packages, and audited 115 packages in 29s
 </code></pre>
 <h5 id="generating-contract-types"><a class="header" href="#generating-contract-types">Generating contract types</a></h5>
-<p>To make it easier to interact with our contract we use <code>fuelchain</code> to interpret the output ABI JSON from our contract. This JSON was created on the moment we executed the <code>forc build</code> to compile our Sway Contract into binary.</p>
+<p>To make it easier to interact with our contract we use <code>fuels typegen</code> command to interpret the output ABI JSON from our contract, and generate Typescript definitions based on it. This JSON was created when we executed the <code>forc build</code> command to compile our Sway Contract into binary.</p>
 <p>If you see the folder <code>fuel-project/counter-contract/out</code> you will be able to see the ABI JSON there. If you want to learn more, read the <a href="https://fuellabs.github.io/fuel-specs/master/protocol/abi">ABI spec</a>.</p>
 <p>Inside the <code>fuel-project/frontend</code> directory run:</p>
-<pre><code class="language-console">$ npx fuelchain --target=fuels --out-dir=./src/contracts ../counter-contract/out/debug/*-abi.json
-Successfully generated 4 typings!
+<pre><code class="language-console">$ npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts
+Generating files..
+
+ - src/contracts/CounterContractAbi.d.ts
+ - src/contracts/factories/CounterContractAbi__factory.ts
+ - src/contracts/index.ts
+
+Done.⚡
 </code></pre>
-<p>Now you should be able to find a new folder <code>fuel-project/frontend/src/contracts</code>. This folder was auto-generated by our <code>fuelchain</code> command, this files abstract the work we would need to do to create a contract instance, and generate a complete TypeScript interface to the Contract, making easy to develop.</p>
+<p>Now you should be able to find a new folder <code>fuel-project/frontend/src/contracts</code>. This folder was auto-generated by our <code>fuels typegen</code> command, and these files abstract the work we would need to do to create a contract instance, and generate a complete TypeScript interface to the Contract, making easy to develop.</p>
 <h3 id="create-a-wallet-again"><a class="header" href="#create-a-wallet-again">Create A Wallet (Again)</a></h3>
 <p>For interacting with the fuel network we have to submit signed transactions with enough funds to cover network fees. The Fuel TS SDK don't currently support Wallet integrations, requiring us to have a non-safe wallet inside the WebApp using a privateKey.</p>
 <blockquote>
@@ -682,10 +682,18 @@ To create a production build, use npm run build.
 <h3 id="updating-the-contract"><a class="header" href="#updating-the-contract">Updating The Contract</a></h3>
 <p>If you make changes to your contract, here are the steps you should take to get your frontend and contract back in sync:</p>
 <ul>
-<li>In your contract directory, run <code>forc build</code></li>
-<li>In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: <code>forc deploy --url node-beta-2.fuel.network/graphql --gas-price 1</code></li>
-<li>In your frontend directory, re-run this command: <code>npx fuelchain --target=fuels --out-dir=./src/contracts ../counter-contract/out/debug/*-abi.json</code></li>
-<li>In your <code>fuel-project/frontend</code> directory, update the contract ID in your <code>App.tsx</code> file</li>
+<li>
+<p>In your contract directory, run <code>forc build</code></p>
+</li>
+<li>
+<p>In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: <code>forc deploy --url node-beta-2.fuel.network/graphql --gas-price 1</code></p>
+</li>
+<li>
+<p>In your frontend directory, re-run this command: <code>npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts</code></p>
+</li>
+<li>
+<p>In your <code>fuel-project/frontend</code> directory, update the contract ID in your <code>App.tsx</code> file</p>
+</li>
 </ul>
 <h2 id="need-help"><a class="header" href="#need-help">Need Help?</a></h2>
 <p>Get help from the team by posting your question in the <a href="https://forum.fuel.network/">Fuel Forum</a>.</p>
