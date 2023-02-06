@@ -18,18 +18,18 @@ There are four types of Sway programs:
 - `script`
 - `library`
 
-Contracts, predicates, and scripts can produce artifacts usable on the blockchain, while a library is simply a project designed for code reuse and is not directly deployable.
+Contracts provide long-lived artifacts on the blockchain, while scripts will just exist for the duration of the transaction, and a library is simply a project designed for code reuse and is not directly deployable. Predicates are like scripts which return a `boolean` value to indicate ownership of an asset, however, they cannot access state.
 
 The main features of a smart contract that differentiate it from scripts or predicates are that it is callable and stateful.
 
 A script is runnable bytecode on the chain which can call contracts to perform some task. It does not represent ownership of any resources and it cannot be called by a contract.
 
-|           |     deployable on the blockchain:      | can have state: | callable on the blockchain: | designed for code reuse: |
-| :-------: | :------------------------------------: | :-------------: | :-------------------------: | :----------------------: |
-| contract  |                   ✅                   |       ✅        |             ✅              |            ❌            |
-| predicate |                   ✅                   |       ❌        |             ❌              |            ❌            |
-|  script   |                   ❌                   |       ❌        |             ❌              |            ❌            |
-|  library  | ✅ <br/> (via a contract or predicate) |       ❌        |             ❌              |            ✅            |
+|           |     deployable on the blockchain:      | can have state: | can access state: |callable on the blockchain: | designed for code reuse: |
+| :-------: | :------------------------------------: | :-------------: | :----------------:|:-------------------------: | :----------------------: |
+| contract  |                   ✅                   |       ✅        |          ✅        |            ✅              |            ❌            |
+|  library  | ✅ <br/> (via a contract or predicate) |       ❌        |          ✅        |            ❌              |            ✅            |
+|  script   |                   ❌                   |       ❌        |          ✅        |            ❌              |            ❌            |
+| predicate |                    ❌                  |       ❌        |          ❌        |            ❌              |            ❌            |
 
 See [the chapter on program types](https://fuellabs.github.io/sway/master/sway-program-types/index.html) for more information.
 
