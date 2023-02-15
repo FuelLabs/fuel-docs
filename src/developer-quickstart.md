@@ -18,18 +18,18 @@ There are four types of Sway programs:
 - `script`
 - `library`
 
-Contracts, predicates, and scripts can produce artifacts usable on the blockchain, while a library is simply a project designed for code reuse and is not directly deployable.
+Contracts provide long-lived artifacts on the blockchain, while scripts will just exist for the duration of the transaction, and a library is simply a project designed for code reuse and is not directly deployable. Predicates are like scripts which return a `boolean` value to indicate ownership of an asset, however, they cannot access state.
 
 The main features of a smart contract that differentiate it from scripts or predicates are that it is callable and stateful.
 
 A script is runnable bytecode on the chain which can call contracts to perform some task. It does not represent ownership of any resources and it cannot be called by a contract.
 
-|           | deployable on the blockchain:    | can have state: | callable on the blockchain: | designed for code reuse: |
-| --------- | -------------------------------- | --------------- | --------------------------- | ------------------------ |
-| contract  | ✅                               | ✅              | ✅                          | ❌                       |
-| predicate | ✅                               | ❌              | ❌                          | ❌                       |
-| script    | ❌                               | ❌              | ❌                          | ❌                       |
-| library   | ✅ (via a contract or predicate) | ❌              | ❌                          | ✅                       |
+|           |     deployable on the blockchain:      | can have state: | can access state: |callable on the blockchain: | designed for code reuse: |
+| :-------: | :------------------------------------: | :-------------: | :----------------:|:-------------------------: | :----------------------: |
+| contract  |                   ✅                   |       ✅        |          ✅        |            ✅              |            ❌            |
+|  library  | ✅ <br/> (via a contract or predicate) |       ❌        |          ✅        |            ❌              |            ✅            |
+|  script   |                   ❌                   |       ❌        |          ✅        |            ❌              |            ❌            |
+| predicate |                    ❌                  |       ❌        |          ❌        |            ❌              |            ❌            |
 
 See [the chapter on program types](https://fuellabs.github.io/sway/master/sway-program-types/index.html) for more information.
 
@@ -324,13 +324,13 @@ The terminal will output a `message to sign` and prompt you for a signature. Ope
 Grab the `message to sign` from your other terminal and sign with your account by running the following command:
 
 ```console
-forc wallet sign` + `[message to sign, without brackets]` + `[the account number, without brackets]`
+forc-wallet sign --id `[message to sign, without brackets]` --account-index `[the account number, without brackets]`
 ```
 
 Your command should look like this:
 
 ```console
-$ forc wallet sign 16d7a8f9d15cfba1bd000d3f99cd4077dfa1fce2a6de83887afc3f739d6c84df 0
+$ forc-wallet sign --id 16d7a8f9d15cfba1bd000d3f99cd4077dfa1fce2a6de83887afc3f739d6c84df --account-index 0
 Please enter your password to decrypt initialized wallet's phrases:
 Signature: 736dec3e92711da9f52bed7ad4e51e3ec1c9390f4b05caf10743229295ffd5c1c08a4ca477afa85909173af3feeda7c607af5109ef6eb72b6b40b3484db2332c
 ```
@@ -369,42 +369,44 @@ You should now have your outer folder, `fuel-project`, with two folders inside: 
 
 ![project folder structure](./images/quickstart-folder-structure.png)
 
-#### Install the `fuels` SDK dependencies
+#### Install the `fuels` SDK dependency
 
-On this step we need to install 3 dependencies for the project:
+The `fuels` umbrella package includes all the main tools you need for your frontend; `Wallet`, `Contracts`, `Providers`, and more.
 
-1. `fuels`: The umbrella package that includes all the main tools; `Wallet`, `Contracts`, `Providers` and more.
-2. `fuelchain`: Fuelchain is the ABI TypeScript generator.
-3. `typechain-target-fuels`: The Fuelchain Target is the specific interpreter for the [ABI spec](https://fuellabs.github.io/fuel-specs/master/protocol/abi/index.html).
+Also, it contains the routines for ABI TypeScript generation.
 
 > ABI stands for Application Binary Interface. ABI's inform the application the interface to interact with the VM, in other words, they provide info to the APP such as what methods a contract has, what params, types it expects, etc...
 
-##### Install
+##### Installing
 
-Move into the `frontend` folder, then install the dependencies:
+Move into the `frontend` folder, then run:
 
 ```console
 $ cd frontend
-$ npm install fuels@0.24.2 --save
-added 65 packages, and audited 1493 packages in 4s
-$ npm install fuelchain@0.24.2 typechain-target-fuels@0.24.2 --save-dev
-added 33 packages, and audited 1526 packages in 2s
+$ npm install fuels@0.29.1 --save
+added 114 packages, and audited 115 packages in 29s
 ```
 
 ##### Generating contract types
 
-To make it easier to interact with our contract we use `fuelchain` to interpret the output ABI JSON from our contract. This JSON was created on the moment we executed the `forc build` to compile our Sway Contract into binary.
+To make it easier to interact with our contract we use `fuels typegen` command to interpret the output ABI JSON from our contract, and generate Typescript definitions based on it. This JSON was created when we executed the `forc build` command to compile our Sway Contract into binary.
 
 If you see the folder `fuel-project/counter-contract/out` you will be able to see the ABI JSON there. If you want to learn more, read the [ABI spec](https://fuellabs.github.io/fuel-specs/master/protocol/abi).
 
 Inside the `fuel-project/frontend` directory run:
 
 ```console
-$ npx fuelchain --target=fuels --out-dir=./src/contracts ../counter-contract/out/debug/*-abi.json
-Successfully generated 4 typings!
+$ npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts
+Generating files..
+
+ - src/contracts/CounterContractAbi.d.ts
+ - src/contracts/factories/CounterContractAbi__factory.ts
+ - src/contracts/index.ts
+
+Done.⚡
 ```
 
-Now you should be able to find a new folder `fuel-project/frontend/src/contracts`. This folder was auto-generated by our `fuelchain` command, this files abstract the work we would need to do to create a contract instance, and generate a complete TypeScript interface to the Contract, making easy to develop.
+Now you should be able to find a new folder `fuel-project/frontend/src/contracts`. This folder was auto-generated by our `fuels typegen` command, and these files abstract the work we would need to do to create a contract instance, and generate a complete TypeScript interface to the Contract, making easy to develop.
 
 ### Create A Wallet (Again)
 
@@ -483,7 +485,8 @@ If you make changes to your contract, here are the steps you should take to get 
 
 - In your contract directory, run `forc build`
 - In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy --url node-beta-2.fuel.network/graphql --gas-price 1`
-- In your frontend directory, re-run this command: `npx fuelchain --target=fuels --out-dir=./src/contracts ../counter-contract/out/debug/*-abi.json`
+- In your frontend directory, re-run this command: `npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts`
+
 - In your `fuel-project/frontend` directory, update the contract ID in your `App.tsx` file
 
 ## Need Help?
