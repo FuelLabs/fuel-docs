@@ -19,4 +19,4 @@
 * [Oracle](https://github.com/FuelLabs/sway-applications/blob/master/oracle) is a smart contract that provides off-chain data to on-chain applications.
 * [OTC Swap Predicate](https://github.com/FuelLabs/sway-applications/blob/master/OTC-swap-predicate) is a predicate that can be used to propose and execute an atomic swap between two parties without requiring any on-chain state.
 
-> Please note that each project has a `toolchain-config.toml` file that contains all the dependencies required to run it and automatically overrides toolchain dependencies installed on your local machine. This means that you can run the project without having to manually install or update your toolchain.
+> Please note that each project has a `fuel-toolchain.toml` file that contains all the dependencies required to run it and automatically overrides toolchain dependencies installed on your local machine. This means that you can run the project without having to manually install or update your toolchain.
