@@ -45,4 +45,5 @@
   - [Faucet and Block Explorer](./for-developers/faucet-and-blockexplorer.md)
   - [Wallet Extension and SDK](./for-developers/fuels.md)
   - [Fuelup](./for-developers/fuelup.md)
+  - [GraphQL API](./for-developers/graphql-api.md)
 - [Glossary](./glossary.md)
