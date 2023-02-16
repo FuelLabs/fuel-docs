@@ -2,6 +2,8 @@
 
 [sway-applications](https://github.com/FuelLabs/sway-applications) contains fullstack-applications and smart contracts built with Sway. These examples serve as building blocks for developers and demonstrate common use-cases, patterns, and functionality that can be implemented using Sway.
 
+> Each project above is independent of the other projects and thus every project has its own instructions and files required to run it.
+
 ## Example Applications
 
 * [Airdrop](https://github.com/FuelLabs/sway-applications/blob/master/airdrop) is a token distribution program where users are able to claim tokens given a valid merkle proof.
@@ -17,4 +19,4 @@
 * [Oracle](https://github.com/FuelLabs/sway-applications/blob/master/oracle) is a smart contract that provides off-chain data to on-chain applications.
 * [OTC Swap Predicate](https://github.com/FuelLabs/sway-applications/blob/master/OTC-swap-predicate) is a predicate that can be used to propose and execute an atomic swap between two parties without requiring any on-chain state.
 
-> Please note all projects currently use `forc 0.32.2`, `fuel-core 0.15.1`, and `rust 1.66.0`.
+> Please note that each project has a `toolchain-config.toml` file that contains all the dependencies required to run it and automatically overrides toolchain dependencies installed on your local machine. This means that you can run the project without having to manually install or update your toolchain.
