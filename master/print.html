@@ -241,15 +241,8 @@
 <li><code>script</code></li>
 <li><code>library</code></li>
 </ul>
-<p>Contracts provide long-lived artifacts on the blockchain, while scripts will just exist for the duration of the transaction, and a library is simply a project designed for code reuse and is not directly deployable. Predicates are like scripts which return a <code>boolean</code> value to indicate ownership of an asset, however, they cannot access state.</p>
 <p>The main features of a smart contract that differentiate it from scripts or predicates are that it is callable and stateful.</p>
 <p>A script is runnable bytecode on the chain which can call contracts to perform some task. It does not represent ownership of any resources and it cannot be called by a contract.</p>
-<table><thead><tr><th style="text-align: center"></th><th style="text-align: center">deployable on the blockchain:</th><th style="text-align: center">can have state:</th><th style="text-align: center">can access state:</th><th style="text-align: center">callable on the blockchain:</th><th style="text-align: center">designed for code reuse:</th></tr></thead><tbody>
-<tr><td style="text-align: center">contract</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">✅</td><td style="text-align: center">❌</td></tr>
-<tr><td style="text-align: center">library</td><td style="text-align: center">✅ <br/> (via a contract or predicate)</td><td style="text-align: center">❌</td><td style="text-align: center">✅</td><td style="text-align: center">❌</td><td style="text-align: center">✅</td></tr>
-<tr><td style="text-align: center">script</td><td style="text-align: center">❌</td><td style="text-align: center">❌</td><td style="text-align: center">✅</td><td style="text-align: center">❌</td><td style="text-align: center">❌</td></tr>
-<tr><td style="text-align: center">predicate</td><td style="text-align: center">❌</td><td style="text-align: center">❌</td><td style="text-align: center">❌</td><td style="text-align: center">❌</td><td style="text-align: center">❌</td></tr>
-</tbody></table>
 <p>See <a href="https://fuellabs.github.io/sway/master/sway-program-types/index.html">the chapter on program types</a> for more information.</p>
 <h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
 <p>Start by <a href="https://fuellabs.github.io/sway/v0.24.3/introduction/installation.html#dependencies">installing the Rust toolchain</a>.</p>
@@ -280,7 +273,7 @@ default toolchain set to 'beta-2-aarch64-apple-darwin'
 </ul>
 <p><strong>Start by creating a new, empty folder. We'll call it <code>fuel-project</code>.</strong></p>
 <h3 id="writing-the-contract"><a class="header" href="#writing-the-contract">Writing the Contract</a></h3>
-<p>Then with <code>forc</code> installed, create a contract project inside of your <code>fuel-project</code> folder:</p>
+<p>Create a contract project inside of your <code>fuel-project</code> folder:</p>
 <pre><code class="language-sh">$ cd fuel-project
 $ forc new counter-contract
 To compile, use `forc build`, and to run tests use `forc test`
@@ -347,7 +340,7 @@ counter-contract
 }
 </code></pre>
 <blockquote>
-<p><strong>Note</strong>:<code>return storage.counter;</code> is equivalent to <code>storage.counter</code>.</p>
+<p><strong>Note</strong>: <code>storage.counter</code> is an implicit return and is equivalent to <code>return storage.counter;</code>.</p>
 </blockquote>
 <h3 id="what-we-just-did"><a class="header" href="#what-we-just-did">What we just did</a></h3>
 <p>In <code>fn count()</code>, we read and return the variable <code>counter</code> from storage.</p>
@@ -502,7 +495,7 @@ async fn can_get_contract_id() {
 <pre><code class="language-console">Contract id: 0xe5dc89f7b8c62e40927a6b17f144583bf6571d2468ab1e2554d2731f4c9fc428
 </code></pre>
 <p>Be sure to save this as you will need it to build a frontend with the Typescript SDK later in this tutorial.</p>
-<p>The terminal will output a <code>message to sign</code> and prompt you for a signature. Open a new terminal tab and view your accounts by running <code>forc wallet list</code>. If you followed these steps, you'll notice you only have one account, <code>0</code>.</p>
+<p>The terminal will output a <code>Transaction id to sign</code> and prompt you for a signature. Open a new terminal tab and view your accounts by running <code>forc wallet list</code>. If you followed these steps, you'll notice you only have one account, <code>0</code>.</p>
 <p>Grab the <code>message to sign</code> from your other terminal and sign with your account by running the following command:</p>
 <pre><code class="language-console">forc-wallet sign --id `[message to sign, without brackets]` --account-index `[the account number, without brackets]`
 </code></pre>
@@ -1181,11 +1174,6 @@ And more, fuels-rs is still in active development.</li>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-wallet"><a class="header" href="#fuel-wallet">Fuel Wallet</a></h1>
 <p>Fuel has a beta wallet extension that can be downloaded. Keep in mind this is an alpha version. For now, it isn't possible to download the extension directly from Chrome Extensions Store. For instructions on how to download the extension, check out the docs <a href="https://fuels-wallet.vercel.app/docs/install/#installing-extension">here</a>.</p>
 <p>Fuels is an SDK that allows developers to let users interact with the Fuel node via the Fuel wallet. Check out the API reference <a href="https://fuels-wallet.vercel.app/docs/api/">here</a>.</p>
-<h2 id="unsigned-transactions"><a class="header" href="#unsigned-transactions">Unsigned Transactions</a></h2>
-<p>You can deploy a contract to a local fuel instance without signing with a wallet by running the following command:</p>
-<p><code>forc deploy --unsigned</code></p>
-<p>To deploy a contract to the testnet, you'll need a Fuel wallet. You can initialize a wallet and an account for your wallet to sign transactions.</p>
-<p><a href="https://github.com/FuelLabs/forc-wallet#forc-wallet">Check out the documentation</a> for a step-by-step guide to initializing a wallet and creating an account.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fuelup"><a class="header" href="#fuelup">Fuelup</a></h1>
 <p><code>fuelup</code> is the official package manager for Fuel that installs the Fuel Toolchain from the official release channels, enabling you to easily switch between different toolchains and keep them updated. It makes building and maintaining Sway applications simpler with forc and fuel-core for common platforms.</p>
 <p>Get started with Fuelup:</p>
