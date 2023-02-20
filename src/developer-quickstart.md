@@ -307,9 +307,10 @@ Now that you have a wallet, you can deploy with `forc deploy` and passing in the
 
 `forc deploy --random-salt --node-url node-beta-2.fuel.network/graphql --gas-price 1`
 
-> **Note**:
-> 1. `--gas-price` flag: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
-> 2. `--random-price` flag: You can pass a `--salt` flag in your `forc deploy` command for multiple deployments of the same contract. The `--random-salt` flag inputs a random Salt during the deployment instead of having to pass it manually.
+**Note**:
+
+1. `--gas-price` flag: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
+2. `--random-price` flag: You can pass a `--salt` flag in your `forc deploy` command for multiple deployments of the same contract. The `--random-salt` flag inputs a random Salt during the deployment instead of having to pass it manually.
 
 The terminal will ask for the address of the wallet you want to sign this transaction with, paste in the address you saved earlier, it looks like this: `fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8`
 
