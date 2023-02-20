@@ -18,18 +18,10 @@ There are four types of Sway programs:
 - `script`
 - `library`
 
-Contracts provide long-lived artifacts on the blockchain, while scripts will just exist for the duration of the transaction, and a library is simply a project designed for code reuse and is not directly deployable. Predicates are like scripts which return a `boolean` value to indicate ownership of an asset, however, they cannot access state.
 
 The main features of a smart contract that differentiate it from scripts or predicates are that it is callable and stateful.
 
 A script is runnable bytecode on the chain which can call contracts to perform some task. It does not represent ownership of any resources and it cannot be called by a contract.
-
-|           |     deployable on the blockchain:      | can have state: | can access state: |callable on the blockchain: | designed for code reuse: |
-| :-------: | :------------------------------------: | :-------------: | :----------------:|:-------------------------: | :----------------------: |
-| contract  |                   ✅                   |       ✅        |          ✅        |            ✅              |            ❌            |
-|  library  | ✅ <br/> (via a contract or predicate) |       ❌        |          ✅        |            ❌              |            ✅            |
-|  script   |                   ❌                   |       ❌        |          ✅        |            ❌              |            ❌            |
-| predicate |                    ❌                  |       ❌        |          ❌        |            ❌              |            ❌            |
 
 See [the chapter on program types](https://fuellabs.github.io/sway/master/sway-program-types/index.html) for more information.
 
@@ -76,7 +68,7 @@ A few pieces of info that will be helpful before moving on:
 
 ### Writing the Contract
 
-Then with `forc` installed, create a contract project inside of your `fuel-project` folder:
+Create a contract project inside of your `fuel-project` folder:
 
 ```sh
 $ cd fuel-project
@@ -152,7 +144,7 @@ Below your ABI definition, you will write the implementation of the functions de
 {{#include ../beta2-quickstart-master/counter-contract/src/main.sw:counter-contract}}
 ```
 
-> **Note**:`return storage.counter;` is equivalent to `storage.counter`.
+> **Note**: `storage.counter` is an implicit return and is equivalent to `return storage.counter;`.
 
 ### What we just did
 
@@ -319,7 +311,7 @@ Contract id: 0xe5dc89f7b8c62e40927a6b17f144583bf6571d2468ab1e2554d2731f4c9fc428
 
 Be sure to save this as you will need it to build a frontend with the Typescript SDK later in this tutorial.
 
-The terminal will output a `message to sign` and prompt you for a signature. Open a new terminal tab and view your accounts by running `forc wallet list`. If you followed these steps, you'll notice you only have one account, `0`.
+The terminal will output a `Transaction id to sign` and prompt you for a signature. Open a new terminal tab and view your accounts by running `forc wallet list`. If you followed these steps, you'll notice you only have one account, `0`.
 
 Grab the `message to sign` from your other terminal and sign with your account by running the following command:
 
