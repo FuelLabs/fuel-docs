@@ -305,9 +305,12 @@ With your account address in hand, head to the [testnet faucet](https://faucet-b
 
 Now that you have a wallet, you can deploy with `forc deploy` and passing in the testnet endpoint like this:
 
-`forc deploy --url node-beta-2.fuel.network/graphql --gas-price 1`
+`forc deploy --random-salt --node-url node-beta-2.fuel.network/graphql --gas-price 1`
 
-> **Note**: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
+> **Note**:
+> 
+> 1. `--gas-price` flag: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
+> 2. `--random-price` flag: You can pass a `--salt` flag in your `forc deploy` command for multiple deployments of the same contract. The `--random-salt` flag inputs a random Salt during the deployment instead of having to pass it manually.
 
 The terminal will ask for the address of the wallet you want to sign this transaction with, paste in the address you saved earlier, it looks like this: `fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8`
 
@@ -365,7 +368,7 @@ $ npx create-react-app frontend --template typescript
 Success! Created frontend at Fuel/fuel-project/frontend
 ```
 
-You should now have your outer folder, `fuel-project`, with two folders inside: `counter-contract` and `frontend`
+You should now have your outer folder, `fuel-project`, with two folders inside: `counter-contract` and `frontend`.
 
 ![project folder structure](./images/quickstart-folder-structure.png)
 
@@ -484,7 +487,7 @@ Tweet us [@fuellabs\_](https://twitter.com/fuellabs_) letting us know you just b
 If you make changes to your contract, here are the steps you should take to get your frontend and contract back in sync:
 
 - In your contract directory, run `forc build`
-- In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy --url node-beta-2.fuel.network/graphql --gas-price 1`
+- In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy --random-salt --node-url node-beta-2.fuel.network/graphql --gas-price 1`
 - In your frontend directory, re-run this command: `npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts`
 
 - In your `fuel-project/frontend` directory, update the contract ID in your `App.tsx` file
