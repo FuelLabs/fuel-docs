@@ -9,6 +9,7 @@ license = "Apache-2.0"
 [dev-dependencies]
 fuels = { version = "0.31" }
 tokio = { version = "1.12", features = ["rt", "macros"] }
+forc = 0.35.2
 
 [[test]]
 harness = true
