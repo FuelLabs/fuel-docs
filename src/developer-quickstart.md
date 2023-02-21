@@ -310,18 +310,18 @@ Contract id: 0xe5dc89f7b8c62e40927a6b17f144583bf6571d2468ab1e2554d2731f4c9fc428
 
 Be sure to save this as you will need it to build a frontend with the Typescript SDK later in this tutorial.
 
-The terminal will output a `Transaction id to sign` and prompt you for a signature. Open a new terminal tab and view your accounts by running `forc wallet list`. If you followed these steps, you'll notice you only have one account, `0`.
+The terminal will output a `Transaction id to sign` and prompt you for a signature. Open a new terminal tab and view your accounts by running `forc wallet accounts`. If you followed these steps, you'll notice you only have one account, `0`.
 
 Grab the `message to sign` from your other terminal and sign with your account by running the following command:
 
 ```console
-forc-wallet sign --id `[message to sign, without brackets]` --account-index `[the account number, without brackets]`
+forc wallet sign --account `[the account index, without brackets]` tx-id `[message to sign, without brackets]`
 ```
 
 Your command should look like this:
 
 ```console
-$ forc-wallet sign --id 16d7a8f9d15cfba1bd000d3f99cd4077dfa1fce2a6de83887afc3f739d6c84df --account-index 0
+$ forc wallet sign --account 0 tx-id 16d7a8f9d15cfba1bd000d3f99cd4077dfa1fce2a6de83887afc3f739d6c84df
 Please enter your password to decrypt initialized wallet's phrases:
 Signature: 736dec3e92711da9f52bed7ad4e51e3ec1c9390f4b05caf10743229295ffd5c1c08a4ca477afa85909173af3feeda7c607af5109ef6eb72b6b40b3484db2332c
 ```
