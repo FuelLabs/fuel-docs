@@ -4,7 +4,9 @@
 
 [The Fuel Book](./README.md)
 
-- [Developer Quickstart](./developer-quickstart.md)
+- [Developer Quickstart](./quickstart/developer-quickstart.md)
+  - [Building A Smart Contract](./quickstart/smart-contract.md)
+  - [Building a Frontend](./quickstart/frontend.md)
 - [Getting Started](./getting-started.md)
   - [Why Fuel?](./why-fuel.md)
   - [What is Fuel?](./what-is-fuel.md)
