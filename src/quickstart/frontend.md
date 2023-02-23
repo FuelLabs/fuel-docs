@@ -1,4 +1,4 @@
-# Create a Frontend to Interact with Contract
+# Building a Frontend to Interact With Your Contract
 
 To build out our frontend application, we'll do the following:
 
