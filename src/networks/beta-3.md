@@ -18,7 +18,7 @@ Goerli block explorer: [https://goerli.etherscan.io/](https://goerli.etherscan.i
 
 🚰 Faucet - Use the faucet to get test ETH to deploy contracts with or to interact with contracts. Available here: [https://faucet-beta-3.fuel.network/](https://faucet-beta-3.fuel.network/).
 
-📃 GraphQL endpoint - The Fuel Core node uses GraphQL instead of JSON RPC. A playground for the public GraphQL endpoint for beta-3 is available at [https://node-beta-3.fuel.network/playground](https://node-beta-3.fuel.network/playground).
+📃 GraphQL endpoint - The Fuel Core node uses GraphQL instead of JSON RPC. A playground for the public GraphQL endpoint for beta-3 is available at [https://beta-3.fuel.network/playground](https://beta-3.fuel.network/playground).
 
 🔍 Block explorer - A block explorer (still heavily in development) is available at [https://fuellabs.github.io/block-explorer-v2/](https://fuellabs.github.io/block-explorer-v2/). Be sure to select `beta-3` from the dropdown on the top right.
 

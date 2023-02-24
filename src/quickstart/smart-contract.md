@@ -242,7 +242,7 @@ With your account address in hand, head to the [testnet faucet](https://faucet-b
 
 Now that you have a wallet, you can deploy with `forc deploy` and passing in the testnet endpoint like this:
 
-`forc deploy --url node-beta-3.fuel.network/graphql --gas-price 1 --random-salt`
+`forc deploy --url beta-3.fuel.network/graphql --gas-price 1 --random-salt`
 
 > **Note**: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
 

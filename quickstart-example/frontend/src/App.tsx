@@ -17,7 +17,7 @@ const WALLET_SECRET =
 // The one we configured at the chainConfig.json
 const wallet = Wallet.fromPrivateKey(
   WALLET_SECRET,
-  "https://node-beta-3.fuel.network/graphql"
+  "https://beta-3.fuel.network/graphql"
 );
 
 // Connects out Contract instance to the deployed contract
