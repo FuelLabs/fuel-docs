@@ -10,19 +10,19 @@ Make sure you have the latest version of `fuelup` by running the following comma
 
 ```console
 $ fuelup self update
-Fetching binary from https://github.com/FuelLabs/fuelup/releases/download/v0.14.0/fuelup-0.14.0-aarch64-apple-darwin.tar.gz
+Fetching binary from https://github.com/FuelLabs/fuelup/releases/download/v0.18.0/fuelup-0.18.0-aarch64-apple-darwin.tar.gz
 Downloading component fuelup without verifying checksum
 Unpacking and moving fuelup to /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt
 Moving /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt/fuelup to /Users/.fuelup/bin/fuelup
 ```
 
-Then run `fuelup toolchain install beta-2` to install the `beta-2` toolchain.
+Then run `fuelup toolchain install beta-3` to install the `beta-3` toolchain.
 
-Finally, set the `beta-2` toolchain as your default distribution with the following command:
+Finally, set the `beta-3` toolchain as your default distribution with the following command:
 
 ```console
-$ fuelup default beta-2
-default toolchain set to 'beta-2-aarch64-apple-darwin'
+$ fuelup default beta-3
+default toolchain set to 'beta-3-aarch64-apple-darwin'
 ```
 
 You can check your current toolchain anytime by running `fuelup show`.
@@ -49,11 +49,11 @@ To compile, use `forc build`, and to run tests use `forc test`
 Read the Docs:
 - Sway Book: https://fuellabs.github.io/sway/latest
 - Rust SDK Book: https://fuellabs.github.io/fuels-rs/latest
-- TypeScript SDK: https://github.com/FuelLabs/fuels-ts
+- TypeScript SDK: https://fuellabs.github.io/fuels-ts/
 
 Join the Community:
 - Follow us @SwayLang: https://twitter.com/SwayLang
-- Ask questions in dev-chat on Discord: https://discord.com/invite/xfpK4Pe
+- Ask questions on Discourse: https://forum.fuel.network/
 
 Report Bugs:
 - Sway Issues: https://github.com/FuelLabs/sway/issues/new
@@ -76,13 +76,13 @@ Open your project in a code editor and delete the boilerplate code in `src/main.
 Every Sway file must start with a declaration of what type of program the file contains; here, we've declared that this file is a contract.
 
 ```sway
-{{#include ../../beta2-quickstart-master/counter-contract/src/main.sw:contract}}
+{{#include ../../quickstart-example/counter-contract/src/main.sw:contract}}
 ```
 
 Next, we'll define a storage value. In our case, we have a single counter that we'll call `counter` of type 64-bit unsigned integer and initialize it to 0.
 
 ```sway
-{{#include ../../beta2-quickstart-master/counter-contract/src/main.sw:storage}}
+{{#include ../../quickstart-example/counter-contract/src/main.sw:storage}}
 ```
 
 ### ABI
@@ -92,7 +92,7 @@ An ABI defines an interface, and there is no function body in the ABI. A contrac
 For simplicity, we will define the ABI directly in the contract file.
 
 ```sway
-{{#include ../../beta2-quickstart-master/counter-contract/src/main.sw:abi}}
+{{#include ../../quickstart-example/counter-contract/src/main.sw:abi}}
 ```
 
 ### Implement ABI
@@ -100,7 +100,7 @@ For simplicity, we will define the ABI directly in the contract file.
 Below your ABI definition, you will write the implementation of the functions defined in your ABI.
 
 ```sway
-{{#include ../../beta2-quickstart-master/counter-contract/src/main.sw:counter-contract}}
+{{#include ../../quickstart-example/counter-contract/src/main.sw:counter-contract}}
 ```
 
 > **Note**: `storage.counter` is an implicit return and is equivalent to `return storage.counter;`.
@@ -110,7 +110,7 @@ Here's what your code should look like so far:
 File: `./counter-contract/src/main.sw`
 
 ```sway
-{{#include ../../beta2-quickstart-master/counter-contract/src/main.sw:all}}
+{{#include ../../quickstart-example/counter-contract/src/main.sw:all}}
 ```
 
 ### Build the Contract
@@ -207,7 +207,7 @@ At the bottom of `test/harness.rs`, define the body of `can_get_contract_id()`. 
 File: `tests/harness.rs`
 
 ```sway
-{{#include ../../beta2-quickstart-master/counter-contract/tests/harness.rs:contract-test}}
+{{#include ../../quickstart-example/counter-contract/tests/harness.rs:contract-test}}
 ```
 
 Run `cargo test` in the terminal. If all goes well, the output should look as follows:
@@ -236,13 +236,13 @@ With this, you'll get a fuel address that looks something like this: `fuel1efz7l
 
 ### Get Testnet Coins
 
-With your account address in hand, head to the [testnet faucet](https://faucet-beta-2.fuel.network/) to get some coins sent to your wallet.
+With your account address in hand, head to the [testnet faucet](https://faucet-beta-3.fuel.network/) to get some coins sent to your wallet.
 
 ### Deploy To Testnet
 
 Now that you have a wallet, you can deploy with `forc deploy` and passing in the testnet endpoint like this:
 
-`forc deploy --url node-beta-2.fuel.network/graphql --gas-price 1`
+`forc deploy --url node-beta-3.fuel.network/graphql --gas-price 1 --random-salt`
 
 > **Note**: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
 
@@ -251,7 +251,7 @@ The terminal will ask for the address of the wallet you want to sign this transa
 The terminal will output your `Contract id` like this:
 
 ```console
-Contract id: 0xe5dc89f7b8c62e40927a6b17f144583bf6571d2468ab1e2554d2731f4c9fc428
+Contract id: 0xd09b469b0c31c05222b553021aa23c3b6a535db5092c22b84690dc88ca17deaa
 ```
 
 Be sure to save this as you will need it to build a frontend with the Typescript SDK later in this tutorial.

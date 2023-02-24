@@ -7,7 +7,7 @@ import { CounterContractAbi__factory } from "./contracts";
 
 // The address of the contract deployed the Fuel testnet
 const CONTRACT_ID =
-  "0x3edb96c23766b8504caaff042994efa18460e7ba27f60191394a6bcf5be8d7d8";
+  "0xd09b469b0c31c05222b553021aa23c3b6a535db5092c22b84690dc88ca17deaa";
 
 //the private key from createWallet.js
 const WALLET_SECRET =
@@ -17,7 +17,7 @@ const WALLET_SECRET =
 // The one we configured at the chainConfig.json
 const wallet = Wallet.fromPrivateKey(
   WALLET_SECRET,
-  "https://node-beta-2.fuel.network/graphql"
+  "https://node-beta-3.fuel.network/graphql"
 );
 
 // Connects out Contract instance to the deployed contract

@@ -37,7 +37,7 @@ Move into the `frontend` folder, then run:
 
 ```console
 $ cd frontend
-$ npm install fuels@0.29.1 --save
+$ npm install fuels@0.33.0 --save
 added 114 packages, and audited 115 packages in 29s
 ```
 
@@ -73,7 +73,7 @@ In the root of the frontend project create a file named `createWallet.js` and ad
 File: `./frontend/createWallet.js`
 
 ```js
-{{#include ../../beta2-quickstart-master/frontend/createWallet.js}}
+{{#include ../../quickstart-example/frontend/createWallet.js}}
 ```
 
 In a terminal, run the following command:
@@ -88,7 +88,7 @@ private key 0x719fb4da652f2bd4ad25ce04f4c2e491926605b40e5475a80551be68d57e0fcb
 
 Save the private key, you will need this later to set it as a string value for a variable `WALLET_SECRET` in your `App.tsx` file. More on that below.
 
-First, take the address of your wallet and use it to get some coins from [the testnet faucet](https://faucet-beta-2.fuel.network/).
+First, take the address of your wallet and use it to get some coins from [the testnet faucet](https://faucet-beta-3.fuel.network/).
 
 Now you're ready to build and ship ⛽
 
@@ -103,7 +103,7 @@ Change the file `fuel-project/frontend/src/App.tsx` to:
 File: `./frontend/src/App.tsx`
 
 ```ts
-{{#include ../../beta2-quickstart-master/frontend/src/App.tsx}}
+{{#include ../../quickstart-example/frontend/src/App.tsx}}
 ```
 
 ### Run your project
@@ -125,7 +125,7 @@ Note that the development build is not optimized.
 To create a production build, use npm run build.
 ```
 
-![screenshot of the UI](./images/quickstart-dapp-screenshot.png)
+![screenshot of the UI](../images/quickstart-dapp-screenshot.png)
 
 ### You just built a fullstack dapp on Fuel! ⛽
 
@@ -138,7 +138,7 @@ Tweet us [@fuellabs\_](https://twitter.com/fuellabs_) letting us know you just b
 If you make changes to your contract, here are the steps you should take to get your frontend and contract back in sync:
 
 - In your contract directory, run `forc build`
-- In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy --url node-beta-2.fuel.network/graphql --gas-price 1`
+- In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy -node-url node-beta-3.fuel.network/graphql --gas-price 1 --random-salt`
 - In your frontend directory, re-run this command: `npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts`
 
 - In your `fuel-project/frontend` directory, update the contract ID in your `App.tsx` file
