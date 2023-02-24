@@ -258,10 +258,10 @@ Be sure to save this as you will need it to build a frontend with the Typescript
 
 The terminal will output a `Transaction id to sign` and prompt you for a signature. Open a new terminal tab and view your accounts by running `forc wallet accounts`. If you followed these steps, you'll notice you only have one account, `0`.
 
-Grab the `message to sign` from your other terminal and sign with your account by running the following command:
+Grab the `Transaction id to sign` from your other terminal and sign with your account by running the following command:
 
 ```console
-forc wallet sign --account `[the account index, without brackets]` tx-id `[message to sign, without brackets]`
+forc wallet sign --account `[the account index, without brackets]` tx-id `[Transaction id to sign, without brackets]`
 ```
 
 Your command should look like this:

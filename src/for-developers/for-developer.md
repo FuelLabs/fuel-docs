@@ -3,6 +3,7 @@
 - [Example Smart Contracts](./example-contracts.md)
 - [Networks](../networks/networks.md)
 - [Connecting to Testnet](./testnet-node.md)
+- [Running a local node](./running-a-local-node.md)
 - [Sway Language](./sway.md)
 - [TypeScript SDK](./ts-sdk.md)
 - [Rust SDK](./rust-sdk.md)
