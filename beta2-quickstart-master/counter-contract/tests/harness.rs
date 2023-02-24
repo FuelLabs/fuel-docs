@@ -35,13 +35,13 @@ async fn get_contract_instance() -> (MyContract, ContractId) {
 // ANCHOR: contract-test
 #[tokio::test]
 async fn can_get_contract_id() {
-    let (_instance, _id) = get_contract_instance().await;
+    let (instance, _id) = get_contract_instance().await;
 
     // Increment the counter
-    _instance.methods().increment().call().await.unwrap();
+    instance.methods().increment().call().await.unwrap();
 
     // Get the current value of the counter
-    let result = _instance.methods().count().call().await.unwrap();
+    let result = instance.methods().count().call().await.unwrap();
 
     // Check that the current value of the counter is 1.
     // Recall that the initial value of the counter was 0.
