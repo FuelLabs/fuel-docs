@@ -19,7 +19,6 @@ fuel-core run --db-type in-memory
 
 To deploy a contract to the local node, run the following command:
 
-
 ```sh
 forc deploy <signing-key>
 ```
