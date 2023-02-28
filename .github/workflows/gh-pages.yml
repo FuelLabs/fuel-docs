@@ -26,6 +26,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./book
           destination_dir: master
+          cname: fuelbook.fuel.network
         if: github.ref == 'refs/heads/master'
 
       - name: Get tag
