@@ -279,7 +279,7 @@ Finally, you will get back a `TransactionId` to confirm your contract was deploy
 > **Note**
 > You should prefix your `TransactionId` with `0x` to view it in the block explorer
 
-![block explorer](/../images/block-explorer.png)
+![block explorer](../images/block-explorer.png)
 
 ### Congrats, you have completed your first smart contract on Fuel ⛽
 
