@@ -61,4 +61,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./latest/
           destination_dir: ./latest/
+          cname: fuelbook.fuel.network
         if: startsWith(github.ref, 'refs/tags')
