@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { bn } from 'fuels'
+import { bn } from 'fuels';
 
 import "./App.css";
 // Import the contract factory -- you can find the name in index.ts.
