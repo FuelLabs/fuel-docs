@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { bn } from 'fuels'
 
@@ -26,39 +25,39 @@ function App() {
   
   useEffect(() => {
     setTimeout(() => {
-      checkConnection()
-      setLoaded(true)
+      checkConnection();
+      setLoaded(true);
     }, 200)
-    if (connected) getCount()
+    if (connected) getCount();
   }, [connected])
 
   async function connect() {
     if (window.fuel) {
      try {
-       await window.fuel.connect()
+       await window.fuel.connect();
        const accounts = await window.fuel.accounts();
-       setAccount(accounts[0])
-       setConnected(true)
+       setAccount(accounts[0]);
+       setConnected(true);
      } catch(err) {
-       console.log('error connecting: ', err)
+       console.log('error connecting: ', err);
      }
     }
    }
 
   async function checkConnection() {
-    const isConnected = await window.fuel.isConnected()
+    const isConnected = await window.fuel.isConnected();
     if (isConnected) {
       const accounts = await window.fuel.accounts();
-      setAccount(accounts[0])
-      setConnected(true)
+      setAccount(accounts[0]);
+      setConnected(true);
     }
   }
 
   async function getCount() {
     const wallet = await window.fuel.getWallet(account);
     const contract = CounterContractAbi__factory.connect(CONTRACT_ID, wallet);
-    const { value } = await contract.functions.count().get()
-    setCounter(Number(bn(value)))
+    const { value } = await contract.functions.count().get();
+    setCounter(Number(bn(value)));
   }
 
   async function increment() {
@@ -70,7 +69,7 @@ function App() {
       await contract.functions.increment().txParams({ gasPrice: 1 }).call();
       getCount();
     } catch(err) {
-      console.log('error sending transaction...')
+      console.log('error sending transaction...');
     }
   }
 
@@ -82,7 +81,7 @@ function App() {
         {
           connected ? (
             <>
-              { counter && <h3>Counter: {counter.toFixed(0)}</h3>}
+               <h3>Counter: {counter?.toFixed(0)}</h3>
               <button style={buttonStyle} onClick={increment}>
                 Increment
               </button>
