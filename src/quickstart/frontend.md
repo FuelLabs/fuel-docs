@@ -21,7 +21,7 @@ Success! Created frontend at Fuel/fuel-project/frontend
 
 You should now have your outer folder, `fuel-project`, with two folders inside: `counter-contract` and `frontend`
 
-![project folder structure](/../images/quickstart-folder-structure.png)
+![project folder structure](../images/quickstart-folder-structure.png)
 
 ### Install the `fuels` SDK dependency
 
@@ -125,7 +125,7 @@ Note that the development build is not optimized.
 To create a production build, use npm run build.
 ```
 
-![screenshot of the UI](./images/quickstart-dapp-screenshot.png)
+![screenshot of the UI](../images/quickstart-dapp-screenshot.png)
 
 ### You just built a fullstack dapp on Fuel! ⛽
 
