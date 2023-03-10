@@ -99,3 +99,11 @@ To run a local node with persistance, you must configure a `chainConfig.json` fi
 ```sh
 fuel-core run --ip 127.0.0.1 --port 4000 --chain ./chainConfig.json --db-path ./.fueldb
 ```
+
+## Connecting to the local node from a browser wallet
+
+To connect to the local node using a browser wallet, import the network address as:
+
+```
+http://127.0.0.1:4000/graphql
+```
