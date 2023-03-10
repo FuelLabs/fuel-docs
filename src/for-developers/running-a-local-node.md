@@ -20,13 +20,13 @@ fuel-core run --db-type in-memory
 To deploy a contract to the local node, run the following command:
 
 ```sh
-forc deploy <signing-key>
+forc deploy <signing-key> --url 127.0.0.1:4000/graphql
 ```
 
 Or to deploy without using a signing key:
 
 ```sh
-forc deploy --unsigned
+forc deploy --unsigned --url 127.0.0.1:4000/graphql
 ```
 
 ## Local node (with state persistance)

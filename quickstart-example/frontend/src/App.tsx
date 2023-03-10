@@ -20,7 +20,7 @@ declare global {
 function App() {
   const [connected, setConnected] = useState<boolean>(false);
   const [account, setAccount] = useState<string>('');
-  const [counter, setCounter] = useState<number>();
+  const [counter, setCounter] = useState<number>(0);
   const [loaded, setLoaded] = useState(false);
   
   useEffect(() => {
