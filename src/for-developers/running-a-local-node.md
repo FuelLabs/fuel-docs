@@ -104,6 +104,6 @@ fuel-core run --ip 127.0.0.1 --port 4000 --chain ./chainConfig.json --db-path ./
 
 To connect to the local node using a browser wallet, import the network address as:
 
-```
+```sh
 http://127.0.0.1:4000/graphql
 ```
