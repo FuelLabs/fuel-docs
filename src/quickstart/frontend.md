@@ -138,7 +138,7 @@ Tweet us [@fuellabs\_](https://twitter.com/fuellabs_) letting us know you just b
 If you make changes to your contract, here are the steps you should take to get your frontend and contract back in sync:
 
 - In your contract directory, run `forc build`
-- In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy -node-url beta-3.fuel.network/graphql --gas-price 1 --random-salt`
+- In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy --node-url beta-3.fuel.network/graphql --gas-price 1 --random-salt`
 - In your frontend directory, re-run this command: `npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts`
 
 - In your `fuel-project/frontend` directory, update the contract ID in your `App.tsx` file
