@@ -129,9 +129,9 @@ To create a production build, use npm run build.
 
 ### You just built a fullstack dapp on Fuel! ⛽
 
-[Here is the repo for this project](https://github.com/FuelLabs/beta2-quickstart). If you run into any problems, a good first step is to compare your code to this repo and resolve any differences.
+[Here is the repo for this project](https://github.com/FuelLabs/quickstart). If you run into any problems, a good first step is to compare your code to this repo and resolve any differences.
 
-Tweet us [@fuellabs\_](https://twitter.com/fuellabs_) letting us know you just built a dapp on Fuel, you might get invited to a private group of builders, be invited to the next Fuel dinner, get alpha on the project, or something 👀.
+Tweet us [@fuel_network](https://twitter.com/fuel_network) letting us know you just built a dapp on Fuel, you might get invited to a private group of builders, be invited to the next Fuel dinner, get alpha on the project, or something 👀.
 
 ### Updating The Contract
 
