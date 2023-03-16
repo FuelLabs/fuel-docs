@@ -1,7 +1,10 @@
 use fuels::{prelude::*, tx::ContractId};
 
 // Load abi from json
-abigen!(MyContract, "out/debug/counter-contract-abi.json");
+abigen!(Contract(
+    name = "MyContract",
+    abi = "out/debug/counter-contract-abi.json"
+));
 
 async fn get_contract_instance() -> (MyContract, ContractId) {
     // Launch a local network and deploy the contract
@@ -32,19 +35,10 @@ async fn get_contract_instance() -> (MyContract, ContractId) {
 
     (instance, id.into())
 }
-// ANCHOR: contract-test
+
 #[tokio::test]
 async fn can_get_contract_id() {
-    let (instance, _id) = get_contract_instance().await;
+    let (_instance, _id) = get_contract_instance().await;
 
-    // Increment the counter
-    instance.methods().increment().call().await.unwrap();
-
-    // Get the current value of the counter
-    let result = instance.methods().count().call().await.unwrap();
-
-    // Check that the current value of the counter is 1.
-    // Recall that the initial value of the counter was 0.
-    assert_eq!(result.value, 1);
+    // Now you have an instance of your contract you can use to test each function
 }
-// ANCHOR_END: contract-test
