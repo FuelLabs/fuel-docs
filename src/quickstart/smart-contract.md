@@ -242,7 +242,7 @@ With your account address in hand, head to the [testnet faucet](https://faucet-b
 
 Now that you have a wallet, you can deploy with `forc deploy` and passing in the testnet endpoint like this:
 
-`forc deploy --url beta-3.fuel.network/graphql --gas-price 1 --random-salt`
+`forc deploy --node-url beta-3.fuel.network/graphql --gas-price 1 --random-salt`
 
 > **Note**: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
 
@@ -285,7 +285,7 @@ Finally, you will get back a `TransactionId` to confirm your contract was deploy
 
 [Here is the repo for this project](https://github.com/FuelLabs/beta2-quickstart). If you run into any problems, a good first step is to compare your code to this repo and resolve any differences.
 
-Tweet us [@fuellabs\_](https://twitter.com/fuellabs_) letting us know you just built a dapp on Fuel, you might get invited to a private group of builders, be invited to the next Fuel dinner, get alpha on the project, or something 👀.
+Tweet us [@fuel_network](https://twitter.com/fuel_network) letting us know you just built a dapp on Fuel, you might get invited to a private group of builders, be invited to the next Fuel dinner, get alpha on the project, or something 👀.
 
 ## Need Help?
 

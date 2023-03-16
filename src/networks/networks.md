@@ -4,7 +4,7 @@ On this page, you'll find information on the different testnet networks.
 
 ## `beta-3` testnet
 
-The `beta-3` network is the latest Fuel testnet.... Read more about `beta-3` [here.](./beta-3.md)
+The `beta-3` network is the latest Fuel testnet. It expands on the features of `beta-2`, introducing P2P networking and the ability for anyone to run local nodes on Fuel. Testnet participants now have the ability to sync locally with Fuel, directly tapping into the network and allowing for more elaborate testing ahead of mainnet. Read more about `beta-3` [here.](./beta-3.md)
 
 ## `beta-2` testnet
 
