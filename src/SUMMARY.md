@@ -40,6 +40,7 @@
     - [Beta-1 Testnet](./networks/beta-1.md)
     - [Beta-2 Testnet](./networks/beta-2.md)
   - [Testnet Node](./for-developers/testnet-node.md)
+  - [Running a Local Node](./for-developers/running-a-local-node.md)
   - [Sway Language](./for-developers/sway.md)
   - [TypeScript SDK](./for-developers/ts-sdk.md)
   - [Rust SDK](./for-developers/rust-sdk.md)
