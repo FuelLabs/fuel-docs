@@ -1,7 +1,10 @@
 use fuels::{prelude::*, tx::ContractId};
 
 // Load abi from json
-abigen!(MyContract, "out/debug/counter-contract-abi.json");
+abigen!(Contract(
+    name = "MyContract",
+    abi = "out/debug/counter-contract-abi.json"
+));
 
 async fn get_contract_instance() -> (MyContract, ContractId) {
     // Launch a local network and deploy the contract

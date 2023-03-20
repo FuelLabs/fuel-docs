@@ -1,6 +1,6 @@
 # The `beta-2` testnet
 
-The `beta-2` network is launched with a bridge to Ethereum's Goerli test network. With this network, developers are able to build and test cross-chain dapps, laying the foundations for projects building on Fuel to tap into Ethereum's massive liquidity and existing user base. Read more about `beta-2` [here.](./beta-2.md)
+The `beta-2` network is launched with a bridge to Ethereum's Goerli test network. With this network, developers are able to build and test cross-chain dapps, laying the foundations for projects building on Fuel to tap into Ethereum's massive liquidity and existing user base.
 
 Ethereum contracts (Goerli):
 

@@ -23,17 +23,17 @@ jobs:
           curl --proto '=https' --tlsv1.2 -sSf https://install.fuel.network/fuelup-init.sh | sh
       - name: Modify Path
         run: echo "$HOME/.fuelup/bin:${GITHUB_PATH}" >> $GITHUB_PATH
-      - name: Set Default Beta-2 Toolchain
-        run: fuelup toolchain install beta-2 && fuelup default beta-2
+      - name: Set Default Beta-3 Toolchain
+        run: fuelup toolchain install beta-3 && fuelup default beta-3
       - name: Build Contract
-        run: forc build --path ./beta2-quickstart-master/counter-contract
+        run: forc build --path ./quickstart-example/counter-contract
       - name: Run contract tests
         uses: actions-rs/cargo@v1
         with:
           command: test 
-          args: --manifest-path ./beta2-quickstart-master/counter-contract/Cargo.toml
+          args: --manifest-path ./quickstart-example/counter-contract/Cargo.toml
       - name: Check Cargo fmt & clippy
         run: |
-          cd beta2-quickstart-master/counter-contract
+          cd quickstart-example/counter-contract
           cargo fmt --all --check
           cargo clippy --all-targets --all-features

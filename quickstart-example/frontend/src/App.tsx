@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Wallet } from "fuels";
 import "./App.css";
 // Import the contract factory -- you can find the name in index.ts.
@@ -7,17 +7,17 @@ import { CounterContractAbi__factory } from "./contracts";
 
 // The address of the contract deployed the Fuel testnet
 const CONTRACT_ID =
-  "0x3edb96c23766b8504caaff042994efa18460e7ba27f60191394a6bcf5be8d7d8";
+  "0x2c38161e42ce14abdaa7950c04b13aa340eb67cf196c94b971d5f0175417f4f4";
 
 //the private key from createWallet.js
 const WALLET_SECRET =
-  "0xc4a69e0cc4ce1e0b45d25899b3cedced332d193c8a5c706187ffd50aa7591ce6";
+  "0x07960a5124cd6e52b595aed727d640aed2e32cc587a34c09f1b48615378df752";
 
 // Create a Wallet from given secretKey in this case
 // The one we configured at the chainConfig.json
 const wallet = Wallet.fromPrivateKey(
   WALLET_SECRET,
-  "https://node-beta-2.fuel.network/graphql"
+  "https://beta-3.fuel.network/graphql"
 );
 
 // Connects out Contract instance to the deployed contract
