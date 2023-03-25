@@ -1,0 +1,1467 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Fuel Book</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">The Fuel Book</a></li><li class="chapter-item expanded "><a href="quickstart/developer-quickstart.html"><strong aria-hidden="true">1.</strong> Developer Quickstart</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="quickstart/smart-contract.html"><strong aria-hidden="true">1.1.</strong> Building A Smart Contract</a></li><li class="chapter-item expanded "><a href="quickstart/frontend.html"><strong aria-hidden="true">1.2.</strong> Building a Frontend</a></li></ol></li><li class="chapter-item expanded "><a href="getting-started.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="why-fuel.html"><strong aria-hidden="true">2.1.</strong> Why Fuel?</a></li><li class="chapter-item expanded "><a href="what-is-fuel.html"><strong aria-hidden="true">2.2.</strong> What is Fuel?</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="fuel-toolchain.html"><strong aria-hidden="true">2.2.1.</strong> Fuel toolchain</a></li></ol></li><li class="chapter-item expanded "><a href="modular-movement.html"><strong aria-hidden="true">2.3.</strong> The Modular Movement</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="monolithic.html"><strong aria-hidden="true">2.3.1.</strong> Monolithic Blockchains</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.3.2.</strong> Modular Blockchains</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.3.3.</strong> Modular Blockchain Stack</div></li><li class="chapter-item expanded "><a href="modular-execution.html"><strong aria-hidden="true">2.3.4.</strong> What is a Modular Execution Layer</a></li></ol></li><li class="chapter-item expanded "><a href="fuel-configurations.html"><strong aria-hidden="true">2.4.</strong> Fuel Configurations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rollup.html"><strong aria-hidden="true">2.4.1.</strong> Fuel as a rollup</a></li><li class="chapter-item expanded "><a href="l1.html"><strong aria-hidden="true">2.4.2.</strong> Fuel as an L1</a></li><li class="chapter-item expanded "><a href="state-channel.html"><strong aria-hidden="true">2.4.3.</strong> Fuel as a state channel</a></li><li class="chapter-item expanded "><a href="sidechain.html"><strong aria-hidden="true">2.4.4.</strong> Fuel as a sidechain</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="technology/index.html"><strong aria-hidden="true">3.</strong> Technology</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="technology/parallel_tx_execution.html"><strong aria-hidden="true">3.1.</strong> Parallel Transaction Execution</a></li><li class="chapter-item expanded "><a href="technology/fraud_proofs.html"><strong aria-hidden="true">3.2.</strong> Fraud Proofs</a></li></ol></li><li class="chapter-item expanded "><a href="fuelvm/index.html"><strong aria-hidden="true">4.</strong> The FuelVM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="fuelvm/contract_call_model.html"><strong aria-hidden="true">4.1.</strong> Contract and Call Model</a></li><li class="chapter-item expanded "><a href="fuelvm/memory_model.html"><strong aria-hidden="true">4.2.</strong> Memory Model</a></li><li class="chapter-item expanded "><a href="fuelvm/native_assets.html"><strong aria-hidden="true">4.3.</strong> Multiple Native Assets</a></li><li class="chapter-item expanded "><a href="vs-evm.html"><strong aria-hidden="true">4.4.</strong> VS EVM</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.5.</strong> VS Move</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.6.</strong> VS Solana</div></li></ol></li><li class="chapter-item expanded "><a href="sway-language.html"><strong aria-hidden="true">5.</strong> The Sway Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="design-philosophy.html"><strong aria-hidden="true">5.1.</strong> Design Philosophy</a></li><li class="chapter-item expanded "><a href="sway-safety.html"><strong aria-hidden="true">5.2.</strong> Safety</a></li></ol></li><li class="chapter-item expanded "><a href="for-developers/for-developer.html"><strong aria-hidden="true">6.</strong> For Developers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="for-developers/example-contracts.html"><strong aria-hidden="true">6.1.</strong> Example Smart Contracts</a></li><li class="chapter-item expanded "><a href="networks/networks.html"><strong aria-hidden="true">6.2.</strong> Networks</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="networks/beta-3.html"><strong aria-hidden="true">6.2.1.</strong> Beta-3 Testnet</a></li><li class="chapter-item expanded "><a href="networks/beta-2.html"><strong aria-hidden="true">6.2.2.</strong> Beta-2 Testnet</a></li><li class="chapter-item expanded "><a href="networks/beta-1.html"><strong aria-hidden="true">6.2.3.</strong> Beta-1 Testnet</a></li></ol></li><li class="chapter-item expanded "><a href="for-developers/testnet-node.html"><strong aria-hidden="true">6.3.</strong> Testnet Node</a></li><li class="chapter-item expanded "><a href="for-developers/running-a-local-node.html"><strong aria-hidden="true">6.4.</strong> Running a Local Node</a></li><li class="chapter-item expanded "><a href="for-developers/sway.html"><strong aria-hidden="true">6.5.</strong> Sway Language</a></li><li class="chapter-item expanded "><a href="for-developers/ts-sdk.html"><strong aria-hidden="true">6.6.</strong> TypeScript SDK</a></li><li class="chapter-item expanded "><a href="for-developers/rust-sdk.html"><strong aria-hidden="true">6.7.</strong> Rust SDK</a></li><li class="chapter-item expanded "><a href="for-developers/indexer.html"><strong aria-hidden="true">6.8.</strong> Indexer</a></li><li class="chapter-item expanded "><a href="for-developers/faucet-and-blockexplorer.html"><strong aria-hidden="true">6.9.</strong> Faucet and Block Explorer</a></li><li class="chapter-item expanded "><a href="for-developers/fuels.html"><strong aria-hidden="true">6.10.</strong> Wallet Extension and SDK</a></li><li class="chapter-item expanded "><a href="for-developers/fuelup.html"><strong aria-hidden="true">6.11.</strong> Fuelup</a></li><li class="chapter-item expanded "><a href="for-developers/graphql-api.html"><strong aria-hidden="true">6.12.</strong> GraphQL API</a></li></ol></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Fuel Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/FuelLabs/fuel-docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="the-fuel-book"><a class="header" href="#the-fuel-book">The Fuel Book</a></h1>
+<p>Fuel is the fastest modular execution layer, delivering maximum security and highest flexible throughput.</p>
+<h2 id="alpha"><a class="header" href="#alpha">Alpha</a></h2>
+<ul>
+<li>Follow <a href="https://twitter.com/fuellabs_">Fuel Labs</a> on Twitter for all the alpha.</li>
+<li>Follow <a href="https://twitter.com/SwayLang">Sway</a>, our Rust-based DSL and start writing smart contracts on Fuel.</li>
+<li>Join the <a href="https://discord.com/invite/fuelnetwork">Fuel discord</a> where you can ask questions, build with others, and hear about developments first.</li>
+<li><a href="https://github.com/FuelLabs/awesome-fuel">Check out this page</a> to learn about upcoming events, read articles, listen to podcasts, and view presentations on Fuel.</li>
+<li><a href="https://1v1l4ftv9zy.typeform.com/fuelgrants?typeform-source=www.fuel.network">Apply for a grant to build on Fuel</a>.</li>
+<li><a href="https://github.com/FuelLabs/awesome-fuel">Fuel in the wild</a></li>
+</ul>
+<h2 id="learn"><a class="header" href="#learn">Learn</a></h2>
+<ul>
+<li><a href="./getting-started.html">Getting Started</a>
+<ul>
+<li><a href="./why-fuel.html">Why Fuel?</a></li>
+<li><a href="./what-is-fuel.html">What is Fuel?</a>
+<ul>
+<li><a href="./fuel-toolchain.html">Fuel toolchain</a></li>
+</ul>
+</li>
+<li><a href="./modular-movement.html">The Modular Movement</a>
+<ul>
+<li><a href="./monolithic.html">Monolithic Blockchains</a></li>
+</ul>
+</li>
+<li><a href="./fuel-configurations.html">Fuel Configurations</a>
+<ul>
+<li><a href="./rollup.html">Fuel as a rollup</a></li>
+<li><a href="./l1.html">Fuel as an L1</a></li>
+<li><a href="./state-channel.html">Fuel as a state channel</a></li>
+<li><a href="./sidechain.html">Fuel as a side chain</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./technology/index.html">Technology</a>
+<ul>
+<li><a href="./technology/parallel_tx_execution.html">Parallel Transaction Execution</a></li>
+<li><a href="./technology/fraud_proofs.html">Fraud Proofs</a></li>
+</ul>
+</li>
+<li><a href="./fuelvm/index.html">The FuelVM</a>
+<ul>
+<li><a href="./fuelvm/contract_call_model.html">Contract and Call Model</a></li>
+<li><a href="./fuelvm/memory_model.html">Memory Model</a></li>
+<li><a href="./fuelvm/native_assets.html">Multiple Native Assets</a></li>
+<li><a href="./vs-evm.html">VS EVM</a></li>
+</ul>
+</li>
+<li><a href="./sway-language.html">The Sway Language</a>
+<ul>
+<li><a href="./design-philosophy.html">Design Philosophy</a></li>
+<li><a href="./sway-safety.html">Safety</a></li>
+</ul>
+</li>
+<li><a href="./glossary.html">Glossary</a></li>
+</ul>
+<h2 id="build"><a class="header" href="#build">Build</a></h2>
+<ul>
+<li><a href="./quickstart/developer-quickstart.html">Developer Quickstart</a></li>
+<li><a href="./for-developers/for-developer.html">For Developers</a>
+<ul>
+<li><a href="./for-developers/testnet-node.html">Node</a></li>
+<li><a href="./for-developers/sway.html">Sway Language</a></li>
+<li><a href="./for-developers/ts-sdk.html">Typescript SDK</a></li>
+<li><a href="./for-developers/rust-sdk.html">Rust SDK</a></li>
+<li><a href="./for-developers/indexer.html">Indexer</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="developer-quickstart"><a class="header" href="#developer-quickstart">Developer Quickstart</a></h1>
+<p>This guide will walk developers through writing a smart contract in Sway, a simple test, deploying to Fuel, and building a frontend.</p>
+<p>Before we begin, it may be helpful to understand the terminology that will be used throughout the docs and how they relate to each other:</p>
+<ul>
+<li><strong>Fuel</strong>: the Fuel blockchain.</li>
+<li><strong>FuelVM</strong>: the virtual machine powering Fuel.</li>
+<li><strong>Sway</strong>: the domain-specific language crafted for the FuelVM; it is inspired by Rust.</li>
+<li><strong>Forc</strong>: the build system and package manager for Sway, similar to Cargo for Rust.</li>
+</ul>
+<h2 id="understand-sway-program-types"><a class="header" href="#understand-sway-program-types">Understand Sway Program Types</a></h2>
+<p>There are four types of Sway programs:</p>
+<ul>
+<li><code>contract</code></li>
+<li><code>predicate</code></li>
+<li><code>script</code></li>
+<li><code>library</code></li>
+</ul>
+<p>The main features of a smart contract that differentiate it from scripts or predicates are that it is callable and stateful.</p>
+<p>A script is runnable bytecode on the chain which can call contracts to perform some task. It does not represent ownership of any resources and it cannot be called by a contract.</p>
+<p>See <a href="https://fuellabs.github.io/sway/master/sway-program-types/index.html">the chapter on program types</a> for more information.</p>
+<p>A few pieces of info that will be helpful before moving on:</p>
+<ul>
+<li>This guide was created using VSCode as the code editor.</li>
+<li>Download the Sway language extension in VSCode to get syntax highlighting, keyboard shortcuts, and more.</li>
+<li>Download the rust-analyzer extension in VSCode to get syntax highlighting, code completion, and more.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="writing-a-sway-smart-contract"><a class="header" href="#writing-a-sway-smart-contract">Writing A Sway Smart Contract</a></h1>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<p>Start by <a href="https://fuellabs.github.io/sway/v0.24.3/introduction/installation.html#dependencies">installing the Rust toolchain</a>.</p>
+<p>Then, <a href="https://github.com/FuelLabs/fuelup">install the Fuel toolchain</a>.</p>
+<p>Make sure you have the latest version of <code>fuelup</code> by running the following command:</p>
+<pre><code class="language-console">$ fuelup self update
+Fetching binary from https://github.com/FuelLabs/fuelup/releases/download/v0.18.0/fuelup-0.18.0-aarch64-apple-darwin.tar.gz
+Downloading component fuelup without verifying checksum
+Unpacking and moving fuelup to /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt
+Moving /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt/fuelup to /Users/.fuelup/bin/fuelup
+</code></pre>
+<p>Then run <code>fuelup toolchain install beta-3</code> to install the <code>beta-3</code> toolchain.</p>
+<p>Finally, set the <code>beta-3</code> toolchain as your default distribution with the following command:</p>
+<pre><code class="language-console">$ fuelup default beta-3
+default toolchain set to 'beta-3-aarch64-apple-darwin'
+</code></pre>
+<p>You can check your current toolchain anytime by running <code>fuelup show</code>.</p>
+<blockquote>
+<p>Having problems with this part? Post your question on our forum <a href="https://forum.fuel.network/">https://forum.fuel.network/</a>. To help you as efficiently as possible, include the output of this command in your post: <code>fuelup show.</code></p>
+</blockquote>
+<h2 id="your-first-sway-project"><a class="header" href="#your-first-sway-project">Your First Sway Project</a></h2>
+<p>We'll build a simple counter contract with two functions: one to increment the counter, and one to return the value of the counter.</p>
+<p><strong>Start by creating a new, empty folder. We'll call it <code>fuel-project</code>.</strong></p>
+<h3 id="writing-the-contract"><a class="header" href="#writing-the-contract">Writing the Contract</a></h3>
+<p>Create a contract project inside of your <code>fuel-project</code> folder:</p>
+<pre><code class="language-sh">$ cd fuel-project
+$ forc new counter-contract
+To compile, use `forc build`, and to run tests use `forc test`
+
+----
+
+Read the Docs:
+- Sway Book: https://fuellabs.github.io/sway/latest
+- Rust SDK Book: https://fuellabs.github.io/fuels-rs/latest
+- TypeScript SDK: https://fuellabs.github.io/fuels-ts/
+
+Join the Community:
+- Follow us @SwayLang: https://twitter.com/SwayLang
+- Ask questions on Discourse: https://forum.fuel.network/
+
+Report Bugs:
+- Sway Issues: https://github.com/FuelLabs/sway/issues/new
+</code></pre>
+<p>Here is the project that <code>Forc</code> has initialized:</p>
+<pre><code class="language-console">$ tree counter-contract
+counter-contract
+├── Forc.toml
+└── src
+    └── main.sw
+</code></pre>
+<p><code>Forc.toml</code> is the <em>manifest file</em> (similar to <code>Cargo.toml</code> for Cargo or <code>package.json</code> for Node) and defines project metadata such as the project name and dependencies.</p>
+<p>Open your project in a code editor and delete the boilerplate code in <code>src/main.sw</code> so that you start with an empty file.</p>
+<p>Every Sway file must start with a declaration of what type of program the file contains; here, we've declared that this file is a contract.</p>
+<pre><code class="language-sway">contract;
+</code></pre>
+<p>Next, we'll define a storage value. In our case, we have a single counter that we'll call <code>counter</code> of type 64-bit unsigned integer and initialize it to 0.</p>
+<pre><code class="language-sway">storage {
+    counter: u64 = 0,
+}
+</code></pre>
+<h3 id="abi"><a class="header" href="#abi">ABI</a></h3>
+<p>An ABI defines an interface, and there is no function body in the ABI. A contract must either define or import an ABI declaration and implement it. It is considered best practice to define your ABI in a separate library and import it into your contract because this allows callers of the contract to import and use the ABI in scripts to call your contract.</p>
+<p>For simplicity, we will define the ABI directly in the contract file.</p>
+<pre><code class="language-sway">abi Counter {
+    #[storage(read, write)]
+    fn increment();
+
+    #[storage(read)]
+    fn count() -&gt; u64;
+}
+</code></pre>
+<h3 id="implement-abi"><a class="header" href="#implement-abi">Implement ABI</a></h3>
+<p>Below your ABI definition, you will write the implementation of the functions defined in your ABI.</p>
+<pre><code class="language-sway">impl Counter for Contract {
+    #[storage(read)]
+    fn count() -&gt; u64 {
+        storage.counter
+    }
+
+    #[storage(read, write)]
+    fn increment() {
+        storage.counter = storage.counter + 1;
+    }
+}
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>: <code>storage.counter</code> is an implicit return and is equivalent to <code>return storage.counter;</code>.</p>
+</blockquote>
+<p>Here's what your code should look like so far:</p>
+<p>File: <code>./counter-contract/src/main.sw</code></p>
+<pre><code class="language-sway">contract;
+
+storage {
+    counter: u64 = 0,
+}
+
+abi Counter {
+    #[storage(read, write)]
+    fn increment();
+
+    #[storage(read)]
+    fn count() -&gt; u64;
+}
+
+impl Counter for Contract {
+    #[storage(read)]
+    fn count() -&gt; u64 {
+        storage.counter
+    }
+
+    #[storage(read, write)]
+    fn increment() {
+        storage.counter = storage.counter + 1;
+    }
+}
+</code></pre>
+<h3 id="build-the-contract"><a class="header" href="#build-the-contract">Build the Contract</a></h3>
+<p>From inside the <code>fuel-project/counter-contract</code> directory, run the following command to build your contract:</p>
+<pre><code class="language-console">$ forc build
+  Compiled library &quot;core&quot;.
+  Compiled library &quot;std&quot;.
+  Compiled contract &quot;counter-contract&quot;.
+  Bytecode size is 232 bytes.
+</code></pre>
+<p>Let's have a look at the content of the <code>counter-contract</code> folder after building:</p>
+<pre><code class="language-console">$ tree .
+.
+├── Forc.lock
+├── Forc.toml
+├── out
+│   └── debug
+│       ├── counter-contract-abi.json
+│       ├── counter-contract-contract-id
+│       ├── counter-contract-storage_slots.json
+│       └── counter-contract.bin
+└── src
+    └── main.sw
+</code></pre>
+<p>We now have an <code>out</code> directory that contains our build artifacts such as the JSON representation of our ABI and the contract bytecode.</p>
+<h2 id="testing-your-contract"><a class="header" href="#testing-your-contract">Testing your Contract</a></h2>
+<p>We will start by adding a Rust integration test harness using a Cargo generate template. If this is your first time going through this quickstart, you'll need to install the <code>cargo generate</code> command. In the future, you can skip this step as it will already be installed.</p>
+<p>Navigate to your contract and then run the installation command:</p>
+<pre><code class="language-console">$ cd counter-contract
+changed directory into `counter-countract`
+$ cargo install cargo-generate
+ Updating crates.io index...
+ installed package `cargo-generate v0.17.3`
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>: You can learn more about cargo generate by visiting <a href="https://github.com/cargo-generate/cargo-generate">its repository</a>.</p>
+</blockquote>
+<p>Now, let's generate the default test harness with the following:</p>
+<pre><code class="language-console">$ cargo generate --init fuellabs/sway templates/sway-test-rs --name counter-contract
+⚠️   Favorite `fuellabs/sway` not found in config, using it as a git repository: https://github.com/fuellabs/sway
+🤷   Project Name : counter-contract
+🔧   Destination: /home/user/path/to/counter-contract ...
+🔧   Generating template ...
+[1/3]   Done: Cargo.toml
+[2/3]   Done: tests/harness.rs
+[3/3]   Done: tests
+🔧   Moving generated files into: `/home/user/path/to/counter-contract`...
+✨   Done! New project created /home/user/path/to/counter-contract
+</code></pre>
+<p>Let's have a look at the result:</p>
+<pre><code class="language-console">$ tree .
+.
+├── Cargo.toml
+├── Forc.lock
+├── Forc.toml
+├── out
+│   └── debug
+│       ├── counter-contract-abi.json
+│       ├── counter-contract-contract-id
+│       ├── counter-contract-storage_slots.json
+│       └── counter-contract.bin
+├── src
+│   └── main.sw
+└── tests
+    └── harness.rs
+</code></pre>
+<p>We have two new files!</p>
+<ul>
+<li>The <code>Cargo.toml</code> is the manifest for our new test harness and specifies the required dependencies including <code>fuels</code> the Fuel Rust SDK.</li>
+<li>The <code>tests/harness.rs</code> contains some boilerplate test code to get us started, though doesn't call any contract methods just yet.</li>
+</ul>
+<p>Now that we have our default test harness, let's add some useful tests to it.</p>
+<p>At the bottom of <code>test/harness.rs</code>, define the body of <code>can_get_contract_id()</code>. Here is what your code should look like to verify that the value of the counter did get incremented:</p>
+<p>File: <code>tests/harness.rs</code></p>
+<pre><code class="language-sway">#[tokio::test]
+async fn can_get_contract_id() {
+    let (instance, _id) = get_contract_instance().await;
+
+    // Increment the counter
+    instance.methods().increment().call().await.unwrap();
+
+    // Get the current value of the counter
+    let result = instance.methods().count().call().await.unwrap();
+
+    // Check that the current value of the counter is 1.
+    // Recall that the initial value of the counter was 0.
+    assert_eq!(result.value, 1);
+}
+</code></pre>
+<p>Run <code>cargo test</code> in the terminal. If all goes well, the output should look as follows:</p>
+<pre><code class="language-console">$ cargo test
+  ...
+  running 1 test
+  test can_get_contract_id ... ok
+  test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+</code></pre>
+<h2 id="deploy-the-contract"><a class="header" href="#deploy-the-contract">Deploy the Contract</a></h2>
+<p>It's now time to deploy the contract to the testnet. We will show how to do this using <code>forc</code> from the command line, but you can also do it using the <a href="https://github.com/FuelLabs/fuels-rs#deploying-a-sway-contract">Rust SDK</a> or the <a href="https://github.com/FuelLabs/fuels-ts/#deploying-contracts">TypeScript SDK</a>.</p>
+<p>In order to deploy a contract, you need to have a wallet to sign the transaction and coins to pay for gas. First, we'll create a wallet.</p>
+<h3 id="install-the-wallet-cli"><a class="header" href="#install-the-wallet-cli">Install the Wallet CLI</a></h3>
+<p>Follow <a href="https://github.com/FuelLabs/forc-wallet#forc-wallet">these steps to set up a wallet and create an account</a>.</p>
+<p>After typing in a password, be sure to save the mnemonic phrase that is output.</p>
+<p>With this, you'll get a fuel address that looks something like this: <code>fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8</code>. Save this address as you'll need it to sign transactions when we deploy the contract.</p>
+<h3 id="get-testnet-coins"><a class="header" href="#get-testnet-coins">Get Testnet Coins</a></h3>
+<p>With your account address in hand, head to the <a href="https://faucet-beta-3.fuel.network/">testnet faucet</a> to get some coins sent to your wallet.</p>
+<h3 id="deploy-to-testnet"><a class="header" href="#deploy-to-testnet">Deploy To Testnet</a></h3>
+<p>Now that you have a wallet, you can deploy with <code>forc deploy</code> and passing in the testnet endpoint like this:</p>
+<p><code>forc deploy --node-url beta-3.fuel.network/graphql --gas-price 1 --random-salt</code></p>
+<blockquote>
+<p><strong>Note</strong>: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.</p>
+</blockquote>
+<p>The terminal will ask for the address of the wallet you want to sign this transaction with, paste in the address you saved earlier, it looks like this: <code>fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8</code></p>
+<p>The terminal will output your <code>Contract id</code> like this:</p>
+<pre><code class="language-console">Contract id: 0xd09b469b0c31c05222b553021aa23c3b6a535db5092c22b84690dc88ca17deaa
+</code></pre>
+<p>Be sure to save this as you will need it to build a frontend with the Typescript SDK later in this tutorial.</p>
+<p>The terminal will output a <code>Transaction id to sign</code> and prompt you for a signature. Open a new terminal tab and view your accounts by running <code>forc wallet accounts</code>. If you followed these steps, you'll notice you only have one account, <code>0</code>.</p>
+<p>Grab the <code>Transaction id to sign</code> from your other terminal and sign with your account by running the following command:</p>
+<pre><code class="language-console">forc wallet sign --account `[the account index, without brackets]` tx-id `[Transaction id to sign, without brackets]`
+</code></pre>
+<p>Your command should look like this:</p>
+<pre><code class="language-console">$ forc wallet sign --account 0 tx-id 16d7a8f9d15cfba1bd000d3f99cd4077dfa1fce2a6de83887afc3f739d6c84df
+Please enter your password to decrypt initialized wallet's phrases:
+Signature: 736dec3e92711da9f52bed7ad4e51e3ec1c9390f4b05caf10743229295ffd5c1c08a4ca477afa85909173af3feeda7c607af5109ef6eb72b6b40b3484db2332c
+</code></pre>
+<p>Enter your password when prompted, and you'll get back a <code>signature</code>. Save that signature, and return to your other terminal window, and paste that in where its prompting you to <code>provide a signature for this transaction</code>.</p>
+<p>Finally, you will get back a <code>TransactionId</code> to confirm your contract was deployed. With this ID, you can head to the <a href="https://fuellabs.github.io/block-explorer-v2/">block explorer</a> and view your contract.</p>
+<blockquote>
+<p><strong>Note</strong>
+You should prefix your <code>TransactionId</code> with <code>0x</code> to view it in the block explorer</p>
+</blockquote>
+<p><img src="quickstart/../images/block-explorer.png" alt="block explorer" /></p>
+<h3 id="congrats-you-have-completed-your-first-smart-contract-on-fuel-"><a class="header" href="#congrats-you-have-completed-your-first-smart-contract-on-fuel-">Congrats, you have completed your first smart contract on Fuel ⛽</a></h3>
+<p><a href="https://github.com/FuelLabs/quickstart">Here is the repo for this project</a>. If you run into any problems, a good first step is to compare your code to this repo and resolve any differences.</p>
+<p>Tweet us <a href="https://twitter.com/fuel_network">@fuel_network</a> letting us know you just built a dapp on Fuel, you might get invited to a private group of builders, be invited to the next Fuel dinner, get alpha on the project, or something 👀.</p>
+<h2 id="need-help"><a class="header" href="#need-help">Need Help?</a></h2>
+<p>Get help from the team by posting your question in the <a href="https://forum.fuel.network/">Fuel Forum</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="building-a-frontend-to-interact-with-your-contract"><a class="header" href="#building-a-frontend-to-interact-with-your-contract">Building a Frontend to Interact With Your Contract</a></h1>
+<p>To build out our frontend application, we'll do the following:</p>
+<ol>
+<li><strong>Initialize a React project.</strong></li>
+<li><strong>Install the <code>fuels</code> SDK dependencies.</strong></li>
+<li><strong>Write our frontend code.</strong></li>
+<li><strong>Run our project.</strong></li>
+</ol>
+<h2 id="initialize-a-react-project"><a class="header" href="#initialize-a-react-project">Initialize a React project</a></h2>
+<p>To split our project's contract from frontend code, let's create a new folder <code>frontend</code> where we'll initialize our frontend project.</p>
+<p>In the terminal, go back up one directory and initialize a react project using <a href="https://create-react-app.dev/"><code>Create React App</code></a>.</p>
+<pre><code class="language-console">$ cd ..
+$ npx create-react-app frontend --template typescript
+Success! Created frontend at Fuel/fuel-project/frontend
+</code></pre>
+<p>You should now have your outer folder, <code>fuel-project</code>, with two folders inside: <code>counter-contract</code> and <code>frontend</code></p>
+<p><img src="quickstart/../images/quickstart-folder-structure.png" alt="project folder structure" /></p>
+<h3 id="install-the-fuels-sdk-dependency"><a class="header" href="#install-the-fuels-sdk-dependency">Install the <code>fuels</code> SDK dependency</a></h3>
+<p>The <code>fuels</code> umbrella package includes all the main tools you need for your frontend; <code>Wallet</code>, <code>Contracts</code>, <code>Providers</code>, and more.</p>
+<p>Also, it contains the routines for ABI TypeScript generation.</p>
+<blockquote>
+<p>ABI stands for Application Binary Interface. ABI's inform the application the interface to interact with the VM, in other words, they provide info to the APP such as what methods a contract has, what params, types it expects, etc...</p>
+</blockquote>
+<h3 id="installing"><a class="header" href="#installing">Installing</a></h3>
+<p>Move into the <code>frontend</code> folder, then run:</p>
+<pre><code class="language-console">$ cd frontend
+$ npm install fuels@0.35.0 --save
+added 114 packages, and audited 115 packages in 29s
+</code></pre>
+<h3 id="generating-contract-types"><a class="header" href="#generating-contract-types">Generating contract types</a></h3>
+<p>To make it easier to interact with our contract we use <code>fuels typegen</code> command to interpret the output ABI JSON from our contract, and generate Typescript definitions based on it. This JSON was created when we executed the <code>forc build</code> command to compile our Sway Contract into binary.</p>
+<p>If you see the folder <code>fuel-project/counter-contract/out</code> you will be able to see the ABI JSON there. If you want to learn more, read the <a href="https://fuellabs.github.io/fuel-specs/master/protocol/abi">ABI spec</a>.</p>
+<p>Inside the <code>fuel-project/frontend</code> directory run:</p>
+<pre><code class="language-console">$ npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts
+Generating files..
+
+ - src/contracts/CounterContractAbi.d.ts
+ - src/contracts/factories/CounterContractAbi__factory.ts
+ - src/contracts/index.ts
+
+Done.⚡
+</code></pre>
+<p>Now you should be able to find a new folder <code>fuel-project/frontend/src/contracts</code>. This folder was auto-generated by our <code>fuels typegen</code> command, and these files abstract the work we would need to do to create a contract instance, and generate a complete TypeScript interface to the Contract, making easy to develop.</p>
+<h3 id="create-a-wallet-again"><a class="header" href="#create-a-wallet-again">Create A Wallet (Again)</a></h3>
+<p>For interacting with the fuel network we have to submit signed transactions with enough funds to cover network fees. The Fuel TS SDK doesn't currently support Wallet integrations, requiring us to have a non-safe wallet inside the WebApp using a privateKey.</p>
+<blockquote>
+<p><strong>Note</strong>: This should be done only for development purpose. Never expose a web app with a private key inside. The Fuel Wallet is in active development, follow the progress <a href="https://github.com/FuelLabs/fuels-wallet">here</a>.</p>
+</blockquote>
+<p>In the root of the frontend project create a file named <code>createWallet.js</code> and add the following code:</p>
+<p>File: <code>./frontend/createWallet.js</code></p>
+<pre><code class="language-js">const { Wallet } = require(&quot;fuels&quot;);
+
+const wallet = Wallet.generate();
+
+console.log(&quot;address&quot;, wallet.address.toString());
+console.log(&quot;private key&quot;, wallet.privateKey);
+</code></pre>
+<p>In a terminal, run the following command:</p>
+<pre><code class="language-console">$ node createWallet.js
+address fuel160ek8t7fzz89wzl595yz0rjrgj3xezjp6pujxzt2chn70jrdylus5apcuq
+private key 0x719fb4da652f2bd4ad25ce04f4c2e491926605b40e5475a80551be68d57e0fcb
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>: You should use the generated address and private key.</p>
+</blockquote>
+<p>Save the private key, you will need this later to set it as a string value for a variable <code>WALLET_SECRET</code> in your <code>App.tsx</code> file. More on that below.</p>
+<p>First, take the address of your wallet and use it to get some coins from <a href="https://faucet-beta-3.fuel.network/">the testnet faucet</a>.</p>
+<p>Now you're ready to build and ship ⛽</p>
+<blockquote>
+<p><strong>Note</strong>: The team is working to simplify the process of creating a wallet, and eliminate the need to create a wallet twice. Keep an eye out for these updates.</p>
+</blockquote>
+<h3 id="modify-the-app"><a class="header" href="#modify-the-app">Modify the App</a></h3>
+<p>Inside the <code>frontend/src</code> folder let's add code that interacts with our contract.
+Read the comments to help you understand the App parts.
+Change the file <code>fuel-project/frontend/src/App.tsx</code> to:</p>
+<p>File: <code>./frontend/src/App.tsx</code></p>
+<pre><code class="language-ts">import { useEffect, useState } from &quot;react&quot;;
+import { Wallet } from &quot;fuels&quot;;
+import &quot;./App.css&quot;;
+// Import the contract factory -- you can find the name in index.ts.
+// You can also do command + space and the compiler will suggest the correct name.
+import { CounterContractAbi__factory } from &quot;./contracts&quot;;
+
+// The address of the contract deployed the Fuel testnet
+const CONTRACT_ID =
+  &quot;0x2c38161e42ce14abdaa7950c04b13aa340eb67cf196c94b971d5f0175417f4f4&quot;;
+
+//the private key from createWallet.js
+const WALLET_SECRET =
+  &quot;0x07960a5124cd6e52b595aed727d640aed2e32cc587a34c09f1b48615378df752&quot;;
+
+// Create a Wallet from given secretKey in this case
+// The one we configured at the chainConfig.json
+const wallet = Wallet.fromPrivateKey(
+  WALLET_SECRET,
+  &quot;https://beta-3.fuel.network/graphql&quot;
+);
+
+// Connects out Contract instance to the deployed contract
+// address using the given wallet.
+const contract = CounterContractAbi__factory.connect(CONTRACT_ID, wallet);
+
+function App() {
+  const [counter, setCounter] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() =&gt; {
+    async function main() {
+      // Executes the counter function to query the current contract state
+      // the `.get()` is read-only, because of this it don't expand coins.
+      const { value } = await contract.functions.count().get();
+      setCounter(Number(value));
+    }
+    main();
+  }, []);
+
+  async function increment() {
+    // a loading state
+    setLoading(true);
+    // Creates a transactions to call the increment function
+    // because it creates a TX and updates the contract state this requires the wallet to have enough coins to cover the costs and also to sign the Transaction
+    try {
+      await contract.functions.increment().txParams({ gasPrice: 1 }).call();
+      const { value } = await contract.functions.count().get();
+      setCounter(Number(value));
+    } finally {
+      setLoading(false);
+    }
+  }
+  
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;header className=&quot;App-header&quot;&gt;
+        &lt;p&gt;Counter: {counter}&lt;/p&gt;
+        &lt;button disabled={loading} onClick={increment}&gt;
+          {loading ? &quot;Incrementing...&quot; : &quot;Increment&quot;}
+        &lt;/button&gt;
+      &lt;/header&gt;
+    &lt;/div&gt;
+  );
+}
+export default App;
+</code></pre>
+<h3 id="run-your-project"><a class="header" href="#run-your-project">Run your project</a></h3>
+<p>Now it's time to have fun, run the project in your browser.</p>
+<p>Inside the <code>fuel-project/frontend</code> directory run:</p>
+<pre><code class="language-console">$ npm start
+Compiled successfully!
+
+You can now view frontend in the browser.
+
+  Local:            http://localhost:3001
+  On Your Network:  http://192.168.4.48:3001
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+</code></pre>
+<p><img src="quickstart/../images/quickstart-dapp-screenshot.png" alt="screenshot of the UI" /></p>
+<h3 id="you-just-built-a-fullstack-dapp-on-fuel-"><a class="header" href="#you-just-built-a-fullstack-dapp-on-fuel-">You just built a fullstack dapp on Fuel! ⛽</a></h3>
+<p><a href="https://github.com/FuelLabs/quickstart">Here is the repo for this project</a>. If you run into any problems, a good first step is to compare your code to this repo and resolve any differences.</p>
+<p>Tweet us <a href="https://twitter.com/fuel_network">@fuel_network</a> letting us know you just built a dapp on Fuel, you might get invited to a private group of builders, be invited to the next Fuel dinner, get alpha on the project, or something 👀.</p>
+<h3 id="updating-the-contract"><a class="header" href="#updating-the-contract">Updating The Contract</a></h3>
+<p>If you make changes to your contract, here are the steps you should take to get your frontend and contract back in sync:</p>
+<ul>
+<li>
+<p>In your contract directory, run <code>forc build</code></p>
+</li>
+<li>
+<p>In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: <code>forc deploy --node-url beta-3.fuel.network/graphql --gas-price 1 --random-salt</code></p>
+</li>
+<li>
+<p>In your frontend directory, re-run this command: <code>npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts</code></p>
+</li>
+<li>
+<p>In your <code>fuel-project/frontend</code> directory, update the contract ID in your <code>App.tsx</code> file</p>
+</li>
+</ul>
+<h2 id="need-help-1"><a class="header" href="#need-help-1">Need Help?</a></h2>
+<p>Get help from the team by posting your question in the <a href="https://forum.fuel.network/">Fuel Forum</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+<ul>
+<li><a href="./why-fuel.html">Why Fuel?</a></li>
+<li><a href="./what-is-fuel.html">What is Fuel?</a></li>
+<li><a href="./fuel-toolchain.html">Fuel Toolchain</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="why-fuel"><a class="header" href="#why-fuel">Why Fuel</a></h1>
+<h2 id="user-sovereignty-with-fraud-proofs"><a class="header" href="#user-sovereignty-with-fraud-proofs">User Sovereignty with Fraud Proofs</a></h2>
+<p>Fuel was designed and built specifically to be fraud-provable, which enable support for trust-minimized light clients. Trust minimized light clients and shared data availability enables trust minimized bridges to other modular execution layers, something impossible to achieve between L1s.</p>
+<p>What this means in practice:</p>
+<ul>
+<li>Long-term liquidity access</li>
+<li>Users can validate the chain without having to run full nodes</li>
+<li>Safely bridging assets</li>
+</ul>
+<p>Fuel’s optimization for fraud proofs is the use of the UTXO model, which in turn means Fuel has no global state tree or account trees. If you wanted to apply the general construction of a fraud proof to a chain that uses the account model like Ethereum, the cost could be unbound, making it extremely expensive to produce a fraud proof. In this general construction of a fraud proof, given a pre-state and a state transition, you locally execute the transition and compare the output to the post-state produced by the block producer. If these differ, the post-state by the block producer was invalid. If you apply this general fraud proof model to Ethereum today, someone could create a transaction that calls many different contracts, and those contracts could each have up to 24kb of bytecode. In order to locally re-execute, you need to provide all the bytecode for all the contracts that were interacted with.</p>
+<p>Read more about trust-minimized light clients and sovereignty <a href="./modular-movement.html">here</a>.</p>
+<h2 id="superior-devex"><a class="header" href="#superior-devex">Superior DevEx</a></h2>
+<p>Fuel’s technology comes together to provide a superior developer experience. Here’s how we do it:</p>
+<h3 id="sway-and-fuel-toolchain"><a class="header" href="#sway-and-fuel-toolchain">Sway and Fuel Toolchain</a></h3>
+<p>The FuelVM is designed to be vertically integrated with tooling.</p>
+<p>Unlike EVM which was designed without a language from the start, the FuelVM is built alongside its companion language, Sway, ensuring it has handy and efficient ops, such as getting specific parts of a tx. Sway is a Rust-based DSL created specifically to leverage a blockchain VM without needlessly verbose boilerplate. Sway leverages Rust’s safety and catches errors and bugs at compile-time, giving developers peace of mind. Read more about Sway <a href="./sway-language.html">here</a>.</p>
+<p>Fuel Labs has also developed the Fuel Toolchain: the full stack of tools for enabling/assisting the Fuel application development experience. Read more about the Fuel Toolchain <a href="./fuel-toolchain.html">here</a>.</p>
+<h2 id="parallel-execution"><a class="header" href="#parallel-execution">Parallel Execution</a></h2>
+<p><img src="./images/fuel-parallel.png" alt="parallel transaction execution in the FuelVM" /></p>
+<p>Fuel brings scale to Ethereum without sacrificing decentralization.The FuelVM is designed to reduce wasteful processing of traditional blockchain virtual machine architectures, while vastly increasing the potential design space for developers. The FuelVM can use all the threads and cores of your CPU to validate transactions.</p>
+<h2 id="fuel-configurations"><a class="header" href="#fuel-configurations">Fuel Configurations</a></h2>
+<p><img src="./images/configs.png" alt="Fuel configurations" /></p>
+<p>As a Modular Execution Layer, Fuel can function in any one of these categories. Developers can configure Fuel as-needed by switching out a few modules in the client.</p>
+<h2 id="improved-vm"><a class="header" href="#improved-vm">Improved VM</a></h2>
+<p>The Ethereum community has suggested many implementation improvements to improve EVM performance. Unfortunately, many of these improvement proposals haven’t been implemented because they would break backward compatibility.</p>
+<p>Execution layers built on Ethereum give us a new opportunity to build something better. Designs don’t need to be backward compatible and in fact, can do whatever is necessary to deliver global throughput and adoption for Ethereum. The FuelVM is the EVM greatly improved. Check out this non-exhaustive list of EIPs (Ethereum Improvement Proposals) implemented in the FuelVM <a href="./what-is-fuel.html">here</a>.</p>
+<h3 id="the-fuelvm-and-evm-have-a-lot-of-overlap-heres-how-theyre-different-view-a-more-complete-list-at-fuelvm-vs-evm"><a class="header" href="#the-fuelvm-and-evm-have-a-lot-of-overlap-heres-how-theyre-different-view-a-more-complete-list-at-fuelvm-vs-evm">The FuelVM and EVM have a lot of overlap. Here's how they're different, view a more complete list at <a href="./vs-evm.html">FuelVM vs. EVM</a></a></h3>
+<h4 id="the-fuelvm-has-a-globally-shared-memory-architecture-instead-of-context-local-memory"><a class="header" href="#the-fuelvm-has-a-globally-shared-memory-architecture-instead-of-context-local-memory">The FuelVM has a globally shared memory architecture instead of context-local memory</a></h4>
+<p>The FuelVM has a globally shared memory architecture. Instead of every contract call having its own separate memory space, call data, and return data, all contract call frames share global memory. This chunk of memory is shared amongst all call frames and is globally readable. This allows you to pass data around between contracts without expensive storage and pass chunks of data without having to serialize, copy from call data to memory, etc. Read more about the FuelVM memory model <a href="./fuelvm/memory_model.html">here</a>.</p>
+<h4 id="the-fuelvm-is-designed-for-fraud-provability"><a class="header" href="#the-fuelvm-is-designed-for-fraud-provability">The FuelVM is designed for fraud-provability</a></h4>
+<p>The EVM is a complicated machine to construct fraud proofs for. It usually requires a second layer such as WASM or MIPS to be interpreted into a fraud provable system. Check out <a href="./why-fuel.html">User Sovereignty with Fraud Proofs</a> and <a href="./modular-movement.html">how fraud proofs unlock key functionality</a>.</p>
+<h4 id="fuelvm-has-multiple-native-assets"><a class="header" href="#fuelvm-has-multiple-native-assets">FuelVM has multiple native assets</a></h4>
+<p>In Ethereum, the only native asset is Ether. It’s the only one that gets first-class treatment in terms of cost and ability to be pushed and pulled through a call. In Fuel, any contract can mint its UTXO-based native asset using a set of easy asset opcodes. All of which can gain the benefits of native-level call and optimization. Read more about support for multiple native assets in <a href="https://fuellabs.github.io/sway/v0.23.0/blockchain-development/native_assets.html">the Sway docs</a>, and <a href="./fuelvm/native_assets.html">here</a>.</p>
+<p>Read the full specification of the FuelVM <a href="https://fuellabs.github.io/fuel-specs/master/vm">here</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-fuel"><a class="header" href="#what-is-fuel">What is Fuel?</a></h1>
+<p>Fuel v1 began as a layer-2 (L2) scalability technology for a monolithic Ethereum. It was the first optimistic rollup on mainnet Ethereum, deployed at the end of 2020.</p>
+<p>Today, Fuel is the fastest modular execution layer. Fuel delivers the highest security and flexible throughput, with a focus on a superior developer experience.</p>
+<p>Here’s how we do it:</p>
+<ul>
+<li>Parallel transaction execution</li>
+<li>Fuel Virtual Machine (FuelVM)</li>
+<li><a href="./fuel-toolchain.html">Developer tooling with Sway Language and Forc</a></li>
+</ul>
+<h2 id="parallel-transaction-execution"><a class="header" href="#parallel-transaction-execution">Parallel Transaction Execution</a></h2>
+<p>Fuel delivers unmatched processing capacity through its ability to execute transactions in parallel by using strict state access lists in the form of a UTXO model. This enables Fuel to use far more threads and cores of your CPU that are typically idle in single-threaded blockchains. As a result, Fuel can deliver far more compute, state accesses, and transactional throughput than its single-threaded counterparts.</p>
+<p>With the EVM, it is difficult to know if, and where there are dependencies between transactions, so you are forced to execute transactions sequentially.</p>
+<p>The FuelVM uses the UTXO model, enabling parallel transaction execution by identifying transaction dependencies through what is known as state access lists. With the FuelVM, Fuel full nodes identify the accounts that a transaction touches, mapping out dependencies before execution.</p>
+<h2 id="fuelvm"><a class="header" href="#fuelvm">FuelVM</a></h2>
+<p>The FuelVM learns from the Ethereum ecosystem, implementing improvements that were suggested to the Ethereum VM (EVM) for many years but couldn’t be implemented due to the need to maintain backward compatibility.</p>
+<p>Here are some EIP that have been implemented in the FuelVM:</p>
+<table><thead><tr><th>EIP</th><th>Description</th><th>Implementation</th></tr></thead><tbody>
+<tr><td><a href="https://github.com/ethereum/EIPs/issues/648">Easy Parallelizability</a></td><td>Allow transactions in the EVM to be processed in parallel by specifying what addresses they can access.</td><td>Fuel can execute transactions in parallel by using strict state access lists with our UTXO model. This allows Fuel to use of all the threads and cores of your CPU to validate transactions.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-2098">EIP-2098: Compact Signature Representation</a></td><td>Reduce signatures from 65 bytes to 64 bytes to simplify handling transactions in client code, reduce gas costs, and reduce transaction sizes.</td><td>Fuel compresses signature data by a byte, from 65 to 64 bytes.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-3074">EIP-3074: <code>AUTH</code> and <code>AUTHCALL</code> opcodes</a></td><td>Introduces two EVM instructions, <code>AUTH</code> and <code>AUTHCALL</code>, to enable batching capabilities, allowing for gas sponsoring, expirations, scripting, and beyond.</td><td>Fuel has scripts and predicates that, when combined, allow the execution of multiple calls in a single batch.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-3102">EIP-3102: Binary Trie Structure</a></td><td>Introduces binary structure and merkelization rule for the account and storage tries, which are merged into a single “state” trie. Binary tries make for smaller (~4x) proofs than hexary tries, making it the design of choice for a stateless-friendly Ethereum.</td><td>Fuel uses a binary Sparse Merkle Trie instead of a Patricia Merkle Trie, which makes for smaller proofs and results in better performance.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-4758">EIP-4758: Deactivate SELFDESTRUCT</a></td><td>Rename <code>SELFDESTRUCT</code> opcode to <code>SENDALL</code>, and only immediately move all ETH in the account to the target; no longer destroying code or storage or alters the nonce. Disabling <code>SELFDESTRUCT</code> will be a requirement for statelessness.</td><td>The FuelVM doesn't have a <code>SELFDESTRUCT</code> opcode which can complicate client implementations.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-5027">EIP-5027: Remove the limit on contract code size</a></td><td>Remove the limit on the code size so that users can deploy a large-code contract without worrying about splitting the contract into several sub-contracts. With the dramatic growth of decentralized applications, the functionalities of smart contracts are becoming more and more complicated, and thus, the sizes of newly developed contracts are steadily increasing. As a result, we are facing more issues with the 24576-bytes contract size limit.</td><td>FuelVM doesn't have a limit on the size of a single contract below their physical limits. We have an instruction that allows you to load bytecode from another contract into the current execution context, allowing you to use it as a single contract even if you have to split bytecode across multiple transactions. It'll have a single monolithic bytecode and one state. In EVM, if you spit a contract across two transactions, it's two separate contracts, and you have to do things like delegate calls to share the state between the two contracts and can't do things like jump between bytecode on each contract.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-5065">EIP-5065: Instruction for Transferring Ether</a></td><td>Add a new instruction that transfers ether to a destination address without handing over the flow of execution to it. Ethereum currently has no ideal way to transfer ether without transferring the execution flow. People have come up with reentrancy guards and similar solutions to prevent some types of attacks, but it’s not an ideal solution.</td><td>The FuelVM has <a href="https://fuellabs.github.io/fuel-specs/master/vm/instruction_set#tr-transfer-coins-to-contract">an instruction called <code>TR</code></a>, short for transfer, which transfers a native asset to a contract but doesn't allow the receiving contract to execute logic. You might want to do this to ensure the receiving contract cannot reenter. This doesn't exist as a native, first-class instruction in the EVM- you can do this by self-destructing a contract but it's a messy workaround that only works for ETH.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-86">EIP-86: Abstraction of Transaction Origin and Signature</a> and <a href="https://eips.ethereum.org/EIPS/eip-2938">EIP-2938: Account Abstraction</a></td><td>Implements a set of changes that serve the combined purpose of “abstracting out” signature verification and nonce checking, allowing users to create “account contracts” that perform any desired signature/nonce checks instead of using the mechanism currently hard-coded into transaction processing.</td><td>FuelVM has stateless account abstraction, enabling application-layer logic to configure validity rules of transactions. On Ethereum today, a transaction is valid if the user has enough Ether, the nonce is correct, and signature is valid. With account abstraction, the user can change the validity of the transaction logic without a hard fork. This could mean changes to the signature scheme or natively locking an account behind a multisig.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-1051">EIP-1051: Overflow Checking for the EVM</a></td><td>This EIP adds overflow checking for EVM arithmetic operations and two new opcodes that check and clear the overflow flags. Since the EVM operates on mod 2^256 integers and provides no built-in overflow detection or prevention, this requires manual checks on every arithmetic operation.</td><td>Overflow checking is built into the FuelVM and can be optionally disabled.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-2803">EIP-2803: Rich Transactions</a></td><td>If a transaction has a to of address x, then the data of the transaction will be treated as EVM bytecode, and it will be executed from the context of the CALLER of the transaction (aka: the transaction signer). Many Ethereum DApps require users to approve multiple transactions to produce one effect. This results in a poor user experience and complicates the experience of interacting with DApps.</td><td>The FuelVM has scripts that implement this.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-2926">EIP-2926: Chunk-based Code Merkelization</a></td><td>Bytecode is currently the second contributor to block witness size after the proof hashes. Transitioning the trie from hexary to binary reduces the hash section of the witness by 3x, thereby making code the first contributor. By breaking contract code into chunks and committing to those chunks in a Merkle tree, stateless clients would only need the chunks that were touched during a given transaction to execute it.</td><td>To get a code hash on Ethereum, you hash together all the byte code. The problem is that if you want to do things with statelessness or fraud proofs, to show that this hash is valid, you have to provide all the byte code, up to 24KB per contract. This EIP suggests we should merkalize it instead of hashing. The FuelVM implements this by having code roots instead of code hashes.</td></tr>
+</tbody></table>
+<h2 id="sway-language"><a class="header" href="#sway-language">Sway Language</a></h2>
+<p>Sway is a domain-specific language (DSL) for the Fuel Virtual Machine (FuelVM), a blockchain-optimized VM designed for the Fuel blockchain. Sway is based on Rust and includes syntax to leverage a blockchain VM without a needlessly verbose boilerplate.</p>
+<p>Sway was created alongside the FuelVM and designed for the high-compute Fuel environment. Check out the Sway docs here.</p>
+<h2 id="developer-tooling"><a class="header" href="#developer-tooling">Developer Tooling</a></h2>
+<p>Fuel Labs is developing a suite of developer tooling to create a seamless developer experience. By creating everything in-house, Fuel Labs guarantees the maintenance of the toolchain, avoiding the pitfalls of a fragmented developer ecosystem.</p>
+<p>Fuel provides a powerful and sleek developer experience with our own domain-specific language, called Sway, and a supportive toolchain, called Forc (the Fuel Orchestrator). Our development environment retains the benefits of smart contract languages like Solidity, while adopting the paradigms introduced in the Rust tooling ecosystem.  Now, developers can have a completely vertically-integrated experience where every component from the virtual machine through to the CLI works in harmony.</p>
+<p><strong>The Fuel Toolchain:</strong>
+Forc: build, run tests, launch a local instance of a block explorer, format.</p>
+<p>Check out the Fuel Toolchain <a href="./fuel-toolchain.html">here</a>.</p>
+<p><strong>Coming Soon:</strong>
+A suite of auditing facilities, from fuzzing and formal verification to code coverage and runtime gating.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-fuel-toolchain"><a class="header" href="#the-fuel-toolchain">The Fuel Toolchain</a></h1>
+<p>The full stack of tools designed and built by Fuel Labs for enabling/assisting the Fuel application development experience.</p>
+<p>Tooling Overview:</p>
+<ul>
+<li><code>fuel-core</code>: The Fuel VM node client.</li>
+<li><code>forc</code>: The Fuel Orchestrator. Includes Sway compiler, packaging and plugin support.</li>
+<li><code>Fuel Indexer</code>: A standalone binary that can be used to index various components of the blockchain. Check out the docs <a href="https://fuellabs.github.io/fuel-indexer/master/the-fuel-indexer.html">here</a>.</li>
+</ul>
+<p>Forc plugins by Fuel Labs:</p>
+<ul>
+<li><code>forc-fmt</code>: The Sway code formatter.</li>
+<li><code>forc-lsp</code>: The Sway Language Server Protocol implementation.</li>
+<li><code>forc-explore</code>: Runs the Fuel block explorer.</li>
+<li><code>forc-client</code>: For deploying and running Sway apps via CLI.</li>
+<li><code>forc-wallet</code>: For initializing a wallet, adding accounts and signing transactions.</li>
+<li><code>fuelup</code>: The Fuel toolchain manager - an easy approach to retrieving all of the above.</li>
+</ul>
+<p>For more specific documentation on the toolchain, check out the Sway docs <a href="https://fuellabs.github.io/sway/v0.19.2/introduction/sway-toolchain.html">here</a>.</p>
+<h2 id="building-on-fuel"><a class="header" href="#building-on-fuel">Building on Fuel</a></h2>
+<p>Developers can get everything they need to start creating Sway applications for the Fuel VM with a single toolchain, blessed by the same teams that create the FuelVM and Sway language.</p>
+<p>One common issue developers face when working within the Ethereum ecosystem is how to choose a set of tools to get started. Historically, Ethereum's founders have been particularly focused on the low-level details of the protocol, the EVM and to a lesser extent Solidity, leaving the job of creating accessible, high-level tooling to the community. As a result, many disparate projects have appeared from different 3rd parties that aim to provide these high-level solutions such as truffle, dapptools, hard hat, foundry and many more. It can be difficult for new Ethereum developers to navigate this space and to feel comfortable knowing they're making the right choice in selecting one of these toolchains.</p>
+<p>In contrast, Fuel Labs take a curated, &quot;batteries-included&quot;-yet-modular approach to providing tooling. We aim to provide a comprehensive, standardized, canonical set of tools that cover not only the lower levels of the stack (like protocol and VM implementations) but the higher level too (such as package management, editor support, common-use plugins and much more). We aim to do so in a manner that is open, transparent and welcoming of external contributions.</p>
+<p>To clarify, the goal is not at all to discourage 3rd parties from extending the fuel ecosystem. Rather, we aim to make the official tool-chain so good as to inspire contributions upstream and to collaborate under one unified developer ecosystem. For those cases where our tooling falls short and additions or extensions are required, we provide an extensible plugin system through <code>forc</code>, enabling community creativity in a manner that is easily-shareable and familiar to fellow Fuel devs.</p>
+<p>The Sway VS Code plugin is a great example of our vision for a unified developer experience. The plugin interacts with the Sway language server, a forc plugin that communicates directly with the Sway compiler and shares much of its code-base. The plugin also allows for spinning up a Fuel node, displaying its status in real-time and (in the near future) interact with your smart contracts via the TypeScript SDK. A complete solution from entirely within the plugin, from one team with a shared vision.</p>
+<p>You can start experimenting with the Fuel toolchain by following the <a href="https://fuellabs.github.io/fuelup/master/installation/index.html#quickstart">Fuelup Quickstart Guide</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="modular-movement"><a class="header" href="#modular-movement">Modular Movement</a></h1>
+<p>Although L2s have opened up a margin of cost reduction for access to the Ethereum ecosystem, the total throughput increase has been modest at best (with both optimistic and ZK approaches). And in times of high traffic on Ethereum, L2s have failed to keep costs low, often rising to several dollars per transaction.</p>
+<p>As a community, if we want to achieve true global access to blockchain technology, we cannot settle for a modest reduction in fees. We need dramatic change. Change that not only reduces waste and inefficiency but opens up new use cases never before seen in the blockchain space.</p>
+<p>There is an ongoing colossal shift happening in layer-1 (L1) blockchain architectures. We are moving away from a monolithic design, where consensus, data availability, and execution are tightly coupled (e.g. today's Ethereum), to a modular future, where execution is separated from data availability and consensus (e.g. tomorrow's Eth2, or Celestia). This separation allows for specialization at the base layer, delivering a significant increase in bandwidth capacity.</p>
+<h2 id="why-modular"><a class="header" href="#why-modular">Why Modular?</a></h2>
+<p>A modular blockchain architecture does not inherently enable scaling. The properties that are derived as a result are what make this possible. Fuel was built for fraud proofs, enabling trust-minimized light clients, enabling high security without requiring high resource usage.</p>
+<h3 id="security-vs-resource-requirements"><a class="header" href="#security-vs-resource-requirements">Security vs. Resource Requirements</a></h3>
+<p><img src="./images/resource-security-1.png" alt="fuel1" /></p>
+<p>In a monolithic architecture, users must choose between high security and high computational resource usage and trusted security and low computational resource usage. For example, <a href="https://ethereum.org/en/run-a-node/">Ethereum was designed to allow consumer-grade hardware to be able to run a full node</a>, a type of node that offers maximum security by downloading and verifying every single transaction. By running a full node, users don’t have to trust that the chain is valid and can instead verify themselves. However, running a full node requires a lot of disk space and non-negligible CPU allocation and can take days to sync the blockchain from genesis.</p>
+<p>Alternatively, a user can run a light client, also known as an honest majority light client. Instead of downloading all blocks to verify transactions, light clients only download block headers and check their proof-of-work (PoW), assuming the heaviest chain is valid. Honest majority light-clients that trust that a majority of validators are honest and will reject fraudulent transactions.</p>
+<p>The amount of computational resources and storage needed to run a light client is lower than a full node by several orders of magnitude.</p>
+<p>An easy way to remember the difference: An honest majority light client is only secure if most validators are honest. A full node is honest even if all validators are not honest.</p>
+<p>By running a full node, you get the maximum security of verifying transactions but also have to spend a lot of computational resources to achieve this. Because a light client doesn’t need to run 24/7 and doesn’t interact directly with the chain, the computational requirement is much lower, but you also get low security.</p>
+<h3 id="trust-minimized-light-clients"><a class="header" href="#trust-minimized-light-clients">Trust-Minimized Light Clients</a></h3>
+<p><img src="./images/fuel%20light%20client.png" alt="graph showing security versus resource requirements on running full node, honest-majority light client, and trust-minimized light client" /></p>
+<p>Fuel’s design lets light clients say that blocks are valid through fraud proofs. This eliminates the need for a trusted party while maintaining low resource requirements and achieving high security. For monolithic chains like Ethereum, there is an ideological incentive to keep the computation requirements for full nodes low to allow users to be truly sovereign.</p>
+<p>Because Fuel was built for fraud proofs, the resource requirements for full nodes can be higher, thus increasing bandwidth capacity while still allowing users to verify the chain through trust-minimized light clients.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="monolithic-architecture"><a class="header" href="#monolithic-architecture">Monolithic Architecture</a></h1>
+<p>Blockchains as we know them have four functions. In no particular order:</p>
+<ul>
+<li>Execution: Execute transactions to make updates to the state.</li>
+<li>Settlement: Dispute resolution.</li>
+<li>Consensus: Defines the state and validates that all nodes on the blockchain have the same state.</li>
+<li>Data availability: Ensure block data has been published to the network.</li>
+</ul>
+<p>Monolithic blockchains are a type of blockchain architecture that handle all four functions, at the same time, on this single layer.</p>
+<p><img src="./images/monolithic.png" alt="monolithic" /></p>
+<h2 id="challenges-with-monolithic"><a class="header" href="#challenges-with-monolithic">Challenges with Monolithic</a></h2>
+<p>Some constraints and challenges with a monolithic architecture:</p>
+<h3 id="costly-and-inefficient-transaction-verification"><a class="header" href="#costly-and-inefficient-transaction-verification">Costly and inefficient transaction verification</a></h3>
+<p>In order to verify the validity of transactions in the chain, full nodes must download the entire chain and execute each transaction locally.</p>
+<h3 id="resource-constraints"><a class="header" href="#resource-constraints">Resource constraints</a></h3>
+<p>The blockchain is bound by the resource capacity of its nodes. Throughput is constrained by the resource requirements of a <em>single</em> node since the blockchain is replicated, not distributed, across nodes.</p>
+<h3 id="shared-resources"><a class="header" href="#shared-resources">Shared resources</a></h3>
+<p>In a monolithic architecture, the four functions of the chain operate on the same finite set of compute resources. For example, using a node's capacity for execution means that there's less capacity left over for data availability.</p>
+<h3 id="scalability"><a class="header" href="#scalability">Scalability</a></h3>
+<p>Scalability is defined as the ratio of throughput to decentralization. To increase throughput—the number transactions per second—you have to increase bandwidth, compute, and storage capacity, which pushes up the cost to run a full node as a user. This is not scalability, as it reduces the number of people who can run a full node to validate the chain.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-a-modular-execution-layer"><a class="header" href="#what-is-a-modular-execution-layer">What is a Modular Execution Layer</a></h1>
+<p>In addition to the properties of a rollup, a modular execution is different because it also has these two additional properties:</p>
+<ul>
+<li>
+<p>With a modular execution layer, users can run an off-chain light client, allowing users to validate the chain without running a full node.</p>
+</li>
+<li>
+<p>A modular execution layer is not tightly coupled to a specific layer 1, allowing for greater flexibility.</p>
+</li>
+</ul>
+<h2 id="light-clients"><a class="header" href="#light-clients">Light Clients</a></h2>
+<p>One of the core characteristics of a modular execution layer is related to the trust model of the system. A modular execution layer has all the properties of a rollup, and the ability to run a light client. This allows you to have trust-minimized infrastructure. Read more about light clients <a href="./modular-movement.html">here</a>.</p>
+<h2 id="flexibility"><a class="header" href="#flexibility">Flexibility</a></h2>
+<p>Another core property of a modular execution layer is that it is not tightly coupled to a specific layer 1. This offers flexibility that allows Fuel to be deployed. Read more about Fuel's flexibility <a href="./fuel-configurations.html">here</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-configurations-1"><a class="header" href="#fuel-configurations-1">Fuel Configurations</a></h1>
+<p>Fuel is a modular architecture and is designed to operate in multiple different configurations.</p>
+<p><img src="./images/configs.png" alt="image of fuel running in different configurations across consensus, settlmenent, data availability, and execution" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-configurations-2"><a class="header" href="#fuel-configurations-2">Fuel Configurations</a></h1>
+<h2 id="defining-rollups"><a class="header" href="#defining-rollups">Defining Rollups</a></h2>
+<p>A layer-2 is a term used to describe a set of scaling solutions. A rollup is an off-chain network built on top of the layer-1 that executes transactions off-chain, bundles these transactions, and posts the bundled transactions as a single transaction on the layer-1 chain.</p>
+<p>Check out <a href="https://ethereum.org/en/layer-2/">this resource to learn more about rollups and layer-2s</a>.</p>
+<h2 id="fuel-as-a-rollup-or-layer-2"><a class="header" href="#fuel-as-a-rollup-or-layer-2">Fuel as a Rollup or Layer-2</a></h2>
+<p>Fuel is designed to run a modular execution layer, a configuration similar to what we call rollups or layer-2s on Ethereum today. Rollups typically use an optimistic or zk-configuration for validity or transaction arbitration. The Fuel technology is agnostic to either of these and can utilize either as a validity or fraud-proving system.</p>
+<p>Layer-2s and rollups are primarily designed for monolithic blockchain stacks, which means they are typically not optimized for large amounts of layer-1 bandwidth potential unlike Fuel, which is uniquely configured to handle this potential.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-configurations-3"><a class="header" href="#fuel-configurations-3">Fuel Configurations</a></h1>
+<h2 id="defining-a-layer-1"><a class="header" href="#defining-a-layer-1">Defining a Layer-1</a></h2>
+<p>A layer-1 is a blockchain network responsible for handling all functions of a chain including settlement, execution, data availability, and consensus. This has been colloquially named a layer-1 because rollups, or layer-2s, sit on top of these chains.</p>
+<p>Check out <a href="https://ethereum.org/en/layer-2/#what-is-layer-2">this resource to learn more about layer-1s.</a></p>
+<h2 id="fuel-as-a-layer-1"><a class="header" href="#fuel-as-a-layer-1">Fuel as a Layer-1</a></h2>
+<p>The Fuel technology includes all the components to run as a complete layer-1 solution. These components include consensus, data availability, settlement, and transaction execution. The common configurations for running in this mode would be proof of authority and a proof of stake via a Tendermint-BFT style.</p>
+<p>While Fuel can run in this configuration, we do not promote or support this outside of testing, as the broader mission of Fuel is to enhance existing blockchains such as Ethereum as a high-performance execution layer.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-configurations-4"><a class="header" href="#fuel-configurations-4">Fuel Configurations</a></h1>
+<h2 id="defining-state-channels"><a class="header" href="#defining-state-channels">Defining State Channels</a></h2>
+<p>A state channel is a smart contract that enforces off-chain transactions between predefined parties. Each transaction updates the state of the chain and is cryptographically provable on-chain.</p>
+<p>Check out <a href="https://ethereum.org/en/developers/docs/scaling/state-channels/">this resource to learn more about state channels.</a></p>
+<h2 id="fuel-as-a-state-channel"><a class="header" href="#fuel-as-a-state-channel">Fuel as a State Channel</a></h2>
+<p>The FuelVM is a priced virtual machine architecture with a deterministic state system, which makes it perfect for multi-party channel designs where all parties must have clarity over the exact state of the system at each communication step or window.</p>
+<p>While we do not ship a channel configuration of the Fuel technology out of the box, the FuelVM is perfectly situated to handle this particular use case.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-configurations-5"><a class="header" href="#fuel-configurations-5">Fuel Configurations</a></h1>
+<h2 id="defining-sidechain"><a class="header" href="#defining-sidechain">Defining Sidechain</a></h2>
+<p>A sidechain is a blockchain with a one-way trust-minimized bridge from the base chain.</p>
+<p>Check out <a href="https://ethereum.org/en/developers/docs/scaling/sidechains/">this resource to learn more about sidechains.</a></p>
+<h2 id="fuel-as-a-sidechain"><a class="header" href="#fuel-as-a-sidechain">Fuel as a Sidechain</a></h2>
+<p>The Fuel technology can also run as a sidechain to an existing layer-1. This means there is a message passing bridge between the layer-1 and Fuel. In this configuration, data availability would be handled by the side chain, while settlement is handled by the layer-1.</p>
+<p>There would also be an option to run it in a semi-provable configuration, whereby fraud proofs can be used to ensure better validity guarantees using the layer-1 as an arbitrator.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="technology"><a class="header" href="#technology">Technology</a></h1>
+<ul>
+<li><a href="technology/./parallel_tx_execution.html">Parallel Transaction Execution</a></li>
+<li><a href="technology/./fraud_proofs.html">Fraud Proofs</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="parallel-transaction-execution-1"><a class="header" href="#parallel-transaction-execution-1">Parallel Transaction Execution</a></h1>
+<p>Ethereum processes transactions sequentially (i.e. one after the other). With modern processors becoming increasingly multi-threaded but stalling on single-core speedups, being able to execute transactions in parallel (i.e. multiple transactions at once) is a highly desirable property.</p>
+<p>Without a mechanism for determining and handling <a href="https://en.wikipedia.org/wiki/Parallel_computing#Dependencies">dependencies</a> between transactions, executing transactions in parallel is a race condition and would result in non-deterministic execution. There have been attempts to add <a href="https://arxiv.org/abs/1901.01376">optimistic concurrent execution</a> logic to Ethereum, but show inconsistent performance benefits and moreover only work in non-adversarial conditions.</p>
+<p><a href="https://github.com/ethereum/EIPs/issues/648">EIP-648</a> proposed to add <em>access lists</em> to transactions, i.e. a list of shared state that would be touched by each transaction. With such a list, clients can partition transactions into sets with disjoint access lists and execute transactions across each set in parallel. However, the EIP was never implemented, in part due to implementation and design inefficiencies that resulted in state accesses being the bottleneck rather than compute.</p>
+<h2 id="state-access-lists-and-utxos"><a class="header" href="#state-access-lists-and-utxos">State Access Lists and UTXOs</a></h2>
+<p>Fuel supports parallel transaction execution through strict (i.e. mandatory) access lists, similar to EIP-648. Each transaction must specify which contracts the transaction <em>may</em> interact with; if a transaction attempts to access a contract not in this list then execution will <em>revert</em>. With these access lists, execution can be done in parallel across transactions that touch disjoint sets of contracts. See <a href="https://fuellabs.github.io/fuel-specs/master/protocol/tx_validity#access-lists">here</a> for additional context.</p>
+<p>Access lists are implemented with UTXOs. UTXOs give other nice properties, but for the purposes of parallel transaction execution serve simply as <a href="https://forum.celestia.org/t/accounts-strict-access-lists-and-utxos/37">strict access lists</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fraud-proofs"><a class="header" href="#fraud-proofs">Fraud Proofs</a></h1>
+<p>Fraud proofs are a blockchain verification mechanism whereby a claim on a new block is accepted unless a proof the claim is invalid is provided within some configurable time window. This allows trust-minimized light clients to be secure under the assumption only a single honest full node is available in the network to produce fraud proofs. Both the Fuel protocol and the FuelVM are designed to be fraud-provable in restrictive environments such as the Ethereum Virtual Machine.</p>
+<p><a href="https://arxiv.org/abs/1809.09044">State-transition fraud proofs</a> are a general-purpose fraud proof mechanism, but come with the downside of requiring a global state tree—an inherently sequential bottleneck. <a href="https://ethresear.ch/t/compact-fraud-proofs-for-utxo-chains-without-intermediate-state-serialization/5885">UTXO fraud proofs</a> avoid this bottleneck; they simply require each spend of a UTXO to &quot;point&quot; to the creation of the UTXO. Proving the pointer is invalid, or that whatever is being pointed to doesn't match whatever is being spent, are sufficient for exhaustively proving fraud.</p>
+<p>The Fuel transaction format and validation logic are fraud-provable with UTXO fraud proofs. The FuelVM relies on an <a href="https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-kalodner.pdf">Interactive Verification Game</a> protocol, whereby an execution trace is bisected until a single step must be executed to check for a mismatch. The <a href="https://fuellabs.github.io/fuel-specs/master/vm/instruction_set">FuelVM instruction set</a> is specifically designed to be both expressive yet fraud-provable within the Ethereum Virtual Machine.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-fuelvm"><a class="header" href="#the-fuelvm">The FuelVM</a></h1>
+<ul>
+<li><a href="fuelvm/./contract_call_model.html">Contract and Call Model</a></li>
+<li><a href="fuelvm/./memory_model.html">Memory Model</a></li>
+<li><a href="fuelvm/./native_assets.html">Multiple Native Assets</a></li>
+</ul>
+<p>Read the full VM spec <a href="https://fuellabs.github.io/fuel-specs/master/">here</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contract-and-call-model"><a class="header" href="#contract-and-call-model">Contract and Call Model</a></h1>
+<p>Fuel uses a similar model to Ethereum for contracts and cross-contract calls. Contracts may call other contracts with a <a href="https://fuellabs.github.io/fuel-specs/master/vm/instruction_set#call-call-contract"><code>CALL</code></a> similar to an Ethereum <a href="https://github.com/ethereum/yellowpaper/blob/8fea825c80e27fa9df5d89fb3365d1067788724e/Paper.tex#L1451">message call</a>). Unlike the EVM, which can only forward its base asset with a call (i.e. ETH), the FuelVM can forward a single <a href="fuelvm/./native_assets.html">native fungible asset</a> with a call.</p>
+<p>Transactions may initiate contract calls. Ethereum transactions may call <a href="https://github.com/ethereum/yellowpaper/blob/8fea825c80e27fa9df5d89fb3365d1067788724e/Paper.tex#L322">a single contract directly</a>. Fuel transactions instead execute a <a href="https://fuellabs.github.io/fuel-specs/master/vm/index#script-execution">script</a> (arbitrary bytecode attached to the transaction), which may call any number of contracts.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="memory-model"><a class="header" href="#memory-model">Memory Model</a></h1>
+<p>The EVM uses a linear memory (i.e. starting at zero and growing), without a defined limit. Allocating memory costs <a href="https://github.com/ethereum/yellowpaper/blob/8fea825c80e27fa9df5d89fb3365d1067788724e/Paper.tex#L2114">a quadratic amount of gas</a>, which severely limits the amount of memory usable in a single context (i.e. contract call).</p>
+<p>In addition, the EVM has a separate memory space per context. Contexts may communicate with each other by copying data to call data and returning data buffers.</p>
+<p>The FuelVM uses a single share memory block <em>per transaction</em>. Memory is allocated statically with a known upper bound, allowing for straightforward implementation of heap types such as <a href="https://github.com/FuelLabs/sway/blob/master/sway-lib-std/src/vec.sw">vectors</a>. Memory in the FuelVM is globally readable across contexts, but locally writable. Each context may only write to portions of the stack and the heap which it has <a href="https://fuellabs.github.io/fuel-specs/master/vm/index#ownership">ownership</a> over.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="multiple-native-assets"><a class="header" href="#multiple-native-assets">Multiple Native Assets</a></h1>
+<p>Fuel supports multiple native assets as first-class citizens. Any single asset may be forwarded with a <a href="https://fuellabs.github.io/fuel-specs/master/vm/instruction_set#call-call-contract"><code>CALL</code></a>. Contracts have a balance of all possible assets instead of only the base asset.</p>
+<p>Note that only the base asset is usable to pay for gas fees.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuelvm-vs-evm-explained"><a class="header" href="#fuelvm-vs-evm-explained">FuelVM vs. EVM, Explained</a></h1>
+<p>FuelVM learns from the EVM, Solana, WASM, Bitcoin, and Cosmos.</p>
+<p>This page is meant to outline the ways the FuelVM differs compared to the EVM in simple terms.</p>
+<h2 id="fuelvm-vs-evm"><a class="header" href="#fuelvm-vs-evm">FuelVM vs. EVM</a></h2>
+<h3 id="the-fuelvm-has-a-globally-shared-memory-architecture-instead-of-context-local-memory-1"><a class="header" href="#the-fuelvm-has-a-globally-shared-memory-architecture-instead-of-context-local-memory-1">The FuelVM has a globally shared memory architecture instead of context-local memory</a></h3>
+<p>The FuelVM has a globally shared memory architecture. Instead of every contract call having its own separate memory space, call data, and return data, all contract call frames share global memory. This chunk of memory is shared amongst all call frames and is globally readable. This allows you to pass data around between contracts without expensive storage and pass chunks of data without having to serialize, copy from call data to memory, etc. Read more about the FuelVM memory model <a href="./fuelvm/memory_model.html">here</a>.</p>
+<h3 id="the-fuelvm-is-designed-for-fraud-provability-1"><a class="header" href="#the-fuelvm-is-designed-for-fraud-provability-1">The FuelVM is designed for fraud-provability</a></h3>
+<p>The EVM is a complicated machine to construct fraud proofs for. It usually requires a second layer such as WASM or MIPS to be interpreted into a fraud provable system. Check out <a href="./why-fuel.html">User Sovereignty with Fraud Proofs</a> and <a href="./modular-movement.html#trust-minimized-light-clients">how fraud proofs unlock key functionality</a>.</p>
+<h3 id="fuelvm-has-multiple-native-assets-1"><a class="header" href="#fuelvm-has-multiple-native-assets-1">FuelVM has multiple native assets</a></h3>
+<p>In Ethereum, the only native asset is Ether. It’s the only one that gets first-class treatment in terms of cost and ability to be pushed and pulled through a call. In Fuel, any contract can mint its UTXO-based native asset using a set of easy asset opcodes. All of which can gain the benefits of native-level call and optimization. Read more about support for multiple native assets in <a href="https://fuellabs.github.io/sway/v0.23.0/blockchain-development/native_assets.html">the Sway docs</a>, and <a href="./fuelvm/native_assets.html">here</a>.</p>
+<h3 id="fuelvm-uses-64-bit-words-instead-of-256-bit"><a class="header" href="#fuelvm-uses-64-bit-words-instead-of-256-bit">FuelVM uses 64-bit words instead of 256-bit</a></h3>
+<p>Modern processors have 64-bit registers, and all of the instruction set operates on 64 bits. Those are the most efficient instructions, and when you deal with 256 bits, you’re dealing with big numbers, and since modern processors aren't made to handle those numbers natively, it means you have to do more in the software.</p>
+<h3 id="the-fuelvm-is-register-based-instead-of-stack-based"><a class="header" href="#the-fuelvm-is-register-based-instead-of-stack-based">The FuelVM is register-based instead of stack-based</a></h3>
+<p>Register-based VMs typically require fewer instructions to do the same work than stack-based VMs. Because every operation is priced, optimizing to reduce the number of operations needed to do the same amount of work has outsized benefits.</p>
+<h3 id="the-fuelvm-is-built-with-an-atomic-utxo-paradigm-from-the-start"><a class="header" href="#the-fuelvm-is-built-with-an-atomic-utxo-paradigm-from-the-start">The FuelVM is built with an atomic UTXO paradigm from the start</a></h3>
+<p>Fuel uses a system of UTXOs which enable a more efficient system fo transfer and ownership of assets, where the accounts tree doesn't have to be rebuilt every time funds are transferred.</p>
+<h3 id="the-fuelvm-removes-approve-transferfrom"><a class="header" href="#the-fuelvm-removes-approve-transferfrom">The FuelVM removes <code>approve</code>, <code>transferFrom</code></a></h3>
+<p>The FuelVM removes the need for approve/transferFrom UX with scripts. Unlike the EVM, the FuelVM has scripts, which allow many actions to happen from an origin sender without a contract being deployed. Read more in the Fuel Specification <a href="https://fuellabs.github.io/fuel-specs/master/protocol/tx_validity.html#script-execution">here</a>.</p>
+<h2 id="eips-implemented-in-fuel"><a class="header" href="#eips-implemented-in-fuel">EIPs Implemented in Fuel</a></h2>
+<p>The FuelVM implements several EIPs that have been suggested and supported by the community but couldn't be implemented due to the need to maintain backward compatibility. Check out a non-exhaustive list, also available <a href="./what-is-fuel.html">here</a>:</p>
+<table><thead><tr><th>EIP</th><th>Description</th><th>Implementation</th></tr></thead><tbody>
+<tr><td><a href="https://github.com/ethereum/EIPs/issues/648">Easy Parallelizability</a></td><td>Allow transactions in the EVM to be processed in parallel by specifying what addresses they can access.</td><td>Fuel can execute transactions in parallel by using strict state access lists with our UTXO model. This allows Fuel to use of all the threads and cores of your CPU to validate transactions.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-2098">EIP-2098: Compact Signature Representation</a></td><td>Reduce signatures from 65 bytes to 64 bytes to simplify handling transactions in client code, reduce gas costs, and reduce transaction sizes.</td><td>Fuel compresses signature data by a byte, from 65 to 64 bytes.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-3074">EIP-3074: <code>AUTH</code> and <code>AUTHCALL</code> opcodes</a></td><td>Introduces two EVM instructions, <code>AUTH</code> and <code>AUTHCALL</code>, to enable batching capabilities, allowing for gas sponsoring, expirations, scripting, and beyond.</td><td>Fuel has scripts and predicates that, when combined, allow the execution of multiple calls in a single batch.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-3102">EIP-3102: Binary Trie Structure</a></td><td>Introduces binary structure and merkelization rule for the account and storage tries, which are merged into a single “state” trie. Binary tries make for smaller (~4x) proofs than hexary tries, making it the design of choice for a stateless-friendly Ethereum.</td><td>Fuel uses a binary Sparse Merkle Trie instead of a Patricia Merkle Trie, which makes for smaller proofs and results in better performance.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-4758">EIP-4758: Deactivate SELFDESTRUCT</a></td><td>Rename <code>SELFDESTRUCT</code> opcode to <code>SENDALL</code>, and only immediately move all ETH in the account to the target; no longer destroying code or storage or alters the nonce. Disabling <code>SELFDESTRUCT</code> will be a requirement for statelessness.</td><td>The FuelVM doesn't have a <code>SELFDESTRUCT</code> opcode which can complicate client implementations.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-5027">EIP-5027: Remove the limit on contract code size</a></td><td>Remove the limit on the code size so that users can deploy a large-code contract without worrying about splitting the contract into several sub-contracts. With the dramatic growth of decentralized applications, the functionalities of smart contracts are becoming more and more complicated, and thus, the sizes of newly developed contracts are steadily increasing. As a result, we are facing more issues with the 24576-bytes contract size limit.</td><td>FuelVM doesn't have a limit on the size of a single contract below their physical limits. We have an instruction that allows you to load bytecode from another contract into the current execution context, allowing you to use it as a single contract even if you have to split bytecode across multiple transactions. It'll have a single monolithic bytecode and one state. In EVM, if you spit a contract across two transactions, it's two separate contracts, and you have to do things like delegate calls to share the state between the two contracts and can't do things like jump between bytecode on each contract.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-5065">EIP-5065: Instruction for Transferring Ether</a></td><td>Add a new instruction that transfers ether to a destination address without handing over the flow of execution to it. Ethereum currently has no ideal way to transfer ether without transferring the execution flow. People have come up with reentrancy guards and similar solutions to prevent some types of attacks, but it’s not an ideal solution.</td><td>The FuelVM has <a href="https://github.com/FuelLabs/fuel-specs/blob/5dcf71f162b11fb9ce998315a7078630d78536b7/specs/vm/instruction_set.md#tr-transfer-coins-to-contract">an instruction called <code>TR</code></a>, short for transfer, which transfers a native asset to a contract but doesn't allow the receiving contract to execute logic. You might want to do this to ensure the receiving contract cannot reenter. This doesn't exist as a native, first-class instruction in the EVM- you can do this by self-destructing a contract but it's a messy workaround that only works for ETH.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-86">EIP-86: Abstraction of Transaction Origin and Signature</a> and <a href="https://eips.ethereum.org/EIPS/eip-2938">EIP-2938: Account Abstraction</a></td><td>Implements a set of changes that serve the combined purpose of “abstracting out” signature verification and nonce checking, allowing users to create “account contracts” that perform any desired signature/nonce checks instead of using the mechanism currently hard-coded into transaction processing.</td><td>FuelVM has stateless account abstraction, enabling application-layer logic to configure validity rules of transactions. On Ethereum today, a transaction is valid if the user has enough Ether, the nonce is correct, and signature is valid. With account abstraction, the user can change the validity of the transaction logic without a hard fork. This could mean changes to the signature scheme or natively locking an account behind a multisig.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-1051">EIP-1051: Overflow Checking for the EVM</a></td><td>This EIP adds overflow checking for EVM arithmetic operations and two new opcodes that check and clear the overflow flags. Since the EVM operates on mod 2^256 integers and provides no built-in overflow detection or prevention, this requires manual checks on every arithmetic operation.</td><td>Overflow checking is built into the FuelVM and can be optionally disabled.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-2803">EIP-2803: Rich Transactions</a></td><td>If a transaction has a to of address x, then the data of the transaction will be treated as EVM bytecode, and it will be executed from the context of the CALLER of the transaction (aka: the transaction signer). Many Ethereum DApps require users to approve multiple transactions to produce one effect. This results in a poor user experience and complicates the experience of interacting with DApps.</td><td>The FuelVM has scripts that implement this.</td></tr>
+<tr><td><a href="https://eips.ethereum.org/EIPS/eip-2926">EIP-2926: Chunk-based Code Merkelization</a></td><td>Bytecode is currently the second contributor to block witness size after the proof hashes. Transitioning the trie from hexary to binary reduces the hash section of the witness by 3x, thereby making code the first contributor. By breaking contract code into chunks and committing to those chunks in a Merkle tree, stateless clients would only need the chunks that were touched during a given transaction to execute it.</td><td>To get a code hash on Ethereum, you hash together all the byte code. The problem is that if you want to do things with statelessness or fraud proofs, to show that this hash is valid, you have to provide all the byte code, up to 24KB per contract. This EIP suggests we should merkalize it instead of hashing. The FuelVM implements this by having code roots instead of code hashes.</td></tr>
+</tbody></table>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sway-language-1"><a class="header" href="#sway-language-1">Sway Language</a></h1>
+<p>Sway is a smart contract programming language that prioritizes safety and speed and brings modern programming language theory to the blockchain. Check out the Sway docs <a href="https://fuellabs.github.io/sway/latest/">here</a>.</p>
+<h2 id="rust--solidity--sway"><a class="header" href="#rust--solidity--sway">Rust + Solidity = Sway</a></h2>
+<p>Sway prioritizes compile-time analysis and safety, similar to Rust’s borrow checker and safety-first semantics. Additionally, it has the syntax of Rust. From Solidity, Sway took the notion of a smart-contract-paradigm language with built-in top-level contract storage and blockchain mechanisms for ergonomic and safe contract programming.</p>
+<p>In addition to robust documentation, tooling, clear error messages, and more – Sway brings the notion of static auditing to smart contracts. The compiler will catch things that one would typically hire an auditing firm to catch. This is particularly unique. In addition, Sway is highly performant and has extensible optimization passes and a modular backend for targeting different blockchain architectures.</p>
+<p>Check out Sway examples <a href="https://github.com/FuelLabs/sway/tree/master/examples">here</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sway-design-philosophy"><a class="header" href="#sway-design-philosophy">Sway Design Philosophy</a></h1>
+<p>Sway follows the design philosophies of Rust and Solidity, with some Fuel ideology mixed in. From Solidity, we took the notion of smart contract programming as a paradigm. This led to storage blocks, contract ABIs as entry points, etc.</p>
+<p>From Rust, we took the prioritizations of performance, control, and safety. In Rust, this means the borrow checker, safe parallelism (send and sync), annotated unsafety, etc., mainly to save the programmer from referencing freed memory, shared mutable state, and undesirable memory management. This is great for a general-purpose language model. Sway, however, is not general purpose. Sway targets a blockchain VM environment, where execution is not indefinite, and memory allocation and management are less concerned. Instead, we need to optimize for gas costs and contract-level safety. We applied the philosophy of performance, control, and safety and interpreted it in this new context. This is where Sway gets compile time checks of state mutability, namespacing of state variables, static analysis passes, and gas profiling/optimization.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sway-safety"><a class="header" href="#sway-safety">Sway Safety</a></h1>
+<p>Sway provides multiple layers of safety. For one, we provide canonical tooling and &quot;one right way&quot; to do things. This results in less ambiguity and more correct/helpful tools. This tooling ships a debugger, gas profiler, testing framework, SDK, formatter, and more. These tools ensure the programmer has nothing between them and the algorithm they are trying to implement. Safety comes from the foundation of a comfortable and ergonomic environment.</p>
+<p>In addition, Sway has implemented static analysis checks like a <a href="https://docs.soliditylang.org/en/v0.5.11/security-considerations.html#use-the-checks-effects-interactions-pattern"><em>Checks, Effects, Interactions</em></a> checker, state and storage purity checking, immutable-by-default semantics, and other static compile-time audits to promote safety.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="for-developers"><a class="header" href="#for-developers">For Developers</a></h1>
+<ul>
+<li><a href="for-developers/./example-contracts.html">Example Smart Contracts</a></li>
+<li><a href="for-developers/../networks/networks.html">Networks</a></li>
+<li><a href="for-developers/./testnet-node.html">Connecting to Testnet</a></li>
+<li><a href="for-developers/./running-a-local-node.html">Running a local node</a></li>
+<li><a href="for-developers/./sway.html">Sway Language</a></li>
+<li><a href="for-developers/./ts-sdk.html">TypeScript SDK</a></li>
+<li><a href="for-developers/./rust-sdk.html">Rust SDK</a></li>
+<li><a href="for-developers/./indexer.html">Indexer</a></li>
+<li><a href="for-developers/./wallet-faucet.html">Wallet and Faucet</a></li>
+<li><a href="for-developers/./fuelup.html">Fuelup</a></li>
+<li><a href="for-developers/./graphql-api.html">GraphQL API</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sway-application-examples"><a class="header" href="#sway-application-examples">Sway Application Examples</a></h1>
+<p>Developers are encouraged to reference the <code>sway-applications</code> repo for examples for common patterns and functionality. <a href="https://github.com/FuelLabs/sway-applications">This repository</a> contains smart contracts that are written in Sway in order to demonstrate what can be built, and offer forkable code for others to build on.</p>
+<p>We have the following contracts available as a reference:</p>
+<ul>
+<li>Airdrop is a token distribution program where users are able to claim tokens given a valid merkle proof.</li>
+<li>Automated Market Maker (AMM) is a decentralized exchange protocol that manages liquidity pools supplied by its users and determines prices algorithmically while exchanging assets.</li>
+<li>Decentralized Autonomous Organization (DAO) is an organization where users get to vote on governance proposals using governance tokens.</li>
+<li>English Auction is an auction where users bid up the price of an asset until the bidding period has ended or a reserve has been met.</li>
+<li>Escrow is a third party that keeps an asset on behalf of multiple parties.
+Fundraiser is a program allowing users to pledge towards a goal.</li>
+<li>Multi-Signature Wallet is a wallet that requires multiple signatures to execute a transaction.</li>
+<li>Name-Registry allows users to perform transactions with human readable names instead of addresses.</li>
+<li>Non-Fungible Token (NFT) is a token contract which provides unique collectibles, identified and differentiated by token IDs, where tokens contain metadata giving them distinctive characteristics.</li>
+<li>Oracle is a smart contract that provides off-chain data to on-chain applications.
+OTC Swap Predicate is a predicate that can be used to propose and execute an atomic swap between two parties without requiring any on-chain state.</li>
+</ul>
+<p>View all of the applications <a href="https://github.com/FuelLabs/sway-applications">here</a>.</p>
+<blockquote>
+<p>Please note all projects currently use forc 0.31.1, and fuel-core 0.14.1.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="networks"><a class="header" href="#networks">Networks</a></h1>
+<p>On this page, you'll find information on the different testnet networks.</p>
+<h2 id="beta-3-testnet"><a class="header" href="#beta-3-testnet"><code>beta-3</code> testnet</a></h2>
+<p>The <code>beta-3</code> network is the latest Fuel testnet. It expands on the features of <code>beta-2</code>, introducing P2P networking and the ability to run synchronizing full nodes. Read more about <code>beta-3</code> <a href="networks/./beta-3.html">here.</a></p>
+<h2 id="beta-2-testnet"><a class="header" href="#beta-2-testnet"><code>beta-2</code> testnet</a></h2>
+<p>The <code>beta-2</code> network is the second Fuel testnet, launched with a bridge to Ethereum's Goerli test network. With this network, developers are able to build and test cross-chain dapps, laying the foundations for projects building on Fuel to tap into Ethereum's massive liquidity and existing user base. Read more about <code>beta-2</code> <a href="networks/./beta-2.html">here.</a></p>
+<h2 id="beta-1-testnet"><a class="header" href="#beta-1-testnet"><code>beta-1</code> testnet</a></h2>
+<p>The beta-1 network is the first public Fuel testnet, shared by all developers and users that interact with it. Developers may deploy contracts to it at will—no permission or whitelisting required—and users may interact with deployed contracts as well. Read more about <code>beta-1</code> <a href="networks/./beta-1.html">here.</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-beta-3-testnet"><a class="header" href="#the-beta-3-testnet">The <code>beta-3</code> testnet</a></h1>
+<p>The <code>beta-3</code> network is the latest Fuel testnet. It expands on the features of <code>beta-2</code>, introducing P2P networking and the ability to run synchronizing full nodes.</p>
+<p>Ethereum contracts (Goerli):</p>
+<p>&quot;FuelMessagePortal&quot;: <code>0xE6B0E27F85abaCfC5149642c30F4BE9a878Aa4e9</code></p>
+<p>&quot;FuelChainConsensus&quot;: <code>0x4b4b74b2E5CD9775793779619C3547b7863EbEca</code></p>
+<p>&quot;FuelERC20Gateway&quot;: <code>0x8083634a1A5092D3234657092e5CF74655191B8D</code></p>
+<p>The ERC-20 Gateway contract on Georli Ethereum is at <code>0x8083634a1A5092D3234657092e5CF74655191B8D</code>.</p>
+<p>Goerli block explorer: <a href="https://goerli.etherscan.io/">https://goerli.etherscan.io/</a></p>
+<p>🚰 Faucet - Use the faucet to get test ETH to deploy contracts with or to interact with contracts. Available here: <a href="https://faucet-beta-3.fuel.network/">https://faucet-beta-3.fuel.network/</a>.</p>
+<p>📃 GraphQL endpoint - The Fuel Core node uses GraphQL instead of JSON RPC. A playground for the public GraphQL endpoint for beta-3 is available at <a href="https://beta-3.fuel.network/playground">https://beta-3.fuel.network/playground</a>.</p>
+<p>🔍 Block explorer - A block explorer (still heavily in development) is available at <a href="https://fuellabs.github.io/block-explorer-v2/">https://fuellabs.github.io/block-explorer-v2/</a>. Be sure to select <code>beta-3</code> from the dropdown on the top right.</p>
+<p>Join the <a href="https://discord.com/invite/fuelnetwork">Fuel Labs Discord</a> and head to the 🧪︱testnet channel to get support from our team.</p>
+<h2 id="sdk-versioning"><a class="header" href="#sdk-versioning">SDK Versioning</a></h2>
+<p>Version 0.35.0 is the recommended version of the TS SDK on <code>beta-3</code>.</p>
+<p>Version 0.38.0 is the recommended version for the Rusk SDK on <code>beta-3</code>.</p>
+<h2 id="toolchain-configuration"><a class="header" href="#toolchain-configuration">Toolchain Configuration</a></h2>
+<p>To configure the optimal toolchain for <code>beta-3</code>, ensure you have <a href="https://fuellabs.github.io/fuelup/latest">fuelup</a> installed, then run the following command:</p>
+<pre><code class="language-shell">fuelup self update
+</code></pre>
+<p>Then install the beta-3 toolchain with</p>
+<pre><code class="language-shell">fuelup toolchain install beta-3
+</code></pre>
+<p>This installs the following components and versions:</p>
+<ul>
+<li>forc 0.35.3</li>
+<li>forc-explore 0.28.1</li>
+<li>forc-index 0.3.0</li>
+<li>forc-wallet 0.2.0</li>
+<li>fuel-core 0.17.3</li>
+<li>fuel-indexer 0.3.0</li>
+</ul>
+<p>To set the <code>beta-3</code> toolchain as your default, run</p>
+<pre><code class="language-console">$ fuelup default beta-3
+default toolchain set to 'beta-3-aarch64-apple-darwin'
+</code></pre>
+<h2 id="predicate"><a class="header" href="#predicate">Predicate</a></h2>
+<p>Messages intended for contracts use a pre-defined predicate as the message recipient. This predicate allows anyone to relay the message to the target contract and only the target contract. Once the contract receives the message it can see who originated it along with any special message payload and processes it accordingly. Since anyone can relay the message using this predicate it opens up possibilities for automated message processing as a service.</p>
+<p>The predicate root is <code>0x4df15e4a7c602404e353b7766db23a0d067960c201eb2d7a695a166548c4d80a</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-beta-2-testnet"><a class="header" href="#the-beta-2-testnet">The <code>beta-2</code> testnet</a></h1>
+<p>The <code>beta-2</code> network is launched with a bridge to Ethereum's Goerli test network. With this network, developers are able to build and test cross-chain dapps, laying the foundations for projects building on Fuel to tap into Ethereum's massive liquidity and existing user base.</p>
+<p>Ethereum contracts (Goerli):</p>
+<p>&quot;FuelMessagePortal&quot;: <code>0x4c7181fff2053D232Fc74Ff165b83FE8Dcb65910</code></p>
+<p>&quot;BinaryMerkleTreeLib&quot;: <code>0x40Ab53ba8BEEe302539f417eCC6C5FBb99F3B7Cd</code></p>
+<p>&quot;FuelSidechainConsensus&quot;: <code>0xF712e555ce59858f680890DA7dc2B51eD048580d</code></p>
+<p>&quot;L1ERC20Gateway&quot;: <code>0x96c53cd98B7297564716a8f2E1de2C83928Af2fe</code></p>
+<p>The ERC-20 Gateway contract on Georli Ethereum is at <code>0x96c53cd98B7297564716a8f2E1de2C83928Af2fe</code>.</p>
+<p>You can view a test ERC-20 token contract at <code>0x9c3f3a5a53bD127a51Ae9622EC43488FE6a4DcCd</code> on Goerli Ethereum with the corresponding Fuel side token contract deployed at <code>0x250cbf149be078027eed12eba0fe07617b398ccc8ccf1f43a02adddd4e4f8e56</code> on the <code>beta-2</code> testnet.</p>
+<p>Goerli block explorer: <a href="https://goerli.etherscan.io/">https://goerli.etherscan.io/</a></p>
+<p>🚰 Faucet - Use the faucet to get test ETH to deploy contracts with or to interact with contracts. Available here: <a href="https://faucet-beta-2.fuel.network/">https://faucet-beta-2.fuel.network/</a>.</p>
+<p>📃 GraphQL endpoint - The Fuel Core node uses GraphQL instead of JSON RPC. A playground for the public GraphQL endpoint for beta-1 is available at <a href="https://node-beta-2.fuel.network/playground">https://node-beta-2.fuel.network/playground</a>.</p>
+<p>🔍 Block explorer - A block explorer (still heavily in development) is available at <a href="https://fuellabs.github.io/block-explorer-v2/">https://fuellabs.github.io/block-explorer-v2/</a>. Be sure to select <code>beta-2</code> from the dropdown on the top right.</p>
+<p>Join the <a href="https://discord.com/invite/fuelnetwork">Fuel Labs Discord</a> and head to the 🧪︱testnet-beta-2 channel to get support from our team.</p>
+<h2 id="sdk-versioning-1"><a class="header" href="#sdk-versioning-1">SDK Versioning</a></h2>
+<p>Version 0.21.0 is the recommended version of the TS SDK on <code>beta-2</code>.</p>
+<p>Version 0.30.0 is the recommended version for the Rusk SDK on <code>beta-2</code>.</p>
+<h2 id="toolchain-configuration-1"><a class="header" href="#toolchain-configuration-1">Toolchain Configuration</a></h2>
+<p>To configure the optimal toolchain for <code>beta-2</code>, ensure you have <a href="https://fuellabs.github.io/fuelup/v0.12.0/">fuelup</a> installed, then run the following command:</p>
+<pre><code class="language-console">$ fuelup self update
+Fetching binary from https://github.com/FuelLabs/fuelup/releases/download/v0.12.0/fuelup-0.12.0-aarch64-apple-darwin.tar.gz
+Downloading component fuelup without verifying checksum
+Unpacking and moving fuelup to /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmplX61Ng
+Moving /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmplX61Ng/fuelup to /Users/camiinthisthang/.fuelup/bin/fuelup
+`$ fuelup toolchain install beta-2.`
+Downloading: forc forc-explore forc-wallet fuel-core
+
+Adding component forc v0.31.1 to 'beta-2-aarch64-apple-darwin'
+Fetching binary from https://github.com/FuelLabs/sway/releases/download/v0.31.1/forc-binaries-darwin_arm64.tar.gz
+Unpacking and moving forc-doc to /Users/camiinthisthang/.fuelup/toolchains/beta-2-aarch64-apple-darwin/bin
+Unpacking and moving forc to /Users/camiinthisthang/.fuelup/toolchains/beta-2-aarch64-apple-darwin/bin
+Unpacking and moving forc-deploy to /Users/camiinthisthang/.fuelup/toolchains/beta-2-aarch64-apple-darwin/bin
+Unpacking and moving forc-run to /Users/camiinthisthang/.fuelup/toolchains/beta-2-aarch64-apple-darwin/bin
+Unpacking and moving forc-lsp to /Users/camiinthisthang/.fuelup/toolchains/beta-2-aarch64-apple-darwin/bin
+Unpacking and moving forc-fmt to /Users/camiinthisthang/.fuelup/toolchains/beta-2-aarch64-apple-darwin/bin
+Fetching core forc dependencies
+Installed forc v0.31.1 for toolchain 'beta-2-aarch64-apple-darwin'
+
+Adding component forc-explore v0.28.1 to 'beta-2-aarch64-apple-darwin'
+Fetching binary from https://github.com/FuelLabs/forc-explorer/releases/download/v0.28.1/forc-explore-0.28.1-aarch64-apple-darwin.tar.gz
+Unpacking and moving forc-explore to /Users/camiinthisthang/.fuelup/toolchains/beta-2-aarch64-apple-darwin/bin
+Installed forc-explore v0.28.1 for toolchain 'beta-2-aarch64-apple-darwin'
+
+Adding component forc-wallet v0.1.2 to 'beta-2-aarch64-apple-darwin'
+Fetching binary from https://github.com/FuelLabs/forc-wallet/releases/download/v0.1.2/forc-wallet-0.1.2-aarch64-apple-darwin.tar.gz
+Unpacking and moving forc-wallet to /Users/camiinthisthang/.fuelup/toolchains/beta-2-aarch64-apple-darwin/bin
+Installed forc-wallet v0.1.2 for toolchain 'beta-2-aarch64-apple-darwin'
+
+Adding component fuel-core v0.14.1 to 'beta-2-aarch64-apple-darwin'
+Fetching binary from https://github.com/FuelLabs/fuel-core/releases/download/v0.14.1/fuel-core-0.14.1-aarch64-apple-darwin.tar.gz
+Unpacking and moving fuel-core to /Users/camiinthisthang/.fuelup/toolchains/beta-2-aarch64-apple-darwin/bin
+Installed fuel-core v0.14.1 for toolchain 'beta-2-aarch64-apple-darwin'
+</code></pre>
+<p>This installs the following components and versions:</p>
+<ul>
+<li>forc 0.31.1</li>
+<li>forc-explore 0.28.1</li>
+<li>forc-wallet 0.1.2</li>
+<li>fuel-core 0.14.1</li>
+</ul>
+<h2 id="predicate-1"><a class="header" href="#predicate-1">Predicate</a></h2>
+<p>Messages intended for contracts use a pre-defined predicate as the message recipient. This predicate allows anyone to relay the message to the target contract and only the target contract. Once the contract receives the message it can see who originated it along with any special message payload and processes it accordingly. Since anyone can relay the message using this predicate it opens up possibilities for automated message processing as a service.</p>
+<p>The predicate root is <code>0xc453f2ed45abb180e0a17aa88e78941eb8169c5f949ee218b45afcb0cfd2c0a8</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-beta-1-testnet"><a class="header" href="#the-beta-1-testnet">The <code>beta-1</code> testnet</a></h1>
+<p>The beta-1 network is the first public Fuel testnet, shared by all developers and users that interact with it. Developers may deploy contracts to it at will—no permission or whitelisting required—and users may interact with deployed contracts as well.</p>
+<p>🚰 Faucet - Use the faucet to get test ETH to deploy contracts with or to interact with contracts. Available here: <a href="https://faucet-beta-1.fuel.network">https://faucet-beta-1.fuel.network</a>.</p>
+<p>📃 GraphQL endpoint - The Fuel Core node uses GraphQL instead of JSON RPC. A playground for the public GraphQL endpoint for beta-1 is available at <a href="https://node-beta-1.fuel.network/playground">https://node-beta-1.fuel.network/playground</a>.</p>
+<p>🔍 Block explorer - A block explorer (still heavily in development) is available at <a href="https://fuellabs.github.io/block-explorer-v2">https://fuellabs.github.io/block-explorer-v2</a>.</p>
+<p>Join the <a href="https://discord.com/invite/fuelnetwork">Fuel Labs Discord</a> and head to the 🧪︱testnet-beta-1 channel to get support from our team.</p>
+<h2 id="sdk-versioning-2"><a class="header" href="#sdk-versioning-2">SDK Versioning</a></h2>
+<p>Version 0.17.0 is the recommended version of the TS SDK on <code>beta-1</code>.</p>
+<p>Version 0.30.0 is the recommended version for the Rusk SDK on <code>beta-1</code>,</p>
+<h2 id="toolchain-configuration-2"><a class="header" href="#toolchain-configuration-2">Toolchain Configuration</a></h2>
+<p>To configure the optimal toolchain for <code>beta-1</code>, ensure you have <a href="https://fuellabs.github.io/fuelup/v0.12.0/">fuelup</a> installed, then run the following command:</p>
+<pre><code class="language-console">$ fuelup toolchain install beta-1
+Downloading: forc forc-wallet fuel-core
+
+Adding component forc v0.26.0 to 'beta-1-aarch64-apple-darwin'
+Fetching binary from https://github.com/FuelLabs/sway/releases/download/v0.26.0/forc-binaries-darwin_arm64.tar.gz
+Unpacking and moving forc to /Users/sarah/.fuelup/toolchains/beta-1-aarch64-apple-darwin/bin
+Unpacking and moving forc-deploy to /Users/sarah/.fuelup/toolchains/beta-1-aarch64-apple-darwin/bin
+Unpacking and moving forc-run to /Users/sarah/.fuelup/toolchains/beta-1-aarch64-apple-darwin/bin
+Unpacking and moving forc-explore to /Users/sarah/.fuelup/toolchains/beta-1-aarch64-apple-darwin/bin
+Unpacking and moving forc-lsp to /Users/sarah/.fuelup/toolchains/beta-1-aarch64-apple-darwin/bin
+Unpacking and moving forc-fmt to /Users/sarah/.fuelup/toolchains/beta-1-aarch64-apple-darwin/bin
+Fetching core forc dependencies
+Installed forc v0.26.0 for toolchain 'beta-1-aarch64-apple-darwin'
+
+Adding component forc-wallet v0.1.2 to 'beta-1-aarch64-apple-darwin'
+Fetching binary from https://github.com/FuelLabs/forc-wallet/releases/download/v0.1.2/forc-wallet-0.1.2-aarch64-apple-darwin.tar.gz
+Unpacking and moving forc-wallet to /Users/sarah/.fuelup/toolchains/beta-1-aarch64-apple-darwin/bin
+Installed forc-wallet v0.1.2 for toolchain 'beta-1-aarch64-apple-darwin'
+
+Adding component fuel-core v0.10.1 to 'beta-1-aarch64-apple-darwin'
+Fetching binary from https://github.com/FuelLabs/fuel-core/releases/download/v0.10.1/fuel-core-0.10.1-aarch64-apple-darwin.tar.gz
+Unpacking and moving fuel-core to /Users/sarah/.fuelup/toolchains/beta-1-aarch64-apple-darwin/bin
+Installed fuel-core v0.10.1 for toolchain 'beta-1-aarch64-apple-darwin'
+
+Installed:
+- forc 0.26.0
+- forc-wallet 0.1.2
+- fuel-core 0.10.1
+
+
+The Fuel toolchain is installed and up to date
+</code></pre>
+<p>This installs the following components:</p>
+<ul>
+<li>forc 0.26.0</li>
+<li>forc-wallet 0.1.2</li>
+<li>fuel-core 0.10.1</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="testnet-networks"><a class="header" href="#testnet-networks">Testnet Networks</a></h1>
+<p>Check out the <a href="for-developers/../networks/networks.html">networks page</a> for information on our testnets, <code>beta-1</code> and <code>beta-2</code>.</p>
+<h2 id="connect-rust-sdk-to-fuel-node"><a class="header" href="#connect-rust-sdk-to-fuel-node">Connect Rust SDK to Fuel Node</a></h2>
+<p>Check out these docs to connect your SDK to the <code>beta-1</code> testnet <a href="https://fuellabs.github.io/fuels-rs/v0.22.0/providers/external-node.html">here</a>.</p>
+<h2 id="deploy-a-contract-to-the-beta-1-testnet"><a class="header" href="#deploy-a-contract-to-the-beta-1-testnet">Deploy a Contract to the <code>Beta-1</code> Testnet</a></h2>
+<p>To deploy a contract to the testnet, <a href="https://github.com/FuelLabs/forc-wallet#forc-wallet">you'll need to create a wallet using <code>forc-wallet</code></a> and then run the following command:
+<code>forc deploy --url https://node-beta-1.fuel.network/graphql --gas-price 1</code></p>
+<p>Check out the <a href="for-developers/../quickstart/developer-quickstart.html">Developer Quickstart</a> to see a working example of how to deploy a contract to <code>beta-1</code>.</p>
+<p>For more information on versioning, tooling, and resources, check out the <a href="for-developers/../networks/beta-1.html">beta-1 page</a>.</p>
+<h2 id="deploy-a-contract-to-the-beta-2-testnet"><a class="header" href="#deploy-a-contract-to-the-beta-2-testnet">Deploy a Contract to the <code>Beta-2</code> Testnet</a></h2>
+<p>To deploy a contract to the testnet, <a href="https://github.com/FuelLabs/forc-wallet#forc-wallet">you'll need to create a wallet using <code>forc-wallet</code></a> and then run the following command:
+<code>forc deploy --url https://node-beta-2.fuel.network/graphql --gas-price 1</code></p>
+<p>For more information on versioning, tooling, and resources, check out the <a href="for-developers/../networks/beta-2.html">beta-2 page</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="running-a-local-fuel-node"><a class="header" href="#running-a-local-fuel-node">Running a local Fuel node</a></h1>
+<p>In addition to deploying and testing on the Fuel Testnet, you can also run a local Fuel Node.</p>
+<p>There are two types of Fuel networks that can be run:</p>
+<ol>
+<li>In-memory network (without persistance)</li>
+<li>Local network with persistance</li>
+</ol>
+<h2 id="in-memory-local-node-without-state-persistance"><a class="header" href="#in-memory-local-node-without-state-persistance">In-memory local node (without state persistance)</a></h2>
+<p>An in-memory node does not persist the blockchain state anywhere, it is only stored in memory as long as the node is active and running.</p>
+<p>To spin Up a local in-memory Fuel node, run the following command:</p>
+<pre><code class="language-sh">fuel-core run --db-type in-memory
+</code></pre>
+<p>To deploy a contract to the local node, run the following command:</p>
+<pre><code class="language-sh">forc deploy &lt;signing-key&gt;
+</code></pre>
+<p>Or to deploy without using a signing key:</p>
+<pre><code class="language-sh">forc deploy --unsigned
+</code></pre>
+<h2 id="local-node-with-state-persistance"><a class="header" href="#local-node-with-state-persistance">Local node (with state persistance)</a></h2>
+<p>This node does persist the blockchain state locally.</p>
+<p>To run a local node with persistance, you must configure a <code>chainConfig.json</code> file. Here is an example of what that looks like:</p>
+<pre><code class="language-json">{
+    &quot;chain_name&quot;: &quot;local_testnet&quot;,
+    &quot;block_production&quot;: {
+      &quot;ProofOfAuthority&quot;: {
+        &quot;trigger&quot;: &quot;instant&quot;
+      }
+    },
+    &quot;parent_network&quot;: {
+      &quot;type&quot;: &quot;LocalTest&quot;
+    },
+    &quot;block_gas_limit&quot;: 1000000000,
+    &quot;initial_state&quot;: {
+      &quot;coins&quot;: [
+        {
+          &quot;owner&quot;: &quot;0x94ffcc53b892684acefaebc8a3d4a595e528a8cf664eeb3ef36f1020b0809d0d&quot;,
+          &quot;amount&quot;: &quot;0xFFFFFFFFFFFFFFFF&quot;,
+          &quot;asset_id&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;
+        },
+        {
+          &quot;owner&quot;: &quot;0x80d5e88c2b23ec2be6b2e76f3499a1a2755bb2773363785111a719513fb57b8e&quot;,
+          &quot;amount&quot;: &quot;0x00000000FFFFFFFF&quot;,
+          &quot;asset_id&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;
+        },
+        {
+          &quot;owner&quot;: &quot;0xf13c949256d0e119fecaec414ea452f21f9dc1870fb6262ff53b37c32cab4749&quot;,
+          &quot;amount&quot;: &quot;0x00000000FFFFFFFF&quot;,
+          &quot;asset_id&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;
+        }
+      ]
+    },
+    &quot;transaction_parameters&quot;: {
+      &quot;contract_max_size&quot;: 16777216,
+      &quot;max_inputs&quot;: 255,
+      &quot;max_outputs&quot;: 255,
+      &quot;max_witnesses&quot;: 255,
+      &quot;max_gas_per_tx&quot;: 100000000,
+      &quot;max_script_length&quot;: 1048576,
+      &quot;max_script_data_length&quot;: 1048576,
+      &quot;max_static_contracts&quot;: 255,
+      &quot;max_storage_slots&quot;: 255,
+      &quot;max_predicate_length&quot;: 1048576,
+      &quot;max_predicate_data_length&quot;: 1048576,
+      &quot;gas_price_factor&quot;: 1000000000,
+      &quot;gas_per_byte&quot;: 4,
+      &quot;max_message_data_length&quot;: 1048576
+    },
+    &quot;block_producer&quot;: {
+      &quot;utxo_validation&quot;: true,
+      &quot;coinbase_recipient&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;
+    },
+    &quot;consensus&quot;: {
+      &quot;PoA&quot;: {
+        &quot;signing_key&quot;: &quot;0x22ec92c3105c942a6640bdc4e4907286ec4728e8cfc0d8ac59aad4d8e1ccaefb&quot;
+      }
+    }
+  }
+</code></pre>
+<p>To start the node, run the following command:</p>
+<pre><code class="language-sh">fuel-core run --ip 127.0.0.1 --port 4000 --chain ./chainConfig.json --db-path ./.fueldb
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sway-language-"><a class="header" href="#sway-language-">Sway Language 🌴</a></h1>
+<p>Resources to get started with Sway:</p>
+<ul>
+<li><a href="https://fuellabs.github.io/sway/latest/">Official Sway docs</a></li>
+<li><a href="https://github.com/FuelLabs/sway/tree/master/examples">Sway examples repo</a></li>
+<li><a href="https://www.youtube.com/watch?v=SctJwG2LPK8">Workshop: Developing Smart Contracts with Sway</a></li>
+</ul>
+<h2 id="need-help-2"><a class="header" href="#need-help-2">Need Help?</a></h2>
+<p>Head to the <a href="https://discord.com/invite/fuelnetwork">Fuel discord</a> or the <a href="https://forum.fuel.network/">Fuel Forum</a> for help from the team.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="typescript-sdk"><a class="header" href="#typescript-sdk">Typescript SDK</a></h1>
+<p>The Fuel TS SDK is a toolkit for build dapps on The fuel network. You can use the SDK to execute scripts, interact with contracts, list transactions, balances and more.</p>
+<p>To get started using the TypeScript SDK:</p>
+<ul>
+<li><a href="https://fuellabs.github.io/fuels-ts/">SDK Docs</a></li>
+<li><a href="https://fuellabs.github.io/fuels-ts/QUICKSTART.html">TS Quickstart Guide</a></li>
+<li><a href="https://github.com/FuelLabs/fuels-ts">TS SDK Repo</a></li>
+</ul>
+<h2 id="need-help-3"><a class="header" href="#need-help-3">Need Help?</a></h2>
+<p>Head to the <a href="https://discord.com/invite/fuelnetwork">Fuel discord</a> or the <a href="https://forum.fuel.network/">Fuel Forum</a> for help from the team.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rust-sdk"><a class="header" href="#rust-sdk">Rust SDK</a></h1>
+<p>Rust SDK for Fuel. It can be used for a variety of things, including but not limited to:</p>
+<ul>
+<li>Deploying, and testing Sway contracts;</li>
+<li>Launching a local Fuel network;</li>
+<li>Crafting and signing transactions with hand-crafted scripts or contract calls;</li>
+<li>Generating type-safe Rust bindings of contract methods;
+And more, fuels-rs is still in active development.</li>
+</ul>
+<p>Getting started with the Rust SDK:</p>
+<ul>
+<li><a href="https://fuellabs.github.io/fuels-rs/latest/">Rust SDK Docs</a></li>
+<li><a href="https://github.com/FuelLabs/fuels-rs">Rust SDK repo</a></li>
+</ul>
+<h2 id="need-help-4"><a class="header" href="#need-help-4">Need Help?</a></h2>
+<p>Head to the <a href="https://discord.com/invite/fuelnetwork">Fuel discord</a> or the <a href="https://forum.fuel.network/">Fuel Forum</a> for help from the team.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-indexer"><a class="header" href="#fuel-indexer">Fuel Indexer</a></h1>
+<p>The Fuel Indexer is a standalone binary that can be used to index various components of the blockchain. These indexable components include blocks, transactions, and receipts and state within a Fuel network, allowing for high-performance read-only access to the blockchain for advanced dApp use-cases.</p>
+<p>Events can be indexed by the Fuel Indexer by using WASM modules, <a href="https://fuellabs.github.io/fuel-indexer/master/examples/hello-world.html">as described in the Hello World example</a>.</p>
+<p>Getting Started with The Fuel Indexer:</p>
+<ul>
+<li><a href="https://fuellabs.github.io/fuel-indexer/master/the-fuel-indexer.html">Indexer Docs</a></li>
+</ul>
+<h2 id="need-help-5"><a class="header" href="#need-help-5">Need Help?</a></h2>
+<p>Head to the <a href="https://discord.com/invite/fuelnetwork">Fuel discord</a> or the <a href="https://forum.fuel.network/">Fuel Forum</a> for help from the team.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="faucet-and-block-explorer"><a class="header" href="#faucet-and-block-explorer">Faucet and Block Explorer</a></h1>
+<h2 id="beta-2-faucet"><a class="header" href="#beta-2-faucet">Beta-2 Faucet</a></h2>
+<p>Assets for the Testnet node can be obtained from the faucet at <a href="https://faucet-beta-2.fuel.network/">https://faucet-beta-2.fuel.network/</a>.</p>
+<h2 id="beta-1-facuet"><a class="header" href="#beta-1-facuet">Beta-1 Facuet</a></h2>
+<p>Assets for the Testnet node can be obtained from the faucet at
+<a href="https://faucet-beta-1.fuel.network/">https://faucet-beta-1.fuel.network/</a>.</p>
+<h2 id="block-explorer"><a class="header" href="#block-explorer">Block Explorer</a></h2>
+<p>The block explorer for both testnets can be found <a href="https://fuellabs.github.io/block-explorer-v2/">here</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-wallet"><a class="header" href="#fuel-wallet">Fuel Wallet</a></h1>
+<p>Fuel has a beta wallet extension that can be downloaded. Keep in mind this is an alpha version. For now, it isn't possible to download the extension directly from Chrome Extensions Store. For instructions on how to download the extension, check out the docs <a href="https://fuels-wallet.vercel.app/docs/install/#installing-extension">here</a>.</p>
+<p>Fuels is an SDK that allows developers to let users interact with the Fuel node via the Fuel wallet. Check out the API reference <a href="https://fuels-wallet.vercel.app/docs/api/">here</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuelup"><a class="header" href="#fuelup">Fuelup</a></h1>
+<p><code>fuelup</code> is the official package manager for Fuel that installs the Fuel Toolchain from the official release channels, enabling you to easily switch between different toolchains and keep them updated. It makes building and maintaining Sway applications simpler with forc and fuel-core for common platforms.</p>
+<p>Get started with Fuelup:</p>
+<ul>
+<li><a href="https://fuellabs.github.io/fuelup/latest/">Fuelup Docs</a></li>
+</ul>
+<h2 id="need-help-6"><a class="header" href="#need-help-6">Need Help?</a></h2>
+<p>Head to the <a href="https://discord.com/invite/fuelnetwork">Fuel discord</a> or the <a href="https://forum.fuel.network/">Fuel Forum</a> for help from the team.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-graphql-api"><a class="header" href="#fuel-graphql-api">Fuel GraphQL API</a></h1>
+<p>The Fuel GraphQL API allows you to query the Fuel blockchain for a wide range of on-chain data. It can be used to query transactions, balances, block information, and more. You can also use it to simulate and submit transactions on the Fuel network.</p>
+<p>Getting Started with the API:</p>
+<ul>
+<li><a href="https://graphql-docs.fuel.network/">GraphQL Docs</a></li>
+</ul>
+<h2 id="need-help-7"><a class="header" href="#need-help-7">Need Help?</a></h2>
+<p>Head to the <a href="https://discord.com/invite/fuelnetwork">Fuel discord</a> or the <a href="https://forum.fuel.network/">Fuel Forum</a> for help from the team.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-glossary"><a class="header" href="#fuel-glossary">Fuel Glossary</a></h1>
+<h2 id="address"><a class="header" href="#address">Address</a></h2>
+<p>An address is a cryptographic hash representing an identity of a wallet or a predicate root.</p>
+<h2 id="assetid"><a class="header" href="#assetid">AssetId</a></h2>
+<p>An asset ID is a unique identifier for an on-chain asset. It is derived from the root of the bytecode of the contract minting the asset.</p>
+<h2 id="base-asset"><a class="header" href="#base-asset">Base Asset</a></h2>
+<p>The base asset is the underlying asset needed to perform any transactions on a blockchain. It is used to pay gas for transactions. On Ethereum, the base asset is ETH.</p>
+<h2 id="block"><a class="header" href="#block">Block</a></h2>
+<p>A block is a record of many transactions, that are grouped together and cryptographically hashed. The linked blocks form a chain, also called a blockchain.</p>
+<h2 id="block-explorer-1"><a class="header" href="#block-explorer-1">Block Explorer</a></h2>
+<p>A block explorer is an interface for block and transaction data produced by a blockchain. You can use a block explorer to explore and verify addresses, contracts, and transaction histories.</p>
+<h2 id="block-height"><a class="header" href="#block-height">Block Height</a></h2>
+<p>The block height refers to the total number of valid blocks produced in the history of a blockchain, starting with the genesis block.</p>
+<h2 id="block-id"><a class="header" href="#block-id">Block ID</a></h2>
+<p>A block ID is a unique identifier for a particular block.</p>
+<h2 id="bridge"><a class="header" href="#bridge">Bridge</a></h2>
+<p>A bridge is a mechanism that allows the transfer of data or assets from one blockchain to another.</p>
+<h2 id="bytecode"><a class="header" href="#bytecode">Bytecode</a></h2>
+<p>Bytecode is machine-readable code, usually generated from a compiler.</p>
+<h2 id="chain"><a class="header" href="#chain">Chain</a></h2>
+<p>Another name for a blockchain.</p>
+<h2 id="chainid"><a class="header" href="#chainid">ChainId</a></h2>
+<p>A unique ID for a blockchain.</p>
+<h2 id="client"><a class="header" href="#client">Client</a></h2>
+<p>The Fuel client refers to the software that runs the Fuel Virtual Machine. It can be used to validate and produce blocks, and send transactions.</p>
+<h2 id="coinbase"><a class="header" href="#coinbase">Coinbase</a></h2>
+<p>Coinbase refers to the validators paying themselves for processing a block from the transaction fees. Having a coinbase transaction on each block makes this process transparent to all users.</p>
+<h2 id="consensus"><a class="header" href="#consensus">Consensus</a></h2>
+<p>The consensus layer defines the state and validates that all nodes on the blockchain have the same state.</p>
+<h2 id="consensus-parameters"><a class="header" href="#consensus-parameters">Consensus Parameters</a></h2>
+<p>Consensus parameters are the rules used by clients to determine the validity of and finalize a block.</p>
+<h2 id="contract-call"><a class="header" href="#contract-call">Contract Call</a></h2>
+<p>Calling a contract means invoking a function from a smart contract that has been deployed to the blockchain.</p>
+<h2 id="contract-id"><a class="header" href="#contract-id">Contract ID</a></h2>
+<p>The contract ID is a unique identifier for a contract derived from the root of the contract bytecode.</p>
+<h2 id="data-availability"><a class="header" href="#data-availability">Data Availability</a></h2>
+<p>The data availability layer ensures that block data has been published to the network.</p>
+<h2 id="eip"><a class="header" href="#eip">EIP</a></h2>
+<p>EIP stands for Ethereum Improvement Proposal. It refers to a proposal to upgrade the core software powering the Ethereum blockchain.</p>
+<h2 id="eoa"><a class="header" href="#eoa">EOA</a></h2>
+<p>EOA stands for Externally Owned Account. It refers to a wallet address that is not controlled by a contract.</p>
+<h2 id="evm"><a class="header" href="#evm">EVM</a></h2>
+<p>EVM stands for Ethereum Virtual Machine, which is the virtual machine used for the Ethereum network.</p>
+<h2 id="execution"><a class="header" href="#execution">Execution</a></h2>
+<p>Execution refers to the processing of transactions by nodes in a network.</p>
+<h2 id="faucet"><a class="header" href="#faucet">Faucet</a></h2>
+<p>A faucet is a service that provides free tokens for a testnet.</p>
+<h2 id="forc"><a class="header" href="#forc">Forc</a></h2>
+<p>Forc is short for Fuel Orchestrator. Similar to Cargo for Rust, Forc is the build system and package manager for Sway. It is used to build, test, and deploy Sway contracts.</p>
+<h2 id="fraud-proof"><a class="header" href="#fraud-proof">Fraud Proof</a></h2>
+<p>Fraud proofs are a blockchain verification mechanism whereby a claim on a new block is accepted unless a proof the claim is invalid is provided within some configurable time window. Both the Fuel protocol and the FuelVM are designed to be fraud-provable in restrictive environments such as the Ethereum Virtual Machine.</p>
+<h2 id="fuel"><a class="header" href="#fuel">Fuel</a></h2>
+<p>The Fuel blockchain.</p>
+<h2 id="fuels"><a class="header" href="#fuels">Fuels</a></h2>
+<p>Fuels is the name of the Fuel Rust and Typescript SDKs used to interact with a contract, similar to ethers.js or web3.js</p>
+<h2 id="fuelup-1"><a class="header" href="#fuelup-1">Fuelup</a></h2>
+<p>Fuelup is the official toolchain and package manager for the Fuel toolchain.</p>
+<h2 id="fuelvm-1"><a class="header" href="#fuelvm-1">FuelVM</a></h2>
+<p>The FuelVM is the virtual machine powering the Fuel blockchain.</p>
+<h2 id="fuel-core"><a class="header" href="#fuel-core">Fuel Core</a></h2>
+<p><code>fuel-core</code> is the name of the Fuel client implementation.</p>
+<h2 id="gas"><a class="header" href="#gas">Gas</a></h2>
+<p>Gas is a variable fee charged by a node to process a transaction that is executed on-chain.</p>
+<h2 id="indexer"><a class="header" href="#indexer">Indexer</a></h2>
+<p>An indexer is a program that watches and organizes blockchain data so it can be easily queried.</p>
+<h2 id="input"><a class="header" href="#input">Input</a></h2>
+<p>An input refers to a transaction input, which is a UTXO consumed by a transaction.</p>
+<h2 id="layer-1-l1"><a class="header" href="#layer-1-l1">Layer 1 (L1)</a></h2>
+<p>Also called a level 1, this refers to a base layer blockchain that is not built on top of any other blockchain.</p>
+<h2 id="layer-2-l2"><a class="header" href="#layer-2-l2">Layer 2 (L2)</a></h2>
+<p>Also called a level 2, this is a blockchain that is built on top of another blockchain. Layer 2 networks can offer unique benefits like allowing for cheaper transactions or sovereign rollups that can fork without forking the base layer.</p>
+<h2 id="light-client"><a class="header" href="#light-client">Light Client</a></h2>
+<p>A light client is a client that doesn't validate blocks and transactions but still offers some functionality to send transactions.</p>
+<h2 id="locked-wallet"><a class="header" href="#locked-wallet">Locked Wallet</a></h2>
+<p>A locked wallet is a wallet that can only interact with read-only smart contract methods.</p>
+<h2 id="mainnet"><a class="header" href="#mainnet">Mainnet</a></h2>
+<p>Mainnet refers to the main network of a blockchain, as opposed to a testnet.</p>
+<h2 id="merkle-tree"><a class="header" href="#merkle-tree">Merkle Tree</a></h2>
+<p>A Merkle tree is a data structure which uses a cryptographic hash function recursively to condense a set of data into a single value, called the root. It allows efficient proofs that a given element is part of the set.</p>
+<h2 id="message"><a class="header" href="#message">Message</a></h2>
+<p>A type of input that only includes specific metadata, and is often used for bridging.</p>
+<h2 id="mint"><a class="header" href="#mint">Mint</a></h2>
+<p>Minting refers to the creation of new coins.</p>
+<h2 id="modular"><a class="header" href="#modular">Modular</a></h2>
+<p>Referring to a blockchain architecture that allows for execution, settlement, consensus, and data availability to run on separate layers.</p>
+<h2 id="monolithic"><a class="header" href="#monolithic">Monolithic</a></h2>
+<p>Referring to a blockchain architecture that handles execution, settlement, consensus, and data availability all at the same time on a single layer.</p>
+<h2 id="native-asset"><a class="header" href="#native-asset">Native Asset</a></h2>
+<p>With Fuel any contract can make its own native asset. On Ethereum, the only native asset is ETH. This allows for much cheaper token transactions because it doesn't require any contract state changes. It also allows you to directly forward any asset in a transaction call, avoiding the need for the <code>approve</code> and <code>transferFrom</code> mechanisms.</p>
+<h2 id="network"><a class="header" href="#network">Network</a></h2>
+<p>Another name for a blockchain.</p>
+<h2 id="node"><a class="header" href="#node">Node</a></h2>
+<p>A client that validates and produces blocks for the network.</p>
+<h2 id="optimistic-rollup"><a class="header" href="#optimistic-rollup">Optimistic Rollup</a></h2>
+<p>An optimistic rollup is a sidechain that uses fraud proofs to verify transactions instead of relying on a majority of validators to be honest.</p>
+<h2 id="output"><a class="header" href="#output">Output</a></h2>
+<p>An output refers to a transaction output, or which UTXOs are output by a transaction.</p>
+<h2 id="parallel-transactions"><a class="header" href="#parallel-transactions">Parallel Transactions</a></h2>
+<p>Parallel transactions refers to the ability of the FuelVM to process multiple transactions in parallel.</p>
+<h2 id="predicate-2"><a class="header" href="#predicate-2">Predicate</a></h2>
+<p>A predicate is a pure function that can return true or false, and is sent inside a transaction as bytecode and checked at transaction validity time. If it evaluates to <code>false</code> the transaction will not be processed, and no gas will be used. If it evaluates to <code>true</code>, any coins belonging to the address equal to the Merkle root of the predicate bytecode may be spent by the transaction.</p>
+<h2 id="private-key"><a class="header" href="#private-key">Private Key</a></h2>
+<p>A cryptographic key that is used to prove ownership by producing a digital signature. It should be kept private (or secret) as it can grant access to a wallet.</p>
+<h2 id="public-key"><a class="header" href="#public-key">Public Key</a></h2>
+<p>A cryptographic key that is generated from its associated private key and can be shared publicly. Addresses are derived from public keys.</p>
+<h2 id="receipt"><a class="header" href="#receipt">Receipt</a></h2>
+<p>A receipt is a data object that is emitted during a transaction and contains information about that transaction.</p>
+<h2 id="re-entrancy-attack"><a class="header" href="#re-entrancy-attack">Re-entrancy attack</a></h2>
+<p>A type of attack in which the attacker is able to recursively call a contract function so that the function is exited before it is fully executed. This can result in the attacker being able to withdraw more funds than intended from a contract.</p>
+<h2 id="rollup"><a class="header" href="#rollup">Rollup</a></h2>
+<p>A rollup is a scaling solution for layer 1 blockchains that &quot;rolls up&quot; or batches transactions as calldata.</p>
+<h2 id="script"><a class="header" href="#script">Script</a></h2>
+<p>A script is runnable bytecode that executes once on-chain to perform some task. It does not represent ownership of any resources and it cannot be called by a contract. A script can return a single value of any type.</p>
+<h2 id="settlement"><a class="header" href="#settlement">Settlement</a></h2>
+<p>Settlement refers to how and where on-chain disputes are resolved or settled.</p>
+<h2 id="sidechain"><a class="header" href="#sidechain">Sidechain</a></h2>
+<p>A sidechain is a blockchain that runs independently but is connected to another blockchain (often Ethereum Mainnet) by a two-way bridge.</p>
+<h2 id="signature"><a class="header" href="#signature">Signature</a></h2>
+<p>A cryptographic signature from a wallet, usually in reference to a signature for a message.</p>
+<h2 id="smart-contract"><a class="header" href="#smart-contract">Smart Contract</a></h2>
+<p>Also referred to as a contract, a smart contract is a set of programming functions with persistent state that is deployed on a blockchain. Once deployed, the contract code can never be changed or deleted, and anyone can access public functions without permission.</p>
+<h2 id="state-channel"><a class="header" href="#state-channel">State Channel</a></h2>
+<p>State channels allow for users to conduct any number of off-chain transactions while only submitting two on-chain transactions to open and close the channel. This reduces the number of on-chain transactions needed, which reduces the cost and saves time.</p>
+<h2 id="sway"><a class="header" href="#sway">Sway</a></h2>
+<p>Sway is the official programming language for Fuel. It is a domain-specific language crafted for the FuelVM and inspired by Rust.</p>
+<h2 id="testnet"><a class="header" href="#testnet">Testnet</a></h2>
+<p>Testnet is short for test network. You can use a testnet to deploy and test contracts for free.</p>
+<h2 id="toolchain"><a class="header" href="#toolchain">Toolchain</a></h2>
+<p>A toolchain is a set of related tools. The Fuel toolchain includes <code>fuelup</code>, <code>forc</code>, <code>fuel-core</code>, and <code>fuels</code>.</p>
+<h2 id="transaction"><a class="header" href="#transaction">Transaction</a></h2>
+<p>A transaction is any interaction with the blockchain, for example sending coins from one address to another.</p>
+<h2 id="unlocked-wallet"><a class="header" href="#unlocked-wallet">Unlocked Wallet</a></h2>
+<p>An unlocked wallet can interact with both read and write smart contract methods.</p>
+<h2 id="utxo"><a class="header" href="#utxo">UTXO</a></h2>
+<p>UTXO stands for unspent transaction output.</p>
+<h2 id="utxo-model"><a class="header" href="#utxo-model">UTXO Model</a></h2>
+<p>A UTXO model is a blockchain model that doesn't keep track of account balances. Instead, it uses inputs and outputs to manage state, which allows for fast parallel transactions.</p>
+<h2 id="validator"><a class="header" href="#validator">Validator</a></h2>
+<p>A validator refers to a network validator or node. Validators help validate transactions and produce blocks.</p>
+<h2 id="witness"><a class="header" href="#witness">Witness</a></h2>
+<p>A witness refers to the cryptographic signatures from actors involved in authorizing a transaction, including the transaction signers, contract callers, and block producers.</p>
+<h2 id="zero-knowledge-proof"><a class="header" href="#zero-knowledge-proof">Zero-Knowledge Proof</a></h2>
+<p>A method that allows for the verification of secret information without revealing the secret.</p>
+<h2 id="zero-knowledge-rollup"><a class="header" href="#zero-knowledge-rollup">Zero-Knowledge Rollup</a></h2>
+<p>A rollup that uses zero-knowledge proofs to verify transactions. In ZK rollups, each rollup block posted to the contract must be accompanied by a validity proof (a succinct proof that the block is valid), which is also verified by the contract. Blocks are thus finalized immediately, and withdrawals can be processed in the same Ethereum block.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>
