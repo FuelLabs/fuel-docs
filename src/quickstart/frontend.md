@@ -46,8 +46,17 @@ Move into the `frontend` folder, then run:
 
 ```console
 $ cd frontend
-$ npm install fuels@0.35.0 --save
-added 114 packages, and audited 115 packages in 29s
+$ npm install fuels@0.35.0 @fuel-wallet/sdk --save
+```
+
+Next, update the TypeScript configuration at `tsconfig.json` to add the Fuel Wallet types:
+
+```
+{
+  "compilerOptions": {
+    "types": ["@fuel-wallet/sdk"]
+  }
+}
 ```
 
 ### Generating contract types
