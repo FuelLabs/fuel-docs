@@ -135,7 +135,6 @@ $ tree .
 ├── out
 │   └── debug
 │       ├── counter-contract-abi.json
-│       ├── counter-contract-contract-id
 │       ├── counter-contract-storage_slots.json
 │       └── counter-contract.bin
 └── src
@@ -186,7 +185,6 @@ $ tree .
 ├── out
 │   └── debug
 │       ├── counter-contract-abi.json
-│       ├── counter-contract-contract-id
 │       ├── counter-contract-storage_slots.json
 │       └── counter-contract.bin
 ├── src
