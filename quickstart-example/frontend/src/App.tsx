@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { bn } from "fuels";
 import "@fuel-wallet/sdk";
 import "./App.css";
 // Import the contract factory -- you can find the name in index.ts.
@@ -28,8 +27,8 @@ function App() {
     if (window.fuel) {
      try {
        await window.fuel.connect();
-       const accounts = await window.fuel.accounts();
-       setAccount(accounts[0]);
+       const [account] = await window.fuel.accounts();
+       setAccount(account);
        setConnected(true);
      } catch(err) {
        console.log("error connecting: ", err);
@@ -41,8 +40,8 @@ function App() {
     if (window.fuel) {
       const isConnected = await window.fuel.isConnected();
       if (isConnected) {
-        const accounts = await window.fuel.accounts();
-        setAccount(accounts[0]);
+        const [account] = await window.fuel.accounts();
+        setAccount(account);
         setConnected(true);
       }
     }
@@ -53,7 +52,7 @@ function App() {
       const wallet = await window.fuel.getWallet(account);
       const contract = CounterContractAbi__factory.connect(CONTRACT_ID, wallet);
       const { value } = await contract.functions.count().get();
-      setCounter(Number(bn(value)));
+      setCounter(value.toNumber());
     }
   }
 
