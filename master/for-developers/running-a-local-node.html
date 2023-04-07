@@ -150,10 +150,10 @@
 <pre><code class="language-sh">fuel-core run --db-type in-memory
 </code></pre>
 <p>To deploy a contract to the local node, run the following command:</p>
-<pre><code class="language-sh">forc deploy &lt;signing-key&gt;
+<pre><code class="language-sh">forc deploy &lt;signing-key&gt; --url 127.0.0.1:4000/graphql
 </code></pre>
 <p>Or to deploy without using a signing key:</p>
-<pre><code class="language-sh">forc deploy --unsigned
+<pre><code class="language-sh">forc deploy --unsigned --url 127.0.0.1:4000/graphql
 </code></pre>
 <h2 id="local-node-with-state-persistance"><a class="header" href="#local-node-with-state-persistance">Local node (with state persistance)</a></h2>
 <p>This node does persist the blockchain state locally.</p>
@@ -217,6 +217,10 @@
 </code></pre>
 <p>To start the node, run the following command:</p>
 <pre><code class="language-sh">fuel-core run --ip 127.0.0.1 --port 4000 --chain ./chainConfig.json --db-path ./.fueldb
+</code></pre>
+<h2 id="connecting-to-the-local-node-from-a-browser-wallet"><a class="header" href="#connecting-to-the-local-node-from-a-browser-wallet">Connecting to the local node from a browser wallet</a></h2>
+<p>To connect to the local node using a browser wallet, import the network address as:</p>
+<pre><code class="language-sh">http://127.0.0.1:4000/graphql
 </code></pre>
 
                     </main>
