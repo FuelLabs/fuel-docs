@@ -24,9 +24,9 @@ Join the [Fuel Labs Discord](https://discord.com/invite/fuelnetwork) and head to
 
 ## SDK Versioning
 
-Version 0.35.0 is the recommended version of the TS SDK on `beta-3`.  
+Version 0.38.0 or higher is the recommended version of the TS SDK on `beta-3`.  
 
-Version 0.38.0 is the recommended version for the Rusk SDK on `beta-3`.
+Version 0.39.0 or higher is the recommended version for the Rusk SDK on `beta-3`.
 
 ## Toolchain Configuration
 
@@ -44,12 +44,12 @@ fuelup toolchain install beta-3
 
 This installs the following components and versions:
 
-- forc 0.35.3
+- forc 0.37.0
 - forc-explore 0.28.1
-- forc-index 0.3.0
-- forc-wallet 0.2.0
-- fuel-core 0.17.3
-- fuel-indexer 0.3.0
+- forc-index 0.7.0
+- forc-wallet 0.2.2
+- fuel-core 0.17.8
+- fuel-indexer 0.7.0
 
 To set the `beta-3` toolchain as your default, run
 
@@ -62,4 +62,4 @@ default toolchain set to 'beta-3-aarch64-apple-darwin'
 
 Messages intended for contracts use a pre-defined predicate as the message recipient. This predicate allows anyone to relay the message to the target contract and only the target contract. Once the contract receives the message it can see who originated it along with any special message payload and processes it accordingly. Since anyone can relay the message using this predicate it opens up possibilities for automated message processing as a service.
 
-The predicate root is `0x4df15e4a7c602404e353b7766db23a0d067960c201eb2d7a695a166548c4d80a`.
+The predicate root for the beta-3 testnet is `0x4df15e4a7c602404e353b7766db23a0d067960c201eb2d7a695a166548c4d80a`.
