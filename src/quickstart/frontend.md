@@ -14,7 +14,7 @@ Our front end application will need to interact with the Fuel Network, so we'll 
 
 Before going to the next steps, install the Fuel Wallet at [https://wallet.fuel.network/docs/install/](https://wallet.fuel.network/docs/install/).
 
-Once you've installed the wallet, take the address of your wallet and use it to get some coins from [the testnet faucet](https://faucet-beta-2.fuel.network/).
+Once you've installed the wallet, take the address of your wallet and use it to get some coins from [the testnet faucet](https://faucet-beta-3.fuel.network/).
 
 ## Initialize a React project
 
@@ -46,7 +46,7 @@ Move into the `frontend` folder, then run:
 
 ```console
 $ cd frontend
-$ npm install fuels@0.35.0 @fuel-wallet/sdk --save
+$ npm install fuels@0.38.0 @fuel-wallet/sdk --save
 added 114 packages, and audited 115 packages in 9s
 ```
 

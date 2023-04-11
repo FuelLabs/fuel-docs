@@ -5,7 +5,7 @@ The Fuel TS SDK is a toolkit for build dapps on The fuel network. You can use th
 To get started using the TypeScript SDK:
 
 - [SDK Docs](https://fuellabs.github.io/fuels-ts/)
-- [TS Quickstart Guide](https://fuellabs.github.io/fuels-ts/QUICKSTART.html)
+- [TS Quickstart Guide](https://fuellabs.github.io/fuels-ts/)
 - [TS SDK Repo](https://github.com/FuelLabs/fuels-ts)
 
 ## Need Help?
