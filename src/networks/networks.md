@@ -6,7 +6,7 @@ On this page, you'll find information on the different testnet networks.
 
 <!-- This example should include a description for the latest network -->
 <!-- latest_network:example:start -->
-The `beta-3` network is the latest Fuel testnet. It expands on the features of `beta-2`, introducing P2P networking and the ability to run synchronizing full nodes. 
+The `beta-3` network is the latest Fuel testnet. It expands on the features of `beta-2`, introducing P2P networking and the ability to run synchronizing full nodes.
 <!-- latest_network:example:end -->
 Read more about `beta-3` [here.](./beta-3.md)
 

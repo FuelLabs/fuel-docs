@@ -2,7 +2,7 @@
 
 <!-- This example should include a short summary of Sway-->
 <!-- sway:example:start -->
-Sway is a smart contract programming language that prioritizes safety and speed and brings modern programming language theory to the blockchain. 
+Sway is a smart contract programming language that prioritizes safety and speed and brings modern programming language theory to the blockchain.
 <!-- sway:example:end -->
 
 Check out the Sway docs [here](https://fuellabs.github.io/sway/latest/).
