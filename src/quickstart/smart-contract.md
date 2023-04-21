@@ -2,10 +2,15 @@
 
 ## Installation
 
-Start by [installing the Rust toolchain](https://fuellabs.github.io/sway/v0.24.3/introduction/installation.html#dependencies).
+<!-- This example should include the instructions for installing Rust & Fuelup-->
+<!-- installation:example:start -->
+Start by [installing the Rust toolchain](https://www.rust-lang.org/tools/install).
 
 Then, [install the Fuel toolchain](https://github.com/FuelLabs/fuelup).
+<!-- installation:example:end -->
 
+<!-- This example should include the instructions for installing the latest toolchain-->
+<!-- toolchain_installation:example:start -->
 Make sure you have the latest version of `fuelup` by running the following command:
 
 ```console
@@ -26,6 +31,7 @@ default toolchain set to 'beta-3-aarch64-apple-darwin'
 ```
 
 You can check your current toolchain anytime by running `fuelup show`.
+<!-- toolchain_installation:example:end -->
 
 > Having problems with this part? Post your question on our forum [https://forum.fuel.network/](https://forum.fuel.network/). To help you as efficiently as possible, include the output of this command in your post: `fuelup show.`
 
@@ -59,6 +65,8 @@ Report Bugs:
 - Sway Issues: https://github.com/FuelLabs/sway/issues/new
 ```
 
+<!-- This example should include a tree for a new forc project and explain the boilerplate files-->
+<!-- forc_new:example:start -->
 Here is the project that `Forc` has initialized:
 
 ```console
@@ -70,6 +78,7 @@ counter-contract
 ```
 
 `Forc.toml` is the _manifest file_ (similar to `Cargo.toml` for Cargo or `package.json` for Node) and defines project metadata such as the project name and dependencies.
+<!-- forc_new:example:end -->
 
 Open your project in a code editor and delete the boilerplate code in `src/main.sw` so that you start with an empty file.
 

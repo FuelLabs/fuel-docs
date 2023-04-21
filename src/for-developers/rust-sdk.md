@@ -1,12 +1,14 @@
 # Rust SDK
 
-Rust SDK for Fuel. It can be used for a variety of things, including but not limited to:
+<!-- This example should include a summary of the Rust SDK -->
+<!-- fuels_rs:example:start -->
+The Rust SDK for Fuel can be used for a variety of things, including but not limited to:
 
-- Deploying, and testing Sway contracts;
-- Launching a local Fuel network;
-- Crafting and signing transactions with hand-crafted scripts or contract calls;
-- Generating type-safe Rust bindings of contract methods;
-And more, fuels-rs is still in active development.
+- Deploying, and testing Sway contracts
+- Launching a local Fuel network
+- Crafting and signing transactions with hand-crafted scripts or contract calls
+- Generating type-safe Rust bindings of contract methods
+<!-- fuels_rs:example:end -->
 
 Getting started with the Rust SDK:
 

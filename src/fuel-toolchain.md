@@ -1,12 +1,14 @@
 # The Fuel Toolchain
 
-The full stack of tools designed and built by Fuel Labs for enabling/assisting the Fuel application development experience.
+<!-- This example should include a summary of the Fuel toolchain -->
+<!-- fuel_toolchain:example:start -->
+The Fuel toolchain is the full stack of tools designed and built by Fuel Labs for enabling and assisting the Fuel application development experience.
+<!-- fuel_toolchain:example:end -->
 
 Tooling Overview:
 
 - `fuel-core`: The Fuel VM node client.
 - `forc`: The Fuel Orchestrator. Includes Sway compiler, packaging and plugin support.
-- `Fuel Indexer`: A standalone binary that can be used to index various components of the blockchain. Check out the docs [here](https://fuellabs.github.io/fuel-indexer/master/the-fuel-indexer.html).
 
 Forc plugins by Fuel Labs:
 
@@ -15,9 +17,11 @@ Forc plugins by Fuel Labs:
 - `forc-explore`: Runs the Fuel block explorer.
 - `forc-client`: For deploying and running Sway apps via CLI.
 - `forc-wallet`: For initializing a wallet, adding accounts and signing transactions.
+- `forc-doc`: Generates documentation for Sway projects.
+- `forc-index`: For initializing and deploying an index.
 - `fuelup`: The Fuel toolchain manager - an easy approach to retrieving all of the above.
 
-For more specific documentation on the toolchain, check out the Sway docs [here](https://fuellabs.github.io/sway/v0.19.2/introduction/sway-toolchain.html).
+For more specific documentation on the toolchain, check out the Sway docs [here](https://fuellabs.github.io/sway/master/book/introduction/fuel_toolchain.html).
 
 ## Building on Fuel
 
