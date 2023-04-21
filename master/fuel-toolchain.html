@@ -138,12 +138,14 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="the-fuel-toolchain"><a class="header" href="#the-fuel-toolchain">The Fuel Toolchain</a></h1>
-<p>The full stack of tools designed and built by Fuel Labs for enabling/assisting the Fuel application development experience.</p>
+<!-- This example should include a summary of the Fuel toolchain -->
+<!-- fuel_toolchain:example:start -->
+<p>The Fuel toolchain is the full stack of tools designed and built by Fuel Labs for enabling and assisting the Fuel application development experience.</p>
+<!-- fuel_toolchain:example:end -->
 <p>Tooling Overview:</p>
 <ul>
 <li><code>fuel-core</code>: The Fuel VM node client.</li>
 <li><code>forc</code>: The Fuel Orchestrator. Includes Sway compiler, packaging and plugin support.</li>
-<li><code>Fuel Indexer</code>: A standalone binary that can be used to index various components of the blockchain. Check out the docs <a href="https://fuellabs.github.io/fuel-indexer/master/the-fuel-indexer.html">here</a>.</li>
 </ul>
 <p>Forc plugins by Fuel Labs:</p>
 <ul>
@@ -152,9 +154,11 @@
 <li><code>forc-explore</code>: Runs the Fuel block explorer.</li>
 <li><code>forc-client</code>: For deploying and running Sway apps via CLI.</li>
 <li><code>forc-wallet</code>: For initializing a wallet, adding accounts and signing transactions.</li>
+<li><code>forc-doc</code>: Generates documentation for Sway projects.</li>
+<li><code>forc-index</code>: For initializing and deploying an index.</li>
 <li><code>fuelup</code>: The Fuel toolchain manager - an easy approach to retrieving all of the above.</li>
 </ul>
-<p>For more specific documentation on the toolchain, check out the Sway docs <a href="https://fuellabs.github.io/sway/v0.19.2/introduction/sway-toolchain.html">here</a>.</p>
+<p>For more specific documentation on the toolchain, check out the Sway docs <a href="https://fuellabs.github.io/sway/master/book/introduction/fuel_toolchain.html">here</a>.</p>
 <h2 id="building-on-fuel"><a class="header" href="#building-on-fuel">Building on Fuel</a></h2>
 <p>Developers can get everything they need to start creating Sway applications for the Fuel VM with a single toolchain, blessed by the same teams that create the FuelVM and Sway language.</p>
 <p>One common issue developers face when working within the Ethereum ecosystem is how to choose a set of tools to get started. Historically, Ethereum's founders have been particularly focused on the low-level details of the protocol, the EVM and to a lesser extent Solidity, leaving the job of creating accessible, high-level tooling to the community. As a result, many disparate projects have appeared from different 3rd parties that aim to provide these high-level solutions such as truffle, dapptools, hard hat, foundry and many more. It can be difficult for new Ethereum developers to navigate this space and to feel comfortable knowing they're making the right choice in selecting one of these toolchains.</p>

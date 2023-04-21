@@ -237,8 +237,13 @@
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="writing-a-sway-smart-contract"><a class="header" href="#writing-a-sway-smart-contract">Writing A Sway Smart Contract</a></h1>
 <h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
-<p>Start by <a href="https://fuellabs.github.io/sway/v0.24.3/introduction/installation.html#dependencies">installing the Rust toolchain</a>.</p>
+<!-- This example should include the instructions for installing Rust & Fuelup-->
+<!-- installation:example:start -->
+<p>Start by <a href="https://www.rust-lang.org/tools/install">installing the Rust toolchain</a>.</p>
 <p>Then, <a href="https://github.com/FuelLabs/fuelup">install the Fuel toolchain</a>.</p>
+<!-- installation:example:end -->
+<!-- This example should include the instructions for installing the latest toolchain-->
+<!-- toolchain_installation:example:start -->
 <p>Make sure you have the latest version of <code>fuelup</code> by running the following command:</p>
 <pre><code class="language-console">$ fuelup self update
 Fetching binary from https://github.com/FuelLabs/fuelup/releases/download/v0.18.0/fuelup-0.18.0-aarch64-apple-darwin.tar.gz
@@ -252,6 +257,7 @@ Moving /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt/fuelup to /Us
 default toolchain set to 'beta-3-aarch64-apple-darwin'
 </code></pre>
 <p>You can check your current toolchain anytime by running <code>fuelup show</code>.</p>
+<!-- toolchain_installation:example:end -->
 <blockquote>
 <p>Having problems with this part? Post your question on our forum <a href="https://forum.fuel.network/">https://forum.fuel.network/</a>. To help you as efficiently as possible, include the output of this command in your post: <code>fuelup show.</code></p>
 </blockquote>
@@ -278,6 +284,8 @@ Join the Community:
 Report Bugs:
 - Sway Issues: https://github.com/FuelLabs/sway/issues/new
 </code></pre>
+<!-- This example should include a tree for a new forc project and explain the boilerplate files-->
+<!-- forc_new:example:start -->
 <p>Here is the project that <code>Forc</code> has initialized:</p>
 <pre><code class="language-console">$ tree counter-contract
 counter-contract
@@ -286,6 +294,7 @@ counter-contract
     └── main.sw
 </code></pre>
 <p><code>Forc.toml</code> is the <em>manifest file</em> (similar to <code>Cargo.toml</code> for Cargo or <code>package.json</code> for Node) and defines project metadata such as the project name and dependencies.</p>
+<!-- forc_new:example:end -->
 <p>Open your project in a code editor and delete the boilerplate code in <code>src/main.sw</code> so that you start with an empty file.</p>
 <p>Every Sway file must start with a declaration of what type of program the file contains; here, we've declared that this file is a contract.</p>
 <pre><code class="language-sway">contract;
@@ -772,12 +781,14 @@ Forc: build, run tests, launch a local instance of a block explorer, format.</p>
 <p><strong>Coming Soon:</strong>
 A suite of auditing facilities, from fuzzing and formal verification to code coverage and runtime gating.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-fuel-toolchain"><a class="header" href="#the-fuel-toolchain">The Fuel Toolchain</a></h1>
-<p>The full stack of tools designed and built by Fuel Labs for enabling/assisting the Fuel application development experience.</p>
+<!-- This example should include a summary of the Fuel toolchain -->
+<!-- fuel_toolchain:example:start -->
+<p>The Fuel toolchain is the full stack of tools designed and built by Fuel Labs for enabling and assisting the Fuel application development experience.</p>
+<!-- fuel_toolchain:example:end -->
 <p>Tooling Overview:</p>
 <ul>
 <li><code>fuel-core</code>: The Fuel VM node client.</li>
 <li><code>forc</code>: The Fuel Orchestrator. Includes Sway compiler, packaging and plugin support.</li>
-<li><code>Fuel Indexer</code>: A standalone binary that can be used to index various components of the blockchain. Check out the docs <a href="https://fuellabs.github.io/fuel-indexer/master/the-fuel-indexer.html">here</a>.</li>
 </ul>
 <p>Forc plugins by Fuel Labs:</p>
 <ul>
@@ -786,9 +797,11 @@ A suite of auditing facilities, from fuzzing and formal verification to code cov
 <li><code>forc-explore</code>: Runs the Fuel block explorer.</li>
 <li><code>forc-client</code>: For deploying and running Sway apps via CLI.</li>
 <li><code>forc-wallet</code>: For initializing a wallet, adding accounts and signing transactions.</li>
+<li><code>forc-doc</code>: Generates documentation for Sway projects.</li>
+<li><code>forc-index</code>: For initializing and deploying an index.</li>
 <li><code>fuelup</code>: The Fuel toolchain manager - an easy approach to retrieving all of the above.</li>
 </ul>
-<p>For more specific documentation on the toolchain, check out the Sway docs <a href="https://fuellabs.github.io/sway/v0.19.2/introduction/sway-toolchain.html">here</a>.</p>
+<p>For more specific documentation on the toolchain, check out the Sway docs <a href="https://fuellabs.github.io/sway/master/book/introduction/fuel_toolchain.html">here</a>.</p>
 <h2 id="building-on-fuel"><a class="header" href="#building-on-fuel">Building on Fuel</a></h2>
 <p>Developers can get everything they need to start creating Sway applications for the Fuel VM with a single toolchain, blessed by the same teams that create the FuelVM and Sway language.</p>
 <p>One common issue developers face when working within the Ethereum ecosystem is how to choose a set of tools to get started. Historically, Ethereum's founders have been particularly focused on the low-level details of the protocol, the EVM and to a lesser extent Solidity, leaving the job of creating accessible, high-level tooling to the community. As a result, many disparate projects have appeared from different 3rd parties that aim to provide these high-level solutions such as truffle, dapptools, hard hat, foundry and many more. It can be difficult for new Ethereum developers to navigate this space and to feel comfortable knowing they're making the right choice in selecting one of these toolchains.</p>
@@ -945,10 +958,17 @@ A suite of auditing facilities, from fuzzing and formal verification to code cov
 <tr><td><a href="https://eips.ethereum.org/EIPS/eip-2926">EIP-2926: Chunk-based Code Merkelization</a></td><td>Bytecode is currently the second contributor to block witness size after the proof hashes. Transitioning the trie from hexary to binary reduces the hash section of the witness by 3x, thereby making code the first contributor. By breaking contract code into chunks and committing to those chunks in a Merkle tree, stateless clients would only need the chunks that were touched during a given transaction to execute it.</td><td>To get a code hash on Ethereum, you hash together all the byte code. The problem is that if you want to do things with statelessness or fraud proofs, to show that this hash is valid, you have to provide all the byte code, up to 24KB per contract. This EIP suggests we should merkalize it instead of hashing. The FuelVM implements this by having code roots instead of code hashes.</td></tr>
 </tbody></table>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sway-language-1"><a class="header" href="#sway-language-1">Sway Language</a></h1>
-<p>Sway is a smart contract programming language that prioritizes safety and speed and brings modern programming language theory to the blockchain. Check out the Sway docs <a href="https://fuellabs.github.io/sway/latest/">here</a>.</p>
+<!-- This example should include a short summary of Sway-->
+<!-- sway:example:start -->
+<p>Sway is a smart contract programming language that prioritizes safety and speed and brings modern programming language theory to the blockchain.</p>
+<!-- sway:example:end -->
+<p>Check out the Sway docs <a href="https://fuellabs.github.io/sway/latest/">here</a>.</p>
 <h2 id="rust--solidity--sway"><a class="header" href="#rust--solidity--sway">Rust + Solidity = Sway</a></h2>
+<!-- This example should include a detailed summary of Sway-->
+<!-- sway_details:example:start -->
 <p>Sway prioritizes compile-time analysis and safety, similar to Rust’s borrow checker and safety-first semantics. Additionally, it has the syntax of Rust. From Solidity, Sway took the notion of a smart-contract-paradigm language with built-in top-level contract storage and blockchain mechanisms for ergonomic and safe contract programming.</p>
 <p>In addition to robust documentation, tooling, clear error messages, and more – Sway brings the notion of static auditing to smart contracts. The compiler will catch things that one would typically hire an auditing firm to catch. This is particularly unique. In addition, Sway is highly performant and has extensible optimization passes and a modular backend for targeting different blockchain architectures.</p>
+<!-- sway_details:example:end-->
 <p>Check out Sway examples <a href="https://github.com/FuelLabs/sway/tree/master/examples">here</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sway-design-philosophy"><a class="header" href="#sway-design-philosophy">Sway Design Philosophy</a></h1>
 <p>Sway follows the design philosophies of Rust and Solidity, with some Fuel ideology mixed in. From Solidity, we took the notion of smart contract programming as a paradigm. This led to storage blocks, contract ABIs as entry points, etc.</p>
@@ -992,11 +1012,17 @@ OTC Swap Predicate is a predicate that can be used to propose and execute an ato
 <div style="break-before: page; page-break-before: always;"></div><h1 id="networks"><a class="header" href="#networks">Networks</a></h1>
 <p>On this page, you'll find information on the different testnet networks.</p>
 <h2 id="beta-3-testnet"><a class="header" href="#beta-3-testnet"><code>beta-3</code> testnet</a></h2>
-<p>The <code>beta-3</code> network is the latest Fuel testnet. It expands on the features of <code>beta-2</code>, introducing P2P networking and the ability to run synchronizing full nodes. Read more about <code>beta-3</code> <a href="networks/./beta-3.html">here.</a></p>
+<!-- This example should include a description for the latest network -->
+<!-- latest_network:example:start -->
+<p>The <code>beta-3</code> network is the latest Fuel testnet. It expands on the features of <code>beta-2</code>, introducing P2P networking and the ability to run synchronizing full nodes.</p>
+<!-- latest_network:example:end -->
+<p>Read more about <code>beta-3</code> <a href="networks/./beta-3.html">here.</a></p>
 <h2 id="beta-2-testnet"><a class="header" href="#beta-2-testnet"><code>beta-2</code> testnet</a></h2>
-<p>The <code>beta-2</code> network is the second Fuel testnet, launched with a bridge to Ethereum's Goerli test network. With this network, developers are able to build and test cross-chain dapps, laying the foundations for projects building on Fuel to tap into Ethereum's massive liquidity and existing user base. Read more about <code>beta-2</code> <a href="networks/./beta-2.html">here.</a></p>
+<p>The <code>beta-2</code> network is the second Fuel testnet, launched with a bridge to Ethereum's Goerli test network. With this network, developers are able to build and test cross-chain dapps, laying the foundations for projects building on Fuel to tap into Ethereum's massive liquidity and existing user base.</p>
+<p>Read more about <code>beta-2</code> <a href="networks/./beta-2.html">here.</a></p>
 <h2 id="beta-1-testnet"><a class="header" href="#beta-1-testnet"><code>beta-1</code> testnet</a></h2>
-<p>The beta-1 network is the first public Fuel testnet, shared by all developers and users that interact with it. Developers may deploy contracts to it at will—no permission or whitelisting required—and users may interact with deployed contracts as well. Read more about <code>beta-1</code> <a href="networks/./beta-1.html">here.</a></p>
+<p>The beta-1 network is the first public Fuel testnet, shared by all developers and users that interact with it. Developers may deploy contracts to it at will—no permission or whitelisting required—and users may interact with deployed contracts as well.</p>
+<p>Read more about <code>beta-1</code> <a href="networks/./beta-1.html">here.</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-beta-3-testnet"><a class="header" href="#the-beta-3-testnet">The <code>beta-3</code> testnet</a></h1>
 <p>The <code>beta-3</code> network is the latest Fuel testnet. It expands on the features of <code>beta-2</code>, introducing P2P networking and the ability to run synchronizing full nodes.</p>
 <p>Ethereum contracts (Goerli):</p>
@@ -1244,7 +1270,10 @@ The Fuel toolchain is installed and up to date
 <h2 id="need-help-2"><a class="header" href="#need-help-2">Need Help?</a></h2>
 <p>Head to the <a href="https://discord.com/invite/fuelnetwork">Fuel discord</a> or the <a href="https://forum.fuel.network/">Fuel Forum</a> for help from the team.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="typescript-sdk"><a class="header" href="#typescript-sdk">Typescript SDK</a></h1>
+<!-- This example should include a summary of the TS SDK -->
+<!-- fuels_ts:example:start -->
 <p>The Fuel TS SDK is a toolkit for build dapps on The fuel network. You can use the SDK to execute scripts, interact with contracts, list transactions, balances and more.</p>
+<!-- fuels_ts:example:end -->
 <p>To get started using the TypeScript SDK:</p>
 <ul>
 <li><a href="https://fuellabs.github.io/fuels-ts/">SDK Docs</a></li>
@@ -1254,14 +1283,16 @@ The Fuel toolchain is installed and up to date
 <h2 id="need-help-3"><a class="header" href="#need-help-3">Need Help?</a></h2>
 <p>Head to the <a href="https://discord.com/invite/fuelnetwork">Fuel discord</a> or the <a href="https://forum.fuel.network/">Fuel Forum</a> for help from the team.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="rust-sdk"><a class="header" href="#rust-sdk">Rust SDK</a></h1>
-<p>Rust SDK for Fuel. It can be used for a variety of things, including but not limited to:</p>
+<!-- This example should include a summary of the Rust SDK -->
+<!-- fuels_rs:example:start -->
+<p>The Rust SDK for Fuel can be used for a variety of things, including but not limited to:</p>
 <ul>
-<li>Deploying, and testing Sway contracts;</li>
-<li>Launching a local Fuel network;</li>
-<li>Crafting and signing transactions with hand-crafted scripts or contract calls;</li>
-<li>Generating type-safe Rust bindings of contract methods;
-And more, fuels-rs is still in active development.</li>
+<li>Deploying, and testing Sway contracts</li>
+<li>Launching a local Fuel network</li>
+<li>Crafting and signing transactions with hand-crafted scripts or contract calls</li>
+<li>Generating type-safe Rust bindings of contract methods</li>
 </ul>
+<!-- fuels_rs:example:end -->
 <p>Getting started with the Rust SDK:</p>
 <ul>
 <li><a href="https://fuellabs.github.io/fuels-rs/latest/">Rust SDK Docs</a></li>
@@ -1270,7 +1301,10 @@ And more, fuels-rs is still in active development.</li>
 <h2 id="need-help-4"><a class="header" href="#need-help-4">Need Help?</a></h2>
 <p>Head to the <a href="https://discord.com/invite/fuelnetwork">Fuel discord</a> or the <a href="https://forum.fuel.network/">Fuel Forum</a> for help from the team.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-indexer"><a class="header" href="#fuel-indexer">Fuel Indexer</a></h1>
+<!-- This example should include a summary of the Indexer -->
+<!-- indexer:example:start -->
 <p>The Fuel Indexer is a standalone binary that can be used to index various components of the blockchain. These indexable components include blocks, transactions, and receipts and state within a Fuel network, allowing for high-performance read-only access to the blockchain for advanced dApp use-cases.</p>
+<!-- indexer:example:end -->
 <p>Events can be indexed by the Fuel Indexer by using WASM modules, <a href="https://fuellabs.github.io/fuel-indexer/master/examples/hello-world.html">as described in the Hello World example</a>.</p>
 <p>Getting Started with The Fuel Indexer:</p>
 <ul>
@@ -1280,7 +1314,10 @@ And more, fuels-rs is still in active development.</li>
 <p>Head to the <a href="https://discord.com/invite/fuelnetwork">Fuel discord</a> or the <a href="https://forum.fuel.network/">Fuel Forum</a> for help from the team.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="faucet-and-block-explorer"><a class="header" href="#faucet-and-block-explorer">Faucet and Block Explorer</a></h1>
 <h2 id="beta-3-faucet"><a class="header" href="#beta-3-faucet">Beta-3 Faucet</a></h2>
+<!-- This example should include a link to the latest testnet faucet-->
+<!-- faucet:example:start -->
 <p>Assets for the beta-3 testnet can be obtained from the faucet at <a href="https://faucet-beta-3.fuel.network/">https://faucet-beta-3.fuel.network/</a>.</p>
+<!-- faucet:example:end -->
 <h2 id="beta-2-faucet"><a class="header" href="#beta-2-faucet">Beta-2 Faucet</a></h2>
 <p>Assets for the beta-2 testnet can be obtained from the faucet at <a href="https://faucet-beta-2.fuel.network/">https://faucet-beta-2.fuel.network/</a>.</p>
 <h2 id="block-explorer"><a class="header" href="#block-explorer">Block Explorer</a></h2>
@@ -1289,9 +1326,16 @@ And more, fuels-rs is still in active development.</li>
 <blockquote>
 <p>Note: the wallet is an alpha version. For now, it isn't possible to download the extension directly from the Chrome Web Store.</p>
 </blockquote>
-<p>Fuel has a wallet extension that allows users interact with apps built on the Fuel network with their own wallet. For instructions on how to download the extension and use the SDK in your app, check out the Fuel Wallet docs <a href="https://wallet.fuel.network/">here</a>.</p>
+<!-- This example should include a summary of the Fuel Wallet-->
+<!-- wallet:example:start -->
+<p>Fuel has a wallet extension that allows users interact with apps built on the Fuel network with their own wallet.</p>
+<!-- wallet:example:end -->
+<p>For instructions on how to download the extension and use the SDK in your app, check out the Fuel Wallet docs <a href="https://wallet.fuel.network/">here</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fuelup"><a class="header" href="#fuelup">Fuelup</a></h1>
+<!-- This example should include a summary of fuelup -->
+<!-- fuelup:example:start -->
 <p><code>fuelup</code> is the official package manager for Fuel that installs the Fuel Toolchain from the official release channels, enabling you to easily switch between different toolchains and keep them updated. It makes building and maintaining Sway applications simpler with forc and fuel-core for common platforms.</p>
+<!-- fuelup:example:end -->
 <p>Get started with Fuelup:</p>
 <ul>
 <li><a href="https://fuellabs.github.io/fuelup/latest/">Fuelup Docs</a></li>
@@ -1299,7 +1343,10 @@ And more, fuels-rs is still in active development.</li>
 <h2 id="need-help-6"><a class="header" href="#need-help-6">Need Help?</a></h2>
 <p>Head to the <a href="https://discord.com/invite/fuelnetwork">Fuel discord</a> or the <a href="https://forum.fuel.network/">Fuel Forum</a> for help from the team.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fuel-graphql-api"><a class="header" href="#fuel-graphql-api">Fuel GraphQL API</a></h1>
+<!-- This example should include a summary of the GraphQL API-->
+<!-- graphql_api:example:start -->
 <p>The Fuel GraphQL API allows you to query the Fuel blockchain for a wide range of on-chain data. It can be used to query transactions, balances, block information, and more. You can also use it to simulate and submit transactions on the Fuel network.</p>
+<!-- graphql_api:example:end -->
 <p>Getting Started with the API:</p>
 <ul>
 <li><a href="https://graphql-docs.fuel.network/">GraphQL Docs</a></li>
