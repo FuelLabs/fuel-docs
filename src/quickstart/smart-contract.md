@@ -80,7 +80,7 @@ counter-contract
 `Forc.toml` is the _manifest file_ (similar to `Cargo.toml` for Cargo or `package.json` for Node) and defines project metadata such as the project name and dependencies.
 <!-- forc_new:example:end -->
 
-Open your project in a code editor and delete the boilerplate code in `src/main.sw` so that you start with an empty file.
+Open your project in a code editor and delete everything in `src/main.sw` apart from the first line.
 
 Every Sway file must start with a declaration of what type of program the file contains; here, we've declared that this file is a contract.
 
