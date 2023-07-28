@@ -46,7 +46,7 @@ Move into the `frontend` folder, then run:
 
 ```console
 $ cd frontend
-$ npm install fuels@0.38.0 @fuel-wallet/sdk --save
+$ npm install fuels@0.49.0 @fuel-wallet/sdk --save
 added 114 packages, and audited 115 packages in 9s
 ```
 
