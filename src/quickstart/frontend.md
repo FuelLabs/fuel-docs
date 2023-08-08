@@ -14,7 +14,7 @@ Our front end application will need to interact with the Fuel Network, so we'll 
 
 Before going to the next steps, install the Fuel Wallet at [https://wallet.fuel.network/docs/install/](https://wallet.fuel.network/docs/install/).
 
-Once you've installed the wallet, take the address of your wallet and use it to get some coins from [the testnet faucet](https://faucet-beta-3.fuel.network/).
+Once you've installed the wallet, take the address of your wallet and use it to get some coins from [the testnet faucet](https://faucet-beta-4.fuel.network/).
 
 ## Initialize a React project
 
@@ -46,7 +46,7 @@ Move into the `frontend` folder, then run:
 
 ```console
 $ cd frontend
-$ npm install fuels@0.38.0 @fuel-wallet/sdk --save
+$ npm install fuels@0.49.1 @fuel-wallet/sdk --save
 added 114 packages, and audited 115 packages in 9s
 ```
 
@@ -125,7 +125,7 @@ Tweet us [@fuel_network](https://twitter.com/fuel_network) letting us know you j
 If you make changes to your contract, here are the steps you should take to get your frontend and contract back in sync:
 
 - In your contract directory, run `forc build`
-- In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy --node-url beta-3.fuel.network/graphql --gas-price 1 --random-salt`
+- In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy --node-url beta-4.fuel.network/graphql --gas-price 1`
 - In your frontend directory, re-run this command: `npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts`
 
 - In your `fuel-project/frontend` directory, update the contract ID in your `App.tsx` file

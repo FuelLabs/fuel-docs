@@ -12,22 +12,25 @@ Then, [install the Fuel toolchain](https://github.com/FuelLabs/fuelup).
 <!-- This example should include the instructions for installing the latest toolchain-->
 <!-- toolchain_installation:example:start -->
 Make sure you have the latest version of `fuelup` by running the following command:
+ 
+```console
+fuelup self update
+```
 
 ```console
-$ fuelup self update
-Fetching binary from https://github.com/FuelLabs/fuelup/releases/download/v0.18.0/fuelup-0.18.0-aarch64-apple-darwin.tar.gz
+Fetching binary from https://github.com/FuelLabs/fuelup/releases/download/v0.19.2/fuelup-0.19.2-aarch64-apple-darwin.tar.gz
 Downloading component fuelup without verifying checksum
 Unpacking and moving fuelup to /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt
 Moving /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt/fuelup to /Users/.fuelup/bin/fuelup
 ```
 
-Then run `fuelup toolchain install beta-3` to install the `beta-3` toolchain.
+Then run `fuelup toolchain install beta-4` to install the `beta-4` toolchain.
 
-Finally, set the `beta-3` toolchain as your default distribution with the following command:
+Finally, set the `beta-4` toolchain as your default distribution with the following command:
 
 ```console
-$ fuelup default beta-3
-default toolchain set to 'beta-3-aarch64-apple-darwin'
+$ fuelup default beta-4
+default toolchain set to 'beta-4'
 ```
 
 You can check your current toolchain anytime by running `fuelup show`.
@@ -243,13 +246,13 @@ With this, you'll get a fuel address that looks something like this: `fuel1efz7l
 
 ### Get Testnet Coins
 
-With your account address in hand, head to the [testnet faucet](https://faucet-beta-3.fuel.network/) to get some coins sent to your wallet.
+With your account address in hand, head to the [testnet faucet](https://faucet-beta-4.fuel.network/) to get some coins sent to your wallet.
 
 ### Deploy To Testnet
 
 Now that you have a wallet, you can deploy with `forc deploy` and passing in the testnet endpoint like this:
 
-`forc deploy --node-url beta-3.fuel.network/graphql --gas-price 1 --random-salt`
+`forc deploy --node-url beta-4.fuel.network/graphql --gas-price 1`
 
 > **Note**: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
 
