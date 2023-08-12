@@ -46,13 +46,18 @@ We'll build a simple counter contract with two functions: one to increment the c
 
 ### Writing the Contract
 
-Create a contract project inside of your `fuel-project` folder:
-
+Move inside of your `fuel-project` folder:
 ```sh
-$ cd fuel-project
-$ forc new counter-contract
-To compile, use `forc build`, and to run tests use `forc test`
+cd fuel-project
+```
 
+Then create a contract project using forc:
+```sh
+forc new counter-contract
+```
+You will get this output:
+```sh
+To compile, use `forc build`, and to run tests use `forc test`
 ----
 
 Read the Docs:
@@ -130,7 +135,9 @@ File: `./counter-contract/src/main.sw`
 From inside the `fuel-project/counter-contract` directory, run the following command to build your contract:
 
 ```console
-$ forc build
+forc build
+```
+```console
   Compiled library "core".
   Compiled library "std".
   Compiled contract "counter-contract".
@@ -159,12 +166,18 @@ We now have an `out` directory that contains our build artifacts such as the JSO
 
 We will start by adding a Rust integration test harness using a Cargo generate template. If this is your first time going through this quickstart, you'll need to install the `cargo generate` command. In the future, you can skip this step as it will already be installed.
 
-Navigate to your contract and then run the installation command:
-
+Navigate to your contract folder:
 ```console
-$ cd counter-contract
+cd counter-contract
+```
+```console
 changed directory into `counter-countract`
-$ cargo install cargo-generate
+```
+Then run the installation command:
+```console
+cargo install cargo-generate
+```
+```console
  Updating crates.io index...
  installed package `cargo-generate v0.17.3`
 ```
@@ -174,7 +187,9 @@ $ cargo install cargo-generate
 Now, let's generate the default test harness with the following:
 
 ```console
-$ cargo generate --init fuellabs/sway templates/sway-test-rs --name counter-contract
+cargo generate --init fuellabs/sway templates/sway-test-rs --name counter-contract
+```
+```console
 ⚠️   Favorite `fuellabs/sway` not found in config, using it as a git repository: https://github.com/fuellabs/sway
 🤷   Project Name : counter-contract
 🔧   Destination: /home/user/path/to/counter-contract ...
@@ -220,10 +235,13 @@ File: `tests/harness.rs`
 {{#include ../../quickstart-example/counter-contract/tests/harness.rs:contract-test}}
 ```
 
-Run `cargo test` in the terminal. If all goes well, the output should look as follows:
+Run `cargo test` in the terminal:
 
 ```console
-$ cargo test
+cargo test
+```
+If all goes well, the output should look as follows:
+```console
   ...
   running 1 test
   test can_get_contract_id ... ok
