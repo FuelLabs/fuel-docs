@@ -1,6 +1,6 @@
 # The `beta-3` testnet
 
-The `beta-3` network is the latest Fuel testnet. It expands on the features of `beta-2`, introducing P2P networking and the ability to run synchronizing full nodes.
+The `beta-3` network is the third Fuel testnet. It expands on the features of `beta-2`, introducing P2P networking and the ability to run synchronizing full nodes.
 
 Ethereum contracts (Goerli):
 

@@ -37,6 +37,7 @@
 - [For Developers](./for-developers/for-developer.md)
   - [Example Smart Contracts](./for-developers/example-contracts.md)
   - [Networks](./networks/networks.md)
+    - [Beta-4 Testnet](./networks/beta-4.md)
     - [Beta-3 Testnet](./networks/beta-3.md)
     - [Beta-2 Testnet](./networks/beta-2.md)
     - [Beta-1 Testnet](./networks/beta-1.md)
