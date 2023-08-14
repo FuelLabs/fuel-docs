@@ -44,12 +44,12 @@ fuelup toolchain install beta-3
 
 This installs the following components and versions:
 
-- forc 0.37.0
+- forc 0.37.3
 - forc-explore 0.28.1
-- forc-index 0.7.0
+- forc-index 0.15.0
 - forc-wallet 0.2.2
-- fuel-core 0.17.8
-- fuel-indexer 0.7.0
+- fuel-core 0.17.11
+- fuel-indexer 0.15.0
 
 To set the `beta-3` toolchain as your default, run
 
