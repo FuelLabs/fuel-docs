@@ -1,6 +1,6 @@
 # The `beta-4` testnet
 
-The `beta-4` network is the latest Fuel testnet. It builds on the foundation of `beta-3``, enhancing public P2P access, allowing parallel predicate execution, and introducing a newly redesigned bridging approach that ensures security for full rollups.
+The `beta-4` network is the latest Fuel testnet. It builds on the foundation of `beta-3`, enhancing public P2P access, allowing parallel predicate execution, and introducing a newly redesigned bridging approach that ensures security for full rollups.
 
 Ethereum contracts (Sepolia):
 
@@ -18,7 +18,7 @@ Sepolia block explorer: [https://sepolia.etherscan.io/](https://sepolia.ethersca
 
 🔍 Block explorer - A block explorer (still heavily in development) is available at [https://fuellabs.github.io/block-explorer-v2/](https://fuellabs.github.io/block-explorer-v2/). Be sure to select `beta-4` from the dropdown on the top right.
 
-Join the [Fuel Labs Discord](https://discord.com/invite/fuelnetwork) and head to the 🧪︱testnet channel to get support from our team.
+Join the [Fuel Labs Forum](https://forum.fuel.network/) to get support from our team and others building on Fuel!
 
 ## SDK Versioning
 <!-- TODO: UPDATE VERSIONING HERE -->
@@ -47,8 +47,8 @@ This installs the following components and versions:
 - forc 0.37.0
 - forc-explore 0.28.1
 - forc-index 0.7.0
-- forc-wallet 0.2.2
-- fuel-core 0.17.8
+- forc-wallet 0.2.5
+- fuel-core 0.20.0
 - fuel-indexer 0.7.0
 
 To set the `beta-4` toolchain as your default, run

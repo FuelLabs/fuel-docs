@@ -20,7 +20,7 @@ Goerli block explorer: [https://goerli.etherscan.io/](https://goerli.etherscan.i
 
 🔍 Block explorer - A block explorer (still heavily in development) is available at [https://fuellabs.github.io/block-explorer-v2/](https://fuellabs.github.io/block-explorer-v2/). Be sure to select `beta-3` from the dropdown on the top right.
 
-Join the [Fuel Labs Discord](https://discord.com/invite/fuelnetwork) and head to the 🧪︱testnet channel to get support from our team.
+Join the [Fuel Labs Forum](https://forum.fuel.network/) to get support from our team and others building on Fuel!
 
 ## SDK Versioning
 
