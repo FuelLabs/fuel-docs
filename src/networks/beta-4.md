@@ -21,6 +21,7 @@ Sepolia block explorer: [https://sepolia.etherscan.io/](https://sepolia.ethersca
 Join the [Fuel Labs Forum](https://forum.fuel.network/) to get support from our team and others building on Fuel!
 
 ## SDK Versioning
+
 Version 0.51.0 or higher is the recommended version of the TS SDK on `beta-4`.  
 
 Version 0.46.0 or higher is the recommended version for the Rust SDK on `beta-4`.
