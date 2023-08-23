@@ -31,6 +31,7 @@ Finally, set the `beta-4` toolchain as your default distribution with the follow
 ```console
 fuelup default beta-4
 ```
+
 ```console
 default toolchain set to 'beta-4'
 ```
@@ -49,30 +50,34 @@ We'll build a simple counter contract with two functions: one to increment the c
 ### Writing the Contract
 
 Move inside of your `fuel-project` folder:
+
 ```sh
 cd fuel-project
 ```
 
 Then create a contract project using forc:
+
 ```sh
 forc new counter-contract
 ```
+
 You will get this output:
+
 ```sh
 To compile, use `forc build`, and to run tests use `forc test`
 ----
 
 Read the Docs:
-- Sway Book: [https://fuellabs.github.io/sway/latest](https://fuellabs.github.io/sway/latest)
-- Rust SDK Book: [https://fuellabs.github.io/fuels-rs/latest](https://fuellabs.github.io/fuels-rs/latest)
-- TypeScript SDK: [https://fuellabs.github.io/fuels-ts/](https://fuellabs.github.io/fuels-ts/)
+- Sway Book: https://fuellabs.github.io/sway/lates
+- Rust SDK Book: https://fuellabs.github.io/fuels-rs/latest
+- TypeScript SDK: https://fuellabs.github.io/fuels-ts/
 
 Join the Community:
-- Follow us @SwayLang: [https://twitter.com/SwayLang](https://twitter.com/SwayLang)
-- Ask questions on Discourse: [https://forum.fuel.network/](https://forum.fuel.network/)
+- Follow us @SwayLang: https://twitter.com/SwayLang
+- Ask questions on Discourse: https://forum.fuel.network/
 
 Report Bugs:
-- Sway Issues: [https://github.com/FuelLabs/sway/issues/new](https://github.com/FuelLabs/sway/issues/new)
+- Sway Issues: https://github.com/FuelLabs/sway/issues/new
 ```
 
 <!-- This example should include a tree for a new forc project and explain the boilerplate files-->
@@ -139,6 +144,7 @@ From inside the `fuel-project/counter-contract` directory, run the following com
 ```console
 forc build
 ```
+
 ```console
   Compiled library "core".
   Compiled library "std".
@@ -169,16 +175,21 @@ We now have an `out` directory that contains our build artifacts such as the JSO
 We will start by adding a Rust integration test harness using a Cargo generate template. If this is your first time going through this quickstart, you'll need to install the `cargo generate` command. In the future, you can skip this step as it will already be installed.
 
 Navigate to your contract folder:
+
 ```console
 cd counter-contract
 ```
+
 ```console
 changed directory into `counter-countract`
 ```
+
 Then run the installation command:
+
 ```console
 cargo install cargo-generate
 ```
+
 ```console
  Updating crates.io index...
  installed package `cargo-generate v0.17.3`
@@ -191,6 +202,7 @@ Now, let's generate the default test harness with the following:
 ```console
 cargo generate --init fuellabs/sway templates/sway-test-rs --name counter-contract
 ```
+
 ```console
 ⚠️   Favorite `fuellabs/sway` not found in config, using it as a git repository: https://github.com/fuellabs/sway.git
 🔧   Destination: /home/user/path/to/counter-contract ...
@@ -239,7 +251,9 @@ Run `cargo test` in the terminal:
 ```console
 cargo test
 ```
+
 If all goes well, the output should look as follows:
+
 ```console
   ...
   running 1 test
