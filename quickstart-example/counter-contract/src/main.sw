@@ -31,8 +31,8 @@ impl Counter for Contract {
     #[storage(read, write)]
     // ANCHOR: increment
     fn increment() {
-        let current_counter = storage.counter.read();
-        storage.counter.write(current_counter + 1);
+        let incremented = storage.counter.read() + 1;
+        storage.counter.write(incremented);
     }
     // ANCHOR_END: increment
 }
