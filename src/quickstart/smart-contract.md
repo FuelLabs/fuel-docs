@@ -18,7 +18,7 @@ fuelup self update
 ```
 
 ```console
-Fetching binary from https://github.com/FuelLabs/fuelup/releases/download/v0.19.2/fuelup-0.19.2-aarch64-apple-darwin.tar.gz
+Fetching binary from https://github.com/FuelLabs/fuelup/releases/download/v0.19.4/fuelup-0.19.4-aarch64-apple-darwin.tar.gz
 Downloading component fuelup without verifying checksum
 Unpacking and moving fuelup to /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt
 Moving /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt/fuelup to /Users/.fuelup/bin/fuelup
@@ -29,7 +29,9 @@ Then run `fuelup toolchain install beta-4` to install the `beta-4` toolchain.
 Finally, set the `beta-4` toolchain as your default distribution with the following command:
 
 ```console
-$ fuelup default beta-4
+fuelup default beta-4
+```
+```console
 default toolchain set to 'beta-4'
 ```
 
@@ -61,16 +63,16 @@ To compile, use `forc build`, and to run tests use `forc test`
 ----
 
 Read the Docs:
-- Sway Book: https://fuellabs.github.io/sway/latest
-- Rust SDK Book: https://fuellabs.github.io/fuels-rs/latest
-- TypeScript SDK: https://fuellabs.github.io/fuels-ts/
+- Sway Book: [https://fuellabs.github.io/sway/latest](https://fuellabs.github.io/sway/latest)
+- Rust SDK Book: [https://fuellabs.github.io/fuels-rs/latest](https://fuellabs.github.io/fuels-rs/latest)
+- TypeScript SDK: [https://fuellabs.github.io/fuels-ts/](https://fuellabs.github.io/fuels-ts/)
 
 Join the Community:
-- Follow us @SwayLang: https://twitter.com/SwayLang
-- Ask questions on Discourse: https://forum.fuel.network/
+- Follow us @SwayLang: [https://twitter.com/SwayLang](https://twitter.com/SwayLang)
+- Ask questions on Discourse: [https://forum.fuel.network/](https://forum.fuel.network/)
 
 Report Bugs:
-- Sway Issues: https://github.com/FuelLabs/sway/issues/new
+- Sway Issues: [https://github.com/FuelLabs/sway/issues/new](https://github.com/FuelLabs/sway/issues/new)
 ```
 
 <!-- This example should include a tree for a new forc project and explain the boilerplate files-->
@@ -106,7 +108,7 @@ Next, we'll define a storage value. In our case, we have a single counter that w
 
 An ABI defines an interface, and there is no function body in the ABI. A contract must either define or import an ABI declaration and implement it. It is considered best practice to define your ABI in a separate library and import it into your contract because this allows callers of the contract to import and use the ABI in scripts to call your contract.
 
-For simplicity, we will define the ABI directly in the contract file.
+For simplicity, we will define the ABI directly in the contract file itself.
 
 ```sway
 {{#include ../../quickstart-example/counter-contract/src/main.sw:abi}}
@@ -190,13 +192,10 @@ Now, let's generate the default test harness with the following:
 cargo generate --init fuellabs/sway templates/sway-test-rs --name counter-contract
 ```
 ```console
-⚠️   Favorite `fuellabs/sway` not found in config, using it as a git repository: https://github.com/fuellabs/sway
-🤷   Project Name : counter-contract
+⚠️   Favorite `fuellabs/sway` not found in config, using it as a git repository: https://github.com/fuellabs/sway.git
 🔧   Destination: /home/user/path/to/counter-contract ...
+🔧   project-name: counter-contract ...
 🔧   Generating template ...
-[1/3]   Done: Cargo.toml
-[2/3]   Done: tests/harness.rs
-[3/3]   Done: tests
 🔧   Moving generated files into: `/home/user/path/to/counter-contract`...
 ✨   Done! New project created /home/user/path/to/counter-contract
 ```
@@ -256,7 +255,7 @@ In order to deploy a contract, you need to have a wallet to sign the transaction
 
 ### Install the Wallet CLI
 
-Follow [these steps to set up a wallet and create an account](https://github.com/FuelLabs/forc-wallet#forc-wallet).
+👉 Follow [these steps to set up a wallet and create an account](https://github.com/FuelLabs/forc-wallet#forc-wallet).
 
 After typing in a password, be sure to save the mnemonic phrase that is output.
 
@@ -268,44 +267,41 @@ With your account address in hand, head to the [testnet faucet](https://faucet-b
 
 ### Deploy To Testnet
 
-Now that you have a wallet, you can deploy with `forc deploy` and passing in the testnet endpoint like this:
-
-`forc deploy --node-url beta-4.fuel.network/graphql --gas-price 1`
-
-> **Note**: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.
-
-The terminal will ask for the address of the wallet you want to sign this transaction with, paste in the address you saved earlier, it looks like this: `fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8`
-
-The terminal will output your `Contract id` like this:
+Now that you have a wallet, you can deploy with `forc deploy` and adding the `--testnet` to target the latest network:
 
 ```console
-Contract id: 0xd09b469b0c31c05222b553021aa23c3b6a535db5092c22b84690dc88ca17deaa
+forc deploy --testnet
 ```
 
-Be sure to save this as you will need it to build a frontend with the Typescript SDK later in this tutorial.
 
-The terminal will output a `Transaction id to sign` and prompt you for a signature. Open a new terminal tab and view your accounts by running `forc wallet accounts`. If you followed these steps, you'll notice you only have one account, `0`.
+The terminal will ask for the password of the wallet: 
 
-Grab the `Transaction id to sign` from your other terminal and sign with your account by running the following command:
+`Please provide the password of your encrypted wallet vault at "~/.fuel/wallets/.wallet": `
+
+
+Once you unlocked the wallet, the terminal will show a list of the accounts of this wallet:
 
 ```console
-forc wallet sign --account `[the account index, without brackets]` tx-id `[Transaction id to sign, without brackets]`
+Account 0 -- fuel18caanqmumttfnm8qp0eq7u9yluydxtqmzuaqtzdjlsww5t2jmg9skutn8n:
+  Asset ID                                                           Amount
+  0000000000000000000000000000000000000000000000000000000000000000 499999940
 ```
 
-Your command should look like this:
+Just below the list, you'll see this prompt:
+
+`Please provide the index of account to use for signing:`
+
+Then you'll enter the number of the account of preference and press `Y` when prompted to accept the transaction.
+
+Finally, you will get back the network endpoint where the contract was dpeloyed, a `ContractId` and the block where the transaction was signed. To confirm your contract was deployed. With this ID, you can head to the [block explorer](https://fuellabs.github.io/block-explorer-v2/) and view your contract.
 
 ```console
-$ forc wallet sign --account 0 tx-id 16d7a8f9d15cfba1bd000d3f99cd4077dfa1fce2a6de83887afc3f739d6c84df
-Please enter your password to decrypt initialized wallet's phrases:
-Signature: 736dec3e92711da9f52bed7ad4e51e3ec1c9390f4b05caf10743229295ffd5c1c08a4ca477afa85909173af3feeda7c607af5109ef6eb72b6b40b3484db2332c
+Contract deploy-to-beta-4 Deployed!
+
+Network: https://beta-4.fuel.network
+Contract ID: 0x8342d413de2a678245d9ee39f020795800c7e6a4ac5ff7daae275f533dc05e08
+Deployed in block 0x4ea52b6652836c499e44b7e42f7c22d1ed1f03cf90a1d94cd0113b9023dfa636
 ```
-
-Enter your password when prompted, and you'll get back a `signature`. Save that signature, and return to your other terminal window, and paste that in where its prompting you to `provide a signature for this transaction`.
-
-Finally, you will get back a `TransactionId` to confirm your contract was deployed. With this ID, you can head to the [block explorer](https://fuellabs.github.io/block-explorer-v2/) and view your contract.
-
-> **Note**
-> You should prefix your `TransactionId` with `0x` to view it in the block explorer
 
 ![block explorer](../images/block-explorer.png)
 
