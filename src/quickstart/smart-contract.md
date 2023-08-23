@@ -12,7 +12,7 @@ Then, [install the Fuel toolchain](https://github.com/FuelLabs/fuelup).
 <!-- This example should include the instructions for installing the latest toolchain-->
 <!-- toolchain_installation:example:start -->
 Make sure you have the latest version of `fuelup` by running the following command:
- 
+
 ```console
 fuelup self update
 ```
@@ -287,11 +287,9 @@ Now that you have a wallet, you can deploy with `forc deploy` and adding the `--
 forc deploy --testnet
 ```
 
+The terminal will ask for the password of the wallet:
 
-The terminal will ask for the password of the wallet: 
-
-`Please provide the password of your encrypted wallet vault at "~/.fuel/wallets/.wallet": `
-
+`Please provide the password of your encrypted wallet vault at "~/.fuel/wallets/.wallet":`
 
 Once you unlocked the wallet, the terminal will show a list of the accounts of this wallet:
 
