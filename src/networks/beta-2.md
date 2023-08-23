@@ -30,7 +30,7 @@ Join the [Fuel Labs Discord](https://discord.com/invite/fuelnetwork) and head to
 
 Version 0.21.0 is the recommended version of the TS SDK on `beta-2`.  
 
-Version 0.30.0 is the recommended version for the Rusk SDK on `beta-2`.
+Version 0.30.0 is the recommended version for the Rust SDK on `beta-2`.
 
 ## Toolchain Configuration
 
