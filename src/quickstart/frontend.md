@@ -23,8 +23,15 @@ To split our project's contract from frontend code, let's create a new folder `f
 In the terminal, go back up one directory and initialize a react project using [`Create React App`](https://create-react-app.dev/).
 
 ```console
-$ cd ..
-$ npx create-react-app frontend --template typescript
+cd ..
+```
+
+```console
+npx create-react-app frontend --template typescript
+Success! Created frontend at Fuel/fuel-project/frontend
+```
+
+```console
 Success! Created frontend at Fuel/fuel-project/frontend
 ```
 
@@ -45,8 +52,14 @@ Also, it contains the routines for ABI TypeScript generation.
 Move into the `frontend` folder, then run:
 
 ```console
-$ cd frontend
-$ npm install fuels@0.49.1 @fuel-wallet/sdk --save
+cd frontend
+```
+
+```console
+npm install fuels@0.52.0 @fuel-wallet/sdk --save
+```
+
+```console
 added 114 packages, and audited 115 packages in 9s
 ```
 
@@ -69,7 +82,10 @@ If you see the folder `fuel-project/counter-contract/out` you will be able to se
 Inside the `fuel-project/frontend` directory run:
 
 ```console
-$ npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts
+npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts
+```
+
+```console
 Generating files..
 
  - src/contracts/CounterContractAbi.d.ts
@@ -100,7 +116,10 @@ Now it's time to have fun, run the project in your browser.
 Inside the `fuel-project/frontend` directory run:
 
 ```console
-$ npm start
+npm start
+```
+
+```console
 Compiled successfully!
 
 You can now view frontend in the browser.
