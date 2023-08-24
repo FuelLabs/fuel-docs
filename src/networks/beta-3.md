@@ -24,9 +24,9 @@ Join the [Fuel Labs Forum](https://forum.fuel.network/) to get support from our 
 
 ## SDK Versioning
 
-Version 0.38.0 or higher is the recommended version of the TS SDK on `beta-3`.  
+Version 0.38.0 up to 0.50.0 is the recommended version of the TS SDK on `beta-3`.  
 
-Version 0.39.0 or higher is the recommended version for the Rust SDK on `beta-3`.
+Version 0.39.0 up to 0.44.0 is the recommended version for the Rust SDK on `beta-3`.
 
 ## Toolchain Configuration
 
