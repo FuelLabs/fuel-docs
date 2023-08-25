@@ -1,6 +1,6 @@
 # The `beta-3` testnet
 
-The `beta-3` network is the latest Fuel testnet. It expands on the features of `beta-2`, introducing P2P networking and the ability to run synchronizing full nodes.
+The `beta-3` network is the third Fuel testnet. It expands on the features of `beta-2`, introducing P2P networking and the ability to run synchronizing full nodes.
 
 Ethereum contracts (Goerli):
 
@@ -20,13 +20,13 @@ Goerli block explorer: [https://goerli.etherscan.io/](https://goerli.etherscan.i
 
 🔍 Block explorer - A block explorer (still heavily in development) is available at [https://fuellabs.github.io/block-explorer-v2/](https://fuellabs.github.io/block-explorer-v2/). Be sure to select `beta-3` from the dropdown on the top right.
 
-Join the [Fuel Labs Discord](https://discord.com/invite/fuelnetwork) and head to the 🧪︱testnet channel to get support from our team.
+Join the [Fuel Labs Forum](https://forum.fuel.network/) to get support from our team and others building on Fuel!
 
 ## SDK Versioning
 
-Version 0.38.0 or higher is the recommended version of the TS SDK on `beta-3`.  
+Version 0.38.0 up to 0.50.0 is the recommended version of the TS SDK on `beta-3`.  
 
-Version 0.39.0 or higher is the recommended version for the Rusk SDK on `beta-3`.
+Version 0.39.0 up to 0.44.0 is the recommended version for the Rust SDK on `beta-3`.
 
 ## Toolchain Configuration
 
@@ -44,12 +44,12 @@ fuelup toolchain install beta-3
 
 This installs the following components and versions:
 
-- forc 0.37.0
+- forc 0.37.3
 - forc-explore 0.28.1
-- forc-index 0.7.0
+- forc-index 0.15.0
 - forc-wallet 0.2.2
-- fuel-core 0.17.8
-- fuel-indexer 0.7.0
+- fuel-core 0.17.11
+- fuel-indexer 0.15.0
 
 To set the `beta-3` toolchain as your default, run
 
