@@ -79,7 +79,7 @@ function App() {
         {
           connected ? (
             <>
-              <h3>Counter: {counter?.toFixed(0)}</h3>
+              <h3>Counter: {counter}</h3>
               <button style={buttonStyle} onClick={increment}>
                 Increment
               </button>

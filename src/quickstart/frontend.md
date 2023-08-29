@@ -1,12 +1,12 @@
 # Building a Frontend to Interact With Your Contract
 
-To build out our frontend application, we'll do the following:
+To build out our frontend application, we'll do the following:s
 
-1. **Install the Fuel Browser Wallet.**
-2. **Initialize a React project.**
-3. **Install the `fuels` SDK dependencies.**
-4. **Write our frontend code.**
-5. **Run our project.**
+1. [**Install the Fuel Browser Wallet.**](#install-the-fuel-browser-wallet)
+2. [**Initialize a React project.**](#initialize-a-react-project)
+3. [**Install the `fuels` SDK dependency.**](#install-the-fuels-sdk-dependency)
+4. [**Write our frontend code.**](#modify-the-app)
+5. [**Run our project.**](#run-your-project)
 
 ## Install the Fuel Browser Wallet
 
@@ -18,18 +18,18 @@ Once you've installed the wallet, take the address of your wallet and use it to 
 
 ## Initialize a React project
 
-To split our project's contract from frontend code, let's create a new folder `frontend` where we'll initialize our frontend project.
-
-In the terminal, go back up one directory and initialize a react project using [`Create React App`](https://create-react-app.dev/).
+To split our project's contract from frontend code, let's initialize our frontend project: assuming that your terminal is open at your contract's folder `/home/user/path/to/counter-contract` let's go back up one directory.
 
 ```console
 cd ..
 ```
 
+Now, iniitialize a react project using [`Create React App`](https://create-react-app.dev/).
 ```console
 npx create-react-app frontend --template typescript
-Success! Created frontend at Fuel/fuel-project/frontend
 ```
+
+The output should be simmilar to:
 
 ```console
 Success! Created frontend at Fuel/fuel-project/frontend
@@ -55,9 +55,13 @@ Move into the `frontend` folder, then run:
 cd frontend
 ```
 
+Then:
+
 ```console
 npm install fuels@0.52.0 @fuel-wallet/sdk --save
 ```
+
+If the installation wnet correctly the result will be simmilar to this:
 
 ```console
 added 114 packages, and audited 115 packages in 9s
@@ -84,6 +88,7 @@ Inside the `fuel-project/frontend` directory run:
 ```console
 npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts
 ```
+A succesful process should print and output like the following:
 
 ```console
 Generating files..
@@ -124,8 +129,8 @@ Compiled successfully!
 
 You can now view frontend in the browser.
 
-  Local:            http://localhost:3001
-  On Your Network:  http://192.168.4.48:3001
+  Local:            http://localhost:3000
+  On Your Network:  http://192.168.4.48:3000
 
 Note that the development build is not optimized.
 To create a production build, use npm run build.
@@ -144,7 +149,7 @@ Tweet us [@fuel_network](https://twitter.com/fuel_network) letting us know you j
 If you make changes to your contract, here are the steps you should take to get your frontend and contract back in sync:
 
 - In your contract directory, run `forc build`
-- In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy --node-url beta-4.fuel.network/graphql --gas-price 1`
+- In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: `forc deploy --testnet`
 - In your frontend directory, re-run this command: `npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts`
 
 - In your `fuel-project/frontend` directory, update the contract ID in your `App.tsx` file
