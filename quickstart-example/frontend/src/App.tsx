@@ -51,7 +51,7 @@ function App() {
     if (window.fuel) {
       const wallet = await window.fuel.getWallet(account);
       const contract = CounterContractAbi__factory.connect(CONTRACT_ID, wallet);
-      const { value } = await contract.functions.count().get();
+      const { value } = await contract.functions.count().simulate();
       setCounter(value.toNumber());
     }
   }
