@@ -3,11 +3,11 @@ name = "counter-contract"
 description = "A cargo-generate template for Rust + Sway integration testing."
 version = "0.1.0"
 edition = "2021"
-authors = ["camiinthisthang", "sarahschwartz <58856580+sarahschwartz@users.noreply.github.com>", "sandusky"]
+authors = ["cold-briu <andresf.xyz@gmail.com>"]
 license = "Apache-2.0"
 
 [dev-dependencies]
-fuels = { version = "0.44", features = ["fuel-core-lib"] }
+fuels = { version = "0.46", features = ["fuel-core-lib"] }
 tokio = { version = "1.12", features = ["rt", "macros"] }
 
 [[test]]
