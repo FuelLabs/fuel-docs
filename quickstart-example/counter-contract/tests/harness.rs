@@ -22,7 +22,7 @@ async fn get_contract_instance() -> (MyContract<WalletUnlocked>, ContractId) {
 
     let storage_config =
         StorageConfiguration::load_from("out/debug/counter-contract-storage_slots.json").unwrap();
-    let load_config = LoadConfiguration::default().set_storage_configuration(storage_config);
+    let load_config = LoadConfiguration::default().with_storage_configuration(storage_config);
 
     let id = Contract::load_from("./out/debug/counter-contract.bin", load_config)
         .unwrap()
