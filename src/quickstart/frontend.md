@@ -25,6 +25,7 @@ cd ..
 ```
 
 Now, iniitialize a react project using [`Create React App`](https://create-react-app.dev/).
+
 ```console
 npx create-react-app frontend --template typescript
 ```
@@ -88,6 +89,7 @@ Inside the `fuel-project/frontend` directory run:
 ```console
 npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts
 ```
+
 A succesful process should print and output like the following:
 
 ```console

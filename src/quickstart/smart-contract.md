@@ -110,6 +110,7 @@ Next, we'll define a storage value. In our case, we have a single counter that w
 ```
 
 ### ABI
+
 An ABI defines an interface for a contract. A contract must either define or import an ABI declaration. It is considered best practice to define your ABI in a separate library and import it into your contract because this allows callers of the contract to import and use the ABI in scripts to call your contract
 
 For simplicity, we will define the ABI directly in the contract file itself.
@@ -125,7 +126,6 @@ Below your ABI definition, you will write the implementation of the functions de
 ```sway
 {{#include ../../quickstart-example/counter-contract/src/main.sw:counter-contract}}
 ```
-
 
 **Note**: `storage.counter.read()` is an implicit return and is equivalent to `return storage.counter.read();`.
 
