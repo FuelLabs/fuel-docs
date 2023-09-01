@@ -1,6 +1,6 @@
 # Building a Frontend to Interact With Your Contract
 
-To build out our frontend application, we'll do the following:s
+To build out our frontend application, we'll do the following:
 
 1. [**Install the Fuel Browser Wallet.**](#install-the-fuel-browser-wallet)
 2. [**Initialize a React project.**](#initialize-a-react-project)
