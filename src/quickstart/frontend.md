@@ -76,7 +76,7 @@ cd frontend
 Then:
 
 ```console
-npm install fuels@0.53.0 @fuel-wallet/sdk@0.12.3 --save
+npm install fuels@0.54.0 @fuel-wallet/sdk@0.12.3 --save
 ```
 
 If the installation wnet correctly the result will be simmilar to this:
