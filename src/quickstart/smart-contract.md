@@ -66,11 +66,11 @@ You will get this output:
 ```sh
 To compile, use `forc build`, and to run tests use `forc test`
 ----
-
 Read the Docs:
-- Sway Book: https://fuellabs.github.io/sway/latest
-- Rust SDK Book: https://fuellabs.github.io/fuels-rs/latest
-- TypeScript SDK: https://fuellabs.github.io/fuels-ts/
+- Sway Book: https://docs.fuel.network/docs/sway
+- Forc Book: https://docs.fuel.network/docs/forc
+- Rust SDK Book: https://docs.fuel.network/docs/fuels-rs
+- TypeScript SDK: https://docs.fuel.network/docs/fuels-ts
 
 Join the Community:
 - Follow us @SwayLang: https://twitter.com/SwayLang
