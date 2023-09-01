@@ -68,7 +68,7 @@ To compile, use `forc build`, and to run tests use `forc test`
 ----
 
 Read the Docs:
-- Sway Book: https://fuellabs.github.io/sway/lates
+- Sway Book: https://fuellabs.github.io/sway/latest
 - Rust SDK Book: https://fuellabs.github.io/fuels-rs/latest
 - TypeScript SDK: https://fuellabs.github.io/fuels-ts/
 
@@ -110,8 +110,7 @@ Next, we'll define a storage value. In our case, we have a single counter that w
 ```
 
 ### ABI
-
-An ABI defines an interface, and there is no function body in the ABI. A contract must either define or import an ABI declaration and implement it. It is considered best practice to define your ABI in a separate library and import it into your contract because this allows callers of the contract to import and use the ABI in scripts to call your contract.
+An ABI defines an interface for a contract. A contract must either define or import an ABI declaration. It is considered best practice to define your ABI in a separate library and import it into your contract because this allows callers of the contract to import and use the ABI in scripts to call your contract
 
 For simplicity, we will define the ABI directly in the contract file itself.
 
@@ -127,7 +126,8 @@ Below your ABI definition, you will write the implementation of the functions de
 {{#include ../../quickstart-example/counter-contract/src/main.sw:counter-contract}}
 ```
 
-> **Note**: `storage.counter` is an implicit return and is equivalent to `return storage.counter;`.
+
+**Note**: `storage.counter.read()` is an implicit return and is equivalent to `return storage.counter.read();`.
 
 Here's what your code should look like so far:
 
@@ -139,7 +139,17 @@ File: `./counter-contract/src/main.sw`
 
 ### Build the Contract
 
-From inside the `fuel-project/counter-contract` directory, run the following command to build your contract:
+Navigate to your contract folder:
+
+```console
+cd counter-contract
+```
+
+```console
+changed directory into `counter-countract`
+```
+
+Then run the following command to build your contract:
 
 ```console
 forc build
@@ -174,17 +184,7 @@ We now have an `out` directory that contains our build artifacts such as the JSO
 
 We will start by adding a Rust integration test harness using a Cargo generate template. If this is your first time going through this quickstart, you'll need to install the `cargo generate` command. In the future, you can skip this step as it will already be installed.
 
-Navigate to your contract folder:
-
-```console
-cd counter-contract
-```
-
-```console
-changed directory into `counter-countract`
-```
-
-Then run the installation command:
+Let's start by running the installation command:
 
 ```console
 cargo install cargo-generate
