@@ -12,13 +12,13 @@ To build out our frontend application, we'll do the following:s
 
 Our front end application will need to interact with the Fuel Network, so we'll need to have a browser wallet installed for us to do so.
 
-Fuel Wallet version `0.11.0` is not compatible with beta 4. For compatibility with beta-4, please download the non-backwards compatible Fuel Wallet version `0.12.2`.
+Fuel Wallet version `0.11.0` is not compatible with beta 4. For compatibility with beta-4, please download the non-backwards compatible Fuel Wallet version `0.12.3`.
 
-We have already submitted the beta-4 compatible version to the Chrome Web Store, and it is currently under review. Once your users update to this version, they will no longer be able to interact with the contracts you currently have deployed.
+We have already submitted the beta-4 compatible version to the Chrome Web Store, and it is currently under review.
 
 Please follow the instructions provided below:
 
-> **Note**: This is a temporary measure while the Fuel Wallet version `0.12.2` gets published in the Chrome WebStore.
+> **Note**: This is a temporary measure while the Fuel Wallet version `0.12.3` gets published in the Chrome WebStore.
 
 1. Download [FuelWallet zip file](https://next-wallet.fuel.network/app/fuel-wallet.zip)
 2. Inside Chrome or Brave;
