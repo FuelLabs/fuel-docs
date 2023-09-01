@@ -12,7 +12,24 @@ To build out our frontend application, we'll do the following:s
 
 Our front end application will need to interact with the Fuel Network, so we'll need to have a browser wallet installed for us to do so.
 
-Before going to the next steps, install the Fuel Wallet at [https://wallet.fuel.network/docs/install/](https://wallet.fuel.network/docs/install/).
+Fuel Wallet version `0.11.0` is not compatible with beta 4. For compatibility with beta-4, please download the non-backwards compatible Fuel Wallet version `0.12.2`.
+
+We have already submitted the beta-4 compatible version to the Chrome Web Store, and it is currently under review. Once your users update to this version, they will no longer be able to interact with the contracts you currently have deployed.
+
+Please follow the instructions provided below:
+
+> **Note**: This is a temporary measure while the Fuel Wallet version `0.12.2` gets published in the Chrome WebStore.
+
+1. Download [FuelWallet zip file](https://next-wallet.fuel.network/app/fuel-wallet.zip)
+2. Inside Chrome or Brave;
+3. Open the extensions page; it can be done by:
+    - Clicking on settings -> extensions or;
+4. Accessing brave://extensions/ or chrome://extensions/.
+5. Enable the "Developer mode" switch on the top right
+6. Load fuel-wallet.zip by:
+    - Dragging your downloaded Fuel wallet file and dropping it in the extensions page or;
+    - Clicking on Load unpacked and selecting the file.
+7. If all goes right, an onboarding page will instantly open.
 
 Once you've installed the wallet, take the address of your wallet and use it to get some coins from [the testnet faucet](https://faucet-beta-4.fuel.network/).
 
@@ -59,7 +76,7 @@ cd frontend
 Then:
 
 ```console
-npm install fuels@0.53.0 @fuel-wallet/sdk --save
+npm install fuels@0.53.0 @fuel-wallet/sdk@0.12.3 --save
 ```
 
 If the installation wnet correctly the result will be simmilar to this:
