@@ -305,6 +305,12 @@ forc wallet new
 
 After typing in a password, be sure to save the mnemonic phrase that is output.
 
+Next, create a new wallet account with:
+
+```console
+forc wallet account new
+```
+
 With this, you'll get a fuel address that looks something like this: `fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8`. Save this address as you'll need it to sign transactions when we deploy the contract.
 
 If you need to list your accounts, you can run the command below:
