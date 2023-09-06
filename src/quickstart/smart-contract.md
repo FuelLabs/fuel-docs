@@ -6,7 +6,16 @@
 <!-- installation:example:start -->
 Start by [installing the Rust toolchain](https://www.rust-lang.org/tools/install).
 
+```console
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
 Then, [install the Fuel toolchain](https://github.com/FuelLabs/fuelup).
+
+```console
+curl --proto '=https' --tlsv1.2 -sSf https://install.fuel.network/fuelup-init.sh | sh
+```
+
 <!-- installation:example:end -->
 
 <!-- This example should include the instructions for installing the latest toolchain-->
