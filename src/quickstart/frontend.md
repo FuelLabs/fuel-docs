@@ -133,6 +133,8 @@ File: `./frontend/src/App.tsx`
 {{#include ../../quickstart-example/frontend/src/App.tsx}}
 ```
 
+Finally, replace the value of the `CONTRACT_ID` variable in `App.tsx` with the address of the contract you just deployed.
+
 ### Run your project
 
 Now it's time to have fun, run the project in your browser.

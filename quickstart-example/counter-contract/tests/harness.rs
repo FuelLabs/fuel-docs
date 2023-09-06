@@ -1,3 +1,4 @@
+// ANCHOR: contract-test-all
 use fuels::{prelude::*, types::ContractId};
 
 // Load abi from json
@@ -22,6 +23,7 @@ async fn get_contract_instance() -> (MyContract<WalletUnlocked>, ContractId) {
 
     let storage_config =
         StorageConfiguration::load_from("out/debug/counter-contract-storage_slots.json").unwrap();
+
     let load_config = LoadConfiguration::default().with_storage_configuration(storage_config);
 
     let id = Contract::load_from("./out/debug/counter-contract.bin", load_config)
@@ -35,9 +37,16 @@ async fn get_contract_instance() -> (MyContract<WalletUnlocked>, ContractId) {
     (instance, id.into())
 }
 
-// ANCHOR: contract-test
 #[tokio::test]
 async fn can_get_contract_id() {
+    let (_instance, _id) = get_contract_instance().await;
+
+    // Now you have an instance of your contract you can use to test each function
+}
+
+// ANCHOR: contract-test
+#[tokio::test]
+async fn test_increment() {
     let (instance, _id) = get_contract_instance().await;
 
     // Increment the counter
@@ -51,3 +60,4 @@ async fn can_get_contract_id() {
     assert_eq!(result.value, 1);
 }
 // ANCHOR_END: contract-test
+// ANCHOR_END: contract-test-all

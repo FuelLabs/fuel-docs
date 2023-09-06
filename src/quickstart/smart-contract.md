@@ -24,7 +24,11 @@ Unpacking and moving fuelup to /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/
 Moving /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt/fuelup to /Users/.fuelup/bin/fuelup
 ```
 
-Then run `fuelup toolchain install beta-4` to install the `beta-4` toolchain.
+Next, install the `beta-4` toolchain with:
+
+```console
+fuelup toolchain install beta-4
+```
 
 Finally, set the `beta-4` toolchain as your default distribution with the following command:
 
@@ -46,6 +50,10 @@ You can check your current toolchain anytime by running `fuelup show`.
 We'll build a simple counter contract with two functions: one to increment the counter, and one to return the value of the counter.
 
 **Start by creating a new, empty folder. We'll call it `fuel-project`.**
+
+```sh
+mkdir fuel-project
+```
 
 ### Writing the Contract
 
@@ -246,6 +254,14 @@ File: `tests/harness.rs`
 {{#include ../../quickstart-example/counter-contract/tests/harness.rs:contract-test}}
 ```
 
+Here is what your file should look like:
+
+File: `./counter-contract/tests/harness.rs`
+
+```sway
+{{#include ../../quickstart-example/counter-contract/tests/harness.rs:contract-test-all}}
+```
+
 Run `cargo test` in the terminal:
 
 ```console
@@ -256,9 +272,10 @@ If all goes well, the output should look as follows:
 
 ```console
   ...
-  running 1 test
+  running 2 tests
   test can_get_contract_id ... ok
-  test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+  test test_increment ... ok
+  test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.25s
 ```
 
 ## Deploy the Contract
@@ -269,11 +286,23 @@ In order to deploy a contract, you need to have a wallet to sign the transaction
 
 ### Install the Wallet CLI
 
-👉 Follow [these steps to set up a wallet and create an account](https://github.com/FuelLabs/forc-wallet#forc-wallet).
+If you haven't deployed a contract before, you'll need to set up a local wallet with the forc-wallet plugin. `forc-wallet` is packaged alongside the default distributed toolchains when installed using fuelup, so you should already have this installed.
+
+You can initialize a new wallet with the command below:
+
+```console
+forc wallet new
+```
 
 After typing in a password, be sure to save the mnemonic phrase that is output.
 
 With this, you'll get a fuel address that looks something like this: `fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8`. Save this address as you'll need it to sign transactions when we deploy the contract.
+
+If you need to list your accounts, you can run the command below:
+
+```console
+forc wallet accounts
+```
 
 ### Get Testnet Coins
 
