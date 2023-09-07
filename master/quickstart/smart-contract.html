@@ -142,21 +142,29 @@
 <!-- This example should include the instructions for installing Rust & Fuelup-->
 <!-- installation:example:start -->
 <p>Start by <a href="https://www.rust-lang.org/tools/install">installing the Rust toolchain</a>.</p>
+<pre><code class="language-console">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+</code></pre>
 <p>Then, <a href="https://github.com/FuelLabs/fuelup">install the Fuel toolchain</a>.</p>
+<pre><code class="language-console">curl --proto '=https' --tlsv1.2 -sSf https://install.fuel.network/fuelup-init.sh | sh
+</code></pre>
 <!-- installation:example:end -->
 <!-- This example should include the instructions for installing the latest toolchain-->
 <!-- toolchain_installation:example:start -->
 <p>Make sure you have the latest version of <code>fuelup</code> by running the following command:</p>
-<pre><code class="language-console">$ fuelup self update
-Fetching binary from https://github.com/FuelLabs/fuelup/releases/download/v0.18.0/fuelup-0.18.0-aarch64-apple-darwin.tar.gz
+<pre><code class="language-console">fuelup self update
+</code></pre>
+<pre><code class="language-console">Fetching binary from https://github.com/FuelLabs/fuelup/releases/download/v0.19.4/fuelup-0.19.4-aarch64-apple-darwin.tar.gz
 Downloading component fuelup without verifying checksum
 Unpacking and moving fuelup to /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt
 Moving /var/folders/tp/0l8zdx9j4s9_n609ykwxl0qw0000gn/T/.tmpiNJQHt/fuelup to /Users/.fuelup/bin/fuelup
 </code></pre>
-<p>Then run <code>fuelup toolchain install beta-3</code> to install the <code>beta-3</code> toolchain.</p>
-<p>Finally, set the <code>beta-3</code> toolchain as your default distribution with the following command:</p>
-<pre><code class="language-console">$ fuelup default beta-3
-default toolchain set to 'beta-3-aarch64-apple-darwin'
+<p>Next, install the <code>beta-4</code> toolchain with:</p>
+<pre><code class="language-console">fuelup toolchain install beta-4
+</code></pre>
+<p>Finally, set the <code>beta-4</code> toolchain as your default distribution with the following command:</p>
+<pre><code class="language-console">fuelup default beta-4
+</code></pre>
+<pre><code class="language-console">default toolchain set to 'beta-4'
 </code></pre>
 <p>You can check your current toolchain anytime by running <code>fuelup show</code>.</p>
 <!-- toolchain_installation:example:end -->
@@ -166,18 +174,23 @@ default toolchain set to 'beta-3-aarch64-apple-darwin'
 <h2 id="your-first-sway-project"><a class="header" href="#your-first-sway-project">Your First Sway Project</a></h2>
 <p>We'll build a simple counter contract with two functions: one to increment the counter, and one to return the value of the counter.</p>
 <p><strong>Start by creating a new, empty folder. We'll call it <code>fuel-project</code>.</strong></p>
+<pre><code class="language-sh">mkdir fuel-project
+</code></pre>
 <h3 id="writing-the-contract"><a class="header" href="#writing-the-contract">Writing the Contract</a></h3>
-<p>Create a contract project inside of your <code>fuel-project</code> folder:</p>
-<pre><code class="language-sh">$ cd fuel-project
-$ forc new counter-contract
-To compile, use `forc build`, and to run tests use `forc test`
-
+<p>Move inside of your <code>fuel-project</code> folder:</p>
+<pre><code class="language-sh">cd fuel-project
+</code></pre>
+<p>Then create a contract project using forc:</p>
+<pre><code class="language-sh">forc new counter-contract
+</code></pre>
+<p>You will get this output:</p>
+<pre><code class="language-sh">To compile, use `forc build`, and to run tests use `forc test`
 ----
-
 Read the Docs:
-- Sway Book: https://fuellabs.github.io/sway/latest
-- Rust SDK Book: https://fuellabs.github.io/fuels-rs/latest
-- TypeScript SDK: https://fuellabs.github.io/fuels-ts/
+- Sway Book: https://docs.fuel.network/docs/sway
+- Forc Book: https://docs.fuel.network/docs/forc
+- Rust SDK Book: https://docs.fuel.network/docs/fuels-rs
+- TypeScript SDK: https://docs.fuel.network/docs/fuels-ts
 
 Join the Community:
 - Follow us @SwayLang: https://twitter.com/SwayLang
@@ -207,8 +220,8 @@ counter-contract
 }
 </code></pre>
 <h3 id="abi"><a class="header" href="#abi">ABI</a></h3>
-<p>An ABI defines an interface, and there is no function body in the ABI. A contract must either define or import an ABI declaration and implement it. It is considered best practice to define your ABI in a separate library and import it into your contract because this allows callers of the contract to import and use the ABI in scripts to call your contract.</p>
-<p>For simplicity, we will define the ABI directly in the contract file.</p>
+<p>An ABI defines an interface for a contract. A contract must either define or import an ABI declaration. It is considered best practice to define your ABI in a separate library and import it into your contract because this allows callers of the contract to import and use the ABI in scripts to call your contract</p>
+<p>For simplicity, we will define the ABI directly in the contract file itself.</p>
 <pre><code class="language-sway">abi Counter {
     #[storage(read, write)]
     fn increment();
@@ -222,18 +235,17 @@ counter-contract
 <pre><code class="language-sway">impl Counter for Contract {
     #[storage(read)]
     fn count() -&gt; u64 {
-        storage.counter
+        storage.counter.read()
     }
 
     #[storage(read, write)]
     fn increment() {
-        storage.counter = storage.counter + 1;
+        let incremented = storage.counter.read() + 1;
+        storage.counter.write(incremented);
     }
 }
 </code></pre>
-<blockquote>
-<p><strong>Note</strong>: <code>storage.counter</code> is an implicit return and is equivalent to <code>return storage.counter;</code>.</p>
-</blockquote>
+<p><strong>Note</strong>: <code>storage.counter.read()</code> is an implicit return and is equivalent to <code>return storage.counter.read();</code>.</p>
 <p>Here's what your code should look like so far:</p>
 <p>File: <code>./counter-contract/src/main.sw</code></p>
 <pre><code class="language-sway">contract;
@@ -253,19 +265,26 @@ abi Counter {
 impl Counter for Contract {
     #[storage(read)]
     fn count() -&gt; u64 {
-        storage.counter
+        storage.counter.read()
     }
 
     #[storage(read, write)]
     fn increment() {
-        storage.counter = storage.counter + 1;
+        let incremented = storage.counter.read() + 1;
+        storage.counter.write(incremented);
     }
 }
 </code></pre>
 <h3 id="build-the-contract"><a class="header" href="#build-the-contract">Build the Contract</a></h3>
-<p>From inside the <code>fuel-project/counter-contract</code> directory, run the following command to build your contract:</p>
-<pre><code class="language-console">$ forc build
-  Compiled library &quot;core&quot;.
+<p>Navigate to your contract folder:</p>
+<pre><code class="language-console">cd counter-contract
+</code></pre>
+<pre><code class="language-console">changed directory into `counter-countract`
+</code></pre>
+<p>Then run the following command to build your contract:</p>
+<pre><code class="language-console">forc build
+</code></pre>
+<pre><code class="language-console">  Compiled library &quot;core&quot;.
   Compiled library &quot;std&quot;.
   Compiled contract &quot;counter-contract&quot;.
   Bytecode size is 232 bytes.
@@ -286,25 +305,22 @@ impl Counter for Contract {
 <p>We now have an <code>out</code> directory that contains our build artifacts such as the JSON representation of our ABI and the contract bytecode.</p>
 <h2 id="testing-your-contract"><a class="header" href="#testing-your-contract">Testing your Contract</a></h2>
 <p>We will start by adding a Rust integration test harness using a Cargo generate template. If this is your first time going through this quickstart, you'll need to install the <code>cargo generate</code> command. In the future, you can skip this step as it will already be installed.</p>
-<p>Navigate to your contract and then run the installation command:</p>
-<pre><code class="language-console">$ cd counter-contract
-changed directory into `counter-countract`
-$ cargo install cargo-generate
- Updating crates.io index...
+<p>Let's start by running the installation command:</p>
+<pre><code class="language-console">cargo install cargo-generate
+</code></pre>
+<pre><code class="language-console"> Updating crates.io index...
  installed package `cargo-generate v0.17.3`
 </code></pre>
 <blockquote>
 <p><strong>Note</strong>: You can learn more about cargo generate by visiting <a href="https://github.com/cargo-generate/cargo-generate">its repository</a>.</p>
 </blockquote>
 <p>Now, let's generate the default test harness with the following:</p>
-<pre><code class="language-console">$ cargo generate --init fuellabs/sway templates/sway-test-rs --name counter-contract
-⚠️   Favorite `fuellabs/sway` not found in config, using it as a git repository: https://github.com/fuellabs/sway
-🤷   Project Name : counter-contract
+<pre><code class="language-console">cargo generate --init fuellabs/sway templates/sway-test-rs --name counter-contract
+</code></pre>
+<pre><code class="language-console">⚠️   Favorite `fuellabs/sway` not found in config, using it as a git repository: https://github.com/fuellabs/sway.git
 🔧   Destination: /home/user/path/to/counter-contract ...
+🔧   project-name: counter-contract ...
 🔧   Generating template ...
-[1/3]   Done: Cargo.toml
-[2/3]   Done: tests/harness.rs
-[3/3]   Done: tests
 🔧   Moving generated files into: `/home/user/path/to/counter-contract`...
 ✨   Done! New project created /home/user/path/to/counter-contract
 </code></pre>
@@ -333,7 +349,7 @@ $ cargo install cargo-generate
 <p>At the bottom of <code>test/harness.rs</code>, define the body of <code>can_get_contract_id()</code>. Here is what your code should look like to verify that the value of the counter did get incremented:</p>
 <p>File: <code>tests/harness.rs</code></p>
 <pre><code class="language-sway">#[tokio::test]
-async fn can_get_contract_id() {
+async fn test_increment() {
     let (instance, _id) = get_contract_instance().await;
 
     // Increment the counter
@@ -347,48 +363,117 @@ async fn can_get_contract_id() {
     assert_eq!(result.value, 1);
 }
 </code></pre>
-<p>Run <code>cargo test</code> in the terminal. If all goes well, the output should look as follows:</p>
-<pre><code class="language-console">$ cargo test
-  ...
-  running 1 test
+<p>Here is what your file should look like:</p>
+<p>File: <code>./counter-contract/tests/harness.rs</code></p>
+<pre><code class="language-sway">use fuels::{prelude::*, types::ContractId};
+
+// Load abi from json
+abigen!(Contract(
+    name = &quot;MyContract&quot;,
+    abi = &quot;out/debug/counter-contract-abi.json&quot;
+));
+
+async fn get_contract_instance() -&gt; (MyContract&lt;WalletUnlocked&gt;, ContractId) {
+    // Launch a local network and deploy the contract
+    let mut wallets = launch_custom_provider_and_get_wallets(
+        WalletsConfig::new(
+            Some(1),             /* Single wallet */
+            Some(1),             /* Single coin (UTXO) */
+            Some(1_000_000_000), /* Amount per coin */
+        ),
+        None,
+        None,
+    )
+    .await;
+    let wallet = wallets.pop().unwrap();
+
+    let storage_config =
+        StorageConfiguration::load_from(&quot;out/debug/counter-contract-storage_slots.json&quot;).unwrap();
+
+    let load_config = LoadConfiguration::default().with_storage_configuration(storage_config);
+
+    let id = Contract::load_from(&quot;./out/debug/counter-contract.bin&quot;, load_config)
+        .unwrap()
+        .deploy(&amp;wallet, TxParameters::default())
+        .await
+        .unwrap();
+
+    let instance = MyContract::new(id.clone(), wallet);
+
+    (instance, id.into())
+}
+
+#[tokio::test]
+async fn can_get_contract_id() {
+    let (_instance, _id) = get_contract_instance().await;
+
+    // Now you have an instance of your contract you can use to test each function
+}
+
+#[tokio::test]
+async fn test_increment() {
+    let (instance, _id) = get_contract_instance().await;
+
+    // Increment the counter
+    instance.methods().increment().call().await.unwrap();
+
+    // Get the current value of the counter
+    let result = instance.methods().count().call().await.unwrap();
+
+    // Check that the current value of the counter is 1.
+    // Recall that the initial value of the counter was 0.
+    assert_eq!(result.value, 1);
+}
+</code></pre>
+<p>Run <code>cargo test</code> in the terminal:</p>
+<pre><code class="language-console">cargo test
+</code></pre>
+<p>If all goes well, the output should look as follows:</p>
+<pre><code class="language-console">  ...
+  running 2 tests
   test can_get_contract_id ... ok
-  test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+  test test_increment ... ok
+  test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.25s
 </code></pre>
 <h2 id="deploy-the-contract"><a class="header" href="#deploy-the-contract">Deploy the Contract</a></h2>
 <p>It's now time to deploy the contract to the testnet. We will show how to do this using <code>forc</code> from the command line, but you can also do it using the <a href="https://github.com/FuelLabs/fuels-rs#deploying-a-sway-contract">Rust SDK</a> or the <a href="https://github.com/FuelLabs/fuels-ts/#deploying-contracts">TypeScript SDK</a>.</p>
 <p>In order to deploy a contract, you need to have a wallet to sign the transaction and coins to pay for gas. First, we'll create a wallet.</p>
 <h3 id="install-the-wallet-cli"><a class="header" href="#install-the-wallet-cli">Install the Wallet CLI</a></h3>
-<p>Follow <a href="https://github.com/FuelLabs/forc-wallet#forc-wallet">these steps to set up a wallet and create an account</a>.</p>
+<p>If you haven't deployed a contract before, you'll need to set up a local wallet with the forc-wallet plugin. <code>forc-wallet</code> is packaged alongside the default distributed toolchains when installed using fuelup, so you should already have this installed.</p>
+<p>You can initialize a new wallet with the command below:</p>
+<pre><code class="language-console">forc wallet new
+</code></pre>
 <p>After typing in a password, be sure to save the mnemonic phrase that is output.</p>
+<p>Next, create a new wallet account with:</p>
+<pre><code class="language-console">forc wallet account new
+</code></pre>
 <p>With this, you'll get a fuel address that looks something like this: <code>fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8</code>. Save this address as you'll need it to sign transactions when we deploy the contract.</p>
+<p>If you need to list your accounts, you can run the command below:</p>
+<pre><code class="language-console">forc wallet accounts
+</code></pre>
 <h3 id="get-testnet-coins"><a class="header" href="#get-testnet-coins">Get Testnet Coins</a></h3>
-<p>With your account address in hand, head to the <a href="https://faucet-beta-3.fuel.network/">testnet faucet</a> to get some coins sent to your wallet.</p>
+<p>With your account address in hand, head to the <a href="https://faucet-beta-4.fuel.network/">testnet faucet</a> to get some coins sent to your wallet.</p>
 <h3 id="deploy-to-testnet"><a class="header" href="#deploy-to-testnet">Deploy To Testnet</a></h3>
-<p>Now that you have a wallet, you can deploy with <code>forc deploy</code> and passing in the testnet endpoint like this:</p>
-<p><code>forc deploy --node-url beta-3.fuel.network/graphql --gas-price 1 --random-salt</code></p>
-<blockquote>
-<p><strong>Note</strong>: We set the gas price to 1. Without this flag, the gas price is 0 by default and the transaction will fail.</p>
-</blockquote>
-<p>The terminal will ask for the address of the wallet you want to sign this transaction with, paste in the address you saved earlier, it looks like this: <code>fuel1efz7lf36w9da9jekqzyuzqsfrqrlzwtt3j3clvemm6eru8fe9nvqj5kar8</code></p>
-<p>The terminal will output your <code>Contract id</code> like this:</p>
-<pre><code class="language-console">Contract id: 0xd09b469b0c31c05222b553021aa23c3b6a535db5092c22b84690dc88ca17deaa
+<p>Now that you have a wallet, you can deploy with <code>forc deploy</code> and adding the <code>--testnet</code> to target the latest network:</p>
+<pre><code class="language-console">forc deploy --testnet
 </code></pre>
-<p>Be sure to save this as you will need it to build a frontend with the Typescript SDK later in this tutorial.</p>
-<p>The terminal will output a <code>Transaction id to sign</code> and prompt you for a signature. Open a new terminal tab and view your accounts by running <code>forc wallet accounts</code>. If you followed these steps, you'll notice you only have one account, <code>0</code>.</p>
-<p>Grab the <code>Transaction id to sign</code> from your other terminal and sign with your account by running the following command:</p>
-<pre><code class="language-console">forc wallet sign --account `[the account index, without brackets]` tx-id `[Transaction id to sign, without brackets]`
+<p>The terminal will ask for the password of the wallet:</p>
+<p><code>Please provide the password of your encrypted wallet vault at &quot;~/.fuel/wallets/.wallet&quot;:</code></p>
+<p>Once you unlocked the wallet, the terminal will show a list of the accounts of this wallet:</p>
+<pre><code class="language-console">Account 0 -- fuel18caanqmumttfnm8qp0eq7u9yluydxtqmzuaqtzdjlsww5t2jmg9skutn8n:
+  Asset ID                                                           Amount
+  0000000000000000000000000000000000000000000000000000000000000000 499999940
 </code></pre>
-<p>Your command should look like this:</p>
-<pre><code class="language-console">$ forc wallet sign --account 0 tx-id 16d7a8f9d15cfba1bd000d3f99cd4077dfa1fce2a6de83887afc3f739d6c84df
-Please enter your password to decrypt initialized wallet's phrases:
-Signature: 736dec3e92711da9f52bed7ad4e51e3ec1c9390f4b05caf10743229295ffd5c1c08a4ca477afa85909173af3feeda7c607af5109ef6eb72b6b40b3484db2332c
+<p>Just below the list, you'll see this prompt:</p>
+<p><code>Please provide the index of account to use for signing:</code></p>
+<p>Then you'll enter the number of the account of preference and press <code>Y</code> when prompted to accept the transaction.</p>
+<p>Finally, you will get back the network endpoint where the contract was dpeloyed, a <code>ContractId</code> and the block where the transaction was signed. To confirm your contract was deployed. With this ID, you can head to the <a href="https://fuellabs.github.io/block-explorer-v2/">block explorer</a> and view your contract.</p>
+<pre><code class="language-console">Contract deploy-to-beta-4 Deployed!
+
+Network: https://beta-4.fuel.network
+Contract ID: 0x8342d413de2a678245d9ee39f020795800c7e6a4ac5ff7daae275f533dc05e08
+Deployed in block 0x4ea52b6652836c499e44b7e42f7c22d1ed1f03cf90a1d94cd0113b9023dfa636
 </code></pre>
-<p>Enter your password when prompted, and you'll get back a <code>signature</code>. Save that signature, and return to your other terminal window, and paste that in where its prompting you to <code>provide a signature for this transaction</code>.</p>
-<p>Finally, you will get back a <code>TransactionId</code> to confirm your contract was deployed. With this ID, you can head to the <a href="https://fuellabs.github.io/block-explorer-v2/">block explorer</a> and view your contract.</p>
-<blockquote>
-<p><strong>Note</strong>
-You should prefix your <code>TransactionId</code> with <code>0x</code> to view it in the block explorer</p>
-</blockquote>
 <p><img src="../images/block-explorer.png" alt="block explorer" /></p>
 <h3 id="congrats-you-have-completed-your-first-smart-contract-on-fuel-"><a class="header" href="#congrats-you-have-completed-your-first-smart-contract-on-fuel-">Congrats, you have completed your first smart contract on Fuel ⛽</a></h3>
 <p><a href="https://github.com/FuelLabs/quickstart">Here is the repo for this project</a>. If you run into any problems, a good first step is to compare your code to this repo and resolve any differences.</p>

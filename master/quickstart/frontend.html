@@ -140,22 +140,48 @@
                         <h1 id="building-a-frontend-to-interact-with-your-contract"><a class="header" href="#building-a-frontend-to-interact-with-your-contract">Building a Frontend to Interact With Your Contract</a></h1>
 <p>To build out our frontend application, we'll do the following:</p>
 <ol>
-<li><strong>Install the Fuel Browser Wallet.</strong></li>
-<li><strong>Initialize a React project.</strong></li>
-<li><strong>Install the <code>fuels</code> SDK dependencies.</strong></li>
-<li><strong>Write our frontend code.</strong></li>
-<li><strong>Run our project.</strong></li>
+<li><a href="#install-the-fuel-browser-wallet"><strong>Install the Fuel Browser Wallet.</strong></a></li>
+<li><a href="#initialize-a-react-project"><strong>Initialize a React project.</strong></a></li>
+<li><a href="#install-the-fuels-sdk-dependency"><strong>Install the <code>fuels</code> SDK dependency.</strong></a></li>
+<li><a href="#modify-the-app"><strong>Write our frontend code.</strong></a></li>
+<li><a href="#run-your-project"><strong>Run our project.</strong></a></li>
 </ol>
 <h2 id="install-the-fuel-browser-wallet"><a class="header" href="#install-the-fuel-browser-wallet">Install the Fuel Browser Wallet</a></h2>
 <p>Our front end application will need to interact with the Fuel Network, so we'll need to have a browser wallet installed for us to do so.</p>
-<p>Before going to the next steps, install the Fuel Wallet at <a href="https://wallet.fuel.network/docs/install/">https://wallet.fuel.network/docs/install/</a>.</p>
-<p>Once you've installed the wallet, take the address of your wallet and use it to get some coins from <a href="https://faucet-beta-3.fuel.network/">the testnet faucet</a>.</p>
+<p>Fuel Wallet version <code>0.11.0</code> is not compatible with beta 4. For compatibility with beta-4, please download the non-backwards compatible Fuel Wallet version <code>0.12.3</code>.</p>
+<p>We have already submitted the beta-4 compatible version to the Chrome Web Store, and it is currently under review.</p>
+<p>Please follow the instructions provided below:</p>
+<blockquote>
+<p><strong>Note</strong>: This is a temporary measure while the Fuel Wallet version <code>0.12.3</code> gets published in the Chrome WebStore.</p>
+</blockquote>
+<ol>
+<li>Download <a href="https://next-wallet.fuel.network/app/fuel-wallet.zip">FuelWallet zip file</a></li>
+<li>Inside Chrome or Brave;</li>
+<li>Open the extensions page; it can be done by:
+<ul>
+<li>Clicking on settings -&gt; extensions or;</li>
+</ul>
+</li>
+<li>Accessing brave://extensions/ or chrome://extensions/.</li>
+<li>Enable the &quot;Developer mode&quot; switch on the top right</li>
+<li>Load fuel-wallet.zip by:
+<ul>
+<li>Dragging your downloaded Fuel wallet file and dropping it in the extensions page or;</li>
+<li>Clicking on Load unpacked and selecting the file.</li>
+</ul>
+</li>
+<li>If all goes right, an onboarding page will instantly open.</li>
+</ol>
+<p>Once you've installed the wallet, take the address of your wallet and use it to get some coins from <a href="https://faucet-beta-4.fuel.network/">the testnet faucet</a>.</p>
 <h2 id="initialize-a-react-project"><a class="header" href="#initialize-a-react-project">Initialize a React project</a></h2>
-<p>To split our project's contract from frontend code, let's create a new folder <code>frontend</code> where we'll initialize our frontend project.</p>
-<p>In the terminal, go back up one directory and initialize a react project using <a href="https://create-react-app.dev/"><code>Create React App</code></a>.</p>
-<pre><code class="language-console">$ cd ..
-$ npx create-react-app frontend --template typescript
-Success! Created frontend at Fuel/fuel-project/frontend
+<p>To split our project's contract from frontend code, let's initialize our frontend project: assuming that your terminal is open at your contract's folder <code>/home/user/path/to/counter-contract</code> let's go back up one directory.</p>
+<pre><code class="language-console">cd ..
+</code></pre>
+<p>Now, iniitialize a react project using <a href="https://create-react-app.dev/"><code>Create React App</code></a>.</p>
+<pre><code class="language-console">npx create-react-app frontend --template typescript
+</code></pre>
+<p>The output should be simmilar to:</p>
+<pre><code class="language-console">Success! Created frontend at Fuel/fuel-project/frontend
 </code></pre>
 <p>You should now have your outer folder, <code>fuel-project</code>, with two folders inside: <code>counter-contract</code> and <code>frontend</code></p>
 <p><img src="../images/quickstart-folder-structure.png" alt="project folder structure" /></p>
@@ -167,9 +193,13 @@ Success! Created frontend at Fuel/fuel-project/frontend
 </blockquote>
 <h3 id="installing"><a class="header" href="#installing">Installing</a></h3>
 <p>Move into the <code>frontend</code> folder, then run:</p>
-<pre><code class="language-console">$ cd frontend
-$ npm install fuels@0.38.0 @fuel-wallet/sdk --save
-added 114 packages, and audited 115 packages in 9s
+<pre><code class="language-console">cd frontend
+</code></pre>
+<p>Then:</p>
+<pre><code class="language-console">npm install fuels@0.55.0 @fuel-wallet/sdk@0.12.3 --save
+</code></pre>
+<p>If the installation wnet correctly the result will be simmilar to this:</p>
+<pre><code class="language-console">added 114 packages, and audited 115 packages in 9s
 </code></pre>
 <p>Next, update the TypeScript configuration at <code>tsconfig.json</code> to add the Fuel Wallet types:</p>
 <pre><code class="language-json">{
@@ -182,8 +212,10 @@ added 114 packages, and audited 115 packages in 9s
 <p>To make it easier to interact with our contract we use <code>fuels typegen</code> command to interpret the output ABI JSON from our contract, and generate Typescript definitions based on it. This JSON was created when we executed the <code>forc build</code> command to compile our Sway Contract into binary.</p>
 <p>If you see the folder <code>fuel-project/counter-contract/out</code> you will be able to see the ABI JSON there. If you want to learn more, read the <a href="https://fuellabs.github.io/fuel-specs/master/protocol/abi">ABI spec</a>.</p>
 <p>Inside the <code>fuel-project/frontend</code> directory run:</p>
-<pre><code class="language-console">$ npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts
-Generating files..
+<pre><code class="language-console">npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts
+</code></pre>
+<p>A succesful process should print and output like the following:</p>
+<pre><code class="language-console">Generating files..
 
  - src/contracts/CounterContractAbi.d.ts
  - src/contracts/factories/CounterContractAbi__factory.ts
@@ -206,14 +238,14 @@ import { CounterContractAbi__factory } from &quot;./contracts&quot;;
 
 // The address of the contract deployed the Fuel testnet
 const CONTRACT_ID =
-  &quot;0x9751545a0f45aa4b88904b6b4a896bfb02f231676de5438d346d4beab5cb9820&quot;;
+  &quot;0xa0f2b97f32300d7360b5632e682c1508b326da9a00fbe755646d3809aec90672&quot;;
 
 function App() {
   const [connected, setConnected] = useState&lt;boolean&gt;(false);
   const [account, setAccount] = useState&lt;string&gt;(&quot;&quot;);
   const [counter, setCounter] = useState&lt;number&gt;(0);
   const [loaded, setLoaded] = useState(false);
-  
+
   useEffect(() =&gt; {
     setTimeout(() =&gt; {
       checkConnection();
@@ -224,16 +256,16 @@ function App() {
 
   async function connect() {
     if (window.fuel) {
-     try {
-       await window.fuel.connect();
-       const [account] = await window.fuel.accounts();
-       setAccount(account);
-       setConnected(true);
-     } catch(err) {
-       console.log(&quot;error connecting: &quot;, err);
-     }
+      try {
+        await window.fuel.connect();
+        const [account] = await window.fuel.accounts();
+        setAccount(account);
+        setConnected(true);
+      } catch (err) {
+        console.log(&quot;error connecting: &quot;, err);
+      }
     }
-   }
+  }
 
   async function checkConnection() {
     if (window.fuel) {
@@ -250,7 +282,7 @@ function App() {
     if (window.fuel) {
       const wallet = await window.fuel.getWallet(account);
       const contract = CounterContractAbi__factory.connect(CONTRACT_ID, wallet);
-      const { value } = await contract.functions.count().get();
+      const { value } = await contract.functions.count().simulate();
       setCounter(value.toNumber());
     }
   }
@@ -264,21 +296,21 @@ function App() {
       try {
         await contract.functions.increment().txParams({ gasPrice: 1 }).call();
         getCount();
-      } catch(err) {
+      } catch (err) {
         console.log(&quot;error sending transaction...&quot;, err);
       }
     }
   }
 
   if (!loaded) return null
-  
+
   return (
     &lt;&gt;
       &lt;div className=&quot;App&quot;&gt;
         {
           connected ? (
             &lt;&gt;
-               &lt;h3&gt;Counter: {counter?.toFixed(0)}&lt;/h3&gt;
+              &lt;h3&gt;Counter: {counter}&lt;/h3&gt;
               &lt;button style={buttonStyle} onClick={increment}&gt;
                 Increment
               &lt;/button&gt;
@@ -308,16 +340,18 @@ const buttonStyle = {
   cursor: &quot;pointer&quot;
 }
 </code></pre>
+<p>Finally, replace the value of the <code>CONTRACT_ID</code> variable in <code>App.tsx</code> with the address of the contract you just deployed.</p>
 <h3 id="run-your-project"><a class="header" href="#run-your-project">Run your project</a></h3>
 <p>Now it's time to have fun, run the project in your browser.</p>
 <p>Inside the <code>fuel-project/frontend</code> directory run:</p>
-<pre><code class="language-console">$ npm start
-Compiled successfully!
+<pre><code class="language-console">npm start
+</code></pre>
+<pre><code class="language-console">Compiled successfully!
 
 You can now view frontend in the browser.
 
-  Local:            http://localhost:3001
-  On Your Network:  http://192.168.4.48:3001
+  Local:            http://localhost:3000
+  On Your Network:  http://192.168.4.48:3000
 
 Note that the development build is not optimized.
 To create a production build, use npm run build.
@@ -333,7 +367,7 @@ To create a production build, use npm run build.
 <p>In your contract directory, run <code>forc build</code></p>
 </li>
 <li>
-<p>In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: <code>forc deploy --node-url beta-3.fuel.network/graphql --gas-price 1 --random-salt</code></p>
+<p>In your contract directory, redeploy the contract by running this command and following the same steps as above to sign the transaction with your wallet: <code>forc deploy --testnet</code></p>
 </li>
 <li>
 <p>In your frontend directory, re-run this command: <code>npx fuels typegen -i ../counter-contract/out/debug/*-abi.json -o ./src/contracts</code></p>
