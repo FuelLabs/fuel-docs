@@ -42,12 +42,12 @@ fuelup toolchain install beta-4
 
 This installs the following components and versions:
 
-- forc 0.44.0
+- forc 0.45.0
 - forc-explore 0.28.1
-- forc-index 0.19.5
-- forc-wallet 0.2.5
+- forc-index 0.20.7
+- forc-wallet 0.3.0
 - fuel-core 0.20.4
-- fuel-indexer 0.19.5
+- fuel-indexer 0.20.7
 
 To set the `beta-4` toolchain as your default, run
 
