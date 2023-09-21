@@ -2,7 +2,7 @@
 
 Fuel is the fastest modular execution layer, delivering maximum security and highest flexible throughput.
 
-Checkout the new documentation portal [here](https://docs.fuel.network/).
+Check out the new documentation portal [here](https://docs.fuel.network/).
 
 ## Alpha
 
