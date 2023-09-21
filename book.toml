@@ -10,6 +10,3 @@ git-repository-url = "https://github.com/FuelLabs/fuel-docs"
 
 [rust]
 edition = "2021"
-
-[output.html.redirect]
-"/developer-quickstart.html" = "https://fuelbook.fuel.network/master/quickstart/developer-quickstart.html"
