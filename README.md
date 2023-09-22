@@ -1,8 +1,8 @@
-# ⚠️ Archived
-
-Docs are now maintained at https://github.com/FuelLabs/docs-hub
-
 # Fuel Docs
+
+## ⚠️ Archived
+
+Docs are now maintained at <https://github.com/FuelLabs/docs-hub>
 
 ## Building From Source
 
